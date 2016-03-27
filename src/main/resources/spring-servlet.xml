@@ -66,18 +66,6 @@
 	    </property>
 	    <!-- 用于开启 /userinfo/123?format=json 的支持 -->
 	    <property name="favorParameter" value="true" />
-	    <!-- <property name="viewResolvers">
-	        <list>
-	            <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
-	            <bean
-	                class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	                <property name="viewClass"
-	                    value="org.springframework.web.servlet.view.JstlView" />
-					<property name="prefix" value="/WEB-INF/" />
-					<property name="suffix" value="" />
-	            </bean>
-	        </list>
-	    </property> -->
 	    <property name="defaultViews">
 	        <list>
 	            <!-- for application/json -->
@@ -86,10 +74,6 @@
 	                 <bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"/>
 	               </property>
 	            </bean>
-	            <!-- for application/xml -->
-	            <!-- <bean class="org.springframework.web.servlet.view.xml.MarshallingView"
-	                > <property name="marshaller"> <bean class="org.springframework.oxm.xstream.XStreamMarshaller"/>
-	                </property> </bean> -->
 	        </list>
 	    </property>
 	</bean>
@@ -107,32 +91,6 @@
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource"
 		p:basename="i18n/messages" />
-<!-- 		
-   <mvc:interceptors>
-	   	登陆拦截
-        <mvc:interceptor>  
-             需要被拦截的路径
-            <mvc:mapping path="/" />
-            <mvc:mapping path="/**" />
-            <mvc:exclude-mapping path="/cat/*"/>
-            <mvc:exclude-mapping path="/common/*"/>
-            <mvc:exclude-mapping path="/user/*"/>
-            <mvc:exclude-mapping path="/partner/*"/>
-            <mvc:exclude-mapping path="/frame/foot.do"/>
-			<mvc:exclude-mapping path="/wallet/pay/ali/return"/>
-           	<bean class="com.ue.jeemaa.cloud.interceptor.LoginInterceptor"></bean>
-        </mvc:interceptor>
-
-	   设置支付密码拦截
-	   	<mvc:interceptor>
-			<mvc:mapping path="/wallet/*"/>
-			<mvc:exclude-mapping path="/wallet/setPayPassPage"/>
-			<mvc:exclude-mapping path="/wallet/savePayPass"/>
-			<bean class="com.ue.jeemaa.cloud.interceptor.PayPassInterceptor"></bean>
-		</mvc:interceptor>
-    </mvc:interceptors>
- -->    
-    
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
         <property name="defaultEncoding" value="utf-8"></property>   
         <property name="maxUploadSize" value="1073741824"></property>  <!--最大支持1G的文件上传  1073741824-->
