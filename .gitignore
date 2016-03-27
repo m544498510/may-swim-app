@@ -2,3 +2,6 @@
 maySwimApp.iml
 .idea
 target
+
+# git config files
+.git
