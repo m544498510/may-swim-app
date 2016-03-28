@@ -9,17 +9,30 @@ import java.util.Date;
 public class User implements Serializable{
     private static final long serialVersionUID = 1L;
 
-    private int userId;
+    private String userId;
     private String userName;
-    private String userEmail;
     private String userPsd;
+    private String userEmail;
+    private String userNickName;
     private Date userCreateTime;
+    private int[] permissions;
 
-    public int getUserId() {
+    public  User(String userId, String userName,
+                String userPsd,String userEmail,
+                String userNickName,Date userCreateTime){
+        this.userId = userId;
+        this.userName = userName;
+        this.userPsd = userPsd;
+        this.userEmail = userEmail;
+        this.userNickName =  userNickName;
+        this.userCreateTime = userCreateTime;
+    }
+
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -31,14 +44,6 @@ public class User implements Serializable{
         this.userName = userName;
     }
 
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
     public String getUserPsd() {
         return userPsd;
     }
@@ -47,11 +52,35 @@ public class User implements Serializable{
         this.userPsd = userPsd;
     }
 
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserNickName() {
+        return userNickName;
+    }
+
+    public void setUserNickName(String userNickName) {
+        this.userNickName = userNickName;
+    }
+
     public Date getUserCreateTime() {
         return userCreateTime;
     }
 
     public void setUserCreateTime(Date userCreateTime) {
         this.userCreateTime = userCreateTime;
+    }
+
+    public int[] getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(int[] permissions) {
+        this.permissions = permissions;
     }
 }

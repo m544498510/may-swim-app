@@ -1,7 +1,11 @@
 package com.may.user.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.may.user.model.User;
 import com.may.user.service.IUserService;
+import com.may.util.http.HttpResultCode;
+import com.may.util.http.HttpResultUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +22,23 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value="/user",method= RequestMethod.GET)
-    public User getUserById(HttpServletRequest request){
+    public JSONObject signIn(HttpServletRequest request){
         User user = null;
-        String userId = request.getParameter("userId");
-        if(userId != null){
-    //        user = iUserService.getUserById(userId);
+        String name = request.getParameter("userName");
+        String password = request.getParameter("userPsd");
+        if(validateString(name) && validateString(password)){
+            user = iUserService.signIn(name,password);
         }
-        return user;
+        if(user != null){
+            request.getSession().setAttribute("user",user);
+            return HttpResultUtil.getSuccessResult(user);
+        }else{
+            return HttpResultUtil.getFailResult(HttpResultCode.SING_UP_FAIL);
+        }
+    }
+
+
+    private boolean validateString(String s){
+        return s != null && "null".equals(s) && "undefined".equals(s);
     }
 }

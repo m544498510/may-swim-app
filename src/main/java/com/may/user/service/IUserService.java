@@ -7,7 +7,7 @@ import com.may.user.model.User;
  */
 public interface IUserService {
 
-    User singIn(String userName,String password);
+    User signIn(String userName,String password);
 
     User signUp(String userName,String password,String email);
 
