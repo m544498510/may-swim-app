@@ -1,8 +1,9 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2016/3/27 10:33:58                           */
+/* Created on:     2016/3/31 21:27:15                           */
 /*==============================================================*/
 
+SET FOREIGN_KEY_CHECKS = 0; 
 
 drop table if exists t_perm;
 
@@ -16,6 +17,7 @@ drop table if exists t_user;
 
 drop table if exists user_to_perm;
 
+SET FOREIGN_KEY_CHECKS = 1; 
 /*==============================================================*/
 /* Table: t_perm                                                */
 /*==============================================================*/
@@ -33,8 +35,8 @@ alter table t_perm comment '权限表';
 /*==============================================================*/
 create table t_session
 (
-   session_id           bigint not null,
-   user_id              int,
+   session_id           bigint not null auto_increment,
+   user_id              varchar(255),
    session_date         datetime not null,
    session_commert      varchar(1024) not null,
    primary key (session_id)
@@ -47,7 +49,7 @@ alter table t_session comment '一套训练';
 /*==============================================================*/
 create table t_set
 (
-   set_id               bigint not null,
+   set_id               bigint not null auto_increment,
    session_id           bigint not null,
    pattern_id           smallint not null,
    set_lap              smallint not null,
@@ -70,7 +72,7 @@ alter table t_set comment '分组训练';
 /*==============================================================*/
 create table t_stroke_pattern
 (
-   pattern_id           smallint not null,
+   pattern_id           smallint not null auto_increment,
    pattern_name         varchar(100) not null,
    primary key (pattern_id)
 );
@@ -82,11 +84,12 @@ alter table t_stroke_pattern comment '泳姿表';
 /*==============================================================*/
 create table t_user
 (
-   user_id              int not null auto_increment,
+   user_id              varchar(255) not null,
    user_name            varchar(255) not null,
    user_email           varchar(255),
    user_psd             varchar(255) not null,
    user_create_time     date not null,
+   user_nick_name       varchar(255),
    primary key (user_id)
 );
 
@@ -95,8 +98,8 @@ create table t_user
 /*==============================================================*/
 create table user_to_perm
 (
-   user_id              int,
-   perm_id              int
+   perm_id              int,
+   user_id              varchar(255)
 );
 
 alter table user_to_perm comment '用户权限关联表';
@@ -110,9 +113,9 @@ alter table t_set add constraint FK_Reference_3 foreign key (session_id)
 alter table t_set add constraint FK_Reference_4 foreign key (pattern_id)
       references t_stroke_pattern (pattern_id) on delete restrict on update restrict;
 
-alter table user_to_perm add constraint FK_Reference_1 foreign key (user_id)
-      references t_user (user_id) on delete restrict on update restrict;
-
 alter table user_to_perm add constraint FK_Reference_2 foreign key (perm_id)
       references t_perm (perm_id) on delete restrict on update restrict;
+
+alter table user_to_perm add constraint FK_Reference_6 foreign key (user_id)
+      references t_user (user_id) on delete restrict on update restrict;
 

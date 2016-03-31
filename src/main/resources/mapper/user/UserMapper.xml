@@ -7,13 +7,14 @@
         <result property="userEmail" column="user_email"/>
         <result property="userPsd" column="user_psd"/>
         <result property="userCreateTime" column="user_create_time"/>
+        <result property="userNickName" column="user_nick_name"/>
     </resultMap>
 
     <!-- 根据 userName 和 password 查询 user -->
     <select id="getUserByNameAndPsd" resultType="User" resultMap="userResultMap">
         <![CDATA[
             SELECT * FROM t_user
-                WHERE user_name = #{userName} AND usr_psd = #{userPsd}
+                WHERE user_name = #{userName} AND user_psd = #{userPsd}
         ]]>
     </select>
 
@@ -28,8 +29,8 @@
 
     <insert id="insertUser" parameterType="User">
         <![CDATA[
-            INSERT INTO t_user(userId,userName,userPsd,userEmail,userNick,userCreateTime)
-                VALUES (#{user_id},#{user_name},#{user_psd},#{user_email},#{user_nick},#{user_create_time})
+            INSERT INTO t_user(user_id,user_name,user_psd,user_email,user_nick_name,user_create_time)
+                VALUES (#{userId},#{userName},#{userPsd},#{userEmail},#{userNickName},#{userCreateTime})
         ]]>
     </insert>
 

@@ -17,7 +17,7 @@ import java.util.Date;
 @Transactional(rollbackFor=Exception.class)
 public class UserServiceImpl implements IUserService{
     @Autowired
-    private IUserDAO iUserDAO ;
+    private IUserDAO iUserDAO;
 
     /***
      * 登录验证
@@ -35,10 +35,12 @@ public class UserServiceImpl implements IUserService{
     public User signUp(String name, String password, String email) {
         String uuid = UUIDFactory.getUUID();
 
+/*
         User validateUser = iUserDAO.getUserByName(name);
         if(validateUser != null){
             return null;
         }
+*/
 
         String psd = MD5Util.MD5(password);
 

@@ -37,8 +37,14 @@ public class UserController {
         }
     }
 
+    @ResponseBody
+    @RequestMapping(value="/login",method= RequestMethod.GET)
+    public JSONObject login(HttpServletRequest request) {
+        User user = iUserService.signIn("mxl","password");
+        return null;
+    }
 
-    private boolean validateString(String s){
+        private boolean validateString(String s){
         return s != null && "null".equals(s) && "undefined".equals(s);
     }
 }
