@@ -14,15 +14,19 @@ public class UserServiceImplTest extends BaseTest {
 
     @Test
     public void testSignIn() throws Exception {
-/*
-        User user = userService.signIn("mxl","password");
-        assertEquals("mxl",user.getUserName());
-*/
+        User user = userService.signIn("mxl","mxl");
+        assertNotNull(user);
     }
 
     @Test
     public void testSignUp() throws Exception {
-        User user = userService.signUp("mxl","mxl","1234@123.com");
+        User user = userService.signUp("mxl2","mxl3","1234@123.com");
+        assertNotNull(user);
+    }
+
+    @Test
+    public void testGetUserByName() throws Exception {
+        User user = userService.getUserByName("mxl");
         assertNotNull(user);
     }
 

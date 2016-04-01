@@ -13,6 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 }) //加载配置文件
 
 @Transactional
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false)
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 public class BaseTest {
 }

@@ -6,8 +6,8 @@
         <result property="userName" column="user_name"/>
         <result property="userEmail" column="user_email"/>
         <result property="userPsd" column="user_psd"/>
-        <result property="userCreateTime" column="user_create_time"/>
         <result property="userNickName" column="user_nick_name"/>
+        <result property="userCreateTime" column="user_create_time"/>
     </resultMap>
 
     <!-- 根据 userName 和 password 查询 user -->
@@ -34,4 +34,11 @@
         ]]>
     </insert>
 
+    <update id="updateUser" parameterType="User">
+        UPDATE t_user SET user_psd = #{userPsd}, user_email = #{userEmail} WHERE user_id = #{userId}
+    </update>
+
+    <delete id="deleteUser" parameterType="String" >
+        DELETE FROM t_user WHERE user_id = #{userId}
+    </delete>
 </mapper>

@@ -17,9 +17,11 @@ public class User implements Serializable{
     private Date userCreateTime;
     private int[] permissions;
 
+    public User(){}
+
     public  User(String userId, String userName,
                 String userPsd,String userEmail,
-                String userNickName,Date userCreateTime){
+                Date userCreateTime,String userNickName){
         this.userId = userId;
         this.userName = userName;
         this.userPsd = userPsd;
