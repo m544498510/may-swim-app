@@ -14,7 +14,6 @@ public interface IUserDAO {
      */
     User getUserByNameAndPsd(@Param("userName")String userName,@Param("userPsd")String userPsd);
 
-
     User getUserByName(String userName);
 
     int insertUser(User user);

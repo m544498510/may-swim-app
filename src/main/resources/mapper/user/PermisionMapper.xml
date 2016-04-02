@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.may.user.dao.IUserToPermDAO">
+    <insert id="insertRow">
+        <![CDATA[
+            INSERT INTO user_to_perm(user_id,perm_id)
+                VALUES (#{userId},#{permId})
+        ]]>
+    </insert>
+
+    <delete id="deleteRow">
+        DELETE FROM user_to_perm WHERE user_id = #{userId} AND perm_id = #{permId}
+    </delete>
+
+    <delete id="deleteRows">
+        DELETE FROM user_to_perm WHERE user_id = #{userId}
+    </delete>
+
+</mapper>
