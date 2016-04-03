@@ -60,7 +60,6 @@
 	    <!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
 	    <property name="mediaTypes">
 	        <map>
-	            <entry key="json" value="application/json" />
 	            <entry key="xml" value="application/xml" />
 	        </map>
 	    </property>

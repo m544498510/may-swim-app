@@ -1,21 +1,24 @@
 package com.may.user.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by May on 2016/3/27.
+ *  用户model
+ * @author :    Mei XinLin
+ * @version :   1.0
  */
 public class User implements Serializable{
     private static final long serialVersionUID = 1L;
 
-    private String userId;
-    private String userName;
-    private String userPsd;
-    private String userEmail;
-    private String userNickName;
-    private Date userCreateTime;
-    private int[] permissions;
+    private String userId;          //id
+    private String userName;        //用户名
+    private String userPsd;         //密码
+    private String userEmail;       //邮箱
+    private String userNickName;    //昵称
+    private Date userCreateTime;    //创建时间
+    private ArrayList<Permission> permissions;      //权限
 
     public User(){}
 
@@ -78,11 +81,11 @@ public class User implements Serializable{
         this.userCreateTime = userCreateTime;
     }
 
-    public int[] getPermissions() {
+    public ArrayList<Permission> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(int[] permissions) {
+    public void setPermissions(ArrayList<Permission> permissions) {
         this.permissions = permissions;
     }
 }

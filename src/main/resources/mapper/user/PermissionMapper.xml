@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.may.user.dao.IUserToPermDAO">
+    <resultMap type="Permission" id="permResultMap">
+        <id property="permId" column="perm_id"/>
+        <result property="permName" column="perm_name"/>
+    </resultMap>
+
+    <select id="getPermsByUserId" parameterType="String"
+            resultMap="permResultMap" resultType="Permission">
+        <![CDATA[
+            SELECT t2.perm_id,t2.perm_name
+                from user_to_perm AS t1 INNER JOIN t_perm AS t2
+                WHERE t1.user_id = #{userId} AND t1.perm_id = t2.perm_id;
+        ]]>
+    </select>
+
+    <insert id="insertRow">
+        <![CDATA[
+            INSERT INTO user_to_perm(user_id,perm_id)
+                VALUES (#{userId},#{permId})
+        ]]>
+    </insert>
+    <insert id="insertRows">
+        <![CDATA[
+            INSERT INTO user_to_perm(user_id,perm_id)
+                VALUES
+        ]]>
+            <foreach collection="permsArray" item="item" index="index"
+                     separator=",">
+                <![CDATA[
+                    (#{userId}, #{item})
+                ]]>
+            </foreach>
+    </insert>
+
+    <delete id="deleteRow">
+        <![CDATA[
+            DELETE FROM user_to_perm
+                WHERE user_id = #{userId} AND perm_id = #{permId}
+        ]]>
+    </delete>
+
+    <delete id="deleteRows">
+        <![CDATA[
+            DELETE FROM user_to_perm WHERE user_id = #{userId}
+        ]]>
+    </delete>
+
+</mapper>

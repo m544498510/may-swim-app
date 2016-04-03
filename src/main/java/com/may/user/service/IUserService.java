@@ -32,9 +32,25 @@ public interface IUserService {
     User getUserByName(String userName);
 
 
+    /***
+     * 重设置密码
+     * @param user
+     * @param newPsd
+     * @return
+     */
     User resetPsd(User user,String newPsd);
 
+    /***
+     * 重设置邮箱
+     * @param user
+     * @param newEmail
+     * @return
+     */
     User resetEmail(User user,String newEmail);
 
-    void findPsdFromEmail(String email);
+    /***
+     * 找回密码
+     * @param user User对象
+     */
+    boolean findPsdFromEmail(User user);
 }

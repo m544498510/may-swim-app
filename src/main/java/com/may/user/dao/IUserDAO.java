@@ -14,12 +14,32 @@ public interface IUserDAO {
      */
     User getUserByNameAndPsd(@Param("userName")String userName,@Param("userPsd")String userPsd);
 
+    /***
+     * 通过用户名查询用户信息
+     * @param userName 用户名
+     * @return User对象
+     */
     User getUserByName(String userName);
 
+    /***
+     * 增加一个用户
+     * @param user User对象
+     * @return 操作行数
+     */
     int insertUser(User user);
 
+    /***
+     * 更新一个用户信息
+     * @param user User对象
+     * @return 操作行数
+     */
     int updateUser(User user);
 
+    /***
+     * 删除一个用户
+     * @param userId 用户id
+     * @return 操作行数
+     */
     int deleteUser(String userId);
 
 }

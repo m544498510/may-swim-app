@@ -6,6 +6,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 命名空间 （实体类的别名，写了之后可以在写Sql配置文件直接使用别名）-->
     <typeAliases>
         <typeAlias alias="User" type="com.may.user.model.User"/>
+        <typeAlias alias="Permission" type="com.may.user.model.Permission"/>
+
     </typeAliases>
 
     <plugins>

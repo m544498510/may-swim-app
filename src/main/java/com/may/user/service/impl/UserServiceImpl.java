@@ -1,6 +1,8 @@
 package com.may.user.service.impl;
 
 import com.may.user.dao.IUserDAO;
+import com.may.user.dao.IUserToPermDAO;
+import com.may.user.model.Permission;
 import com.may.user.model.User;
 import com.may.user.service.IUserService;
 import com.may.util.MD5Util;
@@ -10,7 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @Service("userServiceImpl")
@@ -18,11 +24,16 @@ import java.util.Date;
 public class UserServiceImpl implements IUserService{
     @Autowired
     private IUserDAO iUserDAO;
+    @Autowired
+    private IUserToPermDAO iUserToPermDAO;
+
+    public static final int[] DEFAULT_PERMISSION = {1,2};
 
     @Override
     public User signIn(String userName, String password) {
-        String psd = MD5Util.MD5(password);
-        return iUserDAO.getUserByNameAndPsd(userName,psd);
+        User user = iUserDAO.getUserByNameAndPsd(userName,password);
+        this.setUserPerms(user);
+        return user;
     }
 
     @Override
@@ -34,12 +45,12 @@ public class UserServiceImpl implements IUserService{
             return null;
         }
 
-        String psd = MD5Util.MD5(password);
-
         Date date = new Date();
 
-        User user = new User(uuid,name,psd,email,date,name);
+        User user = new User(uuid,name,password,email,date,name);
         if(iUserDAO.insertUser(user)>0){
+            iUserToPermDAO.insertRows(user.getUserId(),DEFAULT_PERMISSION);
+            this.setUserPerms(user);
             return user;
         }
         return null;
@@ -52,16 +63,54 @@ public class UserServiceImpl implements IUserService{
 
     @Override
     public User resetPsd(User user, String newPsd) {
+        user.setUserPsd(newPsd);
+        if(iUserDAO.updateUser(user)>0){
+            return user;
+        }
         return null;
     }
 
     @Override
     public User resetEmail(User user, String newEmail) {
+        user.setUserEmail(newEmail);
+        if(iUserDAO.updateUser(user)>0){
+            return user;
+        }
         return null;
     }
 
     @Override
-    public void findPsdFromEmail(String email) {
+    public boolean findPsdFromEmail(User user) {
+        return false;
+    }
 
+
+    /***
+     * 查询用户的权限,并将结果set进user实例
+     * @param user User实例
+     */
+    private void setUserPerms(User user){
+        if(user != null){
+            ArrayList<Permission> perms = iUserToPermDAO.getPermsByUserId(user.getUserId());
+            user.setPermissions(perms);
+        }
+    }
+
+    /**
+     * 验证邮箱
+     * @param email 邮箱
+     * @return 邮箱是否合法
+     */
+    public boolean validateEmail(String email){
+        boolean flag;
+        try{
+            String check = "^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+            Pattern regex = Pattern.compile(check);
+            Matcher matcher = regex.matcher(email);
+            flag = matcher.matches();
+        }catch(Exception e){
+            flag = false;
+        }
+        return flag;
     }
 }

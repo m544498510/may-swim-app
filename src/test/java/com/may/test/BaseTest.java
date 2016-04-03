@@ -1,5 +1,6 @@
 package com.may.test;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -15,4 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 public class BaseTest {
+    /***
+     * 防止运行报错
+     */
+    @Test
+    public void test(){
+
+    }
 }
