@@ -1,9 +1,9 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2016/3/31 21:27:15                           */
+/* Created on:     2016/4/3 21:52:09                            */
 /*==============================================================*/
 
-SET FOREIGN_KEY_CHECKS = 0; 
+SET FOREIGN_KEY_CHECKS = 0;
 
 drop table if exists t_perm;
 
@@ -16,8 +16,8 @@ drop table if exists t_stroke_pattern;
 drop table if exists t_user;
 
 drop table if exists user_to_perm;
+SET FOREIGN_KEY_CHECKS = 1;
 
-SET FOREIGN_KEY_CHECKS = 1; 
 /*==============================================================*/
 /* Table: t_perm                                                */
 /*==============================================================*/
@@ -26,9 +26,10 @@ create table t_perm
    perm_id              int not null auto_increment,
    perm_name            varchar(255) not null,
    primary key (perm_id)
-);
+)
+charset = UTF8;
 
-alter table t_perm comment 'È¨ÏŞ±í';
+alter table t_perm comment 'æƒé™è¡¨';
 
 /*==============================================================*/
 /* Table: t_session                                             */
@@ -40,9 +41,10 @@ create table t_session
    session_date         datetime not null,
    session_commert      varchar(1024) not null,
    primary key (session_id)
-);
+)
+charset = UTF8;
 
-alter table t_session comment 'Ò»Ì×ÑµÁ·';
+alter table t_session comment 'ä¸€å¥—è®­ç»ƒ';
 
 /*==============================================================*/
 /* Table: t_set                                                 */
@@ -57,15 +59,16 @@ create table t_set
    set_distance         smallint not null,
    set_calory           smallint,
    set_efficiency       smallint not null,
-   set_index            smallint not null comment 'Îª0Ê±£¬ÊÇtotalÊı¾İ¡£
-            ´óÓÚ0£¬ÊÇ·Ö×éÊı¾İ',
+   set_index            smallint not null comment 'ä¸º0æ—¶ï¼Œæ˜¯totalæ•°æ®ã€‚
+            å¤§äº0ï¼Œæ˜¯åˆ†ç»„æ•°æ®',
    set_time             time not null,
    set_rest_time        time not null,
    set_speed            smallint not null,
    primary key (set_id)
-);
+)
+charset = UTF8;
 
-alter table t_set comment '·Ö×éÑµÁ·';
+alter table t_set comment 'åˆ†ç»„è®­ç»ƒ';
 
 /*==============================================================*/
 /* Table: t_stroke_pattern                                      */
@@ -74,10 +77,12 @@ create table t_stroke_pattern
 (
    pattern_id           smallint not null auto_increment,
    pattern_name         varchar(100) not null,
+   pattern_describe     varchar(255),
    primary key (pattern_id)
-);
+)
+charset = UTF8;
 
-alter table t_stroke_pattern comment 'Ó¾×Ë±í';
+alter table t_stroke_pattern comment 'æ³³å§¿è¡¨';
 
 /*==============================================================*/
 /* Table: t_user                                                */
@@ -91,7 +96,8 @@ create table t_user
    user_create_time     date not null,
    user_nick_name       varchar(255),
    primary key (user_id)
-);
+)
+charset = UTF8;
 
 /*==============================================================*/
 /* Table: user_to_perm                                          */
@@ -100,9 +106,10 @@ create table user_to_perm
 (
    perm_id              int,
    user_id              varchar(255)
-);
+)
+charset = UTF8;
 
-alter table user_to_perm comment 'ÓÃ»§È¨ÏŞ¹ØÁª±í';
+alter table user_to_perm comment 'ç”¨æˆ·æƒé™å…³è”è¡¨';
 
 alter table t_session add constraint FK_Reference_5 foreign key (user_id)
       references t_user (user_id) on delete restrict on update restrict;
@@ -119,3 +126,9 @@ alter table user_to_perm add constraint FK_Reference_2 foreign key (perm_id)
 alter table user_to_perm add constraint FK_Reference_6 foreign key (user_id)
       references t_user (user_id) on delete restrict on update restrict;
 
+INSERT INTO `t_perm` VALUES ('1', 'user');
+INSERT INTO `t_perm` VALUES ('2', 'swim');
+INSERT INTO `t_perm` VALUES ('3', 'admin');
+
+INSERT INTO `t_user` VALUES ('c5053135d4cf4fbaa7f00b2e3353cf0d', 'mxl', '1234@123.com', '90D162AA1F38EE74A8A7041BD2201BA4', '2016-03-31', 'mxl');
+INSERT INTO `user_to_perm` VALUES ('1', 'c5053135d4cf4fbaa7f00b2e3353cf0d');
