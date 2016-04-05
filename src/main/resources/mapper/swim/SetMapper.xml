@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.may.dbTest.dao.TSetMapper" >
+  <resultMap id="BaseResultMap" type="com.may.swim.model.Set" >
+    <constructor >
+      <idArg column="set_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="session_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="pattern_id" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="set_lap" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="set_stroke" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="set_distance" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="set_calory" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="set_efficiency" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="set_index" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="set_time" jdbcType="TIME" javaType="java.util.Date" />
+      <arg column="set_rest_time" jdbcType="TIME" javaType="java.util.Date" />
+      <arg column="set_speed" jdbcType="SMALLINT" javaType="java.lang.Short" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    set_id, session_id, pattern_id, set_lap, set_stroke, set_distance, set_calory, set_efficiency,
+    set_index, set_time, set_rest_time, set_speed
+  </sql>
+
+  <insert id="insertRows" parameterType="java.util.ArrayList">
+    INSERT INTO t_set (set_id, session_id, pattern_id,
+      set_lap, set_stroke, set_distance,
+      set_calory, set_efficiency, set_index,
+      set_time, set_rest_time, set_speed
+      )
+    VALUES
+    <foreach collection="list" item="set" index="index" >
+      (#{set.setId,jdbcType=BIGINT}, #{set.sessionId,jdbcType=BIGINT},
+      #{set.patternId,jdbcType=SMALLINT},#{set.setLap,jdbcType=SMALLINT},
+      #{set.setStroke,jdbcType=SMALLINT}, #{set.setDistance,jdbcType=SMALLINT},
+      #{set.setCalory,jdbcType=SMALLINT}, #{set.setEfficiency,jdbcType=SMALLINT},
+      #{set.setIndex,jdbcType=SMALLINT},#{set.setTime,jdbcType=TIME},
+      #{set.setRestTime,jdbcType=TIME}, #{set.setSpeed,jdbcType=SMALLINT}
+      )
+    </foreach>
+  </insert>
+
+
+
+</mapper>

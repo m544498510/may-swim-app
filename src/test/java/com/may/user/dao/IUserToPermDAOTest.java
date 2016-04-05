@@ -30,7 +30,7 @@ public class IUserToPermDAOTest extends BaseTest {
 
     @Test
     public void testInsertRows() throws Exception {
-        int[] perms = {0,1,2};
+        int[] perms = {1,2,3};
         int i =  iUserToPermDAO.insertRows("TEST_ID",perms);
         assertTrue(i>0);
     }

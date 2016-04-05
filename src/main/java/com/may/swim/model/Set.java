@@ -34,6 +34,21 @@ public class Set implements Serializable {
         this.setSpeed = setSpeed;
     }
 
+    public Set(Long sessionId, Short patternId, Short setLap, Short setStroke, Short setDistance, Short setCalory, Short setEfficiency, Short setIndex, Date setTime, Date setRestTime, Short setSpeed) {
+        this.sessionId = sessionId;
+        this.patternId = patternId;
+        this.setLap = setLap;
+        this.setStroke = setStroke;
+        this.setDistance = setDistance;
+        this.setCalory = setCalory;
+        this.setEfficiency = setEfficiency;
+        this.setIndex = setIndex;
+        this.setTime = setTime;
+        this.setRestTime = setRestTime;
+        this.setSpeed = setSpeed;
+    }
+
+
     public Set() {
         super();
     }
