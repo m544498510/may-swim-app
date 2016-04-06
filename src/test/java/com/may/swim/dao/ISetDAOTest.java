@@ -6,6 +6,7 @@ import org.junit.Test;
 import javax.annotation.Resource;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import static org.junit.Assert.*;
 
@@ -25,7 +26,17 @@ public class ISetDAOTest {
 
     }
 
-    private Set getSet(){
+    private Set getSet(Short index) {
+        Long sessionId = 1L;
+        Short patternId = 1;
+        Short setLap = 4;
+        Short setStroke = 10;
+        Short setDistance = 100;
+        Short setCalory = 99;
+        Short setEfficiency = 56;
+        Date setTime = ;
+        Date setRestTime;
+        Short setSpeed;
 
 
         Set set = new Set();

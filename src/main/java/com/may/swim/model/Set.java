@@ -6,18 +6,18 @@ import java.util.Date;
 public class Set implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Long setId;
-    private Long sessionId;
-    private Short patternId;
-    private Short setLap;
-    private Short setStroke;
-    private Short setDistance;
-    private Short setCalory;
-    private Short setEfficiency;
-    private Short setIndex;
-    private Date setTime;
-    private Date setRestTime;
-    private Short setSpeed;
+    private Long setId;             //id
+    private Long sessionId;         //一套训练id
+    private Short patternId;        //泳姿id
+    private Short setLap;           //往返数
+    private Short setStroke;        //挥臂次数
+    private Short setDistance;      //距离
+    private Short setCalory;        //消耗卡路里
+    private Short setEfficiency;    //效率
+    private Short setIndex;         //分组序号（为0时，是total数据；大于0，是分组数据）
+    private Date setTime;           //总时间
+    private Date setRestTime;       //休息时间
+    private Short setSpeed;         //速度
 
     public Set(Long setId, Long sessionId, Short patternId, Short setLap, Short setStroke, Short setDistance, Short setCalory, Short setEfficiency, Short setIndex, Date setTime, Date setRestTime, Short setSpeed) {
         this.setId = setId;
