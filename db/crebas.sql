@@ -1,8 +1,9 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2016/4/6 21:51:03                            */
+/* Created on:     2016/4/7 14:09:19                            */
 /*==============================================================*/
 
+SET FOREIGN_KEY_CHECKS = 0;
 
 drop table if exists t_perm;
 
@@ -15,6 +16,8 @@ drop table if exists t_stroke_pattern;
 drop table if exists t_user;
 
 drop table if exists user_to_perm;
+
+SET FOREIGN_KEY_CHECKS = 1;
 
 /*==============================================================*/
 /* Table: t_perm                                                */
@@ -72,6 +75,7 @@ create table t_stroke_pattern
 (
    pattern_id           smallint not null auto_increment,
    pattern_name         varchar(100) not null,
+   pattern_des          varchar(255),
    primary key (pattern_id)
 );
 
@@ -116,4 +120,18 @@ alter table user_to_perm add constraint FK_Reference_2 foreign key (perm_id)
 
 alter table user_to_perm add constraint FK_Reference_6 foreign key (user_id)
       references t_user (user_id) on delete restrict on update restrict;
+
+INSERT INTO `t_perm` VALUES ('1', 'admin');
+INSERT INTO `t_perm` VALUES ('2', 'user');
+INSERT INTO `t_perm` VALUES ('3', 'swim');
+
+INSERT INTO `t_user` VALUES ('c5053135d4cf4fbaa7f00b2e3353cf0d', 'mxl', '1234@123.com', '90D162AA1F38EE74A8A7041BD2201BA4', '2016-03-31', 'mxl');
+INSERT INTO `t_user` VALUES ('TEST_ID', 'TEST_NAME', 'TEST@TEST.COM', 'TEST_PSD', '2016-03-31', 'TEST_NICK_NAME');
+
+INSERT INTO `user_to_perm` VALUES ('2', 'c5053135d4cf4fbaa7f00b2e3353cf0d');
+
+INSERT INTO `t_stroke_pattern` VALUES ('1', 'breaststroke', '蛙泳');
+INSERT INTO `t_stroke_pattern` VALUES ('2', 'freestyle', '自由泳');
+INSERT INTO `t_stroke_pattern` VALUES ('3', 'butterfly stroke', '蝶泳');
+INSERT INTO `t_stroke_pattern` VALUES ('4', 'backstroke', '仰泳');
 
