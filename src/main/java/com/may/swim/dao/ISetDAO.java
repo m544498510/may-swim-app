@@ -1,7 +1,9 @@
 package com.may.swim.dao;
 
+import com.may.frame.model.PageInfo;
 import com.may.swim.model.Session;
 import com.may.swim.model.Set;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -25,7 +27,9 @@ public interface ISetDAO {
 
     Set getRowBySetId(long setId);
 
-    ArrayList<Session> getRowsBySessionId(Map map);
+    ArrayList<Set> getRowsBySessionId(
+            @Param("sessionId")Long sessionId,
+            @Param("pageInfo")PageInfo pageInfo);
 
 
 }

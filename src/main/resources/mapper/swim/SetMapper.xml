@@ -19,7 +19,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    set_id, session_id, pattern_id, set_index, set_lap, set_stroke, set_distance, set_calorie,
+    session_id, pattern_id, set_index, set_lap, set_stroke, set_distance, set_calorie,
     set_efficiency, set_training_time, set_rest_time,set_time, set_speed
   </sql>
 
@@ -28,16 +28,8 @@
       <include refid="Base_Column_List" />
     )
     VALUES
-    <foreach collection="list" item="set" index="index" >
-      (
-      ${set.setId},         ${set.sessionId},
-      ${set.patternId},     ${set.setIndex},
-      ${set.setLap},        ${set.setStroke},
-      ${set.setDistance},   ${set.setCalorie},
-      ${set.setEfficiency}, ${set.setTraningTime},
-      ${set.setRestTime},   ${set.setTime},
-      ${set.setSpeed}
-      )
+    <foreach collection="list" item="set" index="index" separator=",">
+      (${set.sessionId},${set.patternId},${set.setIndex},${set.setLap},${set.setStroke},${set.setDistance},${set.setCalorie},${set.setEfficiency},${set.setTrainingTime},${set.setRestTime},${set.setTime},${set.setSpeed})
     </foreach>
   </insert>
 
@@ -78,7 +70,7 @@
         set_efficiency = #{setEfficiency,jdbcType=SMALLINT},
       </if>
       <if test="setTrainingTime != null" >
-        set_traning_time = #{setTraningTime,jdbcType=TIME},
+        set_training_time = #{setTrainingTime,jdbcType=TIME},
       </if>
       <if test="setRestTime != null" >
         set_rest_time = #{setRestTime,jdbcType=TIME},
@@ -98,12 +90,12 @@
       WHERE set_id = #{setId}
   </select>
 
-  <select id="getRowsBySessionId" parameterType="java.util.Map"
+  <select id="getRowsBySessionId"
           resultType="Set" resultMap="setResultMap">
 
     SELECT * FROM t_set
       WHERE session_id = #{sessionId}
-      LIMIT #{pageStart},#{pageSize}
+      LIMIT ${pageInfo.pageStart},${pageInfo.pageSize}
   </select>
 
 

@@ -3,6 +3,7 @@
 /* Created on:     2016/4/7 17:36:07                            */
 /*==============================================================*/
 
+SET FOREIGN_KEY_CHECKS = 0;
 
 drop table if exists t_role;
 
@@ -16,6 +17,7 @@ drop table if exists t_user;
 
 drop table if exists user_to_role;
 
+SET FOREIGN_KEY_CHECKS = 1;
 /*==============================================================*/
 /* Table: t_role                                                */
 /*==============================================================*/
@@ -121,3 +123,20 @@ alter table user_to_role add constraint FK_Reference_6 foreign key (user_id)
 alter table user_to_role add constraint FK_Reference_7 foreign key (role_id)
       references t_role (role_id) on delete restrict on update restrict;
 
+INSERT INTO `t_role` VALUES ('1', 'admin','管理员');
+INSERT INTO `t_role` VALUES ('2', 'user','普通用户');
+INSERT INTO `t_role` VALUES ('3', 'swim','游泳者');
+
+INSERT INTO `t_user` VALUES ('c5053135d4cf4fbaa7f00b2e3353cf0d', 'mxl', '1234@123.com', '90D162AA1F38EE74A8A7041BD2201BA4', '2016-03-31', 'mxl');
+INSERT INTO `t_user` VALUES ('TEST_ID', 'TEST_NAME', 'TEST@TEST.COM', 'TEST_PSD', '2016-03-31', 'TEST_NICK_NAME');
+
+INSERT INTO `user_to_role` VALUES ('TEST_ID','2');
+
+INSERT INTO `t_stroke_pattern` VALUES ('1', 'breaststroke', '蛙泳');
+INSERT INTO `t_stroke_pattern` VALUES ('2', 'freestyle', '自由泳');
+INSERT INTO `t_stroke_pattern` VALUES ('3', 'butterfly stroke', '蝶泳');
+INSERT INTO `t_stroke_pattern` VALUES ('4', 'backstroke', '仰泳');
+
+INSERT INTO `t_session` VALUES ('1','TEST_ID','2016-3-31','','25');
+
+INSERT INTO `t_set` VALUES ('1','1','1','1','4','10','100','89','55','182','80','262','10');
