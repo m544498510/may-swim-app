@@ -17,9 +17,9 @@ import java.util.Map;
 public interface ISetDAO {
     int insertRows(ArrayList<Set> list);
 
-    int deleteRow(long setId);
+    int deleteRow(Long setId);
 
-    int deleteRowsByUserId(long sessionId);
+    int deleteRowsBySessionId(long sessionId);
 
     int updateRow(Set set);
 

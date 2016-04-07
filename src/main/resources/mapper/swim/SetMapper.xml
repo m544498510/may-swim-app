@@ -1,45 +1,110 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.may.dbTest.dao.TSetMapper" >
-  <resultMap id="BaseResultMap" type="com.may.swim.model.Set" >
+<mapper namespace="com.may.swim.dao.ISetDAO" >
+  <resultMap id="setResultMap" type="Set" >
     <constructor >
       <idArg column="set_id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="session_id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="pattern_id" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="set_index" jdbcType="SMALLINT" javaType="java.lang.Short" />
       <arg column="set_lap" jdbcType="SMALLINT" javaType="java.lang.Short" />
       <arg column="set_stroke" jdbcType="SMALLINT" javaType="java.lang.Short" />
       <arg column="set_distance" jdbcType="SMALLINT" javaType="java.lang.Short" />
-      <arg column="set_calory" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="set_calorie" jdbcType="SMALLINT" javaType="java.lang.Short" />
       <arg column="set_efficiency" jdbcType="SMALLINT" javaType="java.lang.Short" />
-      <arg column="set_index" jdbcType="SMALLINT" javaType="java.lang.Short" />
-      <arg column="set_time" jdbcType="TIME" javaType="java.util.Date" />
-      <arg column="set_rest_time" jdbcType="TIME" javaType="java.util.Date" />
+      <arg column="set_training_time" jdbcType="FLOAT" javaType="java.lang.Float" />
+      <arg column="set_rest_time" jdbcType="FLOAT" javaType="java.lang.Float" />
+      <arg column="set_time" jdbcType="FLOAT" javaType="java.lang.Float" />
       <arg column="set_speed" jdbcType="SMALLINT" javaType="java.lang.Short" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    set_id, session_id, pattern_id, set_lap, set_stroke, set_distance, set_calory, set_efficiency,
-    set_index, set_time, set_rest_time, set_speed
+    set_id, session_id, pattern_id, set_index, set_lap, set_stroke, set_distance, set_calorie,
+    set_efficiency, set_training_time, set_rest_time,set_time, set_speed
   </sql>
 
-  <insert id="insertRows" parameterType="java.util.ArrayList">
-    INSERT INTO t_set (set_id, session_id, pattern_id,
-      set_lap, set_stroke, set_distance,
-      set_calory, set_efficiency, set_index,
-      set_time, set_rest_time, set_speed
-      )
+  <insert id="insertRows">
+    INSERT INTO t_set (
+      <include refid="Base_Column_List" />
+    )
     VALUES
     <foreach collection="list" item="set" index="index" >
-      (#{set.setId,jdbcType=BIGINT}, #{set.sessionId,jdbcType=BIGINT},
-      #{set.patternId,jdbcType=SMALLINT},#{set.setLap,jdbcType=SMALLINT},
-      #{set.setStroke,jdbcType=SMALLINT}, #{set.setDistance,jdbcType=SMALLINT},
-      #{set.setCalory,jdbcType=SMALLINT}, #{set.setEfficiency,jdbcType=SMALLINT},
-      #{set.setIndex,jdbcType=SMALLINT},#{set.setTime,jdbcType=TIME},
-      #{set.setRestTime,jdbcType=TIME}, #{set.setSpeed,jdbcType=SMALLINT}
+      (
+      ${set.setId},         ${set.sessionId},
+      ${set.patternId},     ${set.setIndex},
+      ${set.setLap},        ${set.setStroke},
+      ${set.setDistance},   ${set.setCalorie},
+      ${set.setEfficiency}, ${set.setTraningTime},
+      ${set.setRestTime},   ${set.setTime},
+      ${set.setSpeed}
       )
     </foreach>
   </insert>
 
+  <delete id="deleteRow" parameterType="java.lang.Long">
+    DELETE FROM t_set WHERE set_id = #{setId}
+  </delete>
+
+  <delete id="deleteRowsBySessionId" parameterType="java.lang.Long">
+    DELETE FROM t_set WHERE session_id = #{sessionId}
+  </delete>
+
+  <update id="updateRow" parameterType="Set">
+    UPDATE t_set
+    <set >
+      <if test="sessionId != null" >
+        session_id = #{sessionId,jdbcType=BIGINT},
+      </if>
+      <if test="patternId != null" >
+        pattern_id = #{patternId,jdbcType=SMALLINT},
+      </if>
+      <if test="setIndex != null" >
+        set_index = #{setIndex,jdbcType=SMALLINT},
+      </if>
+
+      <if test="setLap != null" >
+        set_lap = #{setLap,jdbcType=SMALLINT},
+      </if>
+      <if test="setStroke != null" >
+        set_stroke = #{setStroke,jdbcType=SMALLINT},
+      </if>
+      <if test="setDistance != null" >
+        set_distance = #{setDistance,jdbcType=SMALLINT},
+      </if>
+      <if test="setCalorie != null" >
+        set_calorie = #{setCalorie,jdbcType=SMALLINT},
+      </if>
+      <if test="setEfficiency != null" >
+        set_efficiency = #{setEfficiency,jdbcType=SMALLINT},
+      </if>
+      <if test="setTrainingTime != null" >
+        set_traning_time = #{setTraningTime,jdbcType=TIME},
+      </if>
+      <if test="setRestTime != null" >
+        set_rest_time = #{setRestTime,jdbcType=TIME},
+      </if>
+      <if test="setTime != null" >
+        set_time = #{setTime,jdbcType=TIME},
+      </if>
+      <if test="setSpeed != null" >
+        set_speed = #{setSpeed,jdbcType=SMALLINT},
+      </if>
+    </set>
+    WHERE set_id = #{setId,jdbcType=BIGINT}
+  </update>
+
+  <select id="getRowBySetId" parameterType="java.lang.Long" resultType="Set" resultMap="setResultMap">
+    SELECT * FROM t_set
+      WHERE set_id = #{setId}
+  </select>
+
+  <select id="getRowsBySessionId" parameterType="java.util.Map"
+          resultType="Set" resultMap="setResultMap">
+
+    SELECT * FROM t_set
+      WHERE session_id = #{sessionId}
+      LIMIT #{pageStart},#{pageSize}
+  </select>
 
 
 </mapper>

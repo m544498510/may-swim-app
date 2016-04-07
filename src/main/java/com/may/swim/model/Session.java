@@ -14,15 +14,28 @@ public class Session implements Serializable{
 
     private String sessionCommert;
 
-    public Session(Long sessionId, String userId, Date sessionDate, String sessionCommert) {
+    private Short swimLong;
+
+    public Session() {
+    }
+
+    public Session(String userId, Date sessionDate, String sessionCommert, Short swimLong) {
+        this.userId = userId;
+        this.sessionDate = sessionDate;
+        this.sessionCommert = sessionCommert;
+        this.swimLong = swimLong;
+    }
+
+    public Session(Long sessionId, String userId, Date sessionDate, String sessionCommert, Short swimLong) {
         this.sessionId = sessionId;
         this.userId = userId;
         this.sessionDate = sessionDate;
         this.sessionCommert = sessionCommert;
+        this.swimLong = swimLong;
     }
 
-    public Session() {
-        super();
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public Long getSessionId() {
@@ -55,5 +68,13 @@ public class Session implements Serializable{
 
     public void setSessionCommert(String sessionCommert) {
         this.sessionCommert = sessionCommert;
+    }
+
+    public Short getSwimLong() {
+        return swimLong;
+    }
+
+    public void setSwimLong(Short swimLong) {
+        this.swimLong = swimLong;
     }
 }
