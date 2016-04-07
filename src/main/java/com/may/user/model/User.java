@@ -18,7 +18,7 @@ public class User implements Serializable{
     private String userEmail;       //邮箱
     private String userNickName;    //昵称
     private Date userCreateTime;    //创建时间
-    private ArrayList<Permission> permissions;      //权限
+    private ArrayList<Role> roles;   //角色集
 
     public User(){}
 
@@ -81,11 +81,11 @@ public class User implements Serializable{
         this.userCreateTime = userCreateTime;
     }
 
-    public ArrayList<Permission> getPermissions() {
-        return permissions;
+    public ArrayList<Role> getRoles() {
+        return roles;
     }
 
-    public void setPermissions(ArrayList<Permission> permissions) {
-        this.permissions = permissions;
+    public void setRoles(ArrayList<Role> roles) {
+        this.roles = roles;
     }
 }

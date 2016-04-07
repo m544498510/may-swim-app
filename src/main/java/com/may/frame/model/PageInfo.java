@@ -9,6 +9,7 @@ public class PageInfo {
     private int pageSize;
     private int pageNum;
     private int count;
+    private int pageStart;
 
     public String getOrder() {
         return order;
@@ -40,5 +41,13 @@ public class PageInfo {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getPageStart() {
+        return pageStart;
+    }
+
+    public void setPageStart(int pageStart) {
+        this.pageStart = pageStart;
     }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.may.user.dao.IUserToRoleDAO">
+    <resultMap type="Role" id="roleResultMap">
+        <id property="roleId" column="role_id"/>
+        <result property="roleName" column="role_name"/>
+        <result property="roleDes" column="role_des"/>
+    </resultMap>
+
+    <select id="getRolesByUserId" parameterType="String"
+            resultMap="roleResultMap" resultType="Role">
+        <![CDATA[
+            SELECT t2.role_id,t2.role_name,t2.role_des
+                from user_to_role AS t1 INNER JOIN t_role AS t2
+                WHERE t1.user_id = #{userId} AND t1.role_id = t2.role_id;
+        ]]>
+    </select>
+
+    <insert id="insertRow">
+        <![CDATA[
+            INSERT INTO user_to_role(user_id,role_id)
+                VALUES (#{userId},#{roleId})
+        ]]>
+    </insert>
+    <insert id="insertRows">
+        <![CDATA[
+            INSERT INTO user_to_role(user_id,role_id)
+                VALUES
+        ]]>
+            <foreach collection="rolesArray" item="item" index="index"
+                     separator=",">
+                <![CDATA[
+                    (#{userId}, #{item})
+                ]]>
+            </foreach>
+    </insert>
+
+    <delete id="deleteRow">
+        <![CDATA[
+            DELETE FROM user_to_role
+                WHERE user_id = #{userId} AND role_id = #{roleId}
+        ]]>
+    </delete>
+
+    <delete id="deleteRows">
+        <![CDATA[
+            DELETE FROM user_to_role WHERE user_id = #{userId}
+        ]]>
+    </delete>
+
+</mapper>

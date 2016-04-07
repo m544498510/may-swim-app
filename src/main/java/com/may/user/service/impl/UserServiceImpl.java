@@ -1,20 +1,17 @@
 package com.may.user.service.impl;
 
 import com.may.user.dao.IUserDAO;
-import com.may.user.dao.IUserToPermDAO;
-import com.may.user.model.Permission;
+import com.may.user.dao.IUserToRoleDAO;
+import com.may.user.model.Role;
 import com.may.user.model.User;
 import com.may.user.service.IUserService;
-import com.may.util.MD5Util;
 import com.may.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,7 +22,7 @@ public class UserServiceImpl implements IUserService{
     @Autowired
     private IUserDAO iUserDAO;
     @Autowired
-    private IUserToPermDAO iUserToPermDAO;
+    private IUserToRoleDAO iUserToRoleDAO;
 
     public static final int[] DEFAULT_PERMISSION = {1,2};
 
@@ -49,7 +46,7 @@ public class UserServiceImpl implements IUserService{
 
         User user = new User(uuid,name,password,email,date,name);
         if(iUserDAO.insertUser(user)>0){
-            iUserToPermDAO.insertRows(user.getUserId(),DEFAULT_PERMISSION);
+            iUserToRoleDAO.insertRows(user.getUserId(),DEFAULT_PERMISSION);
             this.setUserPerms(user);
             return user;
         }
@@ -86,13 +83,13 @@ public class UserServiceImpl implements IUserService{
 
 
     /***
-     * 查询用户的权限,并将结果set进user实例
+     * 查询用户的角色,并将结果set进user实例
      * @param user User实例
      */
     private void setUserPerms(User user){
         if(user != null){
-            ArrayList<Permission> perms = iUserToPermDAO.getPermsByUserId(user.getUserId());
-            user.setPermissions(perms);
+            ArrayList<Role> perms = iUserToRoleDAO.getRolesByUserId(user.getUserId());
+            user.setRoles(perms);
         }
     }
 

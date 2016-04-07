@@ -1,48 +1,48 @@
 package com.may.user.dao;
 
-import com.may.user.model.Permission;
+import com.may.user.model.Role;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
 /**
- *  用户权限关系表DAO
+ *  用户角色关系表DAO
  * @author :    Mei XinLin
  * @version :   1.0
  */
 @Repository
-public interface IUserToPermDAO {
+public interface IUserToRoleDAO {
     /***
-     * 获取指定id的用户权限
+     * 获取指定id的用户角色
      * @param userId 用户id
-     * @return 权限list
+     * @return 角色list
      */
-    ArrayList<Permission> getPermsByUserId(String userId);
+    ArrayList<Role> getRolesByUserId(String userId);
 
     /***
-     * 插入指定用户的一条权限。
+     * 插入指定用户的一条角色。
      * @param userId 用户id
-     * @param permId 权限id
+     * @param roleId 角色id
      * @return 插入数量。
      */
-    int insertRow(@Param("userId")String userId,@Param("permId")int permId);
+    int insertRow(@Param("userId")String userId,@Param("roleId")int roleId);
 
     /***
-     * 插入指定用户的多条权限。
+     * 插入指定用户的多条角色。
      * @param userId 用户id
-     * @param permsArr 权限id数组
+     * @param rolesArr 角色id数组
      * @return 插入数量。
      */
-    int insertRows(@Param("userId")String userId,@Param("permsArray")int[] permsArr);
+    int insertRows(@Param("userId")String userId,@Param("rolesArray")int[] rolesArr);
 
     /***
      * 删除单条数据
      * @param userId 用户id
-     * @param permId 权限id
+     * @param roleId 角色id
      * @return 删除行数
      */
-    int deleteRow(@Param("userId")String userId,@Param("permId")int permId);
+    int deleteRow(@Param("userId")String userId,@Param("roleId")int roleId);
 
     /***
      * 删除多行数据
