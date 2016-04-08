@@ -7,22 +7,22 @@ public class Set implements Serializable {
 
     private Long setId;               //id
     private Long sessionId;          //一套训练id
-    private Short strokeId;         //泳姿id
-    private Short setIndex;          //分组序号（为0时，是total数据；大于0，是分组数据）
-    private Short setLap;            //往返数
-    private Short setStroke;         //挥臂次数
-    private Short setDistance;       //距离
-    private Short setCalorie;         //消耗卡路里
-    private Short setEfficiency;     //效率
+    private Integer strokeId;          //泳姿id
+    private Integer setIndex;          //分组序号（为0时，是total数据；大于0，是分组数据）
+    private Integer setLap;            //往返数
+    private Integer setStroke;         //挥臂次数
+    private Integer setDistance;       //距离
+    private Integer setCalorie;        //消耗卡路里
+    private Integer setEfficiency;    //效率
     private Float setTrainingTime;  //训练时间（单位为秒）
     private Float setRestTime;      //休息时间（单位为秒）
     private Float setTime;          //总时间（单位为秒）
-    private Short setSpeed;         //速度
+    private Integer setSpeed;         //速度
 
     public Set() {
     }
 
-    public Set(Long sessionId, Short strokeId, Short setIndex, Short setLap, Short setStroke, Short setDistance, Short setCalorie, Short setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Short setSpeed) {
+    public Set(Long sessionId, Integer strokeId, Integer setIndex, Integer setLap, Integer setStroke, Integer setDistance, Integer setCalorie, Integer setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Integer setSpeed) {
         this.sessionId = sessionId;
         this.strokeId = strokeId;
         this.setIndex = setIndex;
@@ -37,10 +37,10 @@ public class Set implements Serializable {
         this.setSpeed = setSpeed;
     }
 
-    public Set(Long setId, Long sessionId, Short strokeId, Short setIndex, Short setLap, Short setStroke, Short setDistance, Short setCalorie, Short setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Short setSpeed) {
+    public Set(Long setId, Long sessionId, Integer patternId, Integer setIndex, Integer setLap, Integer setStroke, Integer setDistance, Integer setCalorie, Integer setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Integer setSpeed) {
         this.setId = setId;
         this.sessionId = sessionId;
-        this.strokeId = strokeId;
+        this.strokeId = patternId;
         this.setIndex = setIndex;
         this.setLap = setLap;
         this.setStroke = setStroke;
@@ -73,59 +73,59 @@ public class Set implements Serializable {
         this.sessionId = sessionId;
     }
 
-    public Short getStrokeId() {
+    public Integer getStrokeId() {
         return strokeId;
     }
 
-    public void setStrokeId(Short strokeId) {
+    public void setStrokeId(Integer strokeId) {
         this.strokeId = strokeId;
     }
 
-    public Short getSetLap() {
+    public Integer getSetLap() {
         return setLap;
     }
 
-    public void setSetLap(Short setLap) {
+    public void setSetLap(Integer setLap) {
         this.setLap = setLap;
     }
 
-    public Short getSetStroke() {
+    public Integer getSetStroke() {
         return setStroke;
     }
 
-    public void setSetStroke(Short setStroke) {
+    public void setSetStroke(Integer setStroke) {
         this.setStroke = setStroke;
     }
 
-    public Short getSetDistance() {
+    public Integer getSetDistance() {
         return setDistance;
     }
 
-    public void setSetDistance(Short setDistance) {
+    public void setSetDistance(Integer setDistance) {
         this.setDistance = setDistance;
     }
 
-    public Short getSetCalorie() {
+    public Integer getSetCalorie() {
         return setCalorie;
     }
 
-    public void setSetCalorie(Short setCalorie) {
+    public void setSetCalorie(Integer setCalorie) {
         this.setCalorie = setCalorie;
     }
 
-    public Short getSetEfficiency() {
+    public Integer getSetEfficiency() {
         return setEfficiency;
     }
 
-    public void setSetEfficiency(Short setEfficiency) {
+    public void setSetEfficiency(Integer setEfficiency) {
         this.setEfficiency = setEfficiency;
     }
 
-    public Short getSetIndex() {
+    public Integer getSetIndex() {
         return setIndex;
     }
 
-    public void setSetIndex(Short setIndex) {
+    public void setSetIndex(Integer setIndex) {
         this.setIndex = setIndex;
     }
 
@@ -153,11 +153,11 @@ public class Set implements Serializable {
         this.setTime = setTime;
     }
 
-    public Short getSetSpeed() {
+    public Integer getSetSpeed() {
         return setSpeed;
     }
 
-    public void setSetSpeed(Short setSpeed) {
+    public void setSetSpeed(Integer setSpeed) {
         this.setSpeed = setSpeed;
     }
 }

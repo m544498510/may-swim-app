@@ -1,10 +1,9 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2016/4/8 13:50:05                            */
+/* Created on:     2016/4/8 17:12:33                            */
 /*==============================================================*/
 
 SET FOREIGN_KEY_CHECKS = 0;
-
 drop table if exists t_role;
 
 drop table if exists t_session;
@@ -17,7 +16,6 @@ drop table if exists t_user;
 
 drop table if exists user_to_role;
 SET FOREIGN_KEY_CHECKS = 1;
-
 /*==============================================================*/
 /* Table: t_role                                                */
 /*==============================================================*/
@@ -40,7 +38,7 @@ create table t_session
    user_id              varchar(255) not null,
    session_date         datetime not null,
    session_des          varchar(1024) not null,
-   pool_length          smallint,
+   pool_length          int,
    primary key (session_id)
 );
 
@@ -53,18 +51,18 @@ create table t_set
 (
    set_id               bigint not null auto_increment,
    session_id           bigint not null,
-   stroke_id            smallint,
-   set_index            smallint not null comment '为0时，是total数据。
+   stroke_id            int,
+   set_index            int not null comment '为0时，是total数据。
             大于0，是分组数据',
-   set_lap              smallint not null,
-   set_stroke           smallint not null,
-   set_distance         smallint not null,
-   set_calorie          smallint not null,
-   set_efficiency       smallint not null,
+   set_lap              int not null,
+   set_stroke           int not null,
+   set_distance         int not null,
+   set_calorie          int not null,
+   set_efficiency       int not null,
    set_training_time    float,
    set_rest_time        float not null,
    set_time             float not null,
-   set_speed            smallint not null,
+   set_speed            int not null,
    primary key (set_id)
 );
 
@@ -75,7 +73,7 @@ alter table t_set comment '分组训练';
 /*==============================================================*/
 create table t_stroke
 (
-   stroke_id            smallint not null auto_increment,
+   stroke_id            int not null auto_increment,
    stroke_name          varchar(100) not null,
    stroke_des           varchar(255),
    primary key (stroke_id)
@@ -122,8 +120,6 @@ alter table user_to_role add constraint FK_Reference_6 foreign key (user_id)
 
 alter table user_to_role add constraint FK_Reference_7 foreign key (role_id)
       references t_role (role_id) on delete restrict on update restrict;
-
-
 
 INSERT INTO `t_role` VALUES ('1', 'admin','管理员');
 INSERT INTO `t_role` VALUES ('2', 'user','普通用户');

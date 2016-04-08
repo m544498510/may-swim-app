@@ -1,5 +1,6 @@
 package com.may.user.service.impl;
 
+import com.may.user.UserConstant;
 import com.may.user.dao.IUserDAO;
 import com.may.user.dao.IUserToRoleDAO;
 import com.may.user.model.Role;
@@ -16,7 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-@Service("userServiceImpl")
+@Service("userService")
 @Transactional(rollbackFor=Exception.class)
 public class UserServiceImpl implements IUserService{
     @Autowired
@@ -24,7 +25,6 @@ public class UserServiceImpl implements IUserService{
     @Autowired
     private IUserToRoleDAO iUserToRoleDAO;
 
-    public static final int[] DEFAULT_ROLE = {1,2};
 
     @Override
     public User signIn(String userName, String password) {
@@ -37,16 +37,11 @@ public class UserServiceImpl implements IUserService{
     public User signUp(String name, String password, String email) {
         String uuid = UUIDFactory.getUUID();
 
-        User validateUser = this.getUserByName(name);
-        if(validateUser != null){
-            return null;
-        }
-
         Date date = new Date();
 
         User user = new User(uuid,name,password,email,date,name);
         if(iUserDAO.insertUser(user)>0){
-            iUserToRoleDAO.insertRows(user.getUserId(), DEFAULT_ROLE);
+            iUserToRoleDAO.insertRows(user.getUserId(), UserConstant.DEFAULT_ROLE);
             this.setUserPerms(user);
             return user;
         }
