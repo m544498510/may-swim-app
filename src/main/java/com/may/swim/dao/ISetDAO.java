@@ -17,6 +17,8 @@ import java.util.Map;
 
 @Repository
 public interface ISetDAO {
+    int insertRow(Set set);
+
     int insertRows(ArrayList<Set> list);
 
     int deleteRow(Long setId);
@@ -31,5 +33,7 @@ public interface ISetDAO {
             @Param("sessionId")Long sessionId,
             @Param("pageInfo")PageInfo pageInfo);
 
-
+    ArrayList<Set> getRowsByUserId(
+            @Param("userId")String userId,
+            @Param("pageInfo")PageInfo pageInfo);
 }

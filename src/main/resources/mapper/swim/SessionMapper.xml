@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.may.swim.dao.ISessionDAO" >
+  <resultMap id="BaseResultMap" type="Session" >
+    <constructor >
+      <idArg column="session_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="user_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="session_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="session_des" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pool_length" jdbcType="SMALLINT" javaType="java.lang.Short" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, session_date, session_des, pool_length
+  </sql>
+
+  <insert id="insertRow" parameterType="Session"
+          useGeneratedKeys="true" keyProperty="sessionId">
+    INSERT INTO t_session (
+        <include refid="Base_Column_List" />
+      )
+      VALUES (
+        #{userId,jdbcType=VARCHAR},#{sessionDate,jdbcType=TIMESTAMP},
+        #{sessionDes,jdbcType=VARCHAR},#{poolLength,jdbcType=SMALLINT}
+      )
+  </insert>
+
+  <delete id="deleteRow" parameterType="java.lang.Long">
+    DELETE FROM t_session
+      WHERE session_id = #{sessionId}
+  </delete>
+
+  <update id="updateRow" parameterType="Session" >
+    update t_session
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionDate != null" >
+        session_date = #{sessionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sessionDes != null" >
+        session_des = #{sessionDes,jdbcType=VARCHAR},
+      </if>
+      <if test="poolLength != null" >
+        pool_length = #{poolLength,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where session_id = #{sessionId,jdbcType=BIGINT}
+  </update>
+
+  <select id="getRowBySessionId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT * FROM t_session
+      WHERE session_id = #{sessionId}
+  </select>
+
+  <select id="getRowsByUserId" resultMap="BaseResultMap">
+    SELECT * FROM t_session
+      WHERE user_id = #{userId}
+      <if test="pageInfo != null">
+        <if test="pageInfo.order != null">
+          ORDER BY ${pageInfo.order}
+        </if>
+        LIMIT ${pageInfo.pageStart},${pageInfo.pageSize}
+      </if>
+  </select>
+
+</mapper>

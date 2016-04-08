@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2016/4/7 17:36:07                            */
+/* Created on:     2016/4/8 9:43:29                             */
 /*==============================================================*/
 
 SET FOREIGN_KEY_CHECKS = 0;
@@ -16,8 +16,8 @@ drop table if exists t_stroke_pattern;
 drop table if exists t_user;
 
 drop table if exists user_to_role;
-
 SET FOREIGN_KEY_CHECKS = 1;
+
 /*==============================================================*/
 /* Table: t_role                                                */
 /*==============================================================*/
@@ -39,8 +39,8 @@ create table t_session
    session_id           bigint not null auto_increment,
    user_id              varchar(255) not null,
    session_date         datetime not null,
-   session_commert      varchar(1024) not null,
-   swim_long            smallint,
+   session_des          varchar(1024) not null,
+   pool_length          smallint,
    primary key (session_id)
 );
 

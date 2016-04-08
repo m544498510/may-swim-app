@@ -1,6 +1,8 @@
 package com.may.swim.dao;
 
+import com.may.frame.model.PageInfo;
 import com.may.swim.model.Session;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -12,16 +14,16 @@ import java.util.Map;
  */
 @Repository
 public interface ISessionDAO {
-    long insertRow(Session session);
+    int insertRow(Session session);
 
-    int deleteRow(long sessionId);
-
-    int deleteRowsByUserId(String userId);
+    int deleteRow(Long sessionId);
 
     int updateRow(Session session);
 
-    Session getRowBySessionId(long sessionId);
+    Session getRowBySessionId(Long sessionId);
 
-    ArrayList<Session> getRowsByUserId(Map map);
+    ArrayList<Session> getRowsByUserId(
+            @Param("userId")String userId,
+            @Param("pageInfo")PageInfo pageInfo);
 
 }

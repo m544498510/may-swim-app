@@ -1,6 +1,7 @@
 package com.may.swim.dao;
 
 import com.may.frame.model.PageInfo;
+import com.may.swim.SwimConstant;
 import com.may.swim.model.Set;
 import com.may.test.BaseTest;
 import org.junit.Test;
@@ -20,10 +21,18 @@ public class ISetDAOTest extends BaseTest{
     private ISetDAO iSetDAO;
 
     @Test
+    public void testInsertRow() throws Exception{
+        Set set = this.createSet(new Short("77"));
+        int i = iSetDAO.insertRow(set);
+        assertTrue(i == 1);
+        assertNotNull(set.getSetId());
+    }
+
+    @Test
     public void testInsertRows() throws Exception {
         ArrayList<Set> list = new ArrayList<>();
-        list.add(this.getSet(new Short("98")));
-        list.add(this.getSet(new Short("99")));
+        list.add(this.createSet(new Short("98")));
+        list.add(this.createSet(new Short("99")));
         int i = iSetDAO.insertRows(list);
 
         assertTrue(i == 2);
@@ -39,8 +48,8 @@ public class ISetDAOTest extends BaseTest{
     @Test
     public void testDeleteRowsBySessionId() throws Exception {
         ArrayList<Set> list = new ArrayList<>();
-        list.add(this.getSet(new Short("98")));
-        list.add(this.getSet(new Short("99")));
+        list.add(this.createSet(new Short("98")));
+        list.add(this.createSet(new Short("99")));
         iSetDAO.insertRows(list);
 
         int i = iSetDAO.deleteRowsBySessionId(1L);
@@ -51,7 +60,7 @@ public class ISetDAOTest extends BaseTest{
     @Test
     public void testUpdateRow() throws Exception {
         Short setIndex = 99;
-        Set set = this.getSet(setIndex);
+        Set set = this.createSet(setIndex);
         set.setSetId(1L);
         int i = iSetDAO.updateRow(set);
 
@@ -70,21 +79,33 @@ public class ISetDAOTest extends BaseTest{
     @Test
     public void testGetRowsBySessionId() throws Exception {
         ArrayList<Set> list = new ArrayList<>();
-        list.add(this.getSet(new Short("98")));
-        list.add(this.getSet(new Short("99")));
+        list.add(this.createSet(new Short("99")));
+        list.add(this.createSet(new Short("98")));
         iSetDAO.insertRows(list);
 
         PageInfo pageInfo= new PageInfo();
         pageInfo.setPageStart(0);
-        pageInfo.setPageSize(100);
+        pageInfo.setPageSize(2);
+        pageInfo.setOrder(SwimConstant.SET_INDEX);
 
         ArrayList<Set> newList = iSetDAO.getRowsBySessionId(1L,pageInfo);
+        assertTrue(newList.size() == 2);
 
+        pageInfo.setPageStart(2);
+        newList = iSetDAO.getRowsBySessionId(1L,pageInfo);
+        assertTrue(newList.size() == 1);
+
+        newList = iSetDAO.getRowsBySessionId(1L,null);
         assertTrue(newList.size() == 3);
-
     }
 
-    private Set getSet(Short index) {
+    @Test
+    public void testGetRowsByUserId(){
+        ArrayList<Set> list = iSetDAO.getRowsByUserId("TEST_ID",null);
+        assertTrue(list.size() == 1);
+    }
+
+    private Set createSet(Short index) {
         Long sessionId = 1L;          //一套训练id
         Short patternId = 1;         //泳姿id
         Short setLap = 4;            //往返数

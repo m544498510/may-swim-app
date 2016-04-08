@@ -12,26 +12,26 @@ public class Session implements Serializable{
 
     private Date sessionDate;
 
-    private String sessionCommert;
+    private String sessionDes;
 
-    private Short swimLong;
+    private Short poolLength;
 
     public Session() {
     }
 
-    public Session(String userId, Date sessionDate, String sessionCommert, Short swimLong) {
+    public Session(String userId, Date sessionDate, String sessionDes, Short poolLength) {
         this.userId = userId;
         this.sessionDate = sessionDate;
-        this.sessionCommert = sessionCommert;
-        this.swimLong = swimLong;
+        this.sessionDes = sessionDes;
+        this.poolLength = poolLength;
     }
 
-    public Session(Long sessionId, String userId, Date sessionDate, String sessionCommert, Short swimLong) {
+    public Session(Long sessionId, String userId, Date sessionDate, String sessionDes, Short poolLength) {
         this.sessionId = sessionId;
         this.userId = userId;
         this.sessionDate = sessionDate;
-        this.sessionCommert = sessionCommert;
-        this.swimLong = swimLong;
+        this.sessionDes = sessionDes;
+        this.poolLength = poolLength;
     }
 
     public static long getSerialVersionUID() {
@@ -62,19 +62,19 @@ public class Session implements Serializable{
         this.sessionDate = sessionDate;
     }
 
-    public String getSessionCommert() {
-        return sessionCommert;
+    public String getSessionDes() {
+        return sessionDes;
     }
 
-    public void setSessionCommert(String sessionCommert) {
-        this.sessionCommert = sessionCommert;
+    public void setSessionDes(String sessionDes) {
+        this.sessionDes = sessionDes;
     }
 
-    public Short getSwimLong() {
-        return swimLong;
+    public Short getPoolLength() {
+        return poolLength;
     }
 
-    public void setSwimLong(Short swimLong) {
-        this.swimLong = swimLong;
+    public void setPoolLength(Short poolLength) {
+        this.poolLength = poolLength;
     }
 }

@@ -23,13 +23,30 @@
     set_efficiency, set_training_time, set_rest_time,set_time, set_speed
   </sql>
 
+  <insert id="insertRow" parameterType="Set"  useGeneratedKeys="true" keyProperty="setId">
+    INSERT INTO t_set (
+    <include refid="Base_Column_List" />
+    )
+    VALUES (
+    ${sessionId},${patternId},${setIndex},${setLap},
+    ${setStroke},${setDistance},${setCalorie},
+    ${setEfficiency},${setTrainingTime},${setRestTime},
+    ${setTime},${setSpeed}
+    )
+  </insert>
+
   <insert id="insertRows">
     INSERT INTO t_set (
-      <include refid="Base_Column_List" />
+    <include refid="Base_Column_List" />
     )
     VALUES
     <foreach collection="list" item="set" index="index" separator=",">
-      (${set.sessionId},${set.patternId},${set.setIndex},${set.setLap},${set.setStroke},${set.setDistance},${set.setCalorie},${set.setEfficiency},${set.setTrainingTime},${set.setRestTime},${set.setTime},${set.setSpeed})
+      (
+      ${set.sessionId},${set.patternId},${set.setIndex},${set.setLap},
+      ${set.setStroke},${set.setDistance},${set.setCalorie},
+      ${set.setEfficiency},${set.setTrainingTime},${set.setRestTime},
+      ${set.setTime},${set.setSpeed}
+      )
     </foreach>
   </insert>
 
@@ -87,7 +104,7 @@
 
   <select id="getRowBySetId" parameterType="java.lang.Long" resultType="Set" resultMap="setResultMap">
     SELECT * FROM t_set
-      WHERE set_id = #{setId}
+    WHERE set_id = #{setId}
   </select>
 
   <select id="getRowsBySessionId"
@@ -95,8 +112,30 @@
 
     SELECT * FROM t_set
       WHERE session_id = #{sessionId}
-      LIMIT ${pageInfo.pageStart},${pageInfo.pageSize}
+      <if test="pageInfo != null and pageInfo.order != null">
+        ORDER BY ${pageInfo.order}
+      </if>
+      <if test="pageInfo == null or pageInfo.order == null">
+        ORDER BY set_index
+      </if>
+      <if test="pageInfo != null and pageInfo.pageStart != null">
+        LIMIT ${pageInfo.pageStart},${pageInfo.pageSize}
+      </if>
   </select>
 
+  <select id="getRowsByUserId" resultMap="setResultMap">
+    SELECT * FROM t_set AS t1 INNER JOIN t_session AS t2
+      WHERE t2.user_id = #{userId}
+      AND t1.session_id = t2.session_id
+      <if test="pageInfo != null and pageInfo.order != null">
+        ORDER BY ${pageInfo.order}
+      </if>
+      <if test="pageInfo == null or pageInfo.order == null">
+        ORDER BY set_index
+      </if>
+      <if test="pageInfo != null and pageInfo.pageStart != null">
+        LIMIT ${pageInfo.pageStart},${pageInfo.pageSize}
+      </if>
+  </select>
 
 </mapper>
