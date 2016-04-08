@@ -107,7 +107,7 @@ public class ISetDAOTest extends BaseTest{
 
     private Set createSet(Short index) {
         Long sessionId = 1L;          //一套训练id
-        Short patternId = 1;         //泳姿id
+        Short strokeId = 1;         //泳姿id
         Short setLap = 4;            //往返数
         Short setStroke = 12;         //挥臂次数
         Short setDistance = 100;       //距离
@@ -119,7 +119,7 @@ public class ISetDAOTest extends BaseTest{
         Short setSpeed = 10;         //速度
 
 
-        return new Set(sessionId,patternId,index,setLap,setStroke,setDistance,setCalorie,setEfficiency,setTrainingTime,setRestTime,setTime,setSpeed);
+        return new Set(sessionId,strokeId,index,setLap,setStroke,setDistance,setCalorie,setEfficiency,setTrainingTime,setRestTime,setTime,setSpeed);
     }
 
 }

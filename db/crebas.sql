@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2016/4/8 9:43:29                             */
+/* Created on:     2016/4/8 13:50:05                            */
 /*==============================================================*/
 
 SET FOREIGN_KEY_CHECKS = 0;
@@ -11,7 +11,7 @@ drop table if exists t_session;
 
 drop table if exists t_set;
 
-drop table if exists t_stroke_pattern;
+drop table if exists t_stroke;
 
 drop table if exists t_user;
 
@@ -53,7 +53,7 @@ create table t_set
 (
    set_id               bigint not null auto_increment,
    session_id           bigint not null,
-   pattern_id           smallint not null,
+   stroke_id            smallint,
    set_index            smallint not null comment '为0时，是total数据。
             大于0，是分组数据',
    set_lap              smallint not null,
@@ -71,17 +71,17 @@ create table t_set
 alter table t_set comment '分组训练';
 
 /*==============================================================*/
-/* Table: t_stroke_pattern                                      */
+/* Table: t_stroke                                              */
 /*==============================================================*/
-create table t_stroke_pattern
+create table t_stroke
 (
-   pattern_id           smallint not null auto_increment,
-   pattern_name         varchar(100) not null,
-   pattern_des          varchar(255),
-   primary key (pattern_id)
+   stroke_id            smallint not null auto_increment,
+   stroke_name          varchar(100) not null,
+   stroke_des           varchar(255),
+   primary key (stroke_id)
 );
 
-alter table t_stroke_pattern comment '泳姿表';
+alter table t_stroke comment '泳姿表';
 
 /*==============================================================*/
 /* Table: t_user                                                */
@@ -114,14 +114,16 @@ alter table t_session add constraint FK_Reference_5 foreign key (user_id)
 alter table t_set add constraint FK_Reference_3 foreign key (session_id)
       references t_session (session_id) on delete cascade on update cascade;
 
-alter table t_set add constraint FK_Reference_4 foreign key (pattern_id)
-      references t_stroke_pattern (pattern_id) on delete restrict on update restrict;
+alter table t_set add constraint FK_Reference_8 foreign key (stroke_id)
+      references t_stroke (stroke_id) on delete restrict on update restrict;
 
 alter table user_to_role add constraint FK_Reference_6 foreign key (user_id)
       references t_user (user_id) on delete cascade on update cascade;
 
 alter table user_to_role add constraint FK_Reference_7 foreign key (role_id)
       references t_role (role_id) on delete restrict on update restrict;
+
+
 
 INSERT INTO `t_role` VALUES ('1', 'admin','管理员');
 INSERT INTO `t_role` VALUES ('2', 'user','普通用户');
@@ -132,10 +134,10 @@ INSERT INTO `t_user` VALUES ('TEST_ID', 'TEST_NAME', 'TEST@TEST.COM', 'TEST_PSD'
 
 INSERT INTO `user_to_role` VALUES ('TEST_ID','2');
 
-INSERT INTO `t_stroke_pattern` VALUES ('1', 'breaststroke', '蛙泳');
-INSERT INTO `t_stroke_pattern` VALUES ('2', 'freestyle', '自由泳');
-INSERT INTO `t_stroke_pattern` VALUES ('3', 'butterfly stroke', '蝶泳');
-INSERT INTO `t_stroke_pattern` VALUES ('4', 'backstroke', '仰泳');
+INSERT INTO `t_stroke` VALUES ('1', 'breaststroke', '蛙泳');
+INSERT INTO `t_stroke` VALUES ('2', 'freestyle', '自由泳');
+INSERT INTO `t_stroke` VALUES ('3', 'butterfly stroke', '蝶泳');
+INSERT INTO `t_stroke` VALUES ('4', 'backstroke', '仰泳');
 
 INSERT INTO `t_session` VALUES ('1','TEST_ID','2016-3-31','','25');
 

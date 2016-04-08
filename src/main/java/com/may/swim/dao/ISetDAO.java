@@ -1,14 +1,11 @@
 package com.may.swim.dao;
 
 import com.may.frame.model.PageInfo;
-import com.may.swim.model.Session;
 import com.may.swim.model.Set;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author :    Mei XinLin

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.may.swim.dao.IStrokeDAO" >
+  <resultMap id="BaseResultMap" type="Stroke" >
+    <constructor >
+      <idArg column="stroke_id" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="stroke_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="stroke_des" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+
+  <select id="getAllRows" resultMap="BaseResultMap">
+    SELECT * FROM t_stroke
+  </select>
+
+</mapper>

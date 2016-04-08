@@ -5,7 +5,7 @@
     <constructor >
       <idArg column="set_id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="session_id" jdbcType="BIGINT" javaType="java.lang.Long" />
-      <arg column="pattern_id" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="stroke_id" jdbcType="SMALLINT" javaType="java.lang.Short" />
       <arg column="set_index" jdbcType="SMALLINT" javaType="java.lang.Short" />
       <arg column="set_lap" jdbcType="SMALLINT" javaType="java.lang.Short" />
       <arg column="set_stroke" jdbcType="SMALLINT" javaType="java.lang.Short" />
@@ -19,7 +19,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    session_id, pattern_id, set_index, set_lap, set_stroke, set_distance, set_calorie,
+    session_id, stroke_id, set_index, set_lap, set_stroke, set_distance, set_calorie,
     set_efficiency, set_training_time, set_rest_time,set_time, set_speed
   </sql>
 
@@ -28,7 +28,7 @@
     <include refid="Base_Column_List" />
     )
     VALUES (
-    ${sessionId},${patternId},${setIndex},${setLap},
+    ${sessionId},${strokeId},${setIndex},${setLap},
     ${setStroke},${setDistance},${setCalorie},
     ${setEfficiency},${setTrainingTime},${setRestTime},
     ${setTime},${setSpeed}
@@ -42,7 +42,7 @@
     VALUES
     <foreach collection="list" item="set" index="index" separator=",">
       (
-      ${set.sessionId},${set.patternId},${set.setIndex},${set.setLap},
+      ${set.sessionId},${set.strokeId},${set.setIndex},${set.setLap},
       ${set.setStroke},${set.setDistance},${set.setCalorie},
       ${set.setEfficiency},${set.setTrainingTime},${set.setRestTime},
       ${set.setTime},${set.setSpeed}
@@ -64,8 +64,8 @@
       <if test="sessionId != null" >
         session_id = #{sessionId,jdbcType=BIGINT},
       </if>
-      <if test="patternId != null" >
-        pattern_id = #{patternId,jdbcType=SMALLINT},
+      <if test="strokeId != null" >
+        stroke_id = #{strokeId,jdbcType=SMALLINT},
       </if>
       <if test="setIndex != null" >
         set_index = #{setIndex,jdbcType=SMALLINT},

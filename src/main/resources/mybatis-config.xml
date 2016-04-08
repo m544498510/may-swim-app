@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         <typeAlias alias="Role" type="com.may.user.model.Role"/>
         <typeAlias alias="Set" type="com.may.swim.model.Set"/>
         <typeAlias alias="Session" type="com.may.swim.model.Session"/>
+        <typeAlias alias="Stroke" type="com.may.swim.model.Stroke"/>
 
     </typeAliases>
 

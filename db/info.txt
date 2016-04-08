@@ -10,10 +10,10 @@ INSERT INTO `t_user` VALUES ('TEST_ID', 'TEST_NAME', 'TEST@TEST.COM', 'TEST_PSD'
 
 INSERT INTO `user_to_role` VALUES ('TEST_ID','2');
 
-INSERT INTO `t_stroke_pattern` VALUES ('1', 'breaststroke', '蛙泳');
-INSERT INTO `t_stroke_pattern` VALUES ('2', 'freestyle', '自由泳');
-INSERT INTO `t_stroke_pattern` VALUES ('3', 'butterfly stroke', '蝶泳');
-INSERT INTO `t_stroke_pattern` VALUES ('4', 'backstroke', '仰泳');
+INSERT INTO `t_stroke` VALUES ('1', 'breaststroke', '蛙泳');
+INSERT INTO `t_stroke` VALUES ('2', 'freestyle', '自由泳');
+INSERT INTO `t_stroke` VALUES ('3', 'butterfly stroke', '蝶泳');
+INSERT INTO `t_stroke` VALUES ('4', 'backstroke', '仰泳');
 
 INSERT INTO `t_session` VALUES ('1','TEST_ID','2016-3-31','','25');
 

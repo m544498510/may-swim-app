@@ -1,14 +1,13 @@
 package com.may.swim.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Set implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long setId;               //id
     private Long sessionId;          //一套训练id
-    private Short patternId;         //泳姿id
+    private Short strokeId;         //泳姿id
     private Short setIndex;          //分组序号（为0时，是total数据；大于0，是分组数据）
     private Short setLap;            //往返数
     private Short setStroke;         //挥臂次数
@@ -23,9 +22,9 @@ public class Set implements Serializable {
     public Set() {
     }
 
-    public Set(Long sessionId, Short patternId, Short setIndex, Short setLap, Short setStroke, Short setDistance, Short setCalorie, Short setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Short setSpeed) {
+    public Set(Long sessionId, Short strokeId, Short setIndex, Short setLap, Short setStroke, Short setDistance, Short setCalorie, Short setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Short setSpeed) {
         this.sessionId = sessionId;
-        this.patternId = patternId;
+        this.strokeId = strokeId;
         this.setIndex = setIndex;
         this.setLap = setLap;
         this.setStroke = setStroke;
@@ -38,10 +37,10 @@ public class Set implements Serializable {
         this.setSpeed = setSpeed;
     }
 
-    public Set(Long setId, Long sessionId, Short patternId, Short setIndex, Short setLap, Short setStroke, Short setDistance, Short setCalorie, Short setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Short setSpeed) {
+    public Set(Long setId, Long sessionId, Short strokeId, Short setIndex, Short setLap, Short setStroke, Short setDistance, Short setCalorie, Short setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Short setSpeed) {
         this.setId = setId;
         this.sessionId = sessionId;
-        this.patternId = patternId;
+        this.strokeId = strokeId;
         this.setIndex = setIndex;
         this.setLap = setLap;
         this.setStroke = setStroke;
@@ -74,12 +73,12 @@ public class Set implements Serializable {
         this.sessionId = sessionId;
     }
 
-    public Short getPatternId() {
-        return patternId;
+    public Short getStrokeId() {
+        return strokeId;
     }
 
-    public void setPatternId(Short patternId) {
-        this.patternId = patternId;
+    public void setStrokeId(Short strokeId) {
+        this.strokeId = strokeId;
     }
 
     public Short getSetLap() {
