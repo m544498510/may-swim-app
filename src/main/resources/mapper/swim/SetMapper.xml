@@ -8,7 +8,7 @@
       <arg column="stroke_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="set_index" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="set_lap" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="set_stroke" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="set_stroke_num" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="set_distance" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="set_calorie" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="set_efficiency" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -19,7 +19,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    session_id, stroke_id, set_index, set_lap, set_stroke, set_distance, set_calorie,
+    session_id, stroke_id, set_index, set_lap, set_stroke_num, set_distance, set_calorie,
     set_efficiency, set_training_time, set_rest_time,set_time, set_speed
   </sql>
 
@@ -29,7 +29,7 @@
     )
     VALUES (
     ${sessionId},${strokeId},${setIndex},${setLap},
-    ${setStroke},${setDistance},${setCalorie},
+    ${setStrokeNum},${setDistance},${setCalorie},
     ${setEfficiency},${setTrainingTime},${setRestTime},
     ${setTime},${setSpeed}
     )
@@ -43,7 +43,7 @@
     <foreach collection="list" item="set" index="index" separator=",">
       (
       ${set.sessionId},${set.strokeId},${set.setIndex},${set.setLap},
-      ${set.setStroke},${set.setDistance},${set.setCalorie},
+      ${set.setStrokeNum},${set.setDistance},${set.setCalorie},
       ${set.setEfficiency},${set.setTrainingTime},${set.setRestTime},
       ${set.setTime},${set.setSpeed}
       )
@@ -74,8 +74,8 @@
       <if test="setLap != null" >
         set_lap = #{setLap,jdbcType=INTEGER},
       </if>
-      <if test="setStroke != null" >
-        set_stroke = #{setStroke,jdbcType=INTEGER},
+      <if test="setStrokeNum != null" >
+        set_stroke_num = #{setStrokeNum,jdbcType=INTEGER},
       </if>
       <if test="setDistance != null" >
         set_distance = #{setDistance,jdbcType=INTEGER},

@@ -1,9 +1,10 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2016/4/8 17:12:33                            */
+/* Created on:     2016/4/9 10:09:27                            */
 /*==============================================================*/
 
 SET FOREIGN_KEY_CHECKS = 0;
+
 drop table if exists t_role;
 
 drop table if exists t_session;
@@ -16,6 +17,7 @@ drop table if exists t_user;
 
 drop table if exists user_to_role;
 SET FOREIGN_KEY_CHECKS = 1;
+
 /*==============================================================*/
 /* Table: t_role                                                */
 /*==============================================================*/
@@ -55,7 +57,7 @@ create table t_set
    set_index            int not null comment '为0时，是total数据。
             大于0，是分组数据',
    set_lap              int not null,
-   set_stroke           int not null,
+   set_stroke_num       int not null,
    set_distance         int not null,
    set_calorie          int not null,
    set_efficiency       int not null,

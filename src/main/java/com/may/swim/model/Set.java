@@ -10,7 +10,7 @@ public class Set implements Serializable {
     private Integer strokeId;          //泳姿id
     private Integer setIndex;          //分组序号（为0时，是total数据；大于0，是分组数据）
     private Integer setLap;            //往返数
-    private Integer setStroke;         //挥臂次数
+    private Integer setStrokeNum;         //挥臂次数
     private Integer setDistance;       //距离
     private Integer setCalorie;        //消耗卡路里
     private Integer setEfficiency;    //效率
@@ -22,13 +22,13 @@ public class Set implements Serializable {
     public Set() {
     }
 
-    public Set(Long sessionId, Integer strokeId, Integer setIndex, Integer setLap, Integer setStroke,
+    public Set(Long sessionId, Integer strokeId, Integer setIndex, Integer setLap, Integer setStrokeNum,
                Integer setDistance, Integer setCalorie, Integer setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Integer setSpeed) {
         this.sessionId = sessionId;
         this.strokeId = strokeId;
         this.setIndex = setIndex;
         this.setLap = setLap;
-        this.setStroke = setStroke;
+        this.setStrokeNum = setStrokeNum;
         this.setDistance = setDistance;
         this.setCalorie = setCalorie;
         this.setEfficiency = setEfficiency;
@@ -38,13 +38,13 @@ public class Set implements Serializable {
         this.setSpeed = setSpeed;
     }
 
-    public Set(Long setId, Long sessionId, Integer patternId, Integer setIndex, Integer setLap, Integer setStroke, Integer setDistance, Integer setCalorie, Integer setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Integer setSpeed) {
+    public Set(Long setId, Long sessionId, Integer patternId, Integer setIndex, Integer setLap, Integer setStrokeNum, Integer setDistance, Integer setCalorie, Integer setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Integer setSpeed) {
         this.setId = setId;
         this.sessionId = sessionId;
         this.strokeId = patternId;
         this.setIndex = setIndex;
         this.setLap = setLap;
-        this.setStroke = setStroke;
+        this.setStrokeNum = setStrokeNum;
         this.setDistance = setDistance;
         this.setCalorie = setCalorie;
         this.setEfficiency = setEfficiency;
@@ -90,12 +90,12 @@ public class Set implements Serializable {
         this.setLap = setLap;
     }
 
-    public Integer getSetStroke() {
-        return setStroke;
+    public Integer getSetStrokeNum() {
+        return setStrokeNum;
     }
 
-    public void setSetStroke(Integer setStroke) {
-        this.setStroke = setStroke;
+    public void setSetStrokeNum(Integer setStrokeNum) {
+        this.setStrokeNum = setStrokeNum;
     }
 
     public Integer getSetDistance() {
