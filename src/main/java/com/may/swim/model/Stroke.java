@@ -10,7 +10,7 @@ public class Stroke implements Serializable{
     private static final long serialVersionUID = 1L;
 
     //id
-    private Short strokeId;
+    private Integer strokeId;
     //名称
     private String strokeName;
     //描述
@@ -24,7 +24,7 @@ public class Stroke implements Serializable{
         this.strokeDes = strokeDes;
     }
 
-    public Stroke(Short strokeId, String strokeName, String strokeDes) {
+    public Stroke(Integer strokeId, String strokeName, String strokeDes) {
         this.strokeId = strokeId;
         this.strokeName = strokeName;
         this.strokeDes = strokeDes;
@@ -34,11 +34,11 @@ public class Stroke implements Serializable{
         return serialVersionUID;
     }
 
-    public Short getStrokeId() {
+    public Integer getStrokeId() {
         return strokeId;
     }
 
-    public void setStrokeId(Short strokeId) {
+    public void setStrokeId(Integer strokeId) {
         this.strokeId = strokeId;
     }
 

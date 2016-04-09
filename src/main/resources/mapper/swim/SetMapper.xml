@@ -5,17 +5,17 @@
     <constructor >
       <idArg column="set_id" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="session_id" jdbcType="BIGINT" javaType="java.lang.Long" />
-      <arg column="stroke_id" jdbcType="SMALLINT" javaType="java.lang.Short" />
-      <arg column="set_index" jdbcType="SMALLINT" javaType="java.lang.Short" />
-      <arg column="set_lap" jdbcType="SMALLINT" javaType="java.lang.Short" />
-      <arg column="set_stroke" jdbcType="SMALLINT" javaType="java.lang.Short" />
-      <arg column="set_distance" jdbcType="SMALLINT" javaType="java.lang.Short" />
-      <arg column="set_calorie" jdbcType="SMALLINT" javaType="java.lang.Short" />
-      <arg column="set_efficiency" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="stroke_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="set_index" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="set_lap" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="set_stroke" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="set_distance" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="set_calorie" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="set_efficiency" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="set_training_time" jdbcType="FLOAT" javaType="java.lang.Float" />
       <arg column="set_rest_time" jdbcType="FLOAT" javaType="java.lang.Float" />
       <arg column="set_time" jdbcType="FLOAT" javaType="java.lang.Float" />
-      <arg column="set_speed" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="set_speed" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
@@ -65,26 +65,26 @@
         session_id = #{sessionId,jdbcType=BIGINT},
       </if>
       <if test="strokeId != null" >
-        stroke_id = #{strokeId,jdbcType=SMALLINT},
+        stroke_id = #{strokeId,jdbcType=INTEGER},
       </if>
       <if test="setIndex != null" >
-        set_index = #{setIndex,jdbcType=SMALLINT},
+        set_index = #{setIndex,jdbcType=INTEGER},
       </if>
 
       <if test="setLap != null" >
-        set_lap = #{setLap,jdbcType=SMALLINT},
+        set_lap = #{setLap,jdbcType=INTEGER},
       </if>
       <if test="setStroke != null" >
-        set_stroke = #{setStroke,jdbcType=SMALLINT},
+        set_stroke = #{setStroke,jdbcType=INTEGER},
       </if>
       <if test="setDistance != null" >
-        set_distance = #{setDistance,jdbcType=SMALLINT},
+        set_distance = #{setDistance,jdbcType=INTEGER},
       </if>
       <if test="setCalorie != null" >
-        set_calorie = #{setCalorie,jdbcType=SMALLINT},
+        set_calorie = #{setCalorie,jdbcType=INTEGER},
       </if>
       <if test="setEfficiency != null" >
-        set_efficiency = #{setEfficiency,jdbcType=SMALLINT},
+        set_efficiency = #{setEfficiency,jdbcType=INTEGER},
       </if>
       <if test="setTrainingTime != null" >
         set_training_time = #{setTrainingTime,jdbcType=TIME},
@@ -96,7 +96,7 @@
         set_time = #{setTime,jdbcType=TIME},
       </if>
       <if test="setSpeed != null" >
-        set_speed = #{setSpeed,jdbcType=SMALLINT},
+        set_speed = #{setSpeed,jdbcType=INTEGER},
       </if>
     </set>
     WHERE set_id = #{setId,jdbcType=BIGINT}

@@ -7,7 +7,7 @@
       <arg column="user_id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="session_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="session_des" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="pool_length" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <arg column="pool_length" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
@@ -21,7 +21,7 @@
       )
       VALUES (
         #{userId,jdbcType=VARCHAR},#{sessionDate,jdbcType=TIMESTAMP},
-        #{sessionDes,jdbcType=VARCHAR},#{poolLength,jdbcType=SMALLINT}
+        #{sessionDes,jdbcType=VARCHAR},#{poolLength,jdbcType=INTEGER}
       )
   </insert>
 
@@ -43,7 +43,7 @@
         session_des = #{sessionDes,jdbcType=VARCHAR},
       </if>
       <if test="poolLength != null" >
-        pool_length = #{poolLength,jdbcType=SMALLINT},
+        pool_length = #{poolLength,jdbcType=INTEGER},
       </if>
     </set>
     where session_id = #{sessionId,jdbcType=BIGINT}

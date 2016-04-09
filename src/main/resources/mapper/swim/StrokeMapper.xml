@@ -3,7 +3,7 @@
 <mapper namespace="com.may.swim.dao.IStrokeDAO" >
   <resultMap id="BaseResultMap" type="Stroke" >
     <constructor >
-      <idArg column="stroke_id" jdbcType="SMALLINT" javaType="java.lang.Short" />
+      <idArg column="stroke_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="stroke_name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="stroke_des" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>

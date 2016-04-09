@@ -90,8 +90,8 @@ public class SwimServiceImpl implements ISwimService{
         if(hasTotalSet){
             list.remove(0);
         }
-        Short setIndex = 0;
-        Short strokeId = 0;
+        Integer setIndex = 0;
+        Integer strokeId = 0;
         Integer setLap = 0;
         Integer setStroke = 0;         //挥臂次数
         Integer setDistance = 0;       //距离
@@ -119,7 +119,7 @@ public class SwimServiceImpl implements ISwimService{
 
         a(setDistance);
 
-//        Set newTotalSet = new Set(sessionId,strokeId,setIndex,(Short)setLap,);
+//        Set newTotalSet = new Set(sessionId,strokeId,setIndex,(Integer)setLap,);
 
         return false;
     }

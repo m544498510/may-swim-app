@@ -62,7 +62,7 @@ public class ISessionDAOTest extends BaseTest{
     }
 
     private Session createSession(){
-        Short poolLength = 88;
+        Integer poolLength = 88;
         return new Session("TEST_ID",new Date(),"TEST_DES",poolLength);
     }
 }

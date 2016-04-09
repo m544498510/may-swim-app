@@ -14,19 +14,19 @@ public class Session implements Serializable{
 
     private String sessionDes;
 
-    private Short poolLength;
+    private Integer poolLength;
 
     public Session() {
     }
 
-    public Session(String userId, Date sessionDate, String sessionDes, Short poolLength) {
+    public Session(String userId, Date sessionDate, String sessionDes, Integer poolLength) {
         this.userId = userId;
         this.sessionDate = sessionDate;
         this.sessionDes = sessionDes;
         this.poolLength = poolLength;
     }
 
-    public Session(Long sessionId, String userId, Date sessionDate, String sessionDes, Short poolLength) {
+    public Session(Long sessionId, String userId, Date sessionDate, String sessionDes, Integer poolLength) {
         this.sessionId = sessionId;
         this.userId = userId;
         this.sessionDate = sessionDate;
@@ -70,11 +70,11 @@ public class Session implements Serializable{
         this.sessionDes = sessionDes;
     }
 
-    public Short getPoolLength() {
+    public Integer getPoolLength() {
         return poolLength;
     }
 
-    public void setPoolLength(Short poolLength) {
+    public void setPoolLength(Integer poolLength) {
         this.poolLength = poolLength;
     }
 }

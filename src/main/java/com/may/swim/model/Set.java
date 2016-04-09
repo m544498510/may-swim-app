@@ -22,7 +22,8 @@ public class Set implements Serializable {
     public Set() {
     }
 
-    public Set(Long sessionId, Integer strokeId, Integer setIndex, Integer setLap, Integer setStroke, Integer setDistance, Integer setCalorie, Integer setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Integer setSpeed) {
+    public Set(Long sessionId, Integer strokeId, Integer setIndex, Integer setLap, Integer setStroke,
+               Integer setDistance, Integer setCalorie, Integer setEfficiency, Float setTrainingTime, Float setRestTime, Float setTime, Integer setSpeed) {
         this.sessionId = sessionId;
         this.strokeId = strokeId;
         this.setIndex = setIndex;

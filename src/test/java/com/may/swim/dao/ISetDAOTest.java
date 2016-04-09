@@ -22,7 +22,7 @@ public class ISetDAOTest extends BaseTest{
 
     @Test
     public void testInsertRow() throws Exception{
-        Set set = this.createSet(new Short("77"));
+        Set set = this.createSet(77);
         int i = iSetDAO.insertRow(set);
         assertTrue(i == 1);
         assertNotNull(set.getSetId());
@@ -31,8 +31,8 @@ public class ISetDAOTest extends BaseTest{
     @Test
     public void testInsertRows() throws Exception {
         ArrayList<Set> list = new ArrayList<>();
-        list.add(this.createSet(new Short("98")));
-        list.add(this.createSet(new Short("99")));
+        list.add(this.createSet(98));
+        list.add(this.createSet(99));
         int i = iSetDAO.insertRows(list);
 
         assertTrue(i == 2);
@@ -48,8 +48,8 @@ public class ISetDAOTest extends BaseTest{
     @Test
     public void testDeleteRowsBySessionId() throws Exception {
         ArrayList<Set> list = new ArrayList<>();
-        list.add(this.createSet(new Short("98")));
-        list.add(this.createSet(new Short("99")));
+        list.add(this.createSet(98));
+        list.add(this.createSet(99));
         iSetDAO.insertRows(list);
 
         int i = iSetDAO.deleteRowsBySessionId(1L);
@@ -59,7 +59,7 @@ public class ISetDAOTest extends BaseTest{
 
     @Test
     public void testUpdateRow() throws Exception {
-        Short setIndex = 99;
+        Integer setIndex = 99;
         Set set = this.createSet(setIndex);
         set.setSetId(1L);
         int i = iSetDAO.updateRow(set);
@@ -79,8 +79,8 @@ public class ISetDAOTest extends BaseTest{
     @Test
     public void testGetRowsBySessionId() throws Exception {
         ArrayList<Set> list = new ArrayList<>();
-        list.add(this.createSet(new Short("99")));
-        list.add(this.createSet(new Short("98")));
+        list.add(this.createSet(99));
+        list.add(this.createSet(98));
         iSetDAO.insertRows(list);
 
         PageInfo pageInfo= new PageInfo();
@@ -105,18 +105,18 @@ public class ISetDAOTest extends BaseTest{
         assertTrue(list.size() == 1);
     }
 
-    private Set createSet(Short index) {
+    private Set createSet(Integer index) {
         Long sessionId = 1L;          //一套训练id
-        Short strokeId = 1;         //泳姿id
-        Short setLap = 4;            //往返数
-        Short setStroke = 12;         //挥臂次数
-        Short setDistance = 100;       //距离
-        Short setCalorie = 55;         //消耗卡路里
-        Short setEfficiency = 58;     //效率
+        Integer strokeId = 1;         //泳姿id
+        Integer setLap = 4;            //往返数
+        Integer setStroke = 12;         //挥臂次数
+        Integer setDistance = 100;       //距离
+        Integer setCalorie = 55;         //消耗卡路里
+        Integer setEfficiency = 58;     //效率
         Float setTrainingTime = 90f;  //训练时间（单位为秒）
         Float setRestTime = 99f;      //休息时间（单位为秒）
         Float setTime = 189f;          //总时间（单位为秒）
-        Short setSpeed = 10;         //速度
+        Integer setSpeed = 10;         //速度
 
 
         return new Set(sessionId,strokeId,index,setLap,setStroke,setDistance,setCalorie,setEfficiency,setTrainingTime,setRestTime,setTime,setSpeed);
