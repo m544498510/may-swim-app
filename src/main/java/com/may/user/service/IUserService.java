@@ -3,7 +3,8 @@ package com.may.user.service;
 import com.may.user.model.User;
 
 /**
- * Created by May on 2016/3/27.
+ * @author :    Mei XinLin
+ * @version :   1.0
  */
 public interface IUserService {
 
@@ -30,7 +31,6 @@ public interface IUserService {
      * @return User对象
      */
     User getUserByName(String userName);
-
 
     /***
      * 重设置密码

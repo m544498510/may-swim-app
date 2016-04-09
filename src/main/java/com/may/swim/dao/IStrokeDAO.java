@@ -12,5 +12,9 @@ import java.util.ArrayList;
 
 @Repository
 public interface IStrokeDAO {
+    /***
+     * 获取所有泳姿
+     * @return 泳姿list
+     */
     ArrayList<Stroke> getAllRows();
 }

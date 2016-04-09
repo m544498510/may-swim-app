@@ -57,54 +57,60 @@ public class SwimServiceImpl implements ISwimService{
         boolean flag = (iSetDAO.insertRows(list) == list.size());
 
         if(flag){
-      //      ArrayList<Set> =
+            flag = calTotalSet(list.get(0).getSessionId());
         }
-        return false;
+        return flag;
     }
 
     @Override
     public boolean updateSet(Set set) {
-        return false;
+        boolean flag = (iSetDAO.updateRow(set) == 1);
+        if(flag){
+            flag = calTotalSet(set.getSessionId());
+        }
+        return flag;
     }
 
     @Override
-    public boolean delSetById(Long setId) {
-        return false;
+    public boolean delSetById(Long setId,Long sessionId) {
+        boolean flag = (iSetDAO.deleteRow(setId) == 1);
+        if(flag){
+            flag = calTotalSet(sessionId);
+        }
+        return flag;
     }
 
     @Override
     public boolean delSetBySessionId(Long sessionId) {
-        return false;
+        return (iSetDAO.deleteRowsBySessionId(sessionId) > -1);
     }
 
     @Override
     public ArrayList<Set> getSetBySessionId(Long sessionId, PageInfo pageInfo) {
-        return null;
+        return iSetDAO.getRowsBySessionId(sessionId,pageInfo);
     }
 
-    private boolean updateTotalSet(Long sessionId){
+    private boolean calTotalSet(Long sessionId){
         ArrayList<Set> list = iSetDAO.getRowsBySessionId(sessionId,null);
-        Set totalSetOld = list.get(0);
-        boolean hasTotalSet = (totalSetOld.getSetIndex() == 0);
+        Set oldTotalSet = list.get(0);
+        boolean hasTotalSet = (oldTotalSet.getSetIndex() == 0);
 
         if(hasTotalSet){
             list.remove(0);
         }
-        Integer setIndex = 0;
-        Integer strokeId = 0;
-        Integer setLap = 0;
-        Integer setStroke = 0;         //挥臂次数
-        Integer setDistance = 0;       //距离
-        Integer setCalorie = 55;         //消耗卡路里
-        Integer setEfficiency = 0;     //效率
-        Float setTrainingTime = 0f;  //训练时间（单位为秒）
-        Float setRestTime = 0f;      //休息时间（单位为秒）
-        Float setTime = 0f;          //总时间（单位为秒）
-        Integer setSpeed = 0;         //速度
+        int setLap = 0;
+        int setStrokeNum = 0;         //挥臂次数
+        int setDistance = 0;       //距离
+        int setCalorie = 0;         //消耗卡路里
+        int setEfficiency = 0;     //效率
+        float setTrainingTime = 0f;  //训练时间（单位为秒）
+        float setRestTime = 0f;      //休息时间（单位为秒）
+        float setTime = 0f;          //总时间（单位为秒）
+        int setSpeed = 0;         //速度
 
         for (Set set : list) {
             setLap += set.getSetLap();
-            setStroke += set.getSetStroke();
+            setStrokeNum += set.getSetStrokeNum();
             setDistance += set.getSetDistance();
             setCalorie += set.getSetCalorie();
             setEfficiency += set.getSetEfficiency();
@@ -114,16 +120,22 @@ public class SwimServiceImpl implements ISwimService{
             setSpeed += set.getSetSpeed();
         }
         int count = list.size();
-        setEfficiency = setEfficiency/count;
-        setSpeed = setSpeed/count;
+        if(count != 0) {
+            setEfficiency = setEfficiency / count;
+            setSpeed = setSpeed / count;
+        }
 
-        a(setDistance);
+        Set newTotalSet = new Set(sessionId,1,0,setLap,setStrokeNum,setDistance,setCalorie,setEfficiency,setTrainingTime,setRestTime,setTime,setSpeed);
 
-//        Set newTotalSet = new Set(sessionId,strokeId,setIndex,(Integer)setLap,);
+        int result;
+        if(hasTotalSet){
+            newTotalSet.setSetId(oldTotalSet.getSetId());
+            result = iSetDAO.updateRow(newTotalSet);
+        }else{
+            result = iSetDAO.insertRow(newTotalSet);
+        }
 
-        return false;
+        return (result == 1);
     }
 
-    private void a(Integer i){
-    }
 }

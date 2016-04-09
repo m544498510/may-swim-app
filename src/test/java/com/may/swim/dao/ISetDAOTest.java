@@ -2,6 +2,7 @@ package com.may.swim.dao;
 
 import com.may.frame.model.PageInfo;
 import com.may.swim.SwimConstant;
+import com.may.swim.SwimTestUtil;
 import com.may.swim.model.Set;
 import com.may.test.BaseTest;
 import org.junit.Test;
@@ -22,7 +23,7 @@ public class ISetDAOTest extends BaseTest{
 
     @Test
     public void testInsertRow() throws Exception{
-        Set set = this.createSet(77);
+        Set set = SwimTestUtil.createSet(77,1L);
         int i = iSetDAO.insertRow(set);
         assertTrue(i == 1);
         assertNotNull(set.getSetId());
@@ -31,8 +32,8 @@ public class ISetDAOTest extends BaseTest{
     @Test
     public void testInsertRows() throws Exception {
         ArrayList<Set> list = new ArrayList<>();
-        list.add(this.createSet(98));
-        list.add(this.createSet(99));
+        list.add(SwimTestUtil.createSet(98,1L));
+        list.add(SwimTestUtil.createSet(99,1L));
         int i = iSetDAO.insertRows(list);
 
         assertTrue(i == 2);
@@ -48,19 +49,19 @@ public class ISetDAOTest extends BaseTest{
     @Test
     public void testDeleteRowsBySessionId() throws Exception {
         ArrayList<Set> list = new ArrayList<>();
-        list.add(this.createSet(98));
-        list.add(this.createSet(99));
+        list.add(SwimTestUtil.createSet(98,1L));
+        list.add(SwimTestUtil.createSet(99,1L));
         iSetDAO.insertRows(list);
 
         int i = iSetDAO.deleteRowsBySessionId(1L);
 
-        assertTrue(i == 3);
+        assertTrue(i > 0);
     }
 
     @Test
     public void testUpdateRow() throws Exception {
         Integer setIndex = 99;
-        Set set = this.createSet(setIndex);
+        Set set = SwimTestUtil.createSet(setIndex,1L);
         set.setSetId(1L);
         int i = iSetDAO.updateRow(set);
 
@@ -79,8 +80,8 @@ public class ISetDAOTest extends BaseTest{
     @Test
     public void testGetRowsBySessionId() throws Exception {
         ArrayList<Set> list = new ArrayList<>();
-        list.add(this.createSet(99));
-        list.add(this.createSet(98));
+        list.add(SwimTestUtil.createSet(99,1L));
+        list.add(SwimTestUtil.createSet(98,1L));
         iSetDAO.insertRows(list);
 
         PageInfo pageInfo= new PageInfo();
@@ -93,33 +94,17 @@ public class ISetDAOTest extends BaseTest{
 
         pageInfo.setPageStart(2);
         newList = iSetDAO.getRowsBySessionId(1L,pageInfo);
-        assertTrue(newList.size() == 1);
+        assertTrue(newList.size() == 2);
 
         newList = iSetDAO.getRowsBySessionId(1L,null);
-        assertTrue(newList.size() == 3);
+        assertTrue(newList.size() == 4);
     }
 
     @Test
     public void testGetRowsByUserId(){
         ArrayList<Set> list = iSetDAO.getRowsByUserId("TEST_ID",null);
-        assertTrue(list.size() == 1);
+        assertTrue(list.size() == 2);
     }
 
-    private Set createSet(Integer index) {
-        Long sessionId = 1L;          //一套训练id
-        Integer strokeId = 1;         //泳姿id
-        Integer setLap = 4;            //往返数
-        Integer setStroke = 12;         //挥臂次数
-        Integer setDistance = 100;       //距离
-        Integer setCalorie = 55;         //消耗卡路里
-        Integer setEfficiency = 58;     //效率
-        Float setTrainingTime = 90f;  //训练时间（单位为秒）
-        Float setRestTime = 99f;      //休息时间（单位为秒）
-        Float setTime = 189f;          //总时间（单位为秒）
-        Integer setSpeed = 10;         //速度
-
-
-        return new Set(sessionId,strokeId,index,setLap,setStroke,setDistance,setCalorie,setEfficiency,setTrainingTime,setRestTime,setTime,setSpeed);
-    }
 
 }

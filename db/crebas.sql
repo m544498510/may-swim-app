@@ -139,4 +139,5 @@ INSERT INTO `t_stroke` VALUES ('4', 'backstroke', '仰泳');
 
 INSERT INTO `t_session` VALUES ('1','TEST_ID','2016-3-31','','25');
 
+INSERT INTO `t_set` VALUES ('2','1','1','0','4','10','100','89','55','182','80','262','10');
 INSERT INTO `t_set` VALUES ('1','1','1','1','4','10','100','89','55','182','80','262','10');

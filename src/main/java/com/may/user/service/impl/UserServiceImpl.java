@@ -16,7 +16,10 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+/**
+ * @author :    Mei XinLin
+ * @version :   1.0
+ */
 @Service("userService")
 @Transactional(rollbackFor=Exception.class)
 public class UserServiceImpl implements IUserService{
@@ -93,10 +96,10 @@ public class UserServiceImpl implements IUserService{
      * @param email 邮箱
      * @return 邮箱是否合法
      */
-    public boolean validateEmail(String email){
+    private boolean validateEmail(String email){
         boolean flag;
         try{
-            String check = "^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+            String check = "^([a-z0-9A-Z]+[-|_\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
             Pattern regex = Pattern.compile(check);
             Matcher matcher = regex.matcher(email);
             flag = matcher.matches();

@@ -3,6 +3,7 @@ package com.may.swim.model;
 import java.io.Serializable;
 
 /**
+ *  泳姿信息
  * @author :    Mei XinLin
  * @version :   1.0
  */

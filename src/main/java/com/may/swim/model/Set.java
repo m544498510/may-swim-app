@@ -1,22 +1,26 @@
 package com.may.swim.model;
 
 import java.io.Serializable;
-
+/**
+ * 一组训练信息实体类
+ * @author :    Mei XinLin
+ * @version :   1.0
+ */
 public class Set implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Long setId;               //id
-    private Long sessionId;          //一套训练id
+    private Long setId;                 //id
+    private Long sessionId;            //一套训练id
     private Integer strokeId;          //泳姿id
-    private Integer setIndex;          //分组序号（为0时，是total数据；大于0，是分组数据）
+    private Integer setIndex;          //分组序号（为0时，是当次一套训练统计总数据；大于0，是分组数据）
     private Integer setLap;            //往返数
-    private Integer setStrokeNum;         //挥臂次数
-    private Integer setDistance;       //距离
-    private Integer setCalorie;        //消耗卡路里
+    private Integer setStrokeNum;     //挥臂次数
+    private Integer setDistance;      //距离
+    private Integer setCalorie;       //消耗卡路里
     private Integer setEfficiency;    //效率
-    private Float setTrainingTime;  //训练时间（单位为秒）
-    private Float setRestTime;      //休息时间（单位为秒）
-    private Float setTime;          //总时间（单位为秒）
+    private Float setTrainingTime;    //训练时间（单位为秒）
+    private Float setRestTime;        //休息时间（单位为秒）
+    private Float setTime;            //总时间（单位为秒）
     private Integer setSpeed;         //速度
 
     public Set() {

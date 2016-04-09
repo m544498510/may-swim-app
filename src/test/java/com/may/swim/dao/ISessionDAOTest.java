@@ -1,14 +1,13 @@
 package com.may.swim.dao;
 
+import com.may.swim.SwimTestUtil;
 import com.may.swim.model.Session;
 import com.may.test.BaseTest;
-import org.apache.ibatis.jdbc.Null;
 import org.junit.Test;
 
 import javax.annotation.Resource;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import static org.junit.Assert.*;
 
@@ -22,7 +21,7 @@ public class ISessionDAOTest extends BaseTest{
 
     @Test
     public void testInsertRow() throws Exception {
-        Session session = this.createSession();
+        Session session = SwimTestUtil.createSession();
 
         int i = iSessionDAO.insertRow(session);
 
@@ -38,7 +37,7 @@ public class ISessionDAOTest extends BaseTest{
 
     @Test
     public void testUpdateRow() throws Exception {
-        Session session = this.createSession();
+        Session session = SwimTestUtil.createSession();
         session.setSessionId(1L);
 
         int i = iSessionDAO.updateRow(session);
@@ -61,8 +60,4 @@ public class ISessionDAOTest extends BaseTest{
         assertTrue(list.size() == 1);
     }
 
-    private Session createSession(){
-        Integer poolLength = 88;
-        return new Session("TEST_ID",new Date(),"TEST_DES",poolLength);
-    }
 }

@@ -3,17 +3,23 @@ package com.may.swim.model;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 一套训练信息实体类
+ * @author :    Mei XinLin
+ * @version :   1.0
+ */
 public class Session implements Serializable{
     private static final long serialVersionUID = 1L;
 
+    //id
     private Long sessionId;
-
+    //user id
     private String userId;
-
+    //训练日期
     private Date sessionDate;
-
+    //训练描述
     private String sessionDes;
-
+    //泳池长度
     private Integer poolLength;
 
     public Session() {
