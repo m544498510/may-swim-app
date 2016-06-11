@@ -7,3 +7,7 @@ target
 # git config files
 .git
 
+
+#front-end files
+node_modules
+
