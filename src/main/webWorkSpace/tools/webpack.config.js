@@ -258,4 +258,4 @@ const serverConfig = extend(true, {}, config, {
   devtool: 'source-map',
 });
 
-export default [clientConfig, serverConfig];
+export default [clientConfig];
