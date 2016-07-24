@@ -18,34 +18,34 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    @Resource(name="userService")
+    @Resource(name = "userService")
     private IUserService iUserService;
 
     @ResponseBody
-    @RequestMapping(value="/user",method= RequestMethod.GET)
-    public JSONObject signIn(HttpServletRequest request){
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public JSONObject signIn(HttpServletRequest request) {
         User user = null;
         String name = request.getParameter("userName");
         String password = request.getParameter("userPsd");
-        if(validateString(name) && validateString(password)){
-            user = iUserService.signIn(name,password);
+        if (validateString(name) && validateString(password)) {
+            user = iUserService.signIn(name, password);
         }
-        if(user != null){
-            request.getSession().setAttribute("user",user);
+        if (user != null) {
+            request.getSession().setAttribute("user", user);
             return HttpResultUtil.getSuccessResult(user);
-        }else{
+        } else {
             return HttpResultUtil.getFailResult(HttpResultCode.SING_UP_FAIL);
         }
     }
 
     @ResponseBody
-    @RequestMapping(value="/login",method= RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public JSONObject login(HttpServletRequest request) {
-        User user = iUserService.signIn("mxl","password");
+        User user = iUserService.signIn("mxl", "password");
         return null;
     }
 
-        private boolean validateString(String s){
+    private boolean validateString(String s) {
         return s != null && "null".equals(s) && "undefined".equals(s);
     }
 }

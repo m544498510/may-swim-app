@@ -8,10 +8,10 @@
 import gulp from 'gulp';
 import webpack from 'webpack-stream';
 
-import {webpackDevConf} from '../webpack.config';
+let webpackDevConf = require(process.cwd()+'/config/webpack.config');
 
 gulp.task('buildJs',()=>{
-  return gulp.src(['src/app/script/mangekyou.js', 'src/app/script/worker/worker.js'])
+  return gulp.src(webpackDevConf.entry)
     .pipe(webpack(webpackDevConf))
     .pipe(gulp.dest('./build'));
 });

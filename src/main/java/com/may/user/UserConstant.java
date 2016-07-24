@@ -7,4 +7,5 @@ package com.may.user;
 public class UserConstant {
 
     public static final int[] DEFAULT_ROLE = {1,2};
+
 }

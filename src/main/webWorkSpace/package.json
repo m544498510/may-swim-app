@@ -4,6 +4,9 @@
     "node": ">=5.0 <6",
     "npm": ">=3.3 <4"
   },
+  "scripts": {
+    "start": "babel-node server/server.js"
+  },
   "dependencies": {
     "babel-polyfill": "6.7.4",
     "babel-runtime": "6.6.1",
@@ -12,10 +15,11 @@
     "react": "15.0.1",
     "react-dom": "15.0.1",
     "react-redux": "^4.4.5",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
-    "babel": "^6.5.2",
+    "babel-cli": "^6.11.4",
     "babel-core": "^6.11.4",
     "babel-eslint": "^5.0.0-beta6",
     "babel-loader": "^6.2.1",
@@ -25,19 +29,26 @@
     "babel-preset-stage-0": "^6.5.0",
     "chalk": "^0.4.0",
     "dateformat": "^1.0.12",
+    "express": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.1",
     "gulp-cache": "^0.2.10",
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^1.1.1",
+    "gulp-express": "^0.3.5",
     "gulp-sass": "^2.1.1",
     "gulp-size": "^2.0.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
     "gulp-webpack-sourcemaps": "^0.3.0",
     "json-loader": "^0.5.4",
+    "redux-logger": "^2.6.1",
     "require-dir": "^0.3.0",
+    "rimraf": "^2.5.4",
     "run-sequence": "^1.1.5",
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.1",
     "webpack-stream": "^3.1.0"
   },
   "babel": {

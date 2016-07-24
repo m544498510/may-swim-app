@@ -8,7 +8,8 @@
 import gulp         from 'gulp';
 import babel        from 'gulp-babel';
 import runSequence  from 'run-sequence';
+import config       from '../config/config';
 
 gulp.task('default',()=>{
-  runSequence('clean','buildJs');
+  runSequence('buildJs');
 });

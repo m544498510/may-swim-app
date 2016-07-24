@@ -3,6 +3,7 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
+'use strict';
 
 //原始资源路径
 var srcPath = './src/';
@@ -11,7 +12,7 @@ var moduleSrcPath = srcPath + 'modules/';
 //预处理后资源保存路径
 var distPath = '../webapp/dist/';
 
-module.exports = {
+var path = {
     src: srcPath,
     moduleSrcPath: moduleSrcPath,
     dist: distPath,
@@ -35,8 +36,7 @@ module.exports = {
     imageDist: distPath + 'img/',
 
     nls: './src/nls/**/*.jsonData',
-    nlsDist: distPath + 'nls/',
-
-    oldSass: '../webapp/static/pages/css/'
-
+    nlsDist: distPath + 'nls/'
 };
+
+module.exports = path;
