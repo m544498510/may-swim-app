@@ -7,12 +7,13 @@
 import gulp   from 'gulp';
 import rimraf from 'rimraf';
 
-import {config} from '../../config/config.js';
+const config = require(process.cwd() + '/config');
 
 /***
  *  clean task
  */
 gulp.task('clean',(callback)=>{
+  rimraf(config.paths.buildPath,callback);
   rimraf(config.paths.dist, callback);
 });
 
