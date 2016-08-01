@@ -18,7 +18,7 @@ app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output
 app.use(webpackHotMiddleware(compiler));
 
 app.get("/", function(req, res) {
-  res.sendFile(path.resolve(__dirname+'/../src/shopping-cart/index.html'));
+  res.sendFile(path.resolve(__dirname+'/../src/mainApp/index.html'));
 });
 
 app.listen(port, function(error) {

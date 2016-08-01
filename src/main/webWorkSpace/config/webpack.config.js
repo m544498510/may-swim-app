@@ -11,12 +11,12 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './src/shopping-cart/index'
+    './src/mainApp/index'
   ],
   output: {
     path: path.join(__dirname, '/../dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/build/'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -25,7 +25,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.js?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel',
         query: {

@@ -7,36 +7,31 @@
 
 //原始资源路径
 var srcPath = './src/';
-//模块路径
-var moduleSrcPath = srcPath + 'modules/';
+
+var buildPath = './build/';
 //预处理后资源保存路径
 var distPath = '../webapp/dist/';
 
 var path = {
-    src: srcPath,
-    moduleSrcPath: moduleSrcPath,
-    dist: distPath,
-    rev: './tmp/revInfo/',
+  src: srcPath,
+  dist: distPath,
+  buildPath: buildPath,
+  rev: './build/revInfo/',
 
-    libDist: distPath + 'lib/',
-    libTmp: './tmp/libTmp/',
+  scriptSrc: srcPath + '**/*.js',
 
-    scriptSrc: moduleSrcPath + '**/*.js',
-    scriptDist: distPath + 'js/',
+  styleSrc: srcPath + '**/*.scss',
 
-    styleSrc: srcPath + 'sass/**/*.scss',
-    styleDist: distPath + 'css/',
+  htmlSrc: [
+    './src/modules/**/*.jsp'
+  ],
+  htmlBuild: buildPath + 'html/',
 
-    htmlSrc: [
-        './src/modules/**/*.jsp'
-    ],
-    htmlDist: distPath + 'html',
+  imageSrc: srcPath + '/common/img/**/*.*',
+  imageBuild: buildPath + 'img/',
 
-    imageSrc: srcPath + '/img/**/*.*',
-    imageDist: distPath + 'img/',
-
-    nls: './src/nls/**/*.jsonData',
-    nlsDist: distPath + 'nls/'
+  nls: './src/nls/**/*.jsonData',
+  nlsBuild: buildPath + 'nls/'
 };
 
 module.exports = path;
