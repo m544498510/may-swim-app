@@ -5,15 +5,18 @@
  */
 'use strict';
 
-import  {render} from 'react';
-import {Router, Route, hashHistory} from 'react-router';
+import  React from 'react';
+import {Route} from 'react-router';
 
+import OtherPageFrame from './otherPage/OtherPageFrame';
+import Login from './otherPage/login/Login';
+import Register from './otherPage/register/Register';
 
-export default (
-  <Router history={history}>
-    <Route path="/" component={App}>
-      <Route path="foo" component={Foo}/>
-      <Route path="bar" component={Bar}/>
+export default (store) => {
+  return (
+    <Route path="/" component={OtherPageFrame}>
+      <Route path="login" component={Login}/>
+      <Route path="register" component={Register}/>
     </Route>
-  </Router>
-);
+  )
+}
