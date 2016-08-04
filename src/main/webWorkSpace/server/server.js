@@ -19,6 +19,7 @@ app.use(webpackHotMiddleware(compiler));
 
 app.get("/", function(req, res) {
   res.sendFile(path.resolve(__dirname+'/../src/mainApp/index.html'));
+
 });
 
 app.listen(port, function(error) {

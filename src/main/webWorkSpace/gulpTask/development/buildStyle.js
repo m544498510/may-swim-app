@@ -6,7 +6,8 @@
 'use strict';
 
 import gulp from 'gulp';
-import $ from 'gulp-load-plugins';
+import util from 'gulp-load-plugins';
+const $ = util();
 
 const config = require(process.cwd() + '/config');
 
