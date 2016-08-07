@@ -13,7 +13,8 @@ export default class OtherPageFrame extends Component {
       <div>
         <h2>other page frame</h2>
         <ul role="nav">
-          <li><Link to="/login" >About</Link></li>
+          <li><Link to="/login234" >About
+          </Link></li>
           <li><Link to="/register" >Repos</Link></li>
           <li><Link to="/" onlyActiveOnIndex={false}>home</Link ></li>
         </ul>

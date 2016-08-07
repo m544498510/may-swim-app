@@ -7,7 +7,7 @@
 import gulp   from 'gulp';
 import rimraf from 'rimraf';
 
-const config = require(process.cwd() + '/config');
+const config = require(process.cwd() + '/config/index');
 
 /***
  *  clean task

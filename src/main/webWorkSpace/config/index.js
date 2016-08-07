@@ -7,14 +7,16 @@ var fs    = require('fs');
 var path  = require('../config/path.js');
 
 var config = {
+  staticPort: 9090,
   paths: path,
   apps: {
     appNames: []
   }
 };
 
-//请求各个app config，并组装到config对象里。
-var appConfigPath = process.cwd()  + '/config/appConfig';
+//请求各个app webpackConfig，并组装到config对象里。
+/*
+var appConfigPath = process.cwd()  + '/webpackConfig/appConfig';
 var files = fs.readdirSync(appConfigPath);
 files.forEach(function (file) {
   var appConfig = require(appConfigPath + '/' + file);
@@ -22,5 +24,6 @@ files.forEach(function (file) {
   config.apps.appNames.push(moduleName);
   config.apps[moduleName] = appConfig;
 });
+*/
 
 module.exports = config;
