@@ -1,0 +1,11 @@
+@import "../sass/common";
+
+html {
+  min-height: 520px;
+  height: 100%;
+}
+
+body {
+  @include main-background();
+  height: 100%;
+}

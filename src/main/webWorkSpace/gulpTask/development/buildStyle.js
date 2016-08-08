@@ -20,6 +20,9 @@ gulp.task('buildStyle', ()=> {
       outputStyle: 'compressed',
       precision: 10
     }))
+    .pipe($.rename({
+      dirname: "style"
+    }))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest(config.paths.buildPath))
     .pipe($.size({showFiles: true}))

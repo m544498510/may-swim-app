@@ -16,11 +16,14 @@ var path = {
   src: srcPath,
   dist: distPath,
   buildPath: buildPath,
+  assetPath:srcPath+'assets/',
   rev: './build/revInfo/',
 
   scriptSrc: srcPath + '**/*.js',
 
   styleSrc: srcPath + '**/*.scss',
+
+  assetsSrc: srcPath + 'assets/**/*.*',
 
   htmlSrc: [
     './src/modules/**/*.jsp'
