@@ -6,13 +6,13 @@
 'use strict';
 
 //原始资源路径
-var srcPath = './src/';
+const srcPath = './src/';
 
-var buildPath = './build/';
+const buildPath = './build/';
 //预处理后资源保存路径
-var distPath = '../webapp/dist/';
+const distPath = '../webapp/dist/';
 
-var path = {
+const path = {
   src: srcPath,
   dist: distPath,
   buildPath: buildPath,
@@ -37,4 +37,4 @@ var path = {
   nlsBuild: buildPath + 'nls/'
 };
 
-module.exports = path;
+export default path;

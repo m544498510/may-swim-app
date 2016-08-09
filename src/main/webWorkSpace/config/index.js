@@ -3,12 +3,15 @@
  *  @author: Mei XinLin
  */
 
-var fs    = require('fs');
-var path  = require('../config/path.js');
+import fs from 'fs';
 
-var config = {
+import path from './path';
+import lib from './libConfig'
+
+const config = {
   staticPort: 9090,
   paths: path,
+  lib: lib,
   apps: {
     appNames: []
   }
@@ -27,3 +30,4 @@ files.forEach(function (file) {
 */
 
 module.exports = config;
+export default config;

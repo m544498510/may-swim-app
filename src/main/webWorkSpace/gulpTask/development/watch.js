@@ -10,7 +10,7 @@ import $ from 'gulp-load-plugins';
 
 const config = require(process.cwd() + '/config');
 
-gulp.task('watch', ()=> {
+gulp.task('watch',['buildStyle'], ()=> {
   gulp.watch(config.paths.styleSrc,['buildStyle']);
 
 });

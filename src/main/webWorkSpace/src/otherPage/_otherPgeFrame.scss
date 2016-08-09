@@ -6,6 +6,13 @@ html {
 }
 
 body {
-  @include main-background();
+  @include main-background('blur-bg.jpg');
   height: 100%;
+}
+
+.main{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }

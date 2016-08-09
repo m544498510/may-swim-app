@@ -49,8 +49,8 @@
   background-image: url($images-root + $relativeUrl);
 }
 
-@mixin main-background() {
-  $mainBgUrl: $images-root + 'blur-bg.jpg';
+@mixin main-background($picture) {
+  $mainBgUrl: $images-root + $picture;
 
   &::before {
     content: '';
