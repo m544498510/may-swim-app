@@ -20,6 +20,9 @@ gulp.task('buildStyle', ()=> {
       outputStyle: 'compressed',
       precision: 10
     }))
+    .pipe($.autoprefixer({
+      browsers: ['>5%']
+    }))
     .pipe($.rename({
       dirname: "style"
     }))

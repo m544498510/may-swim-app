@@ -41,9 +41,6 @@
 @mixin bg-nr($relativeUrl) {
   background: url($images-root + $relativeUrl) no-repeat 0 0;
 }
-@mixin bg($relativeUrl) {
-  background: url($images-root + $relativeUrl);
-}
 
 @mixin bg-image($relativeUrl) {
   background-image: url($images-root + $relativeUrl);
@@ -68,50 +65,4 @@
 
 @mixin bg-translucent-dark($opacity) {
   background: rgba(0, 0, 0, $opacity);
-}
-
-@mixin placeholderStyle($color, $opacity) {
-  &::-webkit-input-placeholder {
-    color: $color;
-    opacity: $opacity;
-  }
-  &:-moz-placeholder {
-    /* Firefox 18- */
-    color: $color;
-    opacity: $opacity;
-  }
-  &::-moz-placeholder {
-    /* Firefox 19+ */
-    color: $color;
-    opacity: $opacity;
-  }
-  &:-ms-input-placeholder {
-    color: $color;
-    opacity: $opacity;
-  }
-}
-
-@mixin overrideColors($color) {
-  p,
-  h1,h2,h3,h4,h5,h6,
-  .pie-chart-item,
-  .panel-heading>.dropdown .dropdown-toggle,
-  .panel-title,
-  ol.blur span,
-  ul.blur,
-  .popular-app-cost,
-  .popular-app-info,
-  .panel-title>.small,
-  .panel-title>.small>a,
-  .panel-title>a,
-  .panel-title>small,
-  .panel-title>small>a,
-  .traffic-text span,
-  .form-group label,
-  .help-block{
-    color: $color;
-  }
-  .feed-message .message-time, .text-muted {
-    color: darken($color, 20);
-  }
 }
