@@ -29,6 +29,12 @@ export default ()=>{
     res.sendFile(path.resolve(__dirname+'/../src/mainApp/index.html'));
 
   });
+  app.get("/login", function(req, res) {
+    res.sendFile(path.resolve(__dirname+'/../build/html/login.html'));
+  });
+  app.get("/register", function(req, res) {
+    res.sendFile(path.resolve(__dirname+'/../build/html/register.html'));
+  });
 
   app.listen(port, function(error) {
     if (error) {

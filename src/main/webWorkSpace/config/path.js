@@ -25,10 +25,7 @@ const path = {
 
   assetsSrc: srcPath + 'assets/**/*.*',
 
-  htmlSrc: [
-    './src/modules/**/*.jsp'
-  ],
-  htmlBuild: buildPath + 'html/',
+  htmlSrc: srcPath + '**/*.html',
 
   imageSrc: srcPath + '/common/img/**/*.*',
   imageBuild: buildPath + 'img/',

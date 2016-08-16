@@ -42,6 +42,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-eslint": "^1.1.1",
     "gulp-express": "^0.3.5",
+    "gulp-include": "^2.3.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.1",
     "gulp-size": "^2.0.0",

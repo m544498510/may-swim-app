@@ -10,7 +10,8 @@ export default {
   'jquery': libFolder + 'jquery/dist/jquery.min.js',
   'bootstrap': [
     libFolder + 'bootstrap/dist/css/bootstrap.min.css',
-    libFolder + 'bootstrap/dist/css/bootstrap-theme.min.css'
+    libFolder + 'bootstrap/dist/css/bootstrap-theme.min.css',
+    libFolder + 'bootstrap/dist/js/bootstrap.min.js'
   ]
 
 
