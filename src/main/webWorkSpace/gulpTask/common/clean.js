@@ -14,6 +14,6 @@ const config = require(process.cwd() + '/config/index');
  */
 gulp.task('clean',(callback)=>{
   rimraf(config.paths.buildPath,callback);
-  rimraf(config.paths.dist, callback);
+  //rimraf(config.paths.dist, callback);
 });
 

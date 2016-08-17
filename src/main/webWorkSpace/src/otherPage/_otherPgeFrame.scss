@@ -8,10 +8,6 @@ html {
 body {
   @include main-background('blur-bg.jpg');
   height: 100%;
-  &::placeholder{
-    color: #7d7d7d;
-    opacity: 0.5;
-  }
 }
 
 .main{
