@@ -7,26 +7,36 @@
 
 import gulp from 'gulp';
 import util from 'gulp-load-plugins';
+const autoPreFixer = require('autoprefixer');
+const mqPacker = require('css-mqpacker');
+const cssNano = require('cssnano');
+
 const $ = util();
 
 const config = require(process.cwd() + '/config');
 
 gulp.task('buildStyle', ()=> {
+  let postcssOption = [
+    autoPreFixer({
+      browsers: ['>5%','last 2 versions'],
+      cascade: false
+    }),
+    mqPacker({
+      sort: true
+    }),
+    cssNano()
+  ];
+
   return gulp.src(config.paths.styleSrc)
-    .pipe($.sourcemaps.init({
-      loadMaps: true
-    }))
+    .pipe($.sourcemaps.init())
     .pipe($.sass({
       outputStyle: 'compressed',
       precision: 10
     }))
-    .pipe($.autoprefixer({
-      browsers: ['>5%']
-    }))
+    .pipe($.postcss(postcssOption))
     .pipe($.rename({
       dirname: "style"
     }))
-    .pipe($.sourcemaps.write())
+    .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest(config.paths.buildPath))
-    .pipe($.size({showFiles: true}))
 });
