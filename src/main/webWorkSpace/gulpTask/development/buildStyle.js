@@ -21,16 +21,18 @@ gulp.task('buildStyle', ()=> {
       browsers: ['>5%','last 2 versions'],
       cascade: false
     }),
+/*
     mqPacker({
       sort: true
     }),
     cssNano()
+*/
   ];
 
   return gulp.src(config.paths.styleSrc)
     .pipe($.sourcemaps.init())
     .pipe($.sass({
-      outputStyle: 'compressed',
+      //outputStyle: 'compact',
       precision: 10
     }))
     .pipe($.postcss(postcssOption))

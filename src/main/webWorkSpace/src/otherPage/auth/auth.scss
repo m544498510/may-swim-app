@@ -1,3 +1,36 @@
 @import "../../sass/common";
 @import "../layout";
 
+.auth-block{
+  width: 540px;
+  margin: 0 auto;
+  border-radius: 5px;
+  @include bg-translucent-dark(0.55);
+  color: #fff;
+  padding: 32px;
+
+  h1 {
+    font-weight: $font-light;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+}
+
+.auth-form{
+  .form-row{
+    margin-top: 20px;
+  }
+}
+
+//重写bootstrap class
+.form-control, .form-control:focus {
+  @include placeholderStyle($default-text, 0.9);
+  background-color: rgba(0, 0, 0, .4);
+  border-radius: 5px;
+  color: $default-text;
+
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  @include placeholderStyle($default-text, 0.6);
+}
+

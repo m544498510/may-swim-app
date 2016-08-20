@@ -1,16 +1,13 @@
-@import "../sass/common";
-
 html {
   min-height: 520px;
   height: 100%;
 }
 
 body {
-  @include main-background('blur-bg.jpg');
   height: 100%;
 }
 
-.main{
+.main-frame{
   display: flex;
   align-items: center;
   height: 100%;

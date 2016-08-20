@@ -9,6 +9,6 @@ import gulp from 'gulp';
 import staticServerInit from '../../server/staticServer';
 
 
-gulp.task('serve',['buildStyle','watch'],()=>{
+gulp.task('serve',()=>{
   staticServerInit();
 });
