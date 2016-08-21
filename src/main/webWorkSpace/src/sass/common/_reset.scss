@@ -92,3 +92,7 @@ hr {
 input, select {
   vertical-align:middle;
 }
+
+input:-webkit-autofill,input:focus{
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+}

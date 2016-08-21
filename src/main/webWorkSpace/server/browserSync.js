@@ -12,6 +12,7 @@ export default ()=>{
     proxy: {
       target: "http://localhost:9090",
       ws: true
-    }
+    },
+    port: 3030
   });
 };

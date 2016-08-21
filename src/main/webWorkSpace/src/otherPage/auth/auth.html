@@ -10,23 +10,25 @@
 <app class="main-frame">
   <div class="auth-block">
     <h1>登录</h1>
-    <div class="auth-form">
-      <div class="form-row">
-        <input type="email" class="form-input user-input form-control">
+    <form class="auth-form">
+      <div class="form-group">
+          <label></label>
+          <input type="text" class="form-input user-input form-control" placeholder="邮箱/用户名">
       </div>
-      <div class="form-row">
-        <input type="password" class="form-input psd-input form-control">
+      <div class="form-group">
+        <input type="password" class="form-input psd-input form-control" placeholder="密码">
       </div>
-      <div class="form-row">
+      <div class="form-group">
         <div class="may-checkbox auto-checkbox">
           <i></i>
           <span>自动登录</span>
-          <a href="" class="forget-psw"></a></div>
+        </div>
+        <a href="" class="forget-psw"></a>
       </div>
       <div class="form-row form-btn-row">
-        <button id="submit" class="submit-btn">登录</button>
+        <button id="submit" class="btn primary-btn submit-btn" style="width:100%">登录</button>
       </div>
-    </div>
+    </form>
   </div>
 </app>
 </body>
