@@ -7,8 +7,10 @@
 
 import gulp from 'gulp';
 import webpack from 'webpack-stream';
-var $ = require('gulp-load-plugins')();
-let webpackDevConf = require(process.cwd()+'/config/webpack.config');
+import util from 'gulp-load-plugins';
+
+const $ = util();
+const webpackDevConf = require(process.cwd()+'/config/webpack.config');
 
 gulp.task('buildJs',()=>{
   return gulp.src(webpackDevConf.entry)
