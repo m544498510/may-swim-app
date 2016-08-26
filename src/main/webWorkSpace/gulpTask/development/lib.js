@@ -6,19 +6,25 @@
 'use strict';
 
 import gulp from 'gulp';
+import util from 'gulp-load-plugins';
 import rename from 'gulp-rename';
-import size from 'gulp-size';
+
+const $ = util();
 
 const config = require(process.cwd()+'/config');
 const lib = config.lib;
 
 gulp.task('lib',()=>{
   for (var key in lib) {
-    gulp.src(lib[key])
-      .pipe(rename({
-        dirname: key
-      }))
-      .pipe(size())
+    let libConfig = lib[key];
+    console.log(libConfig.retainStruct);
+    gulp.src(libConfig.path)
+      .pipe($.if(
+        !libConfig.retainStruct,
+        rename({
+          dirname: key
+        })
+      ))
       .pipe(gulp.dest(config.paths.buildPath+'lib/'))
   }
   return true;
