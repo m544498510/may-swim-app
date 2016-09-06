@@ -18,6 +18,20 @@
     margin-bottom: 28px;
     text-align: center;
   }
+  .row-sign {
+    float:left;
+    width: 20px;
+    height: 20px;
+  }
+  .may-checkbox{
+    margin-left: 15px;
+  }
+  .submit-btn{
+    background: none;
+    border:1px solid $default-text;
+  }
+
+
 }
 
 //重写bootstrap class
@@ -26,10 +40,15 @@
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 5px;
   color: $default-text;
-
 }
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
   @include placeholderStyle(#ddd, 0.6);
   border: 1px solid $input-border;
+}
+.input-group-addon{
+  background: none;
+}
+.fa{
+  color: $default-icon-color;
 }
 

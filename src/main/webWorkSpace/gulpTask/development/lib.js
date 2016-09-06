@@ -17,15 +17,17 @@ const lib = config.lib;
 gulp.task('lib',()=>{
   for (var key in lib) {
     let libConfig = lib[key];
-    console.log(libConfig.retainStruct);
-    gulp.src(libConfig.path)
-      .pipe($.if(
-        !libConfig.retainStruct,
-        rename({
+
+    if(!libConfig.retainStruct){
+      gulp.src(libConfig.path)
+        .pipe(rename({
           dirname: key
-        })
-      ))
-      .pipe(gulp.dest(config.paths.buildPath+'lib/'))
+        }))
+        .pipe(gulp.dest(config.paths.buildPath+'lib/'));
+    }else{
+      gulp.src(libConfig.path)
+        .pipe(gulp.dest(config.paths.buildPath+'lib/'+ key + '/'));
+    }
   }
   return true;
 });

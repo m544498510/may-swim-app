@@ -23,7 +23,7 @@ gulp.task('default',()=>{
   var type = gutils.env.production ? 'production' : 'development';
 
   if (type == "development") {
-    runSequence('clean',['buildStyle','buildHtml','assets'],'complete');
+    runSequence('clean',['build:style','build:html','assets','lib'],'complete');
   } else if (type == "production") {
     runSequence(['clean','unitTest'], ['build:js--production', 'build:style--production', 'min:img','move:nls','move:lib'], 'build:html--production', 'complete');
   } else {

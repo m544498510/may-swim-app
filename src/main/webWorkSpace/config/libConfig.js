@@ -23,8 +23,14 @@ export default {
   'fontAwesome': {
     retainStruct: true,
     path: [
-      libFolder + 'font-awesome/css/font-awesome.min.css',
-      libFolder + 'font-awesome/fonts/*.*'
+      libFolder + 'font-awesome/**/font-awesome.min.css',
+      libFolder + 'font-awesome/**/fontawesome-webfont.eot',
+      libFolder + 'font-awesome/**/fontawesome-webfont.svg',
+      libFolder + 'font-awesome/**/fontawesome-webfont.ttf',
+      libFolder + 'font-awesome/**/fontawesome-webfont.woff',
+      libFolder + 'font-awesome/**/fontawesome-webfont.woff2',
+      libFolder + 'font-awesome/**/FontAwesome.otf'
+
     ]
   }
 

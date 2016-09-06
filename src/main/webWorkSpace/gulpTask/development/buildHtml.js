@@ -11,7 +11,7 @@ const $ = util();
 
 const config = require(process.cwd() + '/config');
 
-gulp.task('buildHtml', ()=> {
+gulp.task('build:html', ()=> {
   return gulp.src(config.paths.htmlSrc)
     .pipe($.include())
       .on('error',console.log)

@@ -15,7 +15,7 @@ const $ = util();
 
 const config = require(process.cwd() + '/config');
 
-gulp.task('buildStyle', ()=> {
+gulp.task('build:style', ()=> {
   let postcssOption = [
     autoPreFixer({
       browsers: ['>5%','last 2 versions'],

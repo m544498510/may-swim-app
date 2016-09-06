@@ -4,31 +4,43 @@
   <meta charset="UTF-8">
   <title>登录</title>
   <link rel="stylesheet" type="text/css" href="./build/lib/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./build/lib/fontAwesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="./build/style/auth.css">
 </head>
 <body>
 <app class="main-frame">
   <div class="auth-block">
-    <h1>登录</h1>
+    <h1>登录 Map's sit</h1>
     <form class="auth-form">
       <div class="form-group">
-          <label></label>
+        <div class="input-group">
+          <div class="input-group-addon">
+            <icon class="fa fa-user fa-lg"></icon>
+          </div>
           <input type="text" class="form-input user-input form-control" placeholder="邮箱/用户名">
+        </div>
       </div>
       <div class="form-group">
-        <input type="password" class="form-input psd-input form-control" placeholder="密码">
+        <div class="input-group">
+          <div class="input-group-addon">
+            <icon class="fa fa-lock fa-lg"></icon>
+          </div>
+          <input type="password" class="form-input psd-input form-control" placeholder="密码">
+        </div>
       </div>
       <div class="form-group">
         <div class="may-checkbox auto-checkbox">
-          <i></i>
-          <span>自动登录</span>
+          <icon class="fa fa-square-o"></icon>
+          <span class="may-checkbox-label">自动登录</span>
         </div>
-        <a href="" class="forget-psw"></a>
       </div>
       <div class="form-row form-btn-row">
         <button id="submit" class="btn primary-btn submit-btn" style="width:100%">登录</button>
       </div>
     </form>
+    <div class="sub-tool-box">
+
+    </div>
   </div>
 </app>
 </body>
