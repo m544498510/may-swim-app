@@ -26,14 +26,11 @@ export default ()=>{
   app.use('/build',express.static(__dirname + '/../build'));
 
   app.get("/", function(req, res) {
-    res.sendFile(path.resolve(__dirname+'/../src/mainApp/index.html'));
+    res.sendFile(path.resolve(__dirname+'/../build/html/userApp.html'));
 
   });
-  app.get("/login", function(req, res) {
-    res.sendFile(path.resolve(__dirname+'/../build/html/auth.html'));
-  });
-  app.get("/register", function(req, res) {
-    res.sendFile(path.resolve(__dirname+'/../build/html/register.html'));
+  app.get("/user", function(req, res) {
+    res.sendFile(path.resolve(__dirname+'/../build/html/userApp.html'));
   });
 
   app.listen(port, function(error) {
