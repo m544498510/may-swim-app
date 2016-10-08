@@ -13,8 +13,8 @@ const $ = util();
 const webpackDevConf = require(process.cwd()+'/config/webpack.config');
 
 gulp.task('build:js',()=>{
-  return gulp.src(webpackDevConf.entry)
+  return gulp.src(webpackDevConf.entry.userApp)
     .pipe($.size({showFiles:true}))
     .pipe(webpack(webpackDevConf))
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./build/js'));
 });

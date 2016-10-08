@@ -21,6 +21,7 @@
     "react-router": "^2.6.1",
     "react-router-redux": "^4.0.5",
     "redux": "^3.5.2",
+    "redux-devtools-extension": "^1.0.0",
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
@@ -57,7 +58,7 @@
     "gulp-uglify": "^1.5.1",
     "gulp-webpack-sourcemaps": "^0.3.0",
     "json-loader": "^0.5.4",
-    "redux-logger": "^2.6.1",
+    "react-hot-loader": "^3.0.0-beta.5",
     "require-dir": "^0.3.0",
     "rimraf": "^2.5.4",
     "run-sequence": "^1.1.5",
