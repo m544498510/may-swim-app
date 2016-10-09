@@ -13,7 +13,7 @@ export const getRoutes = getState => {
   return {
     path: paths.ROOT,
     component: App,
-    indexRoute: { onEnter: (nextState, replace) => replace(paths.SIGN_IN) },
+    indexRoute: {onEnter: (nextState, replace) => replace(paths.SIGN_IN)},
     childRoutes: [
       {
         path: paths.SIGN_IN,
@@ -23,8 +23,6 @@ export const getRoutes = getState => {
         path: paths.SIGN_UP,
         component: SignUp
       }
-  ]
-
+    ]
+  };
 };
-}
-;

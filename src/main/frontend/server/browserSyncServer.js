@@ -36,18 +36,8 @@ browserSync({
         publicPath: webpackConfig.output.publicPath,
 
         // pretty colored output
-        stats: {
-          cached: true,
-          cachedAssets: true,
-          chunks: true,
-          chunkModules: false,
-          colors: true,
-          hash: false,
-          reasons: true,
-          timings: true,
-          version: false
-        },
-        noInfo: true,
+        stats: { colors: true }
+
         // for other settings see
         // http://webpack.github.io/docs/webpack-dev-middleware.html
       }),

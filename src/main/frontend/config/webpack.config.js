@@ -85,7 +85,7 @@ if (ENV_DEVELOPMENT) {
   for(let key in config.entry){
     config.entry[key].unshift(
       'react-hot-loader/patch',
-      'webpack/hot/only-dev-server',
+      'webpack/hot/dev-server',
       'webpack-hot-middleware/client'
     )
   }

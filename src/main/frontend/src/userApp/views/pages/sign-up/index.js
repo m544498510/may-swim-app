@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 export function SignUp() {
   return (
-    <div className="g-row sign-in">
+    <div className="asdsign-in">
       sign up
     </div>
   );

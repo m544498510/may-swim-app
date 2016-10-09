@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 export function SignIn() {
   return (
     <div className="g-row sign-in">
-      sign in s
+      sign in asd
     </div>
   );
 }
