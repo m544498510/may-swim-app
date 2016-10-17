@@ -34,7 +34,7 @@ browserSync({
         // IMPORTANT: dev middleware can't access config, so we should
         // provide publicPath by ourselves
         publicPath: webpackConfig.output.publicPath,
-
+        noInfo: true,
         // pretty colored output
         stats: { colors: true }
 
