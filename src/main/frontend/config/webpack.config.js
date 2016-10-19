@@ -82,10 +82,10 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
 if (ENV_DEVELOPMENT) {
   config.devtool = 'cheap-module-source-map';
 
-  for(let key in config.entry){
+  for (let key in config.entry) {
     config.entry[key].unshift(
       'react-hot-loader/patch',
-      'webpack/hot/dev-server',
+     // 'webpack/hot/dev-server',
       'webpack-hot-middleware/client'
     )
   }

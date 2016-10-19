@@ -17,15 +17,21 @@ import Root from './views/root';
 const store = configureStore();
 const syncedHistory = syncHistoryWithStore(hashHistory, store);
 const rootElement = document.getElementById('root');
-render(
-  (<AppContainer>
-        <Root history={syncedHistory} store={store}/>
+
+const renderRoot = function(Root){
+  render(
+    (<AppContainer>
+      <Root history={syncedHistory} store={store}/>
     </AppContainer>),
-  rootElement
-);
+    rootElement
+  );
+};
+
+renderRoot(Root);
 
 if (module.hot) {
   module.hot.accept('./views/root', () => {
-    render(require('./views/root').default);
+    let Root = require('./views/root').default;
+    renderRoot(Root);
   });
 }
