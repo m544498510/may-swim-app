@@ -28,7 +28,7 @@ const bundler = webpack(webpackConfig);
 browserSync({
   server: {
     baseDir: path.resolve(__dirname,'../'),
-
+    index: 'build/html/userApp.html',
     middleware: [
       webpackDevMiddleware(bundler, {
         // IMPORTANT: dev middleware can't access config, so we should
