@@ -7,10 +7,13 @@
 import React,{Component,PropTypes} from 'react';
 import { Button, FormGroup, InputGroup,FormControl } from 'react-bootstrap';
 
-export default class SignInForm extends Component{
-  static propTypes = {
+import Checkbox from '../../../../widgets/checkbox';
 
+class SignInForm extends Component{
+  static propTypes = {
+    //signIn: PropTypes.func.isRequired
   };
+
 
   constructor(props,content){
     super(props,content);
@@ -19,10 +22,35 @@ export default class SignInForm extends Component{
       userName: '',
       password: '',
       isSavePsd: false
-    }
+    };
 
-
+    this.userNameChange = ::this.userNameChange;
+    this.psdChange = ::this.psdChange;
+    this.checkboxChange = ::this.checkboxChange;
+    this.signInEvent = ::this.signInEvent;
   }
+
+  userNameChange(event){
+    this.setState({'userName':event.target.value});
+  }
+
+  psdChange(event){
+    this.setState({'password':event.target.value});
+  }
+
+  checkboxChange(state){
+    this.setState({'isSavePsd':state});
+  }
+
+  signInEvent(event){
+    event.preventDefault();
+    const userName = this.state.userName.trim();
+    const password = this.state.password.trim();
+    const isSavePsd = this.state.isSavePsd;
+    console.log(this.state);
+    //this.props.signIn(userName,password,isSavePsd);
+  }
+  
 
   render() {
     return (
@@ -34,8 +62,11 @@ export default class SignInForm extends Component{
             </InputGroup.Addon>
             <FormControl
               type="text"
-              className="form-input user-input form-control"
-              placeholder="邮箱/用户名"/>
+              className="user-input"
+              placeholder="邮箱/用户名"
+              maxLength="64"
+              onChange={this.userNameChange}
+            />
           </InputGroup>
         </FormGroup>
         <FormGroup>
@@ -45,20 +76,30 @@ export default class SignInForm extends Component{
             </InputGroup.Addon>
             <FormControl
               type="password"
-              className="form-input psd-input form-control"
-              placeholder="密码"/>
+              className="psd-input"
+              placeholder="密码"
+              maxLength="64"
+              onChange={this.psdChange}
+            />
           </InputGroup>
         </FormGroup>
         <FormGroup >
-          <div className="may-checkbox auto-checkbox">
-            <icon className="fa fa-square-o" />
-            <div>自动登录</div>
-          </div>
+          <Checkbox
+            onChange={this.checkboxChange}
+            inForm="true"
+            labelTxt="自动登录"
+          />
         </FormGroup>
         <FormGroup className="form-row form-btn-row">
-          <Button id="submit" className="btn primary-btn submit-btn">登录</Button>
+          <Button
+            id="submit"
+            className="submit-btn"
+            onClick={this.signInEvent}
+          >登录</Button>
         </FormGroup>
       </form>
     );
   }
 }
+
+export default SignInForm;
