@@ -5,41 +5,60 @@
  */
 'use strict';
 import React,{Component,PropTypes} from 'react';
+import { Button, FormGroup, InputGroup,FormControl } from 'react-bootstrap';
 
-export class SignInForm extends Component{
+export default class SignInForm extends Component{
   static propTypes = {
 
   };
 
+  constructor(props,content){
+    super(props,content);
+
+    this.state = {
+      userName: '',
+      password: '',
+      isSavePsd: false
+    }
+
+
+  }
+
   render() {
     return (
-      <div className="auth-form">
-        <div className="form-group">
-          <div className="input-group">
-            <div className="input-group-addon">
-              <icon className="fa fa-user fa-lg"></icon>
-            </div>
-            <input type="text" className="form-input user-input form-control" placeholder="邮箱/用户名"/>
-          </div>
-        </div>
-        <div className="form-group">
-          <div className="input-group">
-            <div className="input-group-addon">
-              <icon className="fa fa-lock fa-lg"></icon>
-            </div>
-            <input type="password" className="form-input psd-input form-control" placeholder="密码"/>
-          </div>
-        </div>
-        <div className="form-group">
+      <form className="auth-form">
+        <FormGroup>
+          <InputGroup>
+            <InputGroup.Addon>
+              <icon className="fa fa-user fa-lg" />
+            </InputGroup.Addon>
+            <FormControl
+              type="text"
+              className="form-input user-input form-control"
+              placeholder="邮箱/用户名"/>
+          </InputGroup>
+        </FormGroup>
+        <FormGroup>
+          <InputGroup >
+            <InputGroup.Addon>
+              <icon className="fa fa-lock fa-lg" />
+            </InputGroup.Addon>
+            <FormControl
+              type="password"
+              className="form-input psd-input form-control"
+              placeholder="密码"/>
+          </InputGroup>
+        </FormGroup>
+        <FormGroup >
           <div className="may-checkbox auto-checkbox">
-            <icon className="fa fa-square-o"></icon>
+            <icon className="fa fa-square-o" />
             <div>自动登录</div>
           </div>
-        </div>
-        <div className="form-row form-btn-row">
-          <button id="submit" className="btn primary-btn submit-btn">登录</button>
-        </div>
-      </div>
+        </FormGroup>
+        <FormGroup className="form-row form-btn-row">
+          <Button id="submit" className="btn primary-btn submit-btn">登录</Button>
+        </FormGroup>
+      </form>
     );
   }
 }

@@ -147,6 +147,9 @@
 
 .fa {
   color: $default-icon-color;
+  &.fa-lg{
+    width: 16px;
+  }
 }
 
 

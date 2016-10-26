@@ -14,7 +14,7 @@ export function SignIn() {
     <div className="auth-block">
       <h1>登录 May's sit</h1>
       <SignInForm />
-      <div className="form-row form-link-box">
+      <div className="form-link-box">
         <a className="form-link getPsd-link">忘记密码?</a>
         <span className="form-separator">·</span>
         <Link to="/sign-up" className="form-link register-link">注册帐户</Link>
