@@ -1,0 +1,39 @@
+//overwrite bootstrap css
+.auth-block .btn{
+  &:active:hover,
+  &:active,
+  &:focus{
+    background: none;
+    outline: none;
+  }
+}
+
+.form-control, .form-control:focus {
+  @include placeholderStyle($default-text, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  color: $default-text;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  @include placeholderStyle($default-text, 0.6);
+  border: 1px solid $input-border;
+}
+
+.input-group-addon {
+  background: none;
+  border-color: $border-light;
+}
+
+.form-control {
+  border-color: $border-light;
+}
+
+//overwrite the font awesome css
+.fa {
+  color: $default-icon-color;
+  &.fa-lg{
+    width: 16px;
+  }
+}
+

@@ -80,7 +80,8 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
 //  DEVELOPMENT
 //-------------------------------------
 if (ENV_DEVELOPMENT) {
-  config.devtool = 'cheap-module-source-map';
+  config.debug = true;
+  config.devtool = 'source-map';
 
   for (let key in config.entry) {
     config.entry[key].unshift(
@@ -100,7 +101,7 @@ if (ENV_DEVELOPMENT) {
 //  PRODUCTION
 //-------------------------------------
 if (ENV_PRODUCTION) {
-  config.devtool = 'source-map';
+  //config.devtool = 'source-map';
 
   //config.entry.vendor = './src/vendor.js';
 

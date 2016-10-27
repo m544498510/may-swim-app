@@ -50,7 +50,7 @@ class SignInForm extends Component{
     console.log(this.state);
     //this.props.signIn(userName,password,isSavePsd);
   }
-  
+
 
   render() {
     return (
@@ -86,8 +86,8 @@ class SignInForm extends Component{
         <FormGroup >
           <Checkbox
             onChange={this.checkboxChange}
-            inForm="true"
             labelTxt="自动登录"
+            selected="true"
           />
         </FormGroup>
         <FormGroup className="form-row form-btn-row">
