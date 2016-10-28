@@ -1,23 +1,23 @@
-import {App} from './app';
-import {SignIn} from './pages/sign-in';
-import {SignUp} from './pages/sign-up';
+import App from './app';
+import SignIn from './pages/sign-in';
+import SignUp from './pages/sign-up';
 
 export const paths = {
   ROOT: '/',
-  SIGN_IN: '/sign-in',
+  SIGN_IN: '/',
   SIGN_UP: '/sign-up'
 };
 
 
-export const getRoutes = getState => {
+export const getRoutes = () => {
   return {
     path: paths.ROOT,
     component: App,
-    indexRoute: {onEnter: (nextState, replace) => replace(paths.SIGN_IN)},
     childRoutes: [
       {
-        path: paths.SIGN_IN,
-        component: SignIn
+        indexRoute: {
+          component: SignIn
+        }
       },
       {
         path: paths.SIGN_UP,

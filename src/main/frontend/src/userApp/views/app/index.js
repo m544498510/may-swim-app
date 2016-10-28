@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-export class App extends Component {
+export default class App extends Component {
   static contextTypes = {
     router: React.PropTypes.object.isRequired
   };
