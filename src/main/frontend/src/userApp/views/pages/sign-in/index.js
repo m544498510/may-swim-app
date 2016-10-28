@@ -4,16 +4,19 @@
  */
 'use strict';
 
-import React from "react";
+import React, {PropTypes} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router";
-import SignInForm from "../../components/signInForm";
+import SignInForm from "src/userApp/views/components/signInForm";
+import {authActions} from "src/userApp/core/auth";
 
-export function SignIn() {
+export function SignIn(a) {
   return (
     <div className="auth-block">
       <h1>登录 May's sit</h1>
-      <SignInForm />
+      <SignInForm
+        authenticate={a.authenticate}
+      />
       <div className="form-link-box">
         <a className="form-link getPsd-link">忘记密码?</a>
         <span className="form-separator">·</span>
@@ -33,3 +36,9 @@ export function SignIn() {
       </div>
     </div>)
 }
+
+SignIn.propTypes = {
+  authenticate: PropTypes.func.isRequired
+};
+export default connect(null, authActions)(SignIn);
+

@@ -4,24 +4,22 @@
  * @version :   1.0
  */
 'use strict';
-import React,{Component,PropTypes} from 'react';
-import { Button, FormGroup, InputGroup,FormControl } from 'react-bootstrap';
+import React, {Component, PropTypes} from "react";
+import {Button, FormGroup, InputGroup, FormControl} from "react-bootstrap";
+import Checkbox from "src/widgets/checkbox";
 
-import Checkbox from '../../../../widgets/checkbox';
-
-class SignInForm extends Component{
+class SignInForm extends Component {
   static propTypes = {
-    //signIn: PropTypes.func.isRequired
+    authenticate: PropTypes.func.isRequired
   };
 
-
-  constructor(props,content){
-    super(props,content);
+  constructor(props, content) {
+    super(props, content);
 
     this.state = {
       userName: '',
       password: '',
-      isSavePsd: false
+      autoSignIn: false
     };
 
     this.userNameChange = ::this.userNameChange;
@@ -30,25 +28,24 @@ class SignInForm extends Component{
     this.signInEvent = ::this.signInEvent;
   }
 
-  userNameChange(event){
-    this.setState({'userName':event.target.value});
+  userNameChange(event) {
+    this.setState({'userName': event.target.value});
   }
 
-  psdChange(event){
-    this.setState({'password':event.target.value});
+  psdChange(event) {
+    this.setState({'password': event.target.value});
   }
 
-  checkboxChange(state){
-    this.setState({'isSavePsd':state});
+  checkboxChange(state) {
+    this.setState({"autoSignIn": state});
   }
 
-  signInEvent(event){
+  signInEvent(event) {
     event.preventDefault();
     const userName = this.state.userName.trim();
     const password = this.state.password.trim();
-    const isSavePsd = this.state.isSavePsd;
-    console.log(this.state);
-    //this.props.signIn(userName,password,isSavePsd);
+    const autoSignIn = this.state.autoSignIn;
+    this.props.authenticate(userName, password, autoSignIn);
   }
 
 
@@ -58,7 +55,7 @@ class SignInForm extends Component{
         <FormGroup>
           <InputGroup>
             <InputGroup.Addon>
-              <icon className="fa fa-user fa-lg" />
+              <icon className="fa fa-user fa-lg"/>
             </InputGroup.Addon>
             <FormControl
               type="text"
@@ -72,7 +69,7 @@ class SignInForm extends Component{
         <FormGroup>
           <InputGroup >
             <InputGroup.Addon>
-              <icon className="fa fa-lock fa-lg" />
+              <icon className="fa fa-lock fa-lg"/>
             </InputGroup.Addon>
             <FormControl
               type="password"
