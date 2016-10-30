@@ -65,7 +65,8 @@ config.module = {
 if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
   config.entry = {
     mainApp: [basePath + '/src/mainApp/index.js'],
-    userApp: [basePath + '/src/userApp/index.js']
+    userApp: [basePath + '/src/userApp/index.js'],
+    userAppVendor: [basePath +'/src/userApp/vendor.js']
   };
 
   config.output = {
@@ -73,8 +74,10 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
     path: basePath + '/build/js/',
     publicPath: '/build/js/'
   };
+  config.plugins.push(
+    new webpack.optimize.CommonsChunkPlugin('userAppVendor.js',  ['userApp','userAppVendor'])
+  );
 }
-
 
 //=====================================
 //  DEVELOPMENT
