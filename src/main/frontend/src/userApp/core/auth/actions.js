@@ -5,22 +5,21 @@
  */
 'use strict';
 
-import {SIGN_IN_ERROR,SIGN_IN_SUCCESS} from './action-types';
+import {SIGN_IN} from './action-types';
 
 export function authenticate(userName,password,autoSignIn) {
-  //console.log(userName+' '+password+' '+autoSignIn);
-  return dispatch => {
-    dispatch(signInSuccess({
-      name: userName,
-      psd: password,
-      autoSignIn:autoSignIn
-    }));
-  }
-}
-
-export function signInSuccess(result){
+  const init = {
+    method: 'GET',
+    mode: 'cors',
+    cache: 'default'
+  };
   return {
-    type: SIGN_IN_SUCCESS,
-    payload: result
+    type:SIGN_IN,
+    payload:{
+      promise: fetch('/user/user',init),
+      userName,
+      password,
+      autoSignIn,
+    }
   }
 }

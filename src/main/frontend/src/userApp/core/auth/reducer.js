@@ -7,25 +7,32 @@
 
 import {Record} from 'immutable';
 
-import {SIGN_IN_SUCCESS,SIGN_IN_ERROR} from './action-types';
+import {SIGN_IN} from './action-types';
 
 const AuthState = new Record({
   authenticated: false,
-  name: '',
-  psd: '',
+  userName: '',
+  password: '',
   autoSignIn: false,
+  isFulfilled: false
 });
 
-export function authReducer(state = new AuthState(),{payload,type}){
-  switch (type){
-    case SIGN_IN_SUCCESS:
+export function authReducer(state = new AuthState(), {payload, type}) {
+  switch (type) {
+    case `${SIGN_IN}_PENDING`:
       return state.merge({
         authenticated: !!payload,
-        name: payload.name,
-        psd: payload.psd
+        userName: payload.userName,
+        password: payload.password,
+        autoSignIn: payload.autoSignIn
       });
       break;
-    case SIGN_IN_ERROR:
+    case `${SIGN_IN}_FULFILLED`:
+      return state.merge({
+        isFulfilled:true
+      });
+      break;
+    case `${SIGN_IN}_REJECTED`:
 
       break;
     default:

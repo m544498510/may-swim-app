@@ -5,12 +5,12 @@
 'use strict';
 
 import { applyMiddleware, compose, createStore } from 'redux';
-import thunk from 'redux-thunk';
+import promiseMiddleware from 'redux-promise-middleware';
 import reducers from './reducers';
 
 
 export default (initialState = {}) => {
-  let middleware = applyMiddleware(thunk);
+  let middleware = applyMiddleware(promiseMiddleware());
 
   if (process.env.NODE_ENV !== 'production') {
     // configure redux-devtools-extension

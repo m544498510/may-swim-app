@@ -1,5 +1,6 @@
 // Polyfills
 import 'babel-polyfill';
+import 'isomorphic-fetch';
 
 // React Redux
 import 'react';
@@ -9,6 +10,6 @@ import 'react-redux';
 import 'react-router';
 import 'react-router-redux';
 import 'redux';
-import 'redux-thunk';
+import 'redux-promise-middleware';
 
 import 'reselect';
