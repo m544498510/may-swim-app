@@ -23,9 +23,9 @@ gulp.task('default',()=>{
   var type = gutils.env.production ? 'production' : 'development';
 
   if (type == "development") {
-    runSequence('clean',['build:style','build:html','assets','lib'],'complete');
+    runSequence('clean',['build:style','build:html','assets','lib','build:js'],'dist','complete');
   } else if (type == "production") {
-    runSequence(['clean','unitTest'], ['build:js--production', 'build:style--production', 'min:img','move:nls','move:lib'], 'build:html--production', 'complete');
+    runSequence(['clean','unitTest'], ['build:js--production', 'build:style--production', 'min:img','move:nls','move:lib'], 'build:html--production','dist', 'complete');
   } else {
     gutils.log(gutils.colors.green('////////////////////////////////////'));
     gutils.log(gutils.colors.green('///                              ///'));

@@ -5,7 +5,8 @@
 'use strict';
 
 import gulp from 'gulp';
+import createBrowserSync from '../../server/browserSyncServer';
 
 gulp.task('serve',()=>{
-  require(process.cwd()+'/server/browserSyncServer.js');
+  createBrowserSync(false);
 });

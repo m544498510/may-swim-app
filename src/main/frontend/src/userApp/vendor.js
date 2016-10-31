@@ -11,5 +11,3 @@ import 'react-router';
 import 'react-router-redux';
 import 'redux';
 import 'redux-promise-middleware';
-
-import 'reselect';

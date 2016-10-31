@@ -6,6 +6,7 @@ import com.may.user.service.IUserService;
 import com.may.util.http.HttpResultCode;
 import com.may.util.http.HttpResultUtil;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,12 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
     @Resource(name = "userService")
     private IUserService iUserService;
+
+    @RequestMapping(value = "/userApp")
+    public ModelAndView userApp(){
+        ModelAndView mv = new ModelAndView("../dist/html/userApp.html");
+        return mv;
+    }
 
     @ResponseBody
     @RequestMapping(value = "/user", method = RequestMethod.GET)

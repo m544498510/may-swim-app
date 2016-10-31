@@ -17,6 +17,7 @@ export function authenticate(userName,password,autoSignIn) {
     type:SIGN_IN,
     payload:{
       promise: fetch('/user/user',init),
+      data: 'a',
       userName,
       password,
       autoSignIn,

@@ -22,13 +22,14 @@ import webpackConfig from '../config/webpack.config';
 
 const bundler = webpack(webpackConfig);
 
-/**
- * Run Browsersync and use middleware for Hot Module Replacement
- */
-browserSync({
-  server: {
-    baseDir: path.resolve(__dirname,'../'),
-    index: 'build/html/userApp.html',
+
+export default function createBrowserSync(isProxy){
+  let config = {
+    port: 3000,
+    files: [
+      path.resolve(__dirname,'../build/style/*.css'),
+      path.resolve(__dirname,'../build/html/*.html')
+    ],
     middleware: [
       webpackDevMiddleware(bundler, {
         // IMPORTANT: dev middleware can't access config, so we should
@@ -37,21 +38,40 @@ browserSync({
         noInfo: true,
         // pretty colored output
         stats: { colors: true }
-
-        // for other settings see
-        // http://webpack.github.io/docs/webpack-dev-middleware.html
       }),
 
       // bundler should be the same as above
       webpackHotMiddleware(bundler)
     ]
-  },
 
-  // no need to watch '*.js' here, webpack will take care of it for us,
-  // including full page reloads if HMR won't work
-  files: [
-    path.resolve(__dirname,'../build/style/*.css'),
-    path.resolve(__dirname,'../build/html/*.html')
-  ]
-});
+  };
+
+
+  if (isProxy){
+    config.proxy = {
+      target: 'http://localhost:9090',
+      ws: false
+    };
+    config.serveStatic =  [
+      {
+        route: '/dist',
+        dir:  path.resolve(__dirname,'../../webapp/dist'),
+      }
+    ];
+  }else{
+    config.server = {
+      baseDir: path.resolve(__dirname,'../'),
+      index: 'build/html/userApp.html',
+      routes: {
+        "/dist": path.resolve(__dirname,'../build'),
+      }
+    }
+  }
+
+
+  return browserSync(config);
+}
+
+
+
 
