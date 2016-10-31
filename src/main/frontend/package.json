@@ -35,7 +35,7 @@
     "babel-preset-node5": "^11.1.0",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.5.0",
-    "browser-sync": "^2.14.0",
+    "browser-sync": "^2.17.5",
     "chalk": "^0.4.0",
     "css-mqpacker": "^5.0.1",
     "cssnano": "^3.7.4",
