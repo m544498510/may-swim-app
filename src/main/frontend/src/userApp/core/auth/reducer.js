@@ -14,7 +14,8 @@ const AuthState = new Record({
   userName: '',
   password: '',
   autoSignIn: false,
-  isFulfilled: false
+  isFulfilled: false,
+  data:{}
 });
 
 export function authReducer(state = new AuthState(), {payload, type}) {
@@ -29,7 +30,8 @@ export function authReducer(state = new AuthState(), {payload, type}) {
       break;
     case `${SIGN_IN}_FULFILLED`:
       return state.merge({
-        isFulfilled:true
+        isFulfilled:true,
+        data:payload
       });
       break;
     case `${SIGN_IN}_REJECTED`:
