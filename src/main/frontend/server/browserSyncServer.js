@@ -55,7 +55,7 @@ export default function createBrowserSync(isProxy){
     config.serveStatic =  [
       {
         route: '/dist',
-        dir:  path.resolve(__dirname,'../../webapp/dist'),
+        dir:  path.resolve(__dirname,'../build'),
       }
     ];
   }else{
