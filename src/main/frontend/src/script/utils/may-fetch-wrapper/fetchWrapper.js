@@ -5,51 +5,40 @@
  */
 'use strict';
 
-import {GET, POST, PATCH, PUT, DELETE, HEAD, OPTIONS} from './fetch_types';
+import {GET, POST, PATCH, PUT, DELETE, HEAD, OPTIONS} from "./fetch_types";
 
 const defaultData = {
+  url: '',
   method: GET,
   dataType: 'json',
+  body:'',
+  mode: 'cors',
+  credentials: 'same-origin',
+  headers: {
+    Accept: 'application/json'
+  }
 };
 
 export default function fetchWrapper(setting = {}) {
-  let body,
-    url = setting.url;
-  const method = setting.method | GET;
-  const headers = new Headers();
+  const options = Object.assign({},defaultData,setting);
 
-  switch (method) {
+  switch (options.method) {
     case GET:
     case DELETE:
     case HEAD:
-      url += formatUrlData(setting.data);
+      options.url += '?' + objToQueryString(setting.data);
       break;
     case POST:
     case PATCH:
     case PUT:
     case OPTIONS:
-      body = formatObjData(setting.data);
+      options.body = formatPostData(setting.data);
       break;
   }
 
   if (!setting.data instanceof HTMLElement) {
-    headers.append('Accept', 'application/json');
-    headers.append('Content-Type', 'application/json');
+    options.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
   }
-
-  const options = {
-    method,
-    headers,
-    body
-  };
-
-  if(setting.mode){
-    options.mode = setting.mode;
-  }
-  if(setting.sendCookie){
-    options.credentials = 'include';
-  }
-
 
   const promise = fetch(url, options);
   handleResponseData(promise);
@@ -68,29 +57,38 @@ function handleResponseData(promise, dataType) {
       });
       break;
     case 'text':
-      promise.then(response =>{
+      promise.then(response => {
         return {
           response,
           data: response.text()
         };
       });
-          break;
+      break;
   }
 }
 
-function formatObjData(data = {}) {
+function formatPostData(data = {}) {
   if ((typeof data == 'object')
     && (data instanceof HTMLElement)) {
     return new FormData(data);
   } else {
-    return JSON.stringify(data);
+    return objToQueryString(data);
   }
 }
 
-function formatUrlData(jsonObj = {}) {
-  const arr = [];
-  for (let key in jsonObj) {
-    arr.push(key + '=' + jsonObj[key]);
-  }
-  return arr.join('&');
+function objToQueryString(obj = {}) {
+  return Object.keys(obj).map(function (key) {
+    var val = obj[key];
+    if (Array.isArray(val)) {
+      return arrayToQueryString(key, val);
+    }
+    return encodeURIComponent(key) + '=' + encodeURIComponent(val);
+  }).join('&');
+}
+
+function arrayToQueryString(key, arr = []) {
+  return arr.map(function (val) {
+    return encodeURIComponent(key) + '=' + encodeURIComponent(val);
+  }).join('&');
+
 }
