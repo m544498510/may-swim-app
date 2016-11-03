@@ -8,10 +8,8 @@
 import {GET, POST, PATCH, PUT, DELETE, HEAD, OPTIONS} from "./fetch_types";
 
 const defaultData = {
-  url: '',
   method: GET,
   dataType: 'json',
-  body:'',
   mode: 'cors',
   credentials: 'same-origin',
   headers: {
@@ -21,12 +19,12 @@ const defaultData = {
 
 export default function fetchWrapper(setting = {}) {
   const options = Object.assign({},defaultData,setting);
-
+  let url = setting.url || '';
   switch (options.method) {
     case GET:
     case DELETE:
     case HEAD:
-      options.url += '?' + objToQueryString(setting.data);
+      url += '?' + objToQueryString(setting.data);
       break;
     case POST:
     case PATCH:
@@ -40,8 +38,9 @@ export default function fetchWrapper(setting = {}) {
     options.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
   }
 
+  console.log(url,options);
   const promise = fetch(url, options);
-  handleResponseData(promise);
+  //handleResponseData(promise);
 
   return promise;
 }

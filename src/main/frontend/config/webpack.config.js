@@ -64,9 +64,9 @@ config.module = {
 //-------------------------------------
 if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
   config.entry = {
-    mainApp: [basePath + '/src/mainApp/index.js'],
-    userApp: [basePath + '/src/userApp/index.js'],
-    userAppVendor: [basePath +'/src/userApp/vendor.js']
+    mainApp: [basePath + '/src/script/mainApp/index.js'],
+    userApp: [basePath + '/src/script/userApp/index.js'],
+    userAppVendor: [basePath +'/src/script/userApp/vendor.js']
   };
 
   config.output = {

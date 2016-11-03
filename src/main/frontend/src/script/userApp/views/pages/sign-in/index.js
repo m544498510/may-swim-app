@@ -7,8 +7,8 @@
 import React, {PropTypes} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router";
-import SignInForm from "src/userApp/views/components/signInForm";
-import {authActions} from "src/userApp/core/auth";
+import SignInForm from "src/script/userApp/views/components/signInForm";
+import {authActions} from "src/script/userApp/core/auth";
 
 export function SignIn(a) {
   return (

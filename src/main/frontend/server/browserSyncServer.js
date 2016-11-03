@@ -72,6 +72,3 @@ export default function createBrowserSync(isProxy){
   return browserSync(config);
 }
 
-
-
-

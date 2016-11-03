@@ -18,9 +18,10 @@ const AuthState = new Record({
   data:{}
 });
 
-export function authReducer(state = new AuthState(), {payload, type}) {
-  switch (type) {
+export function authReducer(state = new AuthState(), action) {
+  switch (action.type) {
     case `${SIGN_IN}_PENDING`:
+      const payload = action.payload;
       return state.merge({
         authenticated: !!payload,
         userName: payload.userName,
@@ -31,11 +32,11 @@ export function authReducer(state = new AuthState(), {payload, type}) {
     case `${SIGN_IN}_FULFILLED`:
       return state.merge({
         isFulfilled:true,
-        data:payload
+        data:action.payload
       });
       break;
     case `${SIGN_IN}_REJECTED`:
-
+      return state;
       break;
     default:
       return state;

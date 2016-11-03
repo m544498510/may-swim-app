@@ -6,7 +6,7 @@
 'use strict';
 import React, {Component, PropTypes} from "react";
 import {Button, FormGroup, InputGroup, FormControl} from "react-bootstrap";
-import Checkbox from "src/widgets/checkbox";
+import Checkbox from "src/script/widgets/checkbox";
 
 class SignInForm extends Component {
   static propTypes = {

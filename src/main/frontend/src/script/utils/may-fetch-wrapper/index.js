@@ -43,4 +43,11 @@ export function del(data) {
   });
 }
 
-export default fetchWrapper;
+export default {
+  get,
+  post,
+  put,
+  patch,
+  del,
+  mFetch: fetchWrapper
+};

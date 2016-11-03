@@ -30,6 +30,17 @@ public class UserController {
     }
 
     @ResponseBody
+    @RequestMapping(value="/user",method = RequestMethod.PUT)
+    public JSONObject signUp(String userName,String userPsd,String email){
+        User user = iUserService.signUp(userName,userPsd,email);
+        if(user != null){
+            return HttpResultUtil.getSuccessResult(user);
+        }else{
+            return HttpResultUtil.getFailResult("1111");
+        }
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public JSONObject signIn(HttpServletRequest request) {
         User user = null;
@@ -54,6 +65,6 @@ public class UserController {
     }
 
     private boolean validateString(String s) {
-        return s != null && "null".equals(s) && "undefined".equals(s);
+        return s != null && !"null".equals(s) && !"undefined".equals(s);
     }
 }
