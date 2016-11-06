@@ -5,6 +5,9 @@
  */
 'use strict';
 
+import 'babel-polyfill';
+import 'isomorphic-fetch';
+
 import {AppContainer} from 'react-hot-loader';
 import React from 'react';
 import {render} from 'react-dom';
