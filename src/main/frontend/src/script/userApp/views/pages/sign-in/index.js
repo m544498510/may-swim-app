@@ -7,15 +7,15 @@
 import React, {PropTypes} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router";
-import SignInForm from "src/script/userApp/views/components/signInForm";
+import SignInForm from "../../components/signInForm";
 import {authActions} from "src/script/userApp/core/auth";
 
-export function SignIn(a) {
+export function SignIn({signIn}) {
   return (
     <div className="auth-block">
       <h1>登录 May's sit</h1>
       <SignInForm
-        authenticate={a.authenticate}
+        signIn={signIn}
       />
       <div className="form-link-box">
         <a className="form-link getPsd-link">忘记密码?</a>
@@ -38,7 +38,11 @@ export function SignIn(a) {
 }
 
 SignIn.propTypes = {
-  authenticate: PropTypes.func.isRequired
+  signIn: PropTypes.func.isRequired
 };
-export default connect(null, authActions)(SignIn);
+const mapDispatchToProps = {
+  signIn: authActions.signIn
+
+};
+export default connect(null, mapDispatchToProps)(SignIn);
 

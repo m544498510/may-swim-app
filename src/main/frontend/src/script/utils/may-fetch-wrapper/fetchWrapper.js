@@ -41,8 +41,8 @@ export default function fetchWrapper(setting = {}) {
 }
 
 function fetchPromise(url, options) {
-  let promise =
-    new Promise((resolve, reject) => {
+
+  return new Promise((resolve, reject) => {
       fetch(url, options)
         .then(response => {
           if (!checkFetchSuccess(response, options)) {
@@ -59,9 +59,6 @@ function fetchPromise(url, options) {
           reject(err);
         })
     });
-  promise = formatResponseBody(promise);
-
-  return promise;
 }
 
 function checkFetchSuccess(response, options) {

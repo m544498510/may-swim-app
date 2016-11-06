@@ -7,7 +7,7 @@
 
 import {Record} from 'immutable';
 
-import {SIGN_IN_FULFILLED,ERROR_INFO} from './action-types';
+import authActions from './actions';
 
 const AuthState = new Record({
   authenticated: false,
@@ -18,9 +18,9 @@ const AuthState = new Record({
   data:{}
 });
 
-export function authReducer(state = new AuthState(), action) {
+export default function(state = new AuthState(), action) {
   switch (action.type) {
-    case SIGN_IN_FULFILLED:
+    case authActions.SIGN_IN_FULFILLED:
       const payload = action.payload;
       return state.merge({
         authenticated: !!payload,
@@ -29,7 +29,7 @@ export function authReducer(state = new AuthState(), action) {
         autoSignIn: payload.autoSignIn
       });
       break;
-    case ERROR_INFO:
+    case authActions.ERROR_INFO:
       return state.merge({
         message: action.payload
       });

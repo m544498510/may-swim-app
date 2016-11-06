@@ -10,7 +10,7 @@ import Checkbox from "src/script/widgets/checkbox";
 
 class SignInForm extends Component {
   static propTypes = {
-    authenticate: PropTypes.func.isRequired
+    signIn: PropTypes.func.isRequired
   };
 
   constructor(props, content) {
@@ -45,7 +45,7 @@ class SignInForm extends Component {
     const userName = this.state.userName.trim();
     const password = this.state.password.trim();
     const autoSignIn = this.state.autoSignIn;
-    this.props.authenticate(userName, password, autoSignIn);
+    this.props.signIn(userName, password, autoSignIn);
   }
 
 

@@ -5,15 +5,20 @@
  */
 'use strict';
 
-import {SIGN_IN} from './action-types';
+const actions =  {
+  SIGN_IN: 'SIGN_IN',
+  SIGN_IN_FULFILLED: 'SIGN_IN_FULFILLED',
+  ERROR_INFO: 'ERROR_INFO',
 
-export function authenticate(userName, password, autoSignIn) {
-  return {
-    type: SIGN_IN,
-    payload: {
-        userName,
-        password,
-        autoSignIn
-    }
-  }
-}
+  signIn: (userName, password, autoSignIn) => ({
+    type: actions.SIGN_IN,
+    payload: {userName, password, autoSignIn}
+  }),
+  signInFulfilled: user => ({
+    type: actions.SIGN_IN_FULFILLED,
+    payload: user
+
+  })
+};
+export default actions;
+

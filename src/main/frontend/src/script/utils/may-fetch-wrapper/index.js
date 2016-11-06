@@ -8,6 +8,7 @@
 import {GET, POST, PUT, PATCH, DELETE} from "./fetch_types";
 import fetchWrapper from "./fetchWrapper";
 
+
 export function get(data) {
   return fetchWrapper({
     ...data,

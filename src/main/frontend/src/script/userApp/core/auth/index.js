@@ -5,8 +5,6 @@
  */
 'use strict';
 
-import * as authActions from './actions';
-
-export {authActions};
-export * from './action-types';
-export {authReducer} from './reducer';
+export authActions from './actions';
+export authSagas from './sagas';
+export authReducer from './reducer';
