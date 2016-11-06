@@ -13,14 +13,13 @@ import { Provider } from 'react-redux';
 import { Router, hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import logger from 'redux-logger';
-import thunk from 'redux-promise-middleware';
 import reducer from './reducers';
 
 import getRoutes from './router';
 
 const middleware = process.env.NODE_ENV === 'production' ?
-  [thunk()] :
-  [thunk(), logger()];
+  [] :
+  [logger()];
 
 const store = createStore(
   combineReducers({

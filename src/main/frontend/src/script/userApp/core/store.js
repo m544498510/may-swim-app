@@ -5,12 +5,14 @@
 'use strict';
 
 import { applyMiddleware, compose, createStore } from 'redux';
-import promiseMiddleware from 'redux-promise-middleware';
+import createSagaMiddleware  from 'redux-saga';
 import reducers from './reducers';
+import sagas from '../sagas';
 
 
 export default (initialState = {}) => {
-  let middleware = applyMiddleware(promiseMiddleware());
+  const sagaMiddleware = createSagaMiddleware();
+  let middleware = applyMiddleware(sagaMiddleware);
 
   if (process.env.NODE_ENV !== 'production') {
     // configure redux-devtools-extension
@@ -23,10 +25,15 @@ export default (initialState = {}) => {
 
   const store = createStore(reducers, initialState, middleware);
 
+  sagaMiddleware.run(sagas);
+
   if (module.hot) {
     module.hot.accept('./reducers', () => {
       store.replaceReducer(require('./reducers').default);
     });
+    module.hot.accept('../sagas',() => {
+      sagaMiddleware.run(require('../sagas').default);
+    })
   }
 
   return store;

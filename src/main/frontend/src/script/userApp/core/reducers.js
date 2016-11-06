@@ -11,4 +11,5 @@ import {authReducer} from "./auth/reducer";
 export default combineReducers({
   routing: routerReducer,
   auth: authReducer
+
 });

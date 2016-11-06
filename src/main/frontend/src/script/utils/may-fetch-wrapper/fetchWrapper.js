@@ -38,9 +38,8 @@ export default function fetchWrapper(setting = {}) {
     options.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
   }
 
-  console.log(url,options);
   const promise = fetch(url, options);
-  //handleResponseData(promise);
+  handleResponseData(promise);
 
   return promise;
 }
