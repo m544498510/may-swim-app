@@ -18,7 +18,7 @@ const defaultData = {
 };
 
 export default function fetchWrapper(setting = {}) {
-  const options = Object.assign({},defaultData,setting);
+  const options = Object.assign({}, defaultData, setting);
   let url = setting.url || '';
   switch (options.method) {
     case GET:
@@ -37,33 +37,67 @@ export default function fetchWrapper(setting = {}) {
   if (!setting.data instanceof HTMLElement) {
     options.headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
   }
+  return fetchPromise(url, options);
+}
 
-  const promise = fetch(url, options);
-  handleResponseData(promise);
+function fetchPromise(url, options) {
+  let promise =
+    new Promise((resolve, reject) => {
+      fetch(url, options)
+        .then(response => {
+          if (!checkFetchSuccess(response, options)) {
+            reject(response);
+          }
+        })
+        .then(response => {
+          return formatResponseBody(response);
+        })
+        .then(data => {
+          resolve(data);
+        })
+        .catch(err => {
+          reject(err);
+        })
+    });
+  promise = formatResponseBody(promise);
 
   return promise;
 }
 
-function handleResponseData(promise, dataType) {
-  switch (dataType) {
-    case 'json':
-      promise.then(response => {
-        return {
-          response,
-          data: response.json()
-        };
-      });
-      break;
-    case 'text':
-      promise.then(response => {
-        return {
-          response,
-          data: response.text()
-        };
-      });
-      break;
+function checkFetchSuccess(response, options) {
+  const method = options.method;
+  const status = response.status;
+
+  if (status == 202) {
+    return true;
+  } else if (status < 200 && status > 299) {
+    return false;
+  } else {
+    switch (method) {
+      case GET:
+        return status == 200;
+      case PUT:
+      case POST:
+      case PATCH:
+        return status == 201;
+      case DELETE:
+        return status == 204;
+      default:
+        return false;
+    }
   }
 }
+
+function formatResponseBody(response) {
+  let contentType = response.headers.get('content-type');
+  contentType = contentType ? contentType : '';
+  if (contentType.indexOf('json')>-1) {
+    return response.json();
+  } else if (contentType.indexOf('text')>-1) {
+    return response.text();
+  }
+}
+
 
 function formatPostData(data = {}) {
   if ((typeof data == 'object')
