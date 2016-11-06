@@ -66,16 +66,16 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
   config.entry = {
     mainApp: [basePath + '/src/script/mainApp/index.js'],
     userApp: [basePath + '/src/script/userApp/index.js'],
-    userAppVendor: [basePath +'/src/script/userApp/vendor.js']
+    vendor: [basePath +'/src/script/vendor.js']
   };
 
   config.output = {
     filename: '[name]_bundle.js',
     path: basePath + '/build/js/',
-    publicPath: '/build/js/'
+    publicPath: '/dist/js/'
   };
   config.plugins.push(
-    new webpack.optimize.CommonsChunkPlugin('userAppVendor.js',  ['userApp','userAppVendor'])
+    new webpack.optimize.CommonsChunkPlugin('userAppVendor.js',  ['userApp','vendor'])
   );
 }
 
