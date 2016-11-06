@@ -1,23 +1,38 @@
 package com.may.util.http;
 
-import com.alibaba.fastjson.JSONObject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-/**
- * Created by May on 2016/3/28.
- */
 public class HttpResultUtil {
 
-    public static JSONObject getSuccessResult(Object o){
-        JSONObject jo = new JSONObject();
-        jo.put("code",200);
-        jo.put("result",o);
-        return jo;
-    }
+    private static final String GET = "GET";
+    private static final String POST = "POST";
+    private static final String PUT = "PUT";
+    private static final String PATCH = "PATCH";
+    private static final String DELETE = "DELETE";
 
-    public static JSONObject getFailResult(String code){
-        JSONObject jo = new JSONObject();
-        jo.put("code",code);
-        return jo;
-    }
+    private static final String HEAD = "HEAD";
+    private static final String OPTIONS = "OPTIONS";
 
+
+    public static void success(HttpServletRequest request, HttpServletResponse response, boolean isAsync) {
+        if (isAsync) {
+            response.setStatus(202);
+        } else {
+            String method = request.getMethod();
+            switch (method) {
+                case GET:
+                    response.setStatus(200);
+                    break;
+                case POST:
+                case PUT:
+                case PATCH:
+                    response.setStatus(201);
+                    break;
+                case DELETE:
+                    response.setStatus(204);
+                    break;
+            }
+        }
+    }
 }
