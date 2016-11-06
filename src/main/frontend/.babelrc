@@ -7,12 +7,20 @@
   "env": {
     "development": {
       "plugins": [
-        "react-hot-loader/babel"
+        "react-hot-loader/babel",
+        ["transform-runtime", {
+          "polyfill": false,
+          "regenerator": true
+        }]
       ]
     },
     "production": {
       "presets": [
-        "react-optimize"
+        "react-optimize",
+        ["transform-runtime", {
+          "polyfill": false,
+          "regenerator": true
+        }]
       ]
     }
   }
