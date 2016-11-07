@@ -3,7 +3,11 @@ package com.may.util.http;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HttpResultUtil {
+public class HttpStatusCodeUtil {
+    public static final int UNAUTHORIZED = 401;
+    public static final int FORBIDDEN = 403;
+    public static final int NOT_FOUND = 404;
+
 
     private static final String GET = "GET";
     private static final String POST = "POST";

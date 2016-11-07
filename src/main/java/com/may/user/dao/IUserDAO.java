@@ -6,6 +6,15 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IUserDAO {
+
+    /***
+     * 通过userId和password查询用户，可能返回null
+     * @param userId: 用户id
+     * @param userPsd: 密码（密文）
+     * @return User对象 或者 null
+     */
+    User getUserByIdAndPsd(@Param("userId")String userId,@Param("userPsd")String userPsd);
+
     /***
      * 通过userName和password查询用户，可能返回null
      * @param userName: 用户名

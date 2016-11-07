@@ -7,6 +7,13 @@ import com.may.user.model.User;
  * @version :   1.0
  */
 public interface IUserService {
+    /***
+     * 使用user id 和 token 获取user
+     * @param userId: user id
+     * @param token: 验证令牌
+     * @return User
+     */
+    User getUserByIdAndToken(String userId, String token);
 
     /***
      * 登录验证

@@ -17,7 +17,7 @@
 	<aop:aspectj-autoproxy/>
 
 	<!-- 自动搜索@Controller标注的类 -->
-	<context:component-scan base-package="com.may.*.controller"></context:component-scan>
+	<context:component-scan base-package="com.may.*.controller" />
 	
 	<!--通知spring使用cglib而不是jdk的来生成代理方法 AOP可以拦截到Controller-->  
 	<aop:aspectj-autoproxy proxy-target-class="true" />
@@ -60,7 +60,8 @@
 	    <!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
 	    <property name="mediaTypes">
 	        <map>
-	            <entry key="xml" value="application/xml" />
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="application/xml" />
 	        </map>
 	    </property>
 	    <!-- 用于开启 /userinfo/123?format=json 的支持 -->
@@ -84,16 +85,27 @@
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/" />
-		<property name="suffix" value=""></property>
+		<property name="suffix" value=""/>
 	</bean>
 	
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource"
 		p:basename="i18n/messages" />
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
-        <property name="defaultEncoding" value="utf-8"></property>   
-        <property name="maxUploadSize" value="1073741824"></property>  <!--最大支持1G的文件上传  1073741824-->
-        <property name="maxInMemorySize" value="1024"></property>
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/dist/**" />
+			<mvc:exclude-mapping path="/session" />
+			<bean class="com.may.frame.interceptor.SessionInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8"/>
+		<property name="maxUploadSize" value="1073741824"/>  <!--最大支持1G的文件上传  1073741824-->
+		<property name="maxInMemorySize" value="1024"/>
         <property name="resolveLazily" value="true"/> 
    </bean>
 </beans>

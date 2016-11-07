@@ -11,6 +11,14 @@
         <result property="userCreateTime" column="user_create_time"/>
     </resultMap>
 
+    <!-- 根据 userId 和 password 查询 user -->
+    <select id="getUserByIdAndPsd" resultType="User" resultMap="userResultMap">
+        <![CDATA[
+            SELECT * FROM t_user
+                WHERE user_id = #{userId} AND user_psd = #{userPsd}
+        ]]>
+    </select>
+
     <!-- 根据 userName 和 password 查询 user -->
     <select id="getUserByNameAndPsd" resultType="User" resultMap="userResultMap">
         <![CDATA[

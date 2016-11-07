@@ -29,6 +29,16 @@ public class UserServiceImpl implements IUserService{
     private IUserToRoleDAO iUserToRoleDAO;
 
 
+    /***
+     * 目前token使用密码字段（密文）
+     */
+    @Override
+    public User getUserByIdAndToken(String userId, String token) {
+        User user = iUserDAO.getUserByIdAndPsd(userId,token);
+        this.setUserPerms(user);
+        return user;
+    }
+
     @Override
     public User signIn(String userName, String password) {
         User user = iUserDAO.getUserByNameAndPsd(userName,password);
