@@ -97,6 +97,7 @@
 			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/dist/**" />
 			<mvc:exclude-mapping path="/session" />
+			<mvc:exclude-mapping path="/user/userApp" />
 			<bean class="com.may.frame.interceptor.SessionInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

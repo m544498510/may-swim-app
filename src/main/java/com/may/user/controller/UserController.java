@@ -3,7 +3,7 @@ package com.may.user.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.may.user.model.User;
 import com.may.user.service.IUserService;
-import com.may.util.http.HttpResultCode;
+import com.may.util.http.HttpStatusCodeUtil;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -14,6 +14,8 @@ gulp.task('watch',['build:style','build:html','assets'], ()=> {
   gulp.watch(config.paths.styleSrc,['build:style']);
   gulp.watch(config.paths.htmlSrc,['build:html']);
   gulp.watch(config.paths.assetPath+'**/*.*',['assets']);
+/*
   gulp.watch(config.paths.scriptSrc,['build:js']);
+*/
 
 });

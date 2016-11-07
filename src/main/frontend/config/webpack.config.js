@@ -71,7 +71,7 @@ if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
 
   config.output = {
     filename: '[name]_bundle.js',
-    path: basePath + '/build/js/',
+    path: basePath + '/dist/js/',
     publicPath: '/dist/js/'
   };
   config.plugins.push(

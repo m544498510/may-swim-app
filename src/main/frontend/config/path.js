@@ -8,7 +8,7 @@
 //原始资源路径
 const srcPath = './src/';
 
-const buildPath = './build/';
+const buildPath = './dist/';
 //预处理后资源保存路径
 const distPath = '../webapp/dist/';
 
@@ -17,7 +17,7 @@ const path = {
   dist: distPath,
   buildPath: buildPath,
   assetPath:srcPath+'assets/',
-  rev: './build/revInfo/',
+  rev: './dist/revInfo/',
 
   scriptSrc: srcPath + '**/*.js',
 

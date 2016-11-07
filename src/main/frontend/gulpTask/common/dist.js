@@ -9,9 +9,10 @@ import gulp from 'gulp';
 import size from 'gulp-size';
 
 const basePath = process.cwd();
+const config = require(process.cwd() + '/config');
 
 gulp.task('dist',function(){
-  return gulp.src(basePath+'/build/**/*.*')
+  return gulp.src(config.paths.buildPath+'**/*.*')
     .pipe(size())
-    .pipe(gulp.dest(basePath+'/../webapp/dist'))
+    .pipe(gulp.dest(config.paths.dist))
 });

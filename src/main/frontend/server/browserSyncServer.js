@@ -55,7 +55,7 @@ export default function createBrowserSync(isProxy){
     config.serveStatic =  [
       {
         route: '/dist',
-        dir:  path.resolve(__dirname,'../build'),
+        dir:  path.resolve(__dirname,'../dist'),
       }
     ];
   }else{
@@ -63,7 +63,7 @@ export default function createBrowserSync(isProxy){
       baseDir: path.resolve(__dirname,'../'),
       index: 'build/html/userApp.html',
       routes: {
-        "/dist": path.resolve(__dirname,'../build'),
+        "/dist": path.resolve(__dirname,'../dist'),
       }
     }
   }
