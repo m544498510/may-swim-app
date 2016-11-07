@@ -8,3 +8,4 @@
 export authActions from './actions';
 export authSagas from './sagas';
 export authReducer from './reducer';
+export * from './selectors';

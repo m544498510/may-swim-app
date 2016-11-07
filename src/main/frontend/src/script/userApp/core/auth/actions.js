@@ -8,7 +8,7 @@
 const actions =  {
   SIGN_IN: 'SIGN_IN',
   SIGN_IN_FULFILLED: 'SIGN_IN_FULFILLED',
-  ERROR_INFO: 'ERROR_INFO',
+  SIGN_IN_REJECTED: 'SIGN_IN_REJECTED',
 
   signIn: (userName, password, autoSignIn) => ({
     type: actions.SIGN_IN,
@@ -18,6 +18,10 @@ const actions =  {
     type: actions.SIGN_IN_FULFILLED,
     payload: user
 
+  }),
+  signInRejected: httpStaus => ({
+    type: actions.SIGN_IN_REJECTED,
+    payload: httpStaus
   })
 };
 export default actions;

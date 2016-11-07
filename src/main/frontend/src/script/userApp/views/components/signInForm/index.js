@@ -10,7 +10,8 @@ import Checkbox from "src/script/widgets/checkbox";
 
 class SignInForm extends Component {
   static propTypes = {
-    signIn: PropTypes.func.isRequired
+    signIn: PropTypes.func.isRequired,
+    signInRejected: PropTypes.bool.isRequired
   };
 
   constructor(props, content) {
@@ -19,7 +20,7 @@ class SignInForm extends Component {
     this.state = {
       userName: '',
       password: '',
-      autoSignIn: false
+      autoSignIn: true
     };
 
     this.userNameChange = ::this.userNameChange;
@@ -45,11 +46,26 @@ class SignInForm extends Component {
     const userName = this.state.userName.trim();
     const password = this.state.password.trim();
     const autoSignIn = this.state.autoSignIn;
-    this.props.signIn(userName, password, autoSignIn);
+    if(userName == ''){
+      this.refs.userNameInput.focus();
+    }else if(password == ''){
+      this.refs.psdInput.focus();
+    }else{
+      this.props.signIn(userName, password, autoSignIn);
+    }
   }
 
 
   render() {
+    let signInFailInfo = null;
+    if (this.props.signInRejected) {
+      signInFailInfo =
+        (<span className="warning_info">
+          <i className="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          你输入的密码和账户名不匹配
+        </span>)
+    }
+
     return (
       <form className="auth-form">
         <FormGroup>
@@ -57,11 +73,13 @@ class SignInForm extends Component {
             <InputGroup.Addon>
               <icon className="fa fa-user fa-lg"/>
             </InputGroup.Addon>
-            <FormControl
+            <input
               type="text"
-              className="user-input"
+              className="user-input form-control"
               placeholder="邮箱/用户名"
               maxLength="64"
+              autocomplete="off"
+              ref="userNameInput"
               onChange={this.userNameChange}
             />
           </InputGroup>
@@ -71,16 +89,19 @@ class SignInForm extends Component {
             <InputGroup.Addon>
               <icon className="fa fa-lock fa-lg"/>
             </InputGroup.Addon>
-            <FormControl
+            <input
               type="password"
-              className="psd-input"
+              className="psd-input form-control"
               placeholder="密码"
               maxLength="64"
+              autocomplete="off"
+              ref="psdInput"
               onChange={this.psdChange}
             />
           </InputGroup>
         </FormGroup>
         <FormGroup >
+          {signInFailInfo}
           <Checkbox
             onChange={this.checkboxChange}
             labelTxt="自动登录"

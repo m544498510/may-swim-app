@@ -10,28 +10,20 @@ import {Record} from 'immutable';
 import authActions from './actions';
 
 const AuthState = new Record({
-  authenticated: false,
-  userName: '',
-  password: '',
-  autoSignIn: false,
-  isFulfilled: false,
-  data:{}
+  signInFulfilled:false,
+  signInRejected:false
 });
 
-export default function(state = new AuthState(), action) {
-  switch (action.type) {
+export default function(state = new AuthState(), {type,payload}) {
+  switch (type) {
     case authActions.SIGN_IN_FULFILLED:
-      const payload = action.payload;
       return state.merge({
-        authenticated: !!payload,
-        userName: payload.userName,
-        password: payload.password,
-        autoSignIn: payload.autoSignIn
+        signInFulfilled: true
       });
       break;
-    case authActions.ERROR_INFO:
+    case authActions.SIGN_IN_REJECTED:
       return state.merge({
-        message: action.payload
+        signInRejected: true
       });
     default:
       return state;

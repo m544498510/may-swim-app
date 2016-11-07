@@ -18,18 +18,14 @@ function* signInWorker({payload}) {
       url: '/session',
       data: {
         userName: payload.userName,
-        userPsd: payload.userPsd
+        userPsd: payload.password,
+        autoSignIn: payload.autoSignIn
       }
     });
     yield put(authActions.signInFulfilled(user));
   } catch (e) {
-    yield put({
-      type: authActions.ERROR_INFO,
-      payload: '登录失败'
-    })
+    yield put(authActions.signInRejected(e.status));
   }
-
-
 }
 
 function* signInWatcher() {

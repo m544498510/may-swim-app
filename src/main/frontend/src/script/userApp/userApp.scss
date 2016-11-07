@@ -25,6 +25,7 @@
     height: 20px;
   }
   .may-checkbox {
+    width: 100px;
     margin-left: 15px;
     font-size: 12px;
     line-height: 14px;
@@ -60,6 +61,15 @@
     color: $default-text;
     &:hover {
       color: $default-text;
+    }
+  }
+  .warning_info{
+    float:right;
+    color: $danger;
+    font-size: 12px;
+    .fa{
+      color: $danger;
+      margin-right: 5px;
     }
   }
 
