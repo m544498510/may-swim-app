@@ -44,6 +44,7 @@ public class SessionInterceptor implements HandlerInterceptor {
     }
 
     private User signInWithCookie(Cookie cookie){
+        if(cookie == null) return null;
         String value = cookie.getValue();
         String[] valueArr = value.split("_");
         String userId = valueArr[0];

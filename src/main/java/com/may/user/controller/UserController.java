@@ -1,6 +1,5 @@
 package com.may.user.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.may.user.model.User;
 import com.may.user.service.IUserService;
 import com.may.util.http.HttpStatusCodeUtil;
@@ -28,36 +27,13 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(value="/user",method = RequestMethod.GET)
-    public User getUser(HttpServletResponse response, String userName, String userPsd, String email){
-        User user = iUserService.signUp(userName,userPsd,email);
+    public User getUser(HttpServletRequest request, HttpServletResponse response, String userName){
+        User user = iUserService.getUserByName(userName);
         if(user == null){
             response.setStatus(404);
         }
+        HttpStatusCodeUtil.success(request,response);
         return user;
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public User signIn(HttpServletRequest request) {
-        User user = null;
-        String name = request.getParameter("userName");
-        String password = request.getParameter("userPsd");
-        if (validateString(name) && validateString(password)) {
-            user = iUserService.signIn(name, password);
-        }
-        if (user != null) {
-            request.getSession().setAttribute("user", user);
-            return user;
-        } else {
-            return null;
-        }
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public JSONObject login(HttpServletRequest request) {
-        User user = iUserService.signIn("mxl", "password");
-        return null;
     }
 
     private boolean validateString(String s) {

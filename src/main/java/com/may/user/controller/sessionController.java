@@ -53,7 +53,11 @@ public class sessionController {
     @ResponseBody
     @RequestMapping(value = "", method = RequestMethod.DELETE)
     public void signOut(HttpServletRequest request, HttpServletResponse response) {
-        request.getSession().removeAttribute(Constant.SESSION_USER);
+        User user = (User) request.getSession().getAttribute(Constant.SESSION_USER);
+        if(user != null){
+            request.getSession().removeAttribute(Constant.SESSION_USER);
+        }
+        CookieUtil.delCookieByName(request,response,Constant.COOKIE_USER);
         HttpStatusCodeUtil.success(request, response, false);
     }
 

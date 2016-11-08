@@ -2,6 +2,7 @@ package com.may.util.http;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author :    Mei XinLin
@@ -16,6 +17,18 @@ public class CookieUtil {
             }
         }
         return null;
+    }
+
+    public static boolean delCookieByName(HttpServletRequest request, HttpServletResponse response, String name){
+        Cookie cookie = CookieUtil.getCookieByName(request,name);
+        if(cookie != null){
+            cookie.setValue(null);
+            cookie.setMaxAge(0);// 立即销毁cookie
+            cookie.setPath("/");
+            response.addCookie(cookie);
+            return true;
+        }
+        return false;
     }
 
 }

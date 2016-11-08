@@ -13,6 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class FrameController {
 
+	@RequestMapping("/mainApp")
+	public ModelAndView test(HttpServletRequest request){
+		return new ModelAndView("../dist/html/index.html");
+	}
+
 	@RequestMapping("/test")
 	public ModelAndView test(HttpServletRequest request,ModelAndView model){
 		model.addObject("test", "mxl!");
