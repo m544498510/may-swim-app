@@ -24,6 +24,7 @@ function* signInWorker({payload}) {
     });
     yield put(authActions.signInFulfilled(user));
   } catch (e) {
+    console.log(e);
     yield put(authActions.signInRejected(e.status));
   }
 }

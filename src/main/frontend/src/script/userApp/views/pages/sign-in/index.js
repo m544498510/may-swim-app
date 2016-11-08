@@ -9,9 +9,13 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {createSelector} from 'reselect';
 import SignInForm from '../../components/signInForm';
-import {authActions,isSignInRejected} from 'src/script/userApp/core/auth';
+import {authActions,isSignInRejected,isSignInFulfilled} from '../../../core/auth';
 
-export function SignIn({signIn,signInRejected}) {
+export function SignIn({signIn,signInRejected,signInFulfilled}) {
+  if(signInFulfilled){
+    window.location.href = '/';
+  }
+
   return (
     <div className="auth-block">
       <h1>登录 May's sit</h1>
@@ -45,7 +49,11 @@ SignIn.propTypes = {
 
 const mapStateToProps = createSelector(
   isSignInRejected,
-  signInRejected => ({signInRejected})
+  isSignInFulfilled,
+  (signInRejected,isSignInFulfilled )=> ({
+    signInRejected,
+    isSignInFulfilled
+  })
 );
 const mapDispatchToProps = {
   signIn: authActions.signIn

@@ -48,6 +48,7 @@ function fetchPromise(url, options) {
           if (!checkFetchSuccess(response, options)) {
             reject(response);
           }
+          return response;
         })
         .then(response => {
           return formatResponseBody(response);
