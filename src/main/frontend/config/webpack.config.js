@@ -90,7 +90,7 @@ if (ENV_DEVELOPMENT) {
     config.entry[key].unshift(
       'react-hot-loader/patch',
      // 'webpack/hot/dev-server',
-      'webpack-hot-middleware/client'
+      'webpack-hot-middleware/client?reload=true'
     )
   }
 
