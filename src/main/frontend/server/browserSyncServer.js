@@ -27,8 +27,8 @@ export default function createBrowserSync(isProxy){
   let config = {
     port: 3000,
     files: [
-      path.resolve(__dirname,'../build/style/*.css'),
-      path.resolve(__dirname,'../build/html/*.html')
+      path.resolve(__dirname,'../dist/style/*.css'),
+      path.resolve(__dirname,'../dist/html/*.html')
     ],
     middleware: [
       webpackDevMiddleware(bundler, {
@@ -50,18 +50,22 @@ export default function createBrowserSync(isProxy){
   if (isProxy){
     config.proxy = {
       target: 'http://localhost:9090',
-      ws: false
+      ws: true
     };
     config.serveStatic =  [
       {
-        route: '/dist',
-        dir:  path.resolve(__dirname,'../dist'),
+        route: '/dist/style',
+        dir:  path.resolve(__dirname,'../dist/style'),
+      },
+      {
+        route: '/dist/html',
+        dir: path.resolve(__dirname,'../dist/html')
       }
     ];
   }else{
     config.server = {
       baseDir: path.resolve(__dirname,'../'),
-      index: 'build/html/userApp.html',
+      index: 'dist/html/userApp.html',
       routes: {
         "/dist": path.resolve(__dirname,'../dist'),
       }
