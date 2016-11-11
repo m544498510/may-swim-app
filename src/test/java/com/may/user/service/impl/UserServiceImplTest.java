@@ -19,8 +19,8 @@ public class UserServiceImplTest extends BaseTest {
     }
 
     @Test
-    public void testSignUp() throws Exception {
-        User user = userService.signUp("mxl2","mxl3","1234@123.com");
+    public void testCreateUser() throws Exception {
+        User user = userService.createUser("mxl2","mxl3","1234@123.com");
         assertNotNull(user);
         assertNotNull(user.getRoles());
     }

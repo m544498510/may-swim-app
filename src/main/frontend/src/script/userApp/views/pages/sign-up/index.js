@@ -32,3 +32,6 @@ export function SignUp() {
       </div>
     </app>)
 }
+SignUp.propType = {
+  signUp:1
+};

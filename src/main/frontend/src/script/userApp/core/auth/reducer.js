@@ -14,7 +14,7 @@ const AuthState = new Record({
   signInRejected:false
 });
 
-export default function(state = new AuthState(), {type,payload}) {
+export default function(state = new AuthState(), {type}) {
   switch (type) {
     case authActions.SIGN_IN_FULFILLED:
       return state.merge({

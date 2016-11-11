@@ -19,9 +19,9 @@ const actions =  {
     payload: user
 
   }),
-  signInRejected: httpStaus => ({
+  signInRejected: httpStatus => ({
     type: actions.SIGN_IN_REJECTED,
-    payload: httpStaus
+    payload: httpStatus
   })
 };
 export default actions;
