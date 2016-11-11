@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 
-const basePath = process.cwd();
+const basePath = path.resolve(process.cwd(),'src/script');
 //=========================================================
 //  ENVIRONMENT VARS
 //---------------------------------------------------------
@@ -64,14 +64,14 @@ config.module = {
 //-------------------------------------
 if (ENV_DEVELOPMENT || ENV_PRODUCTION) {
   config.entry = {
-    mainApp: [basePath + '/src/script/mainApp/index.js'],
-    userApp: [basePath + '/src/script/userApp/index.js'],
-    vendor: [basePath +'/src/script/vendor.js']
+    mainApp: [basePath + '/mainApp/index.js'],
+    userApp: [basePath + '/userApp/index.js'],
+    vendor: [basePath +'/vendor.js']
   };
 
   config.output = {
     filename: '[name]_bundle.js',
-    path: basePath + '/dist/js/',
+    path: path.resolve(process.cwd(),'/dist/js/'),
     publicPath: '/dist/js/'
   };
   config.plugins.push(

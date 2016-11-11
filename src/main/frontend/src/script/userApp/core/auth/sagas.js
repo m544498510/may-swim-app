@@ -10,7 +10,7 @@ import {call, put, fork} from 'redux-saga/effects';
 
 import authActions from './actions'
 
-import mFetch from 'src/script/utils/may-fetch-wrapper';
+import mFetch from 'utils/may-fetch-wrapper';
 
 function* signInWorker({payload}) {
   try {

@@ -50,9 +50,9 @@ SignIn.propTypes = {
 const mapStateToProps = createSelector(
   isSignInRejected,
   isSignInFulfilled,
-  (signInRejected,isSignInFulfilled )=> ({
+  (signInRejected,signInFulfilled )=> ({
     signInRejected,
-    isSignInFulfilled
+    signInFulfilled
   })
 );
 const mapDispatchToProps = {
