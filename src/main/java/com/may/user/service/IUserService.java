@@ -30,7 +30,7 @@ public interface IUserService {
      * @param email:邮箱
      * @return User对象
      */
-    User signUp(String userName,String password,String email);
+    User createUser(String userName, String password, String email);
 
     /***
      *  根据用户名查询用户信息

@@ -47,7 +47,7 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public User signUp(String name, String password, String email) {
+    public User createUser(String name, String password, String email) {
         String uuid = UUIDFactory.getUUID();
 
         Date date = new Date();

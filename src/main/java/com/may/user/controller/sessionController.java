@@ -4,7 +4,7 @@ import com.may.frame.Constant;
 import com.may.user.model.User;
 import com.may.user.service.IUserService;
 import com.may.util.http.CookieUtil;
-import com.may.util.http.HttpStatusCodeUtil;
+import com.may.util.http.ResponseUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,20 +32,20 @@ public class sessionController {
                        String userName, String userPsd, boolean autoSignIn) {
         User user = iUserService.signIn(userName, userPsd);
         if (user != null) {
-            HttpStatusCodeUtil.success(request, response, false);
+            ResponseUtil.success(request, response, false);
 
             HttpSession session = request.getSession();
             session.setAttribute(Constant.SESSION_USER, user);
-            if(autoSignIn){
-                String value = user.getUserId()+"_"+user.getUserPsd();
-                Cookie cookie = new Cookie(Constant.COOKIE_USER,value);
+            if (autoSignIn) {
+                String value = user.getUserId() + "_" + user.getUserPsd();
+                Cookie cookie = new Cookie(Constant.COOKIE_USER, value);
                 //30 day
                 cookie.setMaxAge(2592000);
                 cookie.setPath("/");
                 response.addCookie(cookie);
             }
         } else {
-            response.setStatus(401);
+            response.setStatus(ResponseUtil.UNAUTHORIZED);
         }
         return user;
     }
@@ -54,18 +54,18 @@ public class sessionController {
     @RequestMapping(value = "", method = RequestMethod.DELETE)
     public void signOut(HttpServletRequest request, HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute(Constant.SESSION_USER);
-        if(user != null){
+        if (user != null) {
             request.getSession().removeAttribute(Constant.SESSION_USER);
         }
-        CookieUtil.delCookieByName(request,response,Constant.COOKIE_USER);
-        HttpStatusCodeUtil.success(request, response, false);
+        CookieUtil.delCookieByName(request, response, Constant.COOKIE_USER);
+        ResponseUtil.success(request, response, false);
     }
 
     @ResponseBody
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public User test(HttpServletRequest request, HttpServletResponse response) {
         User user = iUserService.signIn("TEST_NAME", "TEST_PSD");
-        response.setStatus(401);
+        response.setStatus(ResponseUtil.UNAUTHORIZED);
         return user;
     }
 

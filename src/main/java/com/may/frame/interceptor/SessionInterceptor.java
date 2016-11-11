@@ -4,7 +4,7 @@ import com.may.frame.Constant;
 import com.may.user.model.User;
 import com.may.user.service.IUserService;
 import com.may.util.http.CookieUtil;
-import com.may.util.http.HttpStatusCodeUtil;
+import com.may.util.http.ResponseUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,7 +39,7 @@ public class SessionInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        httpServletResponse.setStatus(HttpStatusCodeUtil.UNAUTHORIZED);
+        httpServletResponse.setStatus(ResponseUtil.UNAUTHORIZED);
         return false;
     }
 
