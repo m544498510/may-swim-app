@@ -25,18 +25,21 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public User getUser(HttpServletRequest request, HttpServletResponse response, String userName) {
+    @RequestMapping(value = "/userName", method = RequestMethod.GET)
+    public String checkUserName(HttpServletRequest request, HttpServletResponse response, String userName) {
         User user = iUserService.getUserByName(userName);
+        String result = "";
         if (user == null) {
             response.setStatus(ResponseUtil.NOT_FOUND);
+        }else{
+            result = user.getUserName();
+            ResponseUtil.success(request, response);
         }
-        ResponseUtil.success(request, response);
-        return user;
+        return result;
     }
 
     @ResponseBody
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public User createUser(HttpServletRequest request, HttpServletResponse response,
                            String userName, String password, String email) {
         User user = iUserService.createUser(userName, password, email);

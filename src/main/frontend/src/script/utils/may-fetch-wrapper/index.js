@@ -43,12 +43,14 @@ export function del(data) {
     method: DELETE
   });
 }
-
+/**
+ * @alias mFetch
+ */
 export default {
   get,
   post,
   put,
   patch,
   del,
-  mFetch: fetchWrapper
+  fetch: fetchWrapper
 };

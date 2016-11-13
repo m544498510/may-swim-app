@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {createSelector} from 'reselect';
 import SignInForm from '../../components/signInForm';
-import {authActions,isSignInRejected,isSignInFulfilled} from '../../../core/auth';
+import {authActions,isSignInRejected,isSignInFulfilled} from 'userApp/core/auth';
 
 export function SignIn({signIn,signInRejected,signInFulfilled}) {
   if(signInFulfilled){

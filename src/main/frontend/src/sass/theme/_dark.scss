@@ -5,7 +5,7 @@ $body-bg: #F0F3F4;
 $body-bg-img: 'blur-bg.jpg';
 $default-icon-color: #ffffff;
 $default-text: #ffffff;
-$help-text: #eeeeee;
+$help-text: #dddddd;
 $label-text: #ffffff;
 
 $disabled: #dddddd;
@@ -30,6 +30,8 @@ $info: #2dacd1 !default;
 $success: #90b900 !default;
 $warning: #dfb81c !default;
 $danger: #e85656 !default;
+
+$color-red: #f94646;
 
 $primary-light: tint($primary, 30%);
 $info-light: tint($info, 30%);

@@ -7,10 +7,9 @@
 
 import {takeEvery} from 'redux-saga';
 import {call, put, fork} from 'redux-saga/effects';
+import mFetch from 'utils/may-fetch-wrapper';
 
 import authActions from './actions'
-
-import mFetch from 'utils/may-fetch-wrapper';
 
 function* signInWorker({payload}) {
   try {

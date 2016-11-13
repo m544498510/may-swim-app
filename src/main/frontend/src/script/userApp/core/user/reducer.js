@@ -5,6 +5,8 @@
  */
 'use strict';
 
+import immutable from 'immutable';
+
 import actions from './actions';
 
 export default function(state,{type}){

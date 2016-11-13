@@ -33,6 +33,10 @@
       font-size: 14px;
     }
   }
+  .form-input.warning{
+    border-color: $color-red;
+    box-shadow: 0 0 8px $color-red;
+  }
   .form-btn-row {
     margin-bottom: 15px;
   }
@@ -53,6 +57,15 @@
     color: $primary;
     margin: 0 5px;
   }
+  .help-warning-info{
+    margin:3px 0 10px 45px;
+    color: $color-red;
+    font-size: 12px;
+    icon{
+      color: $color-red;
+      margin-right: 5px;
+    }
+  }
 
   .submit-btn {
     width: 100%;
@@ -65,10 +78,10 @@
   }
   .warning_info{
     float:right;
-    color: $danger;
+    color: $color-red;
     font-size: 12px;
     .fa{
-      color: $danger;
+      color: $color-red;
       margin-right: 5px;
     }
   }

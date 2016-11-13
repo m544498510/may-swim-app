@@ -28,7 +28,8 @@ export default function createBrowserSync(isProxy){
     port: 3000,
     files: [
       path.resolve(__dirname,'../dist/style/*.css'),
-      path.resolve(__dirname,'../dist/html/*.html')
+      path.resolve(__dirname,'../dist/html/*.html'),
+      path.resolve(__dirname,'../htmlTemplate/**/*.html')
     ],
     middleware: [
       webpackDevMiddleware(bundler, {

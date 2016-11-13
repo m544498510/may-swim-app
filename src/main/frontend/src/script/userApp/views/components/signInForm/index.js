@@ -6,9 +6,9 @@
 'use strict';
 import React, {Component, PropTypes} from "react";
 import {Button, FormGroup, InputGroup, FormControl} from "react-bootstrap";
-import Checkbox from "widgets/checkbox";
+import MCheckbox from "widgets/checkbox";
 
-class SignInForm extends Component {
+export default class SignInForm extends Component {
   static propTypes = {
     signIn: PropTypes.func.isRequired,
     signInRejected: PropTypes.bool.isRequired
@@ -61,7 +61,7 @@ class SignInForm extends Component {
     if (this.props.signInRejected) {
       signInFailInfo =
         (<span className="warning_info">
-          <i className="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          <icon className="fa fa-exclamation-triangle" aria-hidden="true"></icon>
           你输入的密码和账户名不匹配
         </span>)
     }
@@ -102,7 +102,7 @@ class SignInForm extends Component {
         </FormGroup>
         <FormGroup >
           {signInFailInfo}
-          <Checkbox
+          <MCheckbox
             onChange={this.checkboxChange}
             labelTxt="自动登录"
             selected="true"
@@ -119,5 +119,3 @@ class SignInForm extends Component {
     );
   }
 }
-
-export default SignInForm;
