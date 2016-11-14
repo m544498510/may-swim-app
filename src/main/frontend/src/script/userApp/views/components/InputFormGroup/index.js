@@ -4,32 +4,31 @@
  * @version :   1.0
  */
 'use strict';
-import React, {Component, PropTypes} from 'react';
-import {FormGroup,InputGroup} from 'react-bootstrap';
+import React, {Component, PropTypes} from "react";
+import {FormGroup, InputGroup, FormControl} from "react-bootstrap";
 
 
-export class InputFormGroup extends Component{
+export class InputFormGroup extends Component {
   static propTypes = {
+    onChangeHandle: PropTypes.func.isRequired,
     iconName: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     status: PropTypes.string,
     info: PropTypes.string,
-
+    type: PropTypes.string
   };
 
-  constructor(props, context){
+  constructor(props, context) {
     super(props, context);
-
     this.state = {
-      iconClassName: 'fa fa-lg' + props.iconName
+      iconClassName: 'fa fa-lg' + props.iconName,
+      type: props.type ? props.type : 'text'
     }
-
   }
 
-
-  render(){
+  render() {
     let helpInfo = '';
-    if(this.props.info){
+    if (this.props.info) {
       helpInfo = (
         <div className="help-info">
           <icon className="fa fa-info-circle fa-1"/>
@@ -42,19 +41,18 @@ export class InputFormGroup extends Component{
       <FormGroup className={this.props.status}>
         <InputGroup>
           <InputGroup.Addon>
-            <icon className={this.state.iconClassName} />
+            <icon className={this.state.iconClassName}/>
           </InputGroup.Addon>
-          <input
-            type="text"
-            className="form-input form-control"
+          <FormControl
+            type={this.props.type}
             placeholder={this.props.placeholder}
+            onchange={this.props.onChangeHandle}
           />
           {helpInfo}
         </InputGroup>
       </FormGroup>
     );
   }
-
 
 
 }
