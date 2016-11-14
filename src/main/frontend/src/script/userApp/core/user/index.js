@@ -6,5 +6,6 @@
 'use strict';
 
 export userAction from './actions';
+export userActionTypes from './action-types';
 export userSagas from './sagas';
-
+export * from './selectors';

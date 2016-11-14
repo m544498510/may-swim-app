@@ -10,6 +10,7 @@ import {call,put,fork} from 'redux-saga/effects';
 import mFetch from 'util/may-fetch-wrapper';
 
 import userActions from './actions';
+import { SIGN_UP } from './action-types';
 
 function* signUpWorker({payload}) {
   try {
@@ -28,7 +29,7 @@ function* signUpWorker({payload}) {
 }
 
 function* signUpWatcher(){
-  yield takeEvery(userActions.SIGN_UP, signUpWorker);
+  yield takeEvery(SIGN_UP, signUpWorker);
 }
 
 export default [

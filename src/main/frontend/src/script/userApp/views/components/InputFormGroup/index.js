@@ -23,7 +23,12 @@ export class InputFormGroup extends Component {
     this.state = {
       iconClassName: 'fa fa-lg' + props.iconName,
       type: props.type ? props.type : 'text'
-    }
+    };
+    this.onChange = ::this.onChange;
+  }
+
+  onChange(e){
+    this.props.onChangeHandle(e.target.value);
   }
 
   render() {
@@ -46,7 +51,7 @@ export class InputFormGroup extends Component {
           <FormControl
             type={this.props.type}
             placeholder={this.props.placeholder}
-            onchange={this.props.onChangeHandle}
+            onchange={this.onChange}
           />
           {helpInfo}
         </InputGroup>

@@ -5,14 +5,27 @@
  */
 'use strict';
 
-import immutable from 'immutable';
+import {Recond} from 'immutable';
 
 import actions from './actions';
 
-export default function(state,{type}){
-  switch (type){
+const user = new Recond({
+  userName: '',
+  email: '',
+  emailErrorInfo: '',
+  password: '',
+  secondPsd: '',
+  secondPsdErrorInfo: '',
+
+  isSignUpFulfilled: false
+});
+
+export default function (state=user, {type,payload}) {
+  switch (type) {
     case actions.SIGN_IN_FULFILLED:
-      return state
+      return state.meger({
+
+      })
 
   }
 }

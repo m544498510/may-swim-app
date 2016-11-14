@@ -4,43 +4,74 @@
  * @version :   1.0
  */
 'use strict';
+
+import actionTypes from './action-types';
+import {validateEmail, validatePsd} from './utils';
+import {getUser} from './selectors';
+
 /**
  * @alias userActions
  */
-const actions = {
-  SIGN_UP: 'SIGN_UP',
-  SIGN_UP_FULFILLED: 'SIGN_UP_FULFILLED',
-  SIGN_UP_REJECTED: 'SIGN_UP_REJECTED',
+export default {
 
-  CHECK_USER_NAME: 'CHECK_USER_NAME',
-  CHECK_USER_NAME_FULFILLED: 'CHECK_USER_NAME_FULFILLED',
-
-  CHECK_EMAIL:'CHECK_EMAIL',
-  CHECK_EMAIL_FULFILLED: 'CHECK_EMAIL_FULFILLED',
-
-  signUp: (userName, email, password) => ({
-    type: actions.SIGN_UP,
-    payload: {userName, email, password}
-  }),
+  signUp: function () {
+    return (dispatch, getState) => {
+      const user = getUser(getState());
+      if (validateEmail(user.email) && validatePsd(user.password, user.secondPsd)) {
+        dispatch({
+          type: actionTypes.SIGN_UP,
+          payload: user
+        })
+      }
+    }
+  },
 
   signUpFulfilled: user => ({
-    type: actions.SIGN_UP_FULFILLED,
+    type: actionTypes.SIGN_UP_FULFILLED,
     payload: user
   }),
 
   signUpRejected: httpStatus => ({
-    type: actions.SIGN_IN_REJECTED,
+    type: actionTypes.SIGN_UP_REJECTED,
     payload: httpStatus
   }),
 
-  checkUserName: isUsed => ({
-    type: actions.CHECK_USER_NAME_FULFILLED,
-    payload: isUsed
+  userNameChange: userName => ({
+    type: actionTypes.CHECK_USER_NAME_FULFILLED,
+    payload: userName
   }),
 
-  checkEmail: isUsed => ({
-    type: actions.CHECK_EMAIL_FULFILLED,
-    payload: isUsed
-  })
+  emailChange: function (email) {
+    return (dispatch) => {
+      let emailErrorInfo = '';
+      if (!validateEmail(email)) {
+        emailErrorInfo = '邮箱格式不正确';
+      }
+      dispatch({
+        type: actionTypes.CHECK_EMAIL_FULFILLED,
+        payload: {email, emailErrorInfo}
+
+      })
+    }
+  },
+
+  passwordChange: password => ({
+    type: actionTypes.PASSWORD_CHANGE,
+    payload: password
+  }),
+
+  secondPsdChange: function (secondPsd) {
+    return (dispatch, getState) => {
+      let secondPsdErrorInfo = '';
+      const user = getUser(getState());
+      if (validatePsd(user.password, secondPsd)) {
+        secondPsdErrorInfo = '两次输入的密码不一致';
+      }
+      dispatch({
+        type: actionTypes.SECOND_PASSWORD_CHANGE,
+        payload: {secondPsd, secondPsdErrorInfo}
+      })
+
+    }
+  }
 };
-export default actions;
