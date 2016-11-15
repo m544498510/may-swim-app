@@ -8,9 +8,10 @@ import React, {Component, PropTypes} from "react";
 import {FormGroup, InputGroup, FormControl} from "react-bootstrap";
 
 
-export class InputFormGroup extends Component {
+export default class InputFormGroup extends Component {
   static propTypes = {
     onChangeHandle: PropTypes.func.isRequired,
+    isBlurChange: PropTypes.bool,
     iconName: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     status: PropTypes.string,
@@ -21,14 +22,24 @@ export class InputFormGroup extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      iconClassName: 'fa fa-lg' + props.iconName,
-      type: props.type ? props.type : 'text'
+      iconClassName: 'fa fa-lg ' + props.iconName,
+      type: props.type ? props.type : 'text',
+      lastValue: ''
     };
     this.onChange = ::this.onChange;
+    this.onBlur = ::this.onBlur;
   }
 
-  onChange(e){
-    this.props.onChangeHandle(e.target.value);
+  onChange(e) {
+    this.props.onChangeHandle( e.target.value);
+  }
+  onBlur(e){
+    const value = e.target.value;
+    if(value != this.state.lastValue){
+      this.props.onChangeHandle(value);
+    }
+    this.setState({'lastValue': value});
+
   }
 
   render() {
@@ -49,12 +60,14 @@ export class InputFormGroup extends Component {
             <icon className={this.state.iconClassName}/>
           </InputGroup.Addon>
           <FormControl
-            type={this.props.type}
+            className="form-input"
+            type={this.state.type}
             placeholder={this.props.placeholder}
-            onchange={this.onChange}
+            onChange={this.props.isBlurChange?null:this.onChange}
+            onBlur={this.props.isBlurChange?this.onBlur:null}
           />
-          {helpInfo}
         </InputGroup>
+        {helpInfo}
       </FormGroup>
     );
   }

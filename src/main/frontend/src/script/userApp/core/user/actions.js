@@ -38,7 +38,7 @@ export default {
 
   userNameChange: userName => ({
     type: actionTypes.CHECK_USER_NAME_FULFILLED,
-    payload: userName
+    payload: {userName}
   }),
 
   emailChange: function (email) {
@@ -64,7 +64,7 @@ export default {
     return (dispatch, getState) => {
       let secondPsdErrorInfo = '';
       const user = getUser(getState());
-      if (validatePsd(user.password, secondPsd)) {
+      if (!validatePsd(user.password, secondPsd)) {
         secondPsdErrorInfo = '两次输入的密码不一致';
       }
       dispatch({

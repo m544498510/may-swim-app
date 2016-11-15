@@ -102,8 +102,16 @@ function formatPostData(data = {}) {
     && (data instanceof HTMLElement)) {
     return new FormData(data);
   } else {
-    return objToQueryString(data);
+    return objToFormData(data);
   }
+}
+
+function objToFormData(obj = {}){
+  const formData = new FormData();
+  for (var key in obj) {
+    formData.append(key,obj[key]);
+  }
+  return formData;
 }
 
 function objToQueryString(obj = {}) {

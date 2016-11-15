@@ -28,7 +28,7 @@ export default (initialState = {}) => {
   sagaMiddleware.run(sagas);
 
   if (module.hot) {
-    module.hot.accept('./**/reducers', () => {
+    module.hot.accept('./reducers', () => {
       store.replaceReducer(require('./reducers').default);
     });
 /*

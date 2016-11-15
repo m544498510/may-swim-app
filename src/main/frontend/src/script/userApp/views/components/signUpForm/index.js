@@ -23,11 +23,11 @@ export default class SignUpForm extends Component {
   };
 
   render() {
-
     return (
       <form className="auth-form">
         <InputFormGroup
           onChangeHandle={this.props.userNameChange}
+          isBlurChange={true}
           iconName="fa-user"
           placeholder="请输入用户名"
           info={this.props.userNameErrorInfo}
@@ -35,6 +35,7 @@ export default class SignUpForm extends Component {
         />
         <InputFormGroup
           onChangeHandle={this.props.emailChange}
+          isBlurChange={true}
           iconName="fa-envelope-o"
           placeholder="请输入邮箱"
           info={this.props.emailErrorInfo}
@@ -42,6 +43,7 @@ export default class SignUpForm extends Component {
         />
         <InputFormGroup
           onChangeHandle={this.props.passwordChange}
+          isBlurChange={true}
           iconName="fa-unlock-alt"
           placeholder="请输入密码"
         />
@@ -56,7 +58,7 @@ export default class SignUpForm extends Component {
           <Button
             id="submit"
             className="btn primary-btn submit-btn"
-            onClick={this.props.commit}
+            onClick={this.props.signUp}
           >注册</Button>
         </FormGroup>
       </form>

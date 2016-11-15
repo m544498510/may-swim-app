@@ -33,7 +33,7 @@
       font-size: 14px;
     }
   }
-  .form-input.warning{
+  .warning .form-input{
     border-color: $color-red;
     box-shadow: 0 0 8px $color-red;
   }
@@ -57,13 +57,19 @@
     color: $primary;
     margin: 0 5px;
   }
-  .help-warning-info{
+  .help-info{
     margin:3px 0 10px 45px;
-    color: $color-red;
+    color: $color-white;
     font-size: 12px;
     icon{
-      color: $color-red;
+      color: $color-white;
       margin-right: 5px;
+    }
+  }
+  .warning .help-info{
+    color: $color-red;
+    icon{
+      color: $color-red;
     }
   }
 

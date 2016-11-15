@@ -5,11 +5,11 @@
  */
 'use strict';
 
-import {Recond} from 'immutable';
+import {Record} from 'immutable';
 
-import actions from './actions';
+import actionTypes from './action-types';
 
-const user = new Recond({
+const userState = new Record({
   userName: '',
   email: '',
   emailErrorInfo: '',
@@ -20,12 +20,31 @@ const user = new Recond({
   isSignUpFulfilled: false
 });
 
-export default function (state=user, {type,payload}) {
+export default function (state= new userState(), {type,payload}) {
   switch (type) {
-    case actions.SIGN_IN_FULFILLED:
-      return state.meger({
-
-      })
-
+    case actionTypes.SIGN_IN_FULFILLED:
+      return state.merge({
+        isSignUpFulfilled: true
+      });
+    case actionTypes.CHECK_USER_NAME_FULFILLED:
+      return state.merge({
+        userName: payload.userName
+      });
+    case actionTypes.CHECK_EMAIL_FULFILLED:
+      return state.merge({
+        email: payload.email,
+        emailErrorInfo: payload.emailErrorInfo
+      });
+    case actionTypes.PASSWORD_CHANGE:
+      return state.merge({
+        password: payload
+      });
+    case actionTypes.SECOND_PASSWORD_CHANGE:
+      return state.merge({
+        secondPsd: payload.secondPsd,
+        secondPsdErrorInfo: payload.secondPsdErrorInfo
+      });
+    default:
+      return state;
   }
 }

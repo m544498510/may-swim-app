@@ -14,23 +14,23 @@ export function isSignUpFulfilled(state) {
 }
 
 export function getEmailErrorInfo(state){
-  return getUser().emailErrorInfo;
+  return getUser(state).emailErrorInfo;
 }
 
 export function getSecondPsdErrorInfo(state){
-  return getUser().secondPsdErrorInfo;
+  return getUser(state).secondPsdErrorInfo;
 }
 
 
 export function getEmail(state){
-  return getUser().email;
+  return getUser(state).email;
 }
 
 export function getPassword(state){
-  return getUser().password;
+  return getUser(state).password;
 }
 
 export function getSecondPsd(state){
-  return getUser().secondPsd;
+  return getUser(state).secondPsd;
 }
 
