@@ -8,15 +8,9 @@ const basePath = path.resolve(process.cwd(),'src/script');
 //---------------------------------------------------------
 let NODE_ENV = process.env.NODE_ENV;
 
-let ENV_DEVELOPMENT = NODE_ENV === 'development';
+const ENV_DEVELOPMENT = NODE_ENV === 'development';
 const ENV_PRODUCTION = NODE_ENV === 'production';
 const ENV_TEST = NODE_ENV === 'test';
-
-
-if (!ENV_TEST && !ENV_PRODUCTION) {
-  NODE_ENV = 'development';
-  ENV_DEVELOPMENT = true;
-}
 
 //=========================================================
 //  LOADERS

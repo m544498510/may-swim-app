@@ -10,7 +10,7 @@ module.exports = config => {
       'karma.entry.js': ['webpack', 'sourcemap']
     },
 
-    webpack: require('../config/webpack.config'),
+    webpack: require('../config/webpack.conf.test'),
 
     webpackServer: {
       noInfo: true
@@ -29,7 +29,8 @@ module.exports = config => {
       'karma-mocha',
       'karma-chai',
       'karma-webpack',
-      'karma-sourcemap-loader'
+      'karma-sourcemap-loader',
+      'karma-chrome-launcher'
     ]
     // karma coverage
 /*
