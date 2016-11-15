@@ -134,4 +134,11 @@ if (ENV_PRODUCTION) {
 //-------------------------------------
 if (ENV_TEST) {
   config.devtool = 'inline-source-map';
+
+  config.externals = {
+    'jsdom': 'window',
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  };
 }
