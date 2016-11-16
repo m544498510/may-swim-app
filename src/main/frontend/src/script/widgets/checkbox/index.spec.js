@@ -15,6 +15,6 @@ import Checkbox from './index';
 describe('checkbox test', () => {
   it('renders as a <div>', () => {
     const wrapper = shallow(<Checkbox />);
-    expect(wrapper.type()).to.eql('div');
+    expect(wrapper.type()).to.eql('span');
   });
 });

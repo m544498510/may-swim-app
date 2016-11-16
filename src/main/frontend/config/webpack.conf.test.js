@@ -14,7 +14,11 @@ const config = {
         test: /\.js?$/,
         exclude: /node_modules/,
         loaders: ['babel'],
-      }
+      },
+      {
+        test: /\.json$/,
+        loader: 'json',
+      },
     ]
   },
   externals: {
