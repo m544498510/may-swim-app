@@ -18,7 +18,7 @@ import path from 'path';
 /**
  * Require ./webpack.config.js and make a bundler from it
  */
-import webpackConfig from '../config/webpack.config';
+const webpackConfig = require( '../config/webpack.config')('development');
 
 const bundler = webpack(webpackConfig);
 

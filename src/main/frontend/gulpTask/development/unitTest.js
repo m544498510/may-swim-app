@@ -8,13 +8,13 @@
 import gulp from 'gulp';
 import {Server} from 'karma';
 import path from 'path';
-
 /**
  * Run test once and exit
  */
 gulp.task('test', function (done) {
-    new Server({
-        configFile: path.resolve(process.cwd(),'test/karma.conf.js')
-    }).start();
+
+  new Server({
+    configFile: path.resolve(process.cwd(), 'test/karma.conf.js')
+  }).start();
   done();
 });

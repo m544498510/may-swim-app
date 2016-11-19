@@ -12,7 +12,7 @@ import util from 'gulp-load-plugins';
 const config = require(process.cwd() + '/config');
 
 const $ = util();
-const webpackDevConf = require(process.cwd()+'/config/webpack.config');
+const webpackDevConf = require(process.cwd()+'/config/webpack.config')('development');
 
 
 gulp.task('build:js',()=>{
