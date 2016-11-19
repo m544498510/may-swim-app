@@ -14,8 +14,7 @@ import path from 'path';
  */
 gulp.task('test', function (done) {
     new Server({
-        configFile: path.resolve(process.cwd(),'test/karma.conf.js'),
-        singleRun: true
+        configFile: path.resolve(process.cwd(),'test/karma.conf.js')
     }).start();
   done();
 });

@@ -5,7 +5,8 @@
     "npm": ">=3.3 <4"
   },
   "scripts": {
-    "start": "babel-node server/server.js"
+    "start": "babel-node server/server.js",
+    "test": "karma start ./test/karma.conf.js"
   },
   "dependencies": {
     "babel-polyfill": "6.7.4",
@@ -40,6 +41,8 @@
     "babel-preset-stage-0": "^6.5.0",
     "browser-sync": "^2.17.5",
     "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "chai-enzyme": "^0.6.1",
     "chalk": "^0.4.0",
     "css-mqpacker": "^5.0.1",
     "cssnano": "^3.7.4",
@@ -76,6 +79,8 @@
     "require-dir": "^0.3.0",
     "rimraf": "^2.5.4",
     "run-sequence": "^1.1.5",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.0",

@@ -9,6 +9,9 @@ const basePath = path.resolve(process.cwd(), 'src/script');
 const config = {
   devtool: 'inline-source-map',
   module: {
+    noParse : [
+      /\/sinon\.js/
+    ],
     loaders: [
       {
         test: /\.js?$/,
@@ -19,6 +22,10 @@ const config = {
         test: /\.json$/,
         loader: 'json',
       },
+      {
+        test   : /sinon(\\|\/)pkg(\\|\/)sinon\.js/,
+        loader : 'imports?define=>false,require=>false'
+      }
     ]
   },
   externals: {
@@ -26,9 +33,15 @@ const config = {
     'react/addons': true,
     'react/lib/ExecutionEnvironment': true,
     'react/lib/ReactContext': true
+  },
+  resolve:{
+    extensions: ['', '.js'],
+    modulesDirectories: ['node_modules'],
+    root: basePath,
+    alias : {
+      sinon : 'sinon/pkg/sinon-1.17.6.js'
+    }
   }
 
-
 };
-export default config;
 module.exports = config;

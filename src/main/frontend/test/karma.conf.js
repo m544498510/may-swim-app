@@ -4,9 +4,19 @@ module.exports = config => {
 
     frameworks: ['mocha','chai'],
 
-    files: ['karma.entry.js'],
+    files: [
+      '../node_modules/sinon/pkg/sinon.js',
+      'karma.entry.js',
+      {
+        pattern: `./test-bundle.js`,
+        watched: false,
+        served: true,
+        included: true
+      }
+    ],
 
     preprocessors: {
+      './test-bundle.js':['webpack'],
       'karma.entry.js': ['webpack', 'sourcemap']
     },
 
@@ -22,7 +32,7 @@ module.exports = config => {
     colors: true,
     autoWatch: true,
 
-    singleRun: false,
+    singleRun: true,
 
     browsers: ['Chrome'],
     plugins: [
