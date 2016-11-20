@@ -8,13 +8,20 @@
 import gulp from 'gulp';
 import {Server} from 'karma';
 import path from 'path';
+import gutilsModule from 'gulp-load-utils';
+
+
+const gutils = gutilsModule(['env']);
+
 /**
  * Run test once and exit
  */
 gulp.task('test', function (done) {
+  var flag = gutils.env.watch?false:true;
 
   new Server({
-    configFile: path.resolve(process.cwd(), 'test/karma.conf.js')
+    configFile: path.resolve(process.cwd(), 'test/karma.conf.js'),
+    singleRun: flag
   }).start();
   done();
 });
