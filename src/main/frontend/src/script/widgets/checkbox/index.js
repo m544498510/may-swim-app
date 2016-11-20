@@ -5,6 +5,7 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
+import classNames from 'classnames';
 
 class Checkbox extends Component {
   static props = {
@@ -12,12 +13,12 @@ class Checkbox extends Component {
     selected: PropTypes.bool,
     inForm: PropTypes.bool,
     classNames: PropTypes.string,
-    labelTxt: PropTypes.string
+    children: PropTypes.node
   };
 
   constructor(props, content) {
     super(props, content);
-    const mainClassNames = 'may-checkbox ' + (props.classNames || '');
+    const mainClassNames =  classNames('may-checkbox ',props.classNames);
     this.state = {
       'selected': !!props.selected,
       'mainClassNames': mainClassNames
@@ -46,7 +47,7 @@ class Checkbox extends Component {
         onClick={this.onChange}
       >
         <icon className={iconClass} />
-        <div>{this.props.labelTxt}</div>
+        <div>{this.props.children}</div>
         {formInput}
       </div>
     );

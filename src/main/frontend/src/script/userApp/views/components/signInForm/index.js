@@ -104,9 +104,8 @@ export default class SignInForm extends Component {
           {signInFailInfo}
           <MCheckbox
             onChange={this.checkboxChange}
-            labelTxt="自动登录"
             selected="true"
-          />
+          >自动登录</MCheckbox>
         </FormGroup>
         <FormGroup className="form-row form-btn-row">
           <Button
