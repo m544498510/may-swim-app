@@ -7,22 +7,24 @@
 
 import {Record} from 'immutable';
 
-import authActions from './actions';
+import authActions from '../actions';
 
 const AuthState = new Record({
-  signInFulfilled:false,
-  signInRejected:false
+  signInFulfilled: false,
+  signInRejected: false
 });
 
-export default function(state = new AuthState(), {type}) {
+export default function (state = new AuthState(), {type}) {
   switch (type) {
     case authActions.SIGN_IN_FULFILLED:
       return state.merge({
-        signInFulfilled: true
+        signInFulfilled: true,
+        signInRejected: false
       });
       break;
     case authActions.SIGN_IN_REJECTED:
       return state.merge({
+        signInFulfilled: false,
         signInRejected: true
       });
     default:

@@ -7,7 +7,7 @@
 
 import {Record} from 'immutable';
 
-import actionTypes from './action-types';
+import actionTypes from '../action-types';
 
 const userState = new Record({
   userName: '',
@@ -22,7 +22,7 @@ const userState = new Record({
 
 export default function (state= new userState(), {type,payload}) {
   switch (type) {
-    case actionTypes.SIGN_IN_FULFILLED:
+    case actionTypes.SIGN_UP_FULFILLED:
       return state.merge({
         isSignUpFulfilled: true
       });
@@ -37,7 +37,7 @@ export default function (state= new userState(), {type,payload}) {
       });
     case actionTypes.PASSWORD_CHANGE:
       return state.merge({
-        password: payload
+        password: payload.password
       });
     case actionTypes.SECOND_PASSWORD_CHANGE:
       return state.merge({

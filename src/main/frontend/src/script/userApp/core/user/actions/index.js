@@ -5,9 +5,9 @@
  */
 'use strict';
 
-import actionTypes from './action-types';
+import actionTypes from '../action-types';
 import {validateEmail, validatePsd} from './utils';
-import {getUser} from './selectors';
+import {getUser} from '../selectors';
 
 /**
  * @alias userActions
@@ -57,7 +57,7 @@ export default {
 
   passwordChange: password => ({
     type: actionTypes.PASSWORD_CHANGE,
-    payload: password
+    payload: {password}
   }),
 
   secondPsdChange: function (secondPsd) {
