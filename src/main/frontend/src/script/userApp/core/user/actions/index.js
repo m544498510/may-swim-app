@@ -42,16 +42,13 @@ export default {
   }),
 
   emailChange: function (email) {
-    return (dispatch) => {
-      let emailErrorInfo = '';
-      if (!validateEmail(email)) {
-        emailErrorInfo = '邮箱格式不正确';
-      }
-      dispatch({
+    let emailErrorInfo = '';
+    if (!validateEmail(email)) {
+      emailErrorInfo = '邮箱格式不正确';
+    }
+    return {
         type: actionTypes.CHECK_EMAIL_FULFILLED,
         payload: {email, emailErrorInfo}
-
-      })
     }
   },
 
