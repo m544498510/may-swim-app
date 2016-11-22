@@ -5,7 +5,7 @@
  */
 'use strict';
 
-import utils from './utils';
+import * as utils from './utils';
 
 describe('user action utils', ()=>{
   describe('function validateEmail',()=>{
