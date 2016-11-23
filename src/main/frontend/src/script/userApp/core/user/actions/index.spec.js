@@ -44,14 +44,30 @@ describe('User action', ()=> {
     });
 
     it('should dispatch nothing when email is invalidate', ()=> {
-      _store.dispatch(actions.signUp());
-      const actionArr = _store.getActions();
+      const store = mockStore({
+        user: {
+          email: '123',
+          password: '123',
+          secondPsd: '123'
+        }
+      });
+
+      store.dispatch(actions.signUp());
+      const actionArr = store.getActions();
       expect(actionArr).to.be.empty
     });
 
     it('should dispatch nothing when password is invalidate', ()=> {
-      _store.dispatch(actions.signUp());
-      const actionArr = _store.getActions();
+      const store = mockStore({
+        user: {
+          email: '123',
+          password: '123',
+          secondPsd: '1234'
+        }
+      });
+
+      store.dispatch(actions.signUp());
+      const actionArr = store.getActions();
       expect(actionArr).to.be.empty
     })
   });
