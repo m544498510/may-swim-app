@@ -9,7 +9,7 @@ import {GET, POST, PATCH, PUT, DELETE, HEAD, OPTIONS} from "./fetch_types";
 
 const defaultData = {
   method: GET,
-  dataType: 'json',
+  //dataType: 'json',   可选
   mode: 'cors',
   credentials: 'same-origin',
   headers: {
@@ -43,23 +43,23 @@ export default function fetchWrapper(setting = {}) {
 function fetchPromise(url, options) {
 
   return new Promise((resolve, reject) => {
-      fetch(url, options)
-        .then(response => {
-          if (!checkFetchSuccess(response, options)) {
-            reject(response);
-          }
-          return response;
-        })
-        .then(response => {
-          return formatResponseBody(response);
-        })
-        .then(data => {
-          resolve(data);
-        })
-        .catch(err => {
-          reject(err);
-        })
-    });
+    fetch(url, options)
+      .then(response => {
+        if (!checkFetchSuccess(response, options)) {
+          reject(response);
+        }
+        return response;
+      })
+      .then(response => {
+        return formatResponseBody(response, options.dataType);
+      })
+      .then(data => {
+        resolve(data);
+      })
+      .catch(err => {
+        reject(err);
+      })
+  });
 }
 
 function checkFetchSuccess(response, options) {
@@ -86,12 +86,17 @@ function checkFetchSuccess(response, options) {
   }
 }
 
-function formatResponseBody(response) {
-  let contentType = response.headers.get('content-type');
-  contentType = contentType ? contentType : '';
-  if (contentType.indexOf('json')>-1) {
+function formatResponseBody(response, contentType) {
+  if(!contentType){
+    contentType = response.headers.get('content-type') || 'text';
+  }
+  if (contentType.indexOf('json') > -1) {
     return response.json();
-  } else if (contentType.indexOf('text')>-1) {
+  } else if (contentType.indexOf('text') > -1) {
+    return response.text();
+  } else if (contentType.indexOf('image') > -1){
+    return response.blob();
+  }else{
     return response.text();
   }
 }
@@ -106,10 +111,10 @@ function formatPostData(data = {}) {
   }
 }
 
-function objToFormData(obj = {}){
+function objToFormData(obj = {}) {
   const formData = new FormData();
   for (var key in obj) {
-    formData.append(key,obj[key]);
+    formData.append(key, obj[key]);
   }
   return formData;
 }
