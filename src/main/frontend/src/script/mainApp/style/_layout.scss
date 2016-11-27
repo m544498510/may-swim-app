@@ -1,0 +1,30 @@
+$left-space: 180px;
+
+header{
+  display: block;
+  height: 49px;
+  margin: 0;
+  background-repeat: repeat-x;
+  position: relative;
+  z-index: 905;
+  color: #444444;
+}
+
+main{
+  margin-left: $left-space;
+  padding: 66px 0 34px 0;
+  min-height: 500px;
+}
+
+footer{
+  height: 34px;
+  padding: 0 18px 0 $left-space;
+  width: 100%;
+  position: absolute;
+  display: block;
+  bottom: 0;
+  font-size: 13px;
+  color: $default-text;
+  transition: padding-left 0.5s ease;
+}
+
