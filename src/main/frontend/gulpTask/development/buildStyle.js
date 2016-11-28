@@ -15,7 +15,7 @@ const $ = util();
 
 const config = require(process.cwd() + '/config');
 
-gulp.task('build:style', ()=> {
+gulp.task('build:style', (done)=> {
   let postcssOption = [
     autoPreFixer({
       browsers: ['>5%','last 2 versions'],
@@ -35,6 +35,11 @@ gulp.task('build:style', ()=> {
       //outputStyle: 'compact',
       precision: 10
     }))
+
+    .on('error',(e)=>{
+      console.log(e);
+      done();
+    })
     .pipe($.postcss(postcssOption))
     .pipe($.rename({
       dirname: "style"

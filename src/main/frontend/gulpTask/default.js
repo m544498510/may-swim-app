@@ -20,7 +20,6 @@ gulp.task('default', ()=> {
    * Run `gulp --production`
    */
   var type = gutils.env.production ? 'production' : 'development';
-  global.NODE_ENV = type;
   if (type == 'development') {
 
     runSequence('clean', ['build:style', 'build:html', 'assets', 'lib', 'build:js'], 'dist', 'complete');
