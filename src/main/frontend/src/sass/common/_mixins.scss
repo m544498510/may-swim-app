@@ -75,3 +75,7 @@
     opacity: $opacity;
   }
 }
+
+@mixin widthChangeTranslation(){
+  transition: width 0.5s ease;
+}
