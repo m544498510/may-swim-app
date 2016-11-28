@@ -6,40 +6,11 @@
 'use strict';
 
 import 'babel-polyfill';
+import 'isomorphic-fetch';
+
+import {AppContainer} from 'react-hot-loader';
 import React from 'react';
-import { render } from 'react-dom';
-import { createStore, applyMiddleware,compose,combineReducers } from 'redux';
-import { Provider } from 'react-redux';
-import { Router, hashHistory } from 'react-router'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-import logger from 'redux-logger';
-import reducer from './reducers';
+import {render} from 'react-dom';
+import {hashHistory} from 'react-router'
+import {syncHistoryWithStore} from 'react-router-redux';
 
-import getRoutes from './router';
-
-const middleware = process.env.NODE_ENV === 'production' ?
-  [] :
-  [logger()];
-
-const store = createStore(
-  combineReducers({
-    ...reducer,
-    routing: routerReducer
-  }),
-  compose(
-    applyMiddleware(...middleware)
-  )
-);
-// Create an enhanced history that syncs navigation events with the store
-const history = syncHistoryWithStore(hashHistory, store);
-
-const routes = getRoutes(store);
-
-render(
-  <Provider store={store}>
-    <Router history={history}>
-      {routes}
-    </Router>
-  </Provider>,
-  document.getElementById('root')
-);
