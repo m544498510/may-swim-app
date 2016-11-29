@@ -72,7 +72,9 @@ function getConfig(NODE_ENV) {
       publicPath: '/dist/js/'
     };
     config.plugins.push(
-      new webpack.optimize.CommonsChunkPlugin('userAppVendor.js', ['userApp', 'vendor'])
+      new webpack.optimize.CommonsChunkPlugin('userAppVendor.js', ['userApp', 'vendor']),
+      new webpack.optimize.CommonsChunkPlugin('mainAppVendor.js', ['mainApp', 'vendor'])
+
     );
   }
 
