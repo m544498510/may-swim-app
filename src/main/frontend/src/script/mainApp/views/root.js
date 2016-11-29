@@ -1,3 +1,10 @@
+/**
+ *
+ * @author :    Mei XinLin
+ * @version :   1.0
+ */
+'use strict';
+
 import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';

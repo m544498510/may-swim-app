@@ -51,6 +51,10 @@ a {
   font-size:100%;
   vertical-align:baseline;
   background:transparent;
+  &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 ins {

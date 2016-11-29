@@ -1,0 +1,60 @@
+
+
+header{
+  padding: 0 32px 0 40px;
+  .header_logo{
+    color: $sidebar-text;
+    display: block;
+    font-size: 24px;
+    white-space: nowrap;
+    float: left;
+    outline: none !important;
+    line-height: 60px;
+
+    span {
+      color: $primary;
+    }
+  }
+  .header_menuCollapse_btn{
+    font-size: 24px;
+    display: block;
+    line-height: 60px;
+    color: $sidebar-text;
+    padding: 0;
+    float: left;
+    margin-left: 25px;
+  }
+  .header_userProfile_box{
+    float: right;
+    margin-right: 12px;
+    transition: all .15s ease-in-out;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    opacity: 1;
+    position: relative;
+    min-width: 230px;
+    margin-top: 10px;
+
+    a {
+      display: block;
+    }
+    img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      float:right;
+    }
+  }
+}
+
+@media (max-width: $resXXS) {
+  header{
+    padding: 0 20px;
+    .header_userProfile_box{
+      min-width: 106px;
+    }
+  }
+
+}

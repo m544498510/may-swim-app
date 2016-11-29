@@ -2,7 +2,7 @@ $left-space: 180px;
 
 header {
   display: block;
-  height: 49px;
+  height: 60px;
   margin: 0;
   background-repeat: repeat-x;
   position: relative;
@@ -53,14 +53,17 @@ footer {
   }
 }
 
-@media (min-width: 1200px) {
+
+//resolution adapter
+
+@media (min-width: $resXXL) {
   .menu-collapsed {
     @include layout-collapsed();
     @include aside-collapsed();
   }
 }
 
-@media (max-width: 1200px) and (min-width: $resXS) {
+@media (max-width: $resXXL) and (min-width: $resXS) {
   @include layout-collapsed();
   .menu-collapsed{
     @include aside-collapsed();
