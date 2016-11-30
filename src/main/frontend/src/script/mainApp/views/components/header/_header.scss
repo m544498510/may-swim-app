@@ -1,8 +1,7 @@
 
-
-header{
+header {
   padding: 0 32px 0 40px;
-  .header_logo{
+  .header_logo {
     color: $sidebar-text;
     display: block;
     font-size: 24px;
@@ -15,7 +14,7 @@ header{
       color: $primary;
     }
   }
-  .header_menuCollapse_btn{
+  .header_menuCollapse_btn {
     font-size: 24px;
     display: block;
     line-height: 60px;
@@ -24,7 +23,7 @@ header{
     float: left;
     margin-left: 25px;
   }
-  .header_userProfile_box{
+  .header_userProfile_box {
     float: right;
     margin-right: 12px;
     transition: all .15s ease-in-out;
@@ -36,23 +35,34 @@ header{
     position: relative;
     min-width: 230px;
     margin-top: 10px;
-
-    a {
-      display: block;
+    text-align: right;
+  }
+  .user_profile_pic{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .user_profile_dropdown_menu{
+    li{
+      &:last-child{
+        border-top: 1px solid rgba(0, 0, 0, 0.2)
+      }
+      &>a{
+        color: #7d7d7d;
+        padding:4px 16px 4px 20px;
+      }
     }
-    img {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      float:right;
+    icon{
+      margin-right: 10px;
     }
   }
 }
 
 @media (max-width: $resXXS) {
-  header{
+  header {
     padding: 0 20px;
-    .header_userProfile_box{
+    .header_userProfile_box {
       min-width: 106px;
     }
   }
