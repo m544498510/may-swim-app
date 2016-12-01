@@ -6,7 +6,7 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
-import {Button, FormGroup, InputGroup, FormControl} from 'react-bootstrap';
+import {Button, FormGroup, InputGroup, Input} from 'reactstrap';
 
 import InputFormGroup from '../InputFormGroup';
 

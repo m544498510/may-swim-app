@@ -5,7 +5,7 @@
  */
 'use strict';
 import React, {Component, PropTypes} from "react";
-import {Button, FormGroup, InputGroup, FormControl} from "react-bootstrap";
+import {Button,Form, FormGroup, InputGroup,InputGroupAddon} from "reactstrap";
 import MCheckbox from "widgets/checkbox";
 
 export default class SignInForm extends Component {
@@ -67,12 +67,12 @@ export default class SignInForm extends Component {
     }
 
     return (
-      <form className="auth-form">
+      <Form className="auth-form">
         <FormGroup>
           <InputGroup>
-            <InputGroup.Addon>
+            <InputGroupAddon>
               <icon className="fa fa-user fa-lg"/>
-            </InputGroup.Addon>
+            </InputGroupAddon>
             <input
               type="text"
               className="user-input form-control"
@@ -86,9 +86,9 @@ export default class SignInForm extends Component {
         </FormGroup>
         <FormGroup>
           <InputGroup >
-            <InputGroup.Addon>
+            <InputGroupAddon>
               <icon className="fa fa-lock fa-lg"/>
-            </InputGroup.Addon>
+            </InputGroupAddon>
             <input
               type="password"
               className="psd-input form-control"
@@ -114,7 +114,7 @@ export default class SignInForm extends Component {
             onClick={this.signInEvent}
           >登录</Button>
         </FormGroup>
-      </form>
+      </Form>
     );
   }
 }

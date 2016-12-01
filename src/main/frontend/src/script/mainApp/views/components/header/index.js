@@ -5,8 +5,7 @@
  */
 'use strict';
 import React, {PropTypes} from 'react';
-import {Dropdown,MenuItem} from 'react-bootstrap';
-import Toggle from 'widgets/dropdown/toggle';
+import {Dropdown,DropdownToggle,DropdownMenu,DropdownItem } from 'reactstrap';
 
 import {Link} from 'react-router';
 
@@ -18,33 +17,33 @@ const Header = ()=>{
       <Link className="header_logo" to="/">
         <span>May</span>'s sit
       </Link>
-      <a className="header_menuCollapse_btn" >
+      <a className="header_menuCollapse_btn" href="javascript:;" >
         <icon className="fa fa-bars" />
       </a>
       <div className="header_userProfile_box">
         <Dropdown id="userProfileDropdown" pullRight={true}>
-          <Toggle  bsRole="toggle">
+          <DropdownToggle>
             <img className="user_profile_pic"
                  src="http://beijing678.oss-cn-beijing.aliyuncs.com/jeemaa/documents/user/19251/face/1b06449747124c069887320865f4d480.jpg" alt=""/>
-          </Toggle>
-          <Dropdown.Menu className="user_profile_dropdown_menu">
-            <MenuItem>
+          </DropdownToggle>
+          <DropdownMenu className="user_profile_dropdown_menu">
+            <DropdownItem>
               <Link to="/user/profile" >
                 <icon className="fa fa-user" />
                 我的信息
               </Link>
-            </MenuItem>
-            <MenuItem>
+            </DropdownItem>
+            <DropdownItem>
               <Link to="/user/profile" >
                 <icon className="fa fa-cog" />
                 设置
               </Link>
-            </MenuItem>
-            <MenuItem>
+            </DropdownItem>
+            <DropdownItem>
               <icon className="fa fa-power-off" />
               退出
-            </MenuItem>
-          </Dropdown.Menu>
+            </DropdownItem>
+          </DropdownMenu>
         </Dropdown>
 
 

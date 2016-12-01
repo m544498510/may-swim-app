@@ -1,6 +1,9 @@
 
 header {
   padding: 0 32px 0 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.5);
+
   .header_logo {
     color: $sidebar-text;
     display: block;
@@ -37,23 +40,24 @@ header {
     margin-top: 10px;
     text-align: right;
   }
-  .user_profile_pic{
+  .user_profile_pic {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     cursor: pointer;
   }
-  .user_profile_dropdown_menu{
-    li{
-      &:last-child{
+  .user_profile_dropdown_menu {
+    right: -20px;
+    li {
+      &:last-child {
         border-top: 1px solid rgba(0, 0, 0, 0.2)
       }
-      &>a{
+      & > a {
         color: #7d7d7d;
-        padding:4px 16px 4px 20px;
+        padding: 4px 16px 4px 20px;
       }
     }
-    icon{
+    icon {
       margin-right: 10px;
     }
   }

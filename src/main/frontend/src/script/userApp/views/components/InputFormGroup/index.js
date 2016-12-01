@@ -5,7 +5,7 @@
  */
 'use strict';
 import React, {Component, PropTypes} from "react";
-import {FormGroup, InputGroup, FormControl} from "react-bootstrap";
+import {FormGroup, InputGroup, InputGroupAddon, Input} from "reactstrap";
 
 
 export default class InputFormGroup extends Component {
@@ -56,10 +56,10 @@ export default class InputFormGroup extends Component {
     return (
       <FormGroup className={this.props.status}>
         <InputGroup>
-          <InputGroup.Addon>
+          <InputGroupAddon>
             <icon className={this.state.iconClassName}/>
-          </InputGroup.Addon>
-          <FormControl
+          </InputGroupAddon>
+          <Input
             className="form-input"
             type={this.state.type}
             placeholder={this.props.placeholder}
