@@ -24,7 +24,7 @@ export function SignIn({signIn,signInRejected,signInFulfilled}) {
         signInRejected={signInRejected}
       />
       <div className="form-link-box">
-        <a className="form-link getPsd-link">忘记密码?</a>
+        <a className="form-link getPsd-link" href="javascript:viod(0)">忘记密码?</a>
         <span className="form-separator">·</span>
         <Link to="/sign-up" className="form-link register-link">注册帐户</Link>
       </div>

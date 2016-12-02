@@ -14,3 +14,4 @@ import 'redux';
 import 'redux-saga';
 import 'immutable';
 import 'react-immutable-proptypes';
+import 'classnames';

@@ -78,7 +78,7 @@ export default class SignInForm extends Component {
               className="user-input form-control"
               placeholder="邮箱/用户名"
               maxLength="64"
-              autocomplete="off"
+              autoComplete="off"
               ref="userNameInput"
               onChange={this.userNameChange}
             />
@@ -94,7 +94,7 @@ export default class SignInForm extends Component {
               className="psd-input form-control"
               placeholder="密码"
               maxLength="64"
-              autocomplete="off"
+              autoComplete="off"
               ref="psdInput"
               onChange={this.psdChange}
             />
