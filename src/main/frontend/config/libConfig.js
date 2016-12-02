@@ -14,9 +14,7 @@ export default {
   'bootstrap': {
     retainStruct: false,
     path: [
-      libFolder + 'bootstrap/dist/css/bootstrap.min.css',
-      libFolder + 'bootstrap/dist/css/bootstrap-theme.min.css',
-      libFolder + 'bootstrap/dist/js/bootstrap.min.js'
+      libFolder + 'bootstrap/dist/css/bootstrap.min.css'
     ]
   },
 

@@ -48,17 +48,16 @@ header {
   }
   .user_profile_dropdown_menu {
     right: -20px;
-    li {
+    .dropdown-item {
+      color: #7d7d7d;
+      padding: 4px 16px 4px 20px;
       &:last-child {
+        padding-top: 8px;
         border-top: 1px solid rgba(0, 0, 0, 0.2)
       }
-      & > a {
-        color: #7d7d7d;
-        padding: 4px 16px 4px 20px;
+      icon {
+        margin-right: 10px;
       }
-    }
-    icon {
-      margin-right: 10px;
     }
   }
 }
