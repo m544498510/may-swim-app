@@ -103,7 +103,7 @@ class Dropdown extends Component {
   renderChildren() {
     const {children, ...attrs} = this.props;
 
-    return React.Children.map(children, (child) => {
+    return React.Children.map(children, child => {
       if (child.type === DropdownToggle) {
         return child;
       } else if (child.type === DropdownMenu) {
