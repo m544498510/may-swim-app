@@ -1,11 +1,13 @@
 $left-space: 180px;
+$top-height: 60px;
 
 header {
   display: block;
-  height: 60px;
+  width: 100%;
+  height: $top-height;
   margin: 0;
   background-repeat: repeat-x;
-  position: relative;
+  position: fixed;
   z-index: 905;
 }
 
@@ -18,7 +20,9 @@ aside {
   display: block;
   min-height: 100%;
   height: 100%;
+  top: $top-height;
   position: fixed;
+  overflow: hidden;
 }
 
 main {
