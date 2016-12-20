@@ -66,7 +66,7 @@ export default function createBrowserSync(isProxy){
   }else{
     config.server = {
       baseDir: path.resolve(__dirname,'../'),
-      index: 'dist/html/userApp.html',
+      index: 'dist/html/mainApp.html',
       routes: {
         "/dist": path.resolve(__dirname,'../dist'),
       }
