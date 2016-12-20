@@ -5,30 +5,58 @@
  */
 'use strict';
 
-import React, {Component} from "react";
+import React, {Component, PropTypes} from "react";
+import {Link} from "react-router";
 
 export default class SidebarItem extends Component {
+  static propTypes = {
+    icon: PropTypes.string.isRequired,
+    dName: PropTypes.string.isRequired,
+    link: PropTypes.string,
+    showChild: PropTypes.bool
+  };
+
   constructor(props, context) {
     super(props, context);
 
-    this.renderChildren = ::this.renderChildren;
+    this.state = {
+      expand: props.showChild
+    };
 
+    this.renderItem = ::this.renderItem;
   }
 
 
-  renderChildren() {
-    const {children} = this.props;
+  renderItem() {
+    const {link, dName, icon} = this.props;
 
-    return React.Children.map(children,child=>{
+    const iconClass = 'fa '+icon;
 
-    })
+    let Tag;
+    if(link){
+      Tag = Link;
+    }else{
+      Tag = 'div';
+    }
+
+
+    let item = (
+      <Tag to={link}>
+        <icon className={iconClass} />
+        <span >{dName}</span>
+      </Tag>
+    );
+    return item;
+
   }
 
   render() {
     return (
       <li className="sidebar_item">
-        {this.renderChildren()}
-
+        {this.renderItem()}
+        <ul className="sidebar_item_sublist">
+          {this.props.children}
+        </ul>
       </li>
     )
   }

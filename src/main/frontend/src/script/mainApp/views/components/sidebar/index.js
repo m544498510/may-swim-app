@@ -16,7 +16,12 @@ export default class Sidebar extends Component {
       <aside>
         <div className="sidebar_box">
           <ul className="sidebar_main_list">
-            <SidebarItem>asd</SidebarItem>
+            <SidebarItem
+              dName="asda"
+              showChild={false}
+              icon="fa-home"
+              link="/home"
+            />
           </ul>
         </div>
         <div className="sidebar_hover_elem"></div>

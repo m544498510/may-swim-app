@@ -8,6 +8,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import HeaderContainer from './containers/header';
+import SidebarContainer from './containers/sidebar';
 
 export default class App extends Component {
   static contextTypes = {
@@ -22,7 +23,7 @@ export default class App extends Component {
     return (
       <app>
         <HeaderContainer />
-        <aside></aside>
+        <SidebarContainer />
         <main className="main-frame">{this.props.children}</main>
         <footer></footer>
       </app>
