@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>frame</title>
+  <meta charset="UTF-8">
+  <title>frame</title>
+
   <link rel="stylesheet" type="text/css" href="../dist/lib/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../dist/lib/fontAwesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="../dist/style/mainApp.css">
@@ -10,9 +11,81 @@
 
 </head>
 <body>
-<header></header>
-<aside></aside>
-<main></main>
-<footer></footer>
+<root id="root">
+  <app data-reactroot="">
+    <header><a class="header_logo" href="#/"><span>May</span><!-- react-text: 5 -->'s sit<!-- /react-text --></a><a
+      class="header_menuCollapse_btn" href="javascript:;">
+      <icon class="fa fa-bars"></icon>
+    </a>
+      <div class="header_userProfile_box">
+        <div class="dropdown"><a data-toggle="dropdown" aria-haspopup="true" color="secondary" class=""
+                                 aria-expanded="false"><img class="user_profile_pic"
+                                                            src="http://beijing678.oss-cn-beijing.aliyuncs.com/jeemaa/documents/user/19251/face/1b06449747124c069887320865f4d480.jpg"
+                                                            alt=""></a>
+          <div tabindex="-1" aria-hidden="true" role="menu"
+               class="user_profile_dropdown_menu dropdown-menu dropdown-menu-right">
+            <div tabindex="0" class="dropdown-item"><a href="#/user/profile">
+              <icon class="fa fa-user"></icon><!-- react-text: 16 -->我的信息<!-- /react-text --></a></div>
+            <div tabindex="0" class="dropdown-item"><a href="#/user/profile">
+              <icon class="fa fa-cog"></icon><!-- react-text: 20 -->设置<!-- /react-text --></a></div>
+            <div tabindex="0" class="dropdown-item">
+              <icon class="fa fa-power-off"></icon><!-- react-text: 23 -->退出<!-- /react-text --></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <aside>
+      <div class="sidebar_box">
+        <ul class="sidebar_main_list">
+          <li class="sidebar_item"><a class="sidebar_item_link" href="#/home">
+            <icon class="sidebar_item_icon fa fa-home"></icon>
+            <span>Dashboard</span>
+            <icon class="sidebar_dropdown_icon fa fa-angle-down"></icon>
+          </a>
+            <ul class="sidebar_item_sublist"></ul>
+          </li>
+
+
+
+
+
+
+          <li class="sidebar_item">
+            <div class="sidebar_item_link">
+              <icon class="fa fa-home"></icon>
+              <span>asda</span><!-- react-text: 37 --><!-- /react-text --></div>
+            <ul class="sidebar_item_sublist"></ul>
+          </li>
+          <li class="sidebar_item">
+            <div class="sidebar_item_link">
+              <icon class="fa fa-home"></icon>
+              <span>asda</span>
+              <icon class="fa fa-angle-down"></icon>
+            </div>
+            <ul class="sidebar_item_sublist">
+              <li class="sidebar_item">
+                <div class="sidebar_item_link">
+                  <icon class="fa undefined"></icon>
+                  <span>asda</span><!-- react-text: 49 --><!-- /react-text --></div>
+                <ul class="sidebar_item_sublist"></ul>
+              </li>
+              <li class="sidebar_item">
+                <div class="sidebar_item_link">
+                  <icon class="fa undefined"></icon>
+                  <span>asda</span><!-- react-text: 55 --><!-- /react-text --></div>
+                <ul class="sidebar_item_sublist"></ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar_hover_elem"></div>
+    </aside>
+    <main class="main-frame">
+      <div>dashboard</div>
+    </main>
+    <footer></footer>
+  </app>
+</root>
 </body>
 </html>

@@ -10,7 +10,7 @@ import {Link} from "react-router";
 
 export default class SidebarItem extends Component {
   static propTypes = {
-    icon: PropTypes.string.isRequired,
+    icon: PropTypes.string,
     dName: PropTypes.string.isRequired,
     link: PropTypes.string,
     showChild: PropTypes.bool
@@ -30,6 +30,14 @@ export default class SidebarItem extends Component {
   renderItem() {
     const {link, dName, icon} = this.props;
 
+    const iconTmp = <icon className={'fa '+icon}  />;
+    const dNameTmp = <span >{dName}</span>;
+    let dropdownIcon = '';
+    if(this.props.children && this.props.children.length > 0){
+      dropdownIcon = <icon className="fa fa-angle-down" />
+    }
+
+
     const iconClass = 'fa '+icon;
 
     let Tag;
@@ -41,9 +49,10 @@ export default class SidebarItem extends Component {
 
 
     let item = (
-      <Tag to={link}>
-        <icon className={iconClass} />
-        <span >{dName}</span>
+      <Tag to={link} className="sidebar_item_link">
+        {iconTmp}
+        {dNameTmp}
+        {dropdownIcon}
       </Tag>
     );
     return item;

@@ -1,6 +1,48 @@
-aside{
+aside {
   background-color: $sidebar;
+}
 
+.sidebar_main_list {
+  padding-top: 18px;
+}
 
+.sidebar_item {
+  position: relative;
+}
+
+.sidebar_item_link {
+  display: block;
+  height: 42px;
+  padding-left: 18px;
+  text-shadow: none;
+  font-size: 13px;
+  text-decoration: none;
+  color: $sidebar-text;
+  line-height: 42px;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  &:hover {
+    color: $primary;
+  }
+
+}
+
+.sidebar_item_icon {
+  margin-right: 18px;
+  width: 16px;
+}
+
+.sidebar_dropdown_icon {
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  text-shadow: none;
+  font-size: 18px;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  color: $sidebar-text;
+  transition: transform 0.2s linear;
 
 }

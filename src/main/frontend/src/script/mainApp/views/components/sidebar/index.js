@@ -22,6 +22,27 @@ export default class Sidebar extends Component {
               icon="fa-home"
               link="/home"
             />
+
+            <SidebarItem
+              dName="asda"
+              showChild={false}
+              icon="fa-home"
+            />
+            <SidebarItem
+              dName="asda"
+              showChild={false}
+              icon="fa-home"
+            >
+              <SidebarItem
+                dName="asda"
+                showChild={false}
+              />
+              <SidebarItem
+                dName="asda"
+                showChild={false}
+              />
+
+            </SidebarItem>
           </ul>
         </div>
         <div className="sidebar_hover_elem"></div>
