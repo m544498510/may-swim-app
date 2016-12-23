@@ -8,6 +8,18 @@ aside {
 
 .sidebar_item {
   position: relative;
+
+  &.expanded{
+    .sidebar_dropdown_icon{
+      transform: rotate(180deg);
+    }
+    .sidebar_item_sublist{
+      display: block;
+    }
+  }
+
+
+
 }
 
 .sidebar_item_link {
@@ -22,9 +34,15 @@ aside {
   white-space: nowrap;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
   &:hover {
     color: $primary;
   }
+  &.selected{
+    background-color:  $primary;
+    color: $sidebar-text;
+  }
+
 
 }
 
@@ -42,7 +60,14 @@ aside {
   position: absolute;
   right: 10px;
   top: 12px;
-  color: $sidebar-text;
   transition: transform 0.2s linear;
 
+}
+
+.sidebar_item_sublist{
+  display: none;
+  .sidebar_item_link{
+    height: 29px;
+    line-height: 29px;
+  }
 }
