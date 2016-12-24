@@ -17,17 +17,28 @@ export default class Sidebar extends Component {
         <div className="sidebar_box">
           <ul className="sidebar_main_list">
             <SidebarItem
-              dName="asda"
+              dName="home"
               showChild={false}
               icon="fa-home"
               link="/home"
             />
 
             <SidebarItem
-              dName="asda"
+              dName="设置"
               showChild={false}
               icon="fa-home"
-            />
+            >
+              <SidebarItem
+                dName="home1"
+                showChild={false}
+                link="/home"
+              />
+              <SidebarItem
+                dName="home2"
+                showChild={false}
+                link="/home"
+              />
+            </SidebarItem>
             <SidebarItem
               dName="asda"
               showChild={false}
@@ -41,7 +52,6 @@ export default class Sidebar extends Component {
                 dName="asda"
                 showChild={false}
               />
-
             </SidebarItem>
           </ul>
         </div>

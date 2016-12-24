@@ -24,48 +24,57 @@ export default class SidebarItem extends Component {
     };
 
     this.renderItem = ::this.renderItem;
+    this.renderChildren = ::this.renderChildren;
   }
 
 
   renderItem() {
-    const {link, dName, icon} = this.props;
+    const {link, dName, icon, children} = this.props;
 
-    const iconTmp = <icon className={'fa '+icon}  />;
+    const iconTmp = <icon className={'sidebar_item_icon fa ' + icon}/>;
     const dNameTmp = <span >{dName}</span>;
-    let dropdownIcon = '';
-    if(this.props.children && this.props.children.length > 0){
-      dropdownIcon = <icon className="fa fa-angle-down" />
+
+
+    let dropdownIcon;
+    if (children && children.length > 0) {
+      dropdownIcon = <icon className="sidebar_dropdown_icon fa fa-angle-down"/>
     }
 
-
-    const iconClass = 'fa '+icon;
-
     let Tag;
-    if(link){
+    if (link) {
       Tag = Link;
-    }else{
+    } else {
       Tag = 'div';
     }
 
-
-    let item = (
+    return (
       <Tag to={link} className="sidebar_item_link">
         {iconTmp}
         {dNameTmp}
         {dropdownIcon}
       </Tag>
     );
-    return item;
 
+  }
+
+  renderChildren() {
+    const {children} = this.props;
+    if (children && children.length > 0) {
+      return (
+        <ul className="sidebar_item_sublist">
+          {children}
+        </ul>
+      );
+    } else {
+      return '';
+    }
   }
 
   render() {
     return (
-      <li className="sidebar_item">
+      <li className="sidebar_item {}">
         {this.renderItem()}
-        <ul className="sidebar_item_sublist">
-          {this.props.children}
-        </ul>
+        {this.renderChildren()}
       </li>
     )
   }
