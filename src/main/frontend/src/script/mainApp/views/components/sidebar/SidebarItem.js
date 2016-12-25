@@ -13,15 +13,11 @@ export default class SidebarItem extends Component {
     icon: PropTypes.string,
     dName: PropTypes.string.isRequired,
     link: PropTypes.string,
-    showChild: PropTypes.bool
+    showChildren: PropTypes.bool
   };
 
   constructor(props, context) {
     super(props, context);
-
-    this.state = {
-      expand: props.showChild
-    };
 
     this.renderItem = ::this.renderItem;
     this.renderChildren = ::this.renderChildren;
@@ -71,8 +67,13 @@ export default class SidebarItem extends Component {
   }
 
   render() {
+    let showChildrenClass = '';
+    if(this.props.showChildren){
+      showChildrenClass = 'expanded';
+    }
+
     return (
-      <li className="sidebar_item {}">
+      <li className={`sidebar_item ${showChildrenClass}`}>
         {this.renderItem()}
         {this.renderChildren()}
       </li>

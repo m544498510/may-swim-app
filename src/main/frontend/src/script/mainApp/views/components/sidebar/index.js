@@ -10,47 +10,53 @@ import React, {Component, PropTypes} from 'react';
 import SidebarItem from './SidebarItem';
 
 export default class Sidebar extends Component {
+  static props = {
+    path: PropTypes.string.isRequired
+  };
+
+  calculationShowState(url){
+    if(url){
+
+    }
+  }
 
   render() {
+    const {home,setting} = calculationShowState();
+
+
+
     return (
       <aside>
         <div className="sidebar_box">
           <ul className="sidebar_main_list">
             <SidebarItem
               dName="home"
-              showChild={false}
               icon="fa-home"
               link="/home"
             />
-
             <SidebarItem
               dName="设置"
-              showChild={false}
+              showChildren={true}
               icon="fa-home"
             >
               <SidebarItem
                 dName="home1"
-                showChild={false}
                 link="/home"
               />
               <SidebarItem
                 dName="home2"
-                showChild={false}
                 link="/home"
               />
             </SidebarItem>
             <SidebarItem
               dName="asda"
-              showChild={false}
               icon="fa-home"
             >
               <SidebarItem
                 dName="asda"
-                showChild={false}
               />
               <SidebarItem
                 dName="asda"
-                showChild={false}
               />
             </SidebarItem>
           </ul>
