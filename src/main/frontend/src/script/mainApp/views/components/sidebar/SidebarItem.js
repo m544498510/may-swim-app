@@ -19,16 +19,26 @@ export default class SidebarItem extends Component {
   constructor(props, context) {
     super(props, context);
 
+    this.state = {
+      expanded: this.props.showChildren?'expanded':''
+    };
+
     this.renderItem = ::this.renderItem;
     this.renderChildren = ::this.renderChildren;
   }
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.showChildren != this.props.showChildren){
+      this.setState({expnaded: })
+    }
+  }
 
   renderItem() {
     const {link, dName, icon, children} = this.props;
 
     const iconTmp = <icon className={'sidebar_item_icon fa ' + icon}/>;
     const dNameTmp = <span >{dName}</span>;
+
 
 
     let dropdownIcon;
@@ -81,3 +91,5 @@ export default class SidebarItem extends Component {
   }
 
 }
+
+function get

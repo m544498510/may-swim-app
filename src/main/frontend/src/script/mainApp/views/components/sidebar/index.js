@@ -14,6 +14,16 @@ export default class Sidebar extends Component {
     path: PropTypes.string.isRequired
   };
 
+  constructor(props,content){
+    super(props,content);
+
+    this.state = {
+      home: false,
+
+
+    }
+  }
+
   calculationShowState(url){
     if(url){
 
@@ -21,7 +31,7 @@ export default class Sidebar extends Component {
   }
 
   render() {
-    const {home,setting} = calculationShowState();
+    //const {home,setting} = this.calculationShowState();
 
 
 
