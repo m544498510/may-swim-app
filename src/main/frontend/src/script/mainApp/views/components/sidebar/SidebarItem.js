@@ -89,7 +89,6 @@ export default class SidebarItem extends Component {
       </li>
     )
   }
-
 }
 
-function get
+function _get
