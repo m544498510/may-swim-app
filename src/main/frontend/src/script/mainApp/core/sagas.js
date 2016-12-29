@@ -5,8 +5,10 @@
  */
 'use strict';
 
+import user from './user';
 
 export default function* sagas() {
   yield [
+    user.sagas
   ];
 }

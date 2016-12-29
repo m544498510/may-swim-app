@@ -13,7 +13,7 @@ import authActions from './actions'
 
 function* signInWorker({payload}) {
   try {
-    const user = yield call(mFetch.get, {
+    const user = yield call(mFetch.post, {
       url: '/session',
       data: {
         userName: payload.userName,

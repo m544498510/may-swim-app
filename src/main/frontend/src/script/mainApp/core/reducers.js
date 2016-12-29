@@ -7,10 +7,10 @@
 import {routerReducer} from 'react-router-redux';
 import {combineReducers} from 'redux';
 
-import userInfo from './userInfo';
+import user from './user';
 
 
 export default combineReducers({
   routing: routerReducer,
-  userInfo: userInfo.reducer
+  user: user.reducer
 });
