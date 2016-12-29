@@ -27,7 +27,7 @@ public class sessionController {
     private IUserService iUserService;
 
     @ResponseBody
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public User signIn(HttpServletRequest request, HttpServletResponse response,
                        String userName, String userPsd, boolean autoSignIn) {
         User user = iUserService.signIn(userName, userPsd);
@@ -62,10 +62,14 @@ public class sessionController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public User test(HttpServletRequest request, HttpServletResponse response) {
-        User user = iUserService.signIn("TEST_NAME", "TEST_PSD");
-        response.setStatus(ResponseUtil.UNAUTHORIZED);
+        User user = (User) request.getSession().getAttribute(Constant.SESSION_USER);
+        if(user != null){
+            ResponseUtil.success(request,response,false);
+        }else{
+            ResponseUtil.notFoundError(response);
+        }
         return user;
     }
 
