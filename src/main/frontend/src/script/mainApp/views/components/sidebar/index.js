@@ -10,31 +10,35 @@ import React, {Component, PropTypes} from 'react';
 import SidebarItem from './SidebarItem';
 
 export default class Sidebar extends Component {
-  static props = {
+  static propTypes = {
     path: PropTypes.string.isRequired
   };
 
   constructor(props,content){
     super(props,content);
 
-    this.state = {
-      home: false,
+    this._calculationShowState = ::this._calculationShowState;
 
-
-    }
   }
 
-  calculationShowState(url){
-    if(url){
+  _calculationShowState(){
+    const path = location.href;
+    const items = ['setting','test'];
+    const showState = {};
 
+    for (var i = 0; i < items.length; i++) {
+      const item = items[i];
+      let flag = false;
+      if(path.indexOf(`/${items[i]}`)>-1){
+        flag = true;
+      }
+      showState[item] = flag;
     }
+    return showState;
   }
 
   render() {
-    //const {home,setting} = this.calculationShowState();
-
-
-
+    const {setting,test} = this._calculationShowState();
     return (
       <aside>
         <div className="sidebar_box">
@@ -46,27 +50,30 @@ export default class Sidebar extends Component {
             />
             <SidebarItem
               dName="设置"
-              showChildren={true}
+              showChildren={setting}
               icon="fa-home"
             >
               <SidebarItem
                 dName="home1"
-                link="/home"
+                link="/setting"
               />
               <SidebarItem
                 dName="home2"
-                link="/home"
+                link="/setting"
               />
             </SidebarItem>
             <SidebarItem
-              dName="asda"
+              dName="test"
               icon="fa-home"
+              showChildren={test}
             >
               <SidebarItem
                 dName="asda"
+                link="/test"
               />
               <SidebarItem
                 dName="asda"
+                link="/test"
               />
             </SidebarItem>
           </ul>

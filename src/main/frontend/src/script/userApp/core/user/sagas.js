@@ -29,7 +29,6 @@ function* signUpWorker({payload}) {
 }
 
 function* signUpWatcher(){
-  console.log(actionTypes.SIGN_UP);
   yield takeEvery(actionTypes.SIGN_UP, signUpWorker);
 }
 

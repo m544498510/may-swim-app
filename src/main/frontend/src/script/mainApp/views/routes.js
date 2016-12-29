@@ -9,7 +9,7 @@ import App from './app';
 import DashboardContainer from './containers/dashboard';
 
 export const paths = {
-  ROOT: '/'
+  ROOT: '/home'
 };
 
 export const getRoutes = () => {
@@ -21,7 +21,16 @@ export const getRoutes = () => {
         indexRoute: {
           component:DashboardContainer
         }
+      },
+      {
+        path: '/test',
+        component: DashboardContainer
+      },
+      {
+        path: '/setting',
+        component: DashboardContainer
       }
+
     ]
   };
 };

@@ -6,8 +6,13 @@
 'use strict';
 
 import * as reducer from './reducer';
+import action from './action';
+import * as actionTypes from './action/types';
+
 
 
 export default {
-  reducer
+  reducer,
+  action,
+  actionTypes
 }

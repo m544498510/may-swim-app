@@ -20,25 +20,20 @@ export default class SidebarItem extends Component {
     super(props, context);
 
     this.state = {
-      expanded: this.props.showChildren?'expanded':''
+      expand: this.props.showChildren
     };
 
     this.renderItem = ::this.renderItem;
     this.renderChildren = ::this.renderChildren;
+    this.itemClickEvt = ::this.itemClickEvt;
   }
 
-  componentWillReceiveProps(nextProps){
-    if(nextProps.showChildren != this.props.showChildren){
-      this.setState({expnaded: })
-    }
-  }
 
   renderItem() {
     const {link, dName, icon, children} = this.props;
 
     const iconTmp = <icon className={'sidebar_item_icon fa ' + icon}/>;
     const dNameTmp = <span >{dName}</span>;
-
 
 
     let dropdownIcon;
@@ -54,13 +49,19 @@ export default class SidebarItem extends Component {
     }
 
     return (
-      <Tag to={link} className="sidebar_item_link">
+      <Tag to={link} className="sidebar_item_link" onClick={this.itemClickEvt}>
         {iconTmp}
         {dNameTmp}
         {dropdownIcon}
       </Tag>
     );
 
+  }
+
+  itemClickEvt() {
+    this.setState({
+      expand: !this.state.expand
+    })
   }
 
   renderChildren() {
@@ -76,11 +77,13 @@ export default class SidebarItem extends Component {
     }
   }
 
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({expand: nextProps.showChildren})
+  }
+
   render() {
-    let showChildrenClass = '';
-    if(this.props.showChildren){
-      showChildrenClass = 'expanded';
-    }
+    const showChildrenClass = this.state.expand ? 'expanded' : '';
 
     return (
       <li className={`sidebar_item ${showChildrenClass}`}>
@@ -90,5 +93,3 @@ export default class SidebarItem extends Component {
     )
   }
 }
-
-function _get
