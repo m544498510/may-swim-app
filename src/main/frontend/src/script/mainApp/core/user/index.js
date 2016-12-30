@@ -5,16 +5,17 @@
  */
 'use strict';
 
-import * as reducer from './reducer';
-import action from './action';
-import * as actionTypes from './action/types';
-import sagas from './saga';
-
+import reducers from "./reducer";
+import * as actions from "./action";
+import actionTypes from "./action/types";
+import sagas from "./saga";
+import selectors from "./selector";
 
 
 export default {
-  reducer,
-  action,
+  reducers,
+  actions,
   actionTypes,
-  sagas
+  sagas,
+  selectors
 }

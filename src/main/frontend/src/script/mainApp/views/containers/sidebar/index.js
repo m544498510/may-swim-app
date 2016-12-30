@@ -6,12 +6,34 @@
 'use strict';
 
 import React,{Component,PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {createSelect} from 'reselect';
+
 
 import Sidebar from '../../components/sidebar';
 
-export default class SidebarContainer extends Component{
+import obj,{routerSelector} from '../../../core/router';
+
+console.log(obj);
+console.log(routerSelector);
+
+class SidebarContainer extends Component{
+  static propTypes = {
+    path: PropTypes.string.isRequired
+  };
 
   render(){
-    return <Sidebar />
+    return <Sidebar
+      path={this.props.path}
+    />
   }
 }
+
+const mapStateToProps = createSelect(
+  routerSelector.getPathName,
+  {
+    path
+  }
+);
+
+export default connect(mapStateToProps,null)(SidebarContainer);

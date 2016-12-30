@@ -12,5 +12,5 @@ import user from './user';
 
 export default combineReducers({
   routing: routerReducer,
-  user: user.reducer
+  user: user.reducers
 });

@@ -19,7 +19,13 @@ function* getUserWorker() {
     const user = yield call(mFetch.get, {
       url: '/session'
     });
-    yield put(actions.setUserInfo(user));
+
+    const user1 = {
+      id: 1,
+      userName: 'may',
+      pic: 'http://beijing678.oss-cn-beijing.aliyuncs.com/jeemaa/documents/user/19251/face/1b06449747124c069887320865f4d480.jpg'
+    };
+    yield put(actions.setUserInfo(user1));
   } catch (e) {
     console.log(e);
   }
@@ -41,7 +47,7 @@ function* loginOutWorker() {
 }
 
 function* loginOutWatcher(){
-  return takeEvery(actionTypes.FETCH_LOGIN_OUT,loginOutWorker);
+  return takeEvery(actionTypes.LOGIN_OUT,loginOutWorker);
 }
 
 

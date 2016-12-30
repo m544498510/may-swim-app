@@ -5,13 +5,49 @@
  */
 'use strict';
 
-import React,{Component,PropTypes} from 'react';
+import React, {PropTypes, Component} from "react";
+import {connect} from "react-redux";
+import {createSelector} from "reselect";
+import Header from "../../components/header";
+import user from "../../../core/user";
 
-import Header from '../../components/header';
+class HeaderContainer extends Component {
+  static propTypes = {
+    user: PropTypes.object.isRequired,
+    loginOut: PropTypes.func.isRequired,
+    fetchUser: PropTypes.func.isRequired,
+    loginOutState: PropTypes.bool.isRequired,
+  };
 
-export default class HeaderContainer extends Component{
+  constructor(props, context) {
+    super(props, context);
+    this.props.fetchUser();
+  }
 
-  render(){
-    return <Header />
+
+  render() {
+    if (this.props.loginOutState) {
+      location.href = '/userApp'
+    }
+
+    return <Header
+      userPic={this.props.user.pic}
+      loginOut={this.props.loginOut}
+    />
   }
 }
+
+const mapStateToProps = createSelector(
+  user.selectors.getUser,
+  user.selectors.getLoginOutState,
+  (user, loginOutState)=> ({
+    user, loginOutState
+  })
+);
+
+const mapDispatchToProps = {
+  loginOut: user.actions.loginOut,
+  fetchUser: user.actions.fetchUser
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
