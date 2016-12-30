@@ -19,11 +19,6 @@ public class UserController {
     @Resource(name = "userService")
     private IUserService iUserService;
 
-    @RequestMapping(value = "/userApp", method = RequestMethod.GET)
-    public ModelAndView userApp() {
-        return new ModelAndView("../dist/html/userApp.html");
-    }
-
     @ResponseBody
     @RequestMapping(value = "/userName", method = RequestMethod.GET)
     public String checkUserName(HttpServletRequest request, HttpServletResponse response, String userName) {
