@@ -15,15 +15,8 @@ class HeaderContainer extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
     loginOut: PropTypes.func.isRequired,
-    fetchUser: PropTypes.func.isRequired,
     loginOutState: PropTypes.bool.isRequired,
   };
-
-  constructor(props, context) {
-    super(props, context);
-    this.props.fetchUser();
-  }
-
 
   render() {
     if (this.props.loginOutState) {
@@ -33,6 +26,7 @@ class HeaderContainer extends Component {
     return <Header
       userPic={this.props.user.pic}
       loginOut={this.props.loginOut}
+      fetchUser={this.props.fetchUser}
     />
   }
 }

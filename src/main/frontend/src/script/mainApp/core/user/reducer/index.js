@@ -20,12 +20,12 @@ export default function (state = new userRecord(), {type, payload}) {
   switch (type) {
     case actionTypes.SET_USER_INFO:
       const {id, userName, pic} = payload;
-      state.merge({
+      return state.merge({
         id, userName, pic
       });
       break;
     case actionTypes.LOGIN_OUT:
-      state.merge({
+      return state.merge({
         loginOutState: payload
       });
       break;

@@ -15,12 +15,13 @@ import {syncHistoryWithStore} from 'react-router-redux';
 
 import configureStore from './core/store';
 import Root from './views/root';
+import {actions as userAction} from './core/user';
 
 const store = configureStore();
 const syncedHistory = syncHistoryWithStore(hashHistory, store);
 const rootElement = document.getElementById('root');
 
-const renderRoot = function(Root){
+const renderRoot = function (Root) {
   render(
     (<AppContainer>
       <Root history={syncedHistory} store={store}/>
@@ -30,6 +31,9 @@ const renderRoot = function(Root){
 };
 
 renderRoot(Root);
+
+store.dispatch(userAction.fetchUser());
+
 
 if (module.hot) {
   module.hot.accept('./views/root', () => {

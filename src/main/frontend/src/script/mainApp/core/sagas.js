@@ -5,10 +5,10 @@
  */
 'use strict';
 
-import * as user from './user';
+import {sagas as userSagas} from './user';
 
 export default function* sagas() {
   yield [
-    user.sagas
+    ...userSagas
   ];
 }
