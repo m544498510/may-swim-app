@@ -25,7 +25,6 @@ export default class Header extends Component {
         <a className="header_menuCollapse_btn" href="javascript:;">
           <icon className="fa fa-bars"/>
         </a>
-        <button onClick={this.props.fetchUser}>asdasd</button>
         <div className="header_userProfile_box">
           <Dropdown id="userProfileDropdown">
             <DropdownToggle tag="a">
@@ -46,7 +45,7 @@ export default class Header extends Component {
                   设置
                 </Link>
               </DropdownItem>
-              <DropdownItem tag="div" onClick={this.props.loginOut}>
+              <DropdownItem className="sign_out" tag="div" onClick={this.props.loginOut}>
                 <icon className="fa fa-power-off"/>
                 退出
               </DropdownItem>

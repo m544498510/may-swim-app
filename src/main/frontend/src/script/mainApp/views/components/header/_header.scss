@@ -49,11 +49,16 @@ header {
   .user_profile_dropdown_menu {
     right: -20px;
     .dropdown-item {
-      color: #7d7d7d;
+      color: $dropdown-text;
       padding: 4px 16px 4px 20px;
-      &:last-child {
+      cursor: pointer;
+      &.sign_out {
         padding-top: 8px;
-        border-top: 1px solid rgba(0, 0, 0, 0.2)
+        border-top: 1px solid $default;
+      }
+      &:hover {
+        background: #f4fcff;
+        color: #2b2d2f;
       }
       icon {
         margin-right: 10px;
