@@ -5,7 +5,7 @@
  */
 'use strict';
 
-import user from './user';
+import * as user from './user';
 
 export default function* sagas() {
   yield [

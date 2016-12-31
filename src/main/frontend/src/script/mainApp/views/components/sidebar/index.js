@@ -22,14 +22,13 @@ export default class Sidebar extends Component {
   }
 
   _calculationShowState(){
-    const path = location.href;
     const items = ['setting','test'];
     const showState = {};
 
-    for (var i = 0; i < items.length; i++) {
+    for (let i = 0; i < items.length; i++) {
       const item = items[i];
       let flag = false;
-      if(path.indexOf(`/${items[i]}`)>-1){
+      if(this.props.path.indexOf(`/${items[i]}`)>-1){
         flag = true;
       }
       showState[item] = flag;

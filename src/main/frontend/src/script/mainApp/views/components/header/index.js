@@ -4,7 +4,7 @@
  * @version :   1.0
  */
 'use strict';
-import React, {Component,PropTypes} from "react";
+import React, {Component, PropTypes} from "react";
 import {DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
 import {Dropdown} from "widgets/dropdown";
 import {Link} from "react-router";

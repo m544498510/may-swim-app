@@ -5,4 +5,6 @@
  */
 'use strict';
 
-export * as routerSelector from './selector';
+import * as selector from './selector/index';
+
+export {selector};

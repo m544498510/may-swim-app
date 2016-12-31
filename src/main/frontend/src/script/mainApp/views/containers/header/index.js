@@ -9,7 +9,7 @@ import React, {PropTypes, Component} from "react";
 import {connect} from "react-redux";
 import {createSelector} from "reselect";
 import Header from "../../components/header";
-import user from "../../../core/user";
+import * as user  from "../../../core/user";
 
 class HeaderContainer extends Component {
   static propTypes = {

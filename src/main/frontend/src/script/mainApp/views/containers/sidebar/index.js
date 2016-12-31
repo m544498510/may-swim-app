@@ -7,15 +7,11 @@
 
 import React,{Component,PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {createSelect} from 'reselect';
-
+import {createSelector} from 'reselect';
 
 import Sidebar from '../../components/sidebar';
 
-import obj,{routerSelector} from '../../../core/router';
-
-console.log(obj);
-console.log(routerSelector);
+import {selector} from '../../../core/router';
 
 class SidebarContainer extends Component{
   static propTypes = {
@@ -29,11 +25,9 @@ class SidebarContainer extends Component{
   }
 }
 
-const mapStateToProps = createSelect(
-  routerSelector.getPathName,
-  {
-    path
-  }
+const mapStateToProps = createSelector(
+  selector.getPathName,
+  path => ({path})
 );
 
 export default connect(mapStateToProps,null)(SidebarContainer);

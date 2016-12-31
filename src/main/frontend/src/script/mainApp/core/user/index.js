@@ -9,13 +9,6 @@ import reducers from "./reducer";
 import * as actions from "./action";
 import actionTypes from "./action/types";
 import sagas from "./saga";
-import selectors from "./selector";
+import * as selectors from "./selector";
 
-
-export default {
-  reducers,
-  actions,
-  actionTypes,
-  sagas,
-  selectors
-}
+export {actions, actionTypes, reducers, sagas, selectors};

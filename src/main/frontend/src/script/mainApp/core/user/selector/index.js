@@ -5,15 +5,10 @@
  */
 'use strict';
 
-function getUser(state){
+export function getUser(state){
   return state.user;
 }
 
-function getLoginOutState(state){
+export function getLoginOutState(state){
   return getUser(state).loginOutState;
-}
-
-export default {
-  getUser,
-  getLoginOutState
 }
