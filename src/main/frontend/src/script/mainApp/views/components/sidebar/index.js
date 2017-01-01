@@ -8,36 +8,44 @@
 import React, {Component, PropTypes} from 'react';
 
 import SidebarItem from './SidebarItem';
+import itemConfig from './itemConfig';
+
 
 export default class Sidebar extends Component {
   static propTypes = {
-    path: PropTypes.string.isRequired
+    path: PropTypes.string.isRequired,
+    expandSidebar: PropTypes.func.isRequired
   };
 
   constructor(props,content){
     super(props,content);
 
-    this._calculationShowState = ::this._calculationShowState;
+    this.renderItems = ::this.renderItems;
+    this.expandSidebar = ::this.expandSidebar;
+  }
+
+  expandSidebar(){
+    this.props.expandSidebar(true);
+  }
+
+  renderItems(){
+    const path = this.props.path;
+
+    return (
+      <ul>
+        {itemConfig.map((message) => (
+          <Item key={message} message={message} />
+        ))}
+      </ul>
+
+
+    );
+
 
   }
 
-  _calculationShowState(){
-    const items = ['setting','test'];
-    const showState = {};
-
-    for (let i = 0; i < items.length; i++) {
-      const item = items[i];
-      let flag = false;
-      if(this.props.path.indexOf(`/${items[i]}`)>-1){
-        flag = true;
-      }
-      showState[item] = flag;
-    }
-    return showState;
-  }
 
   render() {
-    const {setting,test} = this._calculationShowState();
     return (
       <aside>
         <div className="sidebar_box">
@@ -45,12 +53,13 @@ export default class Sidebar extends Component {
             <SidebarItem
               dName="home"
               icon="fa-home"
-              link="/home"
+              link="/"
             />
             <SidebarItem
               dName="设置"
               showChildren={setting}
               icon="fa-home"
+              onClick={this.expandSidebar}
             >
               <SidebarItem
                 dName="home1"
@@ -65,6 +74,7 @@ export default class Sidebar extends Component {
               dName="test"
               icon="fa-home"
               showChildren={test}
+              onClick={this.expandSidebar}
             >
               <SidebarItem
                 dName="asda"

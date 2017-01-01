@@ -4,17 +4,28 @@
  * @version :   1.0
  */
 'use strict';
-import React, {Component, PropTypes} from "react";
+import React, {Component, PropTypes} from 'react';
 import {DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
 import {Dropdown} from "widgets/dropdown";
 import {Link} from "react-router";
 
-
 export default class Header extends Component {
-  static propsTypes = {
+  static propTypes = {
     userPic: PropTypes.string.isRequired,
-    loginOut: PropTypes.func.isRequired
+    loginOut: PropTypes.func.isRequired,
+    sidebarState: PropTypes.bool.isRequired,
+    changeSidebarState: PropTypes.func.isRequired
   };
+
+  constructor(props,context){
+    super(props, context);
+
+    this.changeSidebarState = ::this.changeSidebarState;
+  }
+
+  changeSidebarState(){
+    this.props.changeSidebarState(!this.props.sidebarState);
+  }
 
   render() {
     return (
@@ -22,7 +33,7 @@ export default class Header extends Component {
         <Link className="header_logo" to="/">
           <span>May</span>'s sit
         </Link>
-        <a className="header_menuCollapse_btn" href="javascript:;">
+        <a className="header_menuCollapse_btn" href="javascript:;" onClick={this.changeSidebarState}>
           <icon className="fa fa-bars"/>
         </a>
         <div className="header_userProfile_box">

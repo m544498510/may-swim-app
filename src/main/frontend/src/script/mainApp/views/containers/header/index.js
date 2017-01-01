@@ -10,6 +10,7 @@ import {connect} from "react-redux";
 import {createSelector} from "reselect";
 import Header from "../../components/header";
 import * as user  from "../../../core/user";
+import * as frame from '../../../core/frame';
 
 class HeaderContainer extends Component {
   static propTypes = {
@@ -27,6 +28,8 @@ class HeaderContainer extends Component {
       userPic={this.props.user.pic}
       loginOut={this.props.loginOut}
       fetchUser={this.props.fetchUser}
+      sidebarState={this.props.sidebarState}
+      changeSidebarState={this.props.changeSidebarState}
     />
   }
 }
@@ -34,14 +37,16 @@ class HeaderContainer extends Component {
 const mapStateToProps = createSelector(
   user.selectors.getUser,
   user.selectors.getLoginOutState,
-  (user, loginOutState)=> ({
-    user, loginOutState
+  frame.selectors.getSidebarState,
+  (user, loginOutState,sidebarState)=> ({
+    user, loginOutState,sidebarState
   })
 );
 
 const mapDispatchToProps = {
   loginOut: user.actions.loginOut,
-  fetchUser: user.actions.fetchUser
+  fetchUser: user.actions.fetchUser,
+  changeSidebarState: frame.actions.changeSidebarState
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);

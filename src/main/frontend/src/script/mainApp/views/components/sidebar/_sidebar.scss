@@ -9,16 +9,14 @@ aside {
 .sidebar_item {
   position: relative;
 
-  &.expanded{
-    .sidebar_dropdown_icon{
+  &.expanded {
+    .sidebar_dropdown_icon {
       transform: rotate(180deg);
     }
-    .sidebar_item_sublist{
+    .sidebar_item_sublist {
       display: block;
     }
   }
-
-
 
 }
 
@@ -38,11 +36,10 @@ aside {
   &:hover {
     color: $primary;
   }
-  &.selected{
-    background-color:  $primary;
+  &.selected {
+    background-color: $primary;
     color: $sidebar-text;
   }
-
 
 }
 
@@ -61,13 +58,21 @@ aside {
   right: 10px;
   top: 12px;
   transition: transform 0.2s linear;
-
 }
 
-.sidebar_item_sublist{
+.sidebar_item_sublist {
   display: none;
-  .sidebar_item_link{
+  .sidebar_item_link {
     height: 29px;
     line-height: 29px;
   }
 }
+
+//侧边菜单被隐藏时
+.menu-collapsed .sidebar_item {
+  .sidebar_dropdown_icon ,
+  .sidebar_item_sublist {
+    display: none;
+  }
+}
+

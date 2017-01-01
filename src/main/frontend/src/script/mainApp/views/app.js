@@ -5,12 +5,15 @@
  */
 'use strict';
 
-import React, { Component, PropTypes } from 'react';
-
+import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {createSelector} from 'reselect';
 import HeaderContainer from './containers/header';
 import SidebarContainer from './containers/sidebar';
 
-export default class App extends Component {
+import * as frame from '../core/frame';
+
+class App extends Component {
   static contextTypes = {
     router: React.PropTypes.object.isRequired
   };
@@ -20,8 +23,9 @@ export default class App extends Component {
   };
 
   render() {
+    const sideCollapsedClass = this.props.sidebarState?'':'menu-collapsed';
     return (
-      <app>
+      <app className={sideCollapsedClass}>
         <HeaderContainer />
         <SidebarContainer />
         <main className="main-frame">{this.props.children}</main>
@@ -30,3 +34,12 @@ export default class App extends Component {
     );
   }
 }
+
+const mapPropsToState = createSelector(
+  frame.selectors.getSidebarState,
+  (sidebarState) => ({
+    sidebarState
+  })
+);
+
+export default connect(mapPropsToState,null)(App);

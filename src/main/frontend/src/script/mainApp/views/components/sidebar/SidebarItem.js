@@ -13,7 +13,8 @@ export default class SidebarItem extends Component {
     icon: PropTypes.string,
     dName: PropTypes.string.isRequired,
     link: PropTypes.string,
-    showChildren: PropTypes.bool
+    showChildren: PropTypes.bool,
+    onClick: PropTypes.func
   };
 
   constructor(props, context) {
@@ -61,7 +62,11 @@ export default class SidebarItem extends Component {
   itemClickEvt() {
     this.setState({
       expand: !this.state.expand
-    })
+    });
+    const {onClick} = this.props;
+    if(typeof onClick == 'function'){
+      onClick();
+    }
   }
 
   renderChildren() {
