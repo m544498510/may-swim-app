@@ -7,11 +7,9 @@
 
 import types from './types';
 
-export function changeSidebarState(){
+export function changeSidebarState(isCollapsed){
   return {
     type: types.CHANGE_SIDEBAR_STATE,
-    payload:1
+    payload: isCollapsed
   }
-
-
 }

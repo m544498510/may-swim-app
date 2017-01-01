@@ -7,10 +7,12 @@
 import {routerReducer} from 'react-router-redux';
 import {combineReducers} from 'redux';
 
-import * as user from './user';
+import {reducers as userReducers} from './user';
+import {reducers as frameReducers} from './frame';
 
 
 export default combineReducers({
   routing: routerReducer,
-  user: user.reducers
+  user: userReducers,
+  frame: frameReducers
 });
