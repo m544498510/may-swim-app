@@ -27,7 +27,8 @@ class SignUp extends Component{
     return (
       <app className="main-frame">
         <div className="auth-block">
-          <h1>注册 May's sit</h1>
+          <h1>注册 May's sit
+          </h1>
           <SignUpForm
             userNameChange={this.props.userNameChange}
             userNameErrorInfo={this.props.userNameErrorInfo}

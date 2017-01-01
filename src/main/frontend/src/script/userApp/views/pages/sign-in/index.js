@@ -9,16 +9,17 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {createSelector} from 'reselect';
 import SignInForm from '../../components/signInForm';
-import {authActions,isSignInRejected,isSignInFulfilled} from 'userApp/core/auth';
+import {authActions, isSignInRejected, isSignInFulfilled} from 'userApp/core/auth';
 
-export function SignIn({signIn,signInRejected,signInFulfilled}) {
-  if(signInFulfilled){
+export function SignIn({signIn, signInRejected, signInFulfilled}) {
+  if (signInFulfilled) {
     window.location.href = '/';
   }
 
   return (
     <div className="auth-block">
-      <h1>登录 May's sit</h1>
+      <h1>登录 May's sit
+      </h1>
       <SignInForm
         signIn={signIn}
         signInRejected={signInRejected}
@@ -29,9 +30,7 @@ export function SignIn({signIn,signInRejected,signInFulfilled}) {
         <Link to="/sign-up" className="form-link register-link">注册帐户</Link>
       </div>
       <div className="auth-sep">
-    <span>
-      <span>第三方账号登录</span>
-    </span>
+        <span>第三方账号登录</span>
       </div>
       <div className="al-share-auth">
         <ul className="al-share">
@@ -50,7 +49,7 @@ SignIn.propTypes = {
 const mapStateToProps = createSelector(
   isSignInRejected,
   isSignInFulfilled,
-  (signInRejected,signInFulfilled )=> ({
+  (signInRejected, signInFulfilled) => ({
     signInRejected,
     signInFulfilled
   })
