@@ -19,11 +19,16 @@ export const paths = {
 export function getRoutes() {
   return (
     <Route path="/" component={App}>
-      <IndexRedirect to={`/${paths.HOME}`}/>
+      <IndexRedirect to={`${paths.HOME}`}/>
 
       <Route path={paths.HOME} component={DashboardContainer}/>
-      <Route path={paths.SETTING} component={DashboardContainer}/>
-      <Route path={paths.TEST} component={DashboardContainer}/>
+      <Route path={`${paths.SETTING}/setting1`} component={DashboardContainer}/>
+      <Route path={`${paths.SETTING}/setting2`} component={DashboardContainer}/>
+      <Route path={paths.TEST} component={DashboardContainer}>
+        <Route path='test1' component={DashboardContainer}/>
+        <Route path='test2' component={DashboardContainer}/>
+      </Route>
     </Route>
   )
 }
+
