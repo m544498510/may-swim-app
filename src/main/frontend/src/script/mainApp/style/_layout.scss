@@ -13,7 +13,7 @@ header {
 
 aside {
   width: $left-space;
-  @include widthChangeTranslation();
+  @include changeTranslation(width);
 
   left: 0;
   z-index: 904;
@@ -27,6 +27,7 @@ aside {
 
 main {
   margin-left: $left-space;
+  @include changeTranslation(margin);
   padding: 66px 0 34px 0;
   min-height: 500px;
 }
@@ -53,7 +54,6 @@ footer {
 @mixin aside-collapsed(){
   aside {
     width: 50px;
-    @include widthChangeTranslation();
   }
 }
 
@@ -77,7 +77,6 @@ footer {
 @media (max-width: $resXS) {
   .menu-collapsed aside{
     width: 0;
-    @include widthChangeTranslation();
   }
   main {
     margin-left: 0;

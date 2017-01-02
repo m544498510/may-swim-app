@@ -76,6 +76,6 @@
   }
 }
 
-@mixin widthChangeTranslation(){
-  transition: width 0.5s ease;
+@mixin changeTranslation($prop){
+  transition: $prop 0.5s ease;
 }
