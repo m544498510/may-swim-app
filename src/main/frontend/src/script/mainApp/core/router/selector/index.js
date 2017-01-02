@@ -8,7 +8,7 @@
 'use strict';
 
 const routerInitState = {
-  pathname: window.location.href,
+  pathname: window.location.hash.substring(1),
   search: "",
   hash: "",
   action: "",

@@ -5,12 +5,18 @@
  */
 'use strict';
 
-import React,{Component,PropTypes} from 'react';
+import React,{Component} from 'react';
 
 export default class DashboardContainer extends Component{
 
   render(){
-    return <div>dashboard</div>
+    return (
+      <div>dashboard
+        <div>
+          {this.props.children?this.props.children:''}
+        </div>
+      </div>
+    )
   }
 
 }

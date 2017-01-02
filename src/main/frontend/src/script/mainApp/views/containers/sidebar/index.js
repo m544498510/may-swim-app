@@ -6,27 +6,38 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
+import {createSelector} from 'reselect';
 import {connect} from 'react-redux';
 
 import Sidebar from '../../components/sidebar';
 import * as frame from '../../../core/frame';
+import * as router from '../../../core/router';
 
 class SidebarContainer extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   };
+  static PropTypes = {
+    path: PropTypes.string
+  };
 
   render() {
-    const path = this.context.router.location.pathname;
     return <Sidebar
-      path={path}
+      path={this.props.path}
       expandSidebar={this.props.expandSidebar}
     />
   }
 }
 
+const mapStateToProps = createSelector(
+  router.selector.getPathName,
+  (path)=>({
+    path
+  })
+);
+
 const mapDispatchToProps = {
   expandSidebar: frame.actions.changeSidebarState
 };
 
-export default connect(null, mapDispatchToProps)(SidebarContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SidebarContainer);

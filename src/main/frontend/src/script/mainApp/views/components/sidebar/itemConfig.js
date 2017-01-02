@@ -9,37 +9,35 @@ export default [
   {
     dName: 'home',
     icon: 'fa-home',
-    link: '/'
+    path: '/home'
   },
   {
     dName: '设置',
     icon: 'fa-cog',
+    path: '/setting',
     children :[
       {
         dName: 'setting1',
-        icon: 'fa-home',
-        link: '/setting/setting1'
+        path: '/setting1'
       },
       {
         dName: 'setting2',
-        icon: 'fa-home',
-        link: '/setting/setting2'
+        path: '/setting2'
       }
     ]
   },
   {
     dName: 'test',
     icon: 'fa-flask',
+    path: '/test',
     children :[
       {
         dName: 'test1',
-        icon: 'fa-home',
-        link: '/test/test1'
+        path: '/test1'
       },
       {
         dName: 'test2',
-        icon: 'fa-home',
-        link: '/test/test2'
+        path: '/test2'
       }
     ]
   }

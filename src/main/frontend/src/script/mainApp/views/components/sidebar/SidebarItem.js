@@ -14,7 +14,8 @@ export default class SidebarItem extends Component {
     dName: PropTypes.string.isRequired,
     link: PropTypes.string,
     showChildren: PropTypes.bool,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    className: PropTypes.string
   };
 
   constructor(props, context) {
@@ -31,7 +32,7 @@ export default class SidebarItem extends Component {
 
 
   renderItem() {
-    const {link, dName, icon, children} = this.props;
+    const {link, dName, icon, children, className} = this.props;
 
     const iconTmp = <icon className={'sidebar_item_icon fa ' + icon}/>;
     const dNameTmp = <span >{dName}</span>;
@@ -50,7 +51,7 @@ export default class SidebarItem extends Component {
     }
 
     return (
-      <Tag to={link} className="sidebar_item_link" onClick={this.itemClickEvt}>
+      <Tag to={link} className={`sidebar_item_link ${className}`} onClick={this.itemClickEvt}>
         {iconTmp}
         {dNameTmp}
         {dropdownIcon}

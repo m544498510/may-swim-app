@@ -17,31 +17,58 @@ export default class Sidebar extends Component {
     expandSidebar: PropTypes.func.isRequired
   };
 
-  constructor(props,content){
-    super(props,content);
+  constructor(props, content) {
+    super(props, content);
 
     this.renderItems = ::this.renderItems;
     this.expandSidebar = ::this.expandSidebar;
   }
 
-  expandSidebar(){
+  expandSidebar() {
     this.props.expandSidebar(true);
   }
 
-  renderItems(){
-    const path = this.props.path;
+  renderItems() {
+    const href = this.props.path;
 
     return (
-      <ul>
-        {itemConfig.map((message) => (
-          <Item key={message} message={message} />
-        ))}
+      <ul className="sidebar_main_list">
+        {itemConfig.map((item, i) => {
+          const {path, children} = item,
+            hasChild = (children && children.length > 0),
+            link = !hasChild ? path : null,
+            showChildren = hasChild && href.indexOf(path) == 0,
+            onClick = hasChild ? this.expandSidebar : null,
+            selectedClass = !hasChild ? getSelectedClass(href,path):'';
+
+          return (
+            <SidebarItem
+              dName={item.dName}
+              className={selectedClass}
+              showChildren={showChildren}
+              icon={item.icon}
+              link={link}
+              onClick={onClick}
+              key={'sidebarItem'+i}
+            >
+              {hasChild && children.map((subItem, j) => {
+                const subPath = path + subItem.path,
+                  selectedClass = getSelectedClass(href,subPath);
+                return (
+                  <SidebarItem
+                    className={selectedClass}
+                    dName={subItem.dName}
+                    link={subPath}
+                    key={'sidebarSubItem'+i+j}
+                  />
+                )
+              })}
+            </SidebarItem>
+          );
+
+        })}
       </ul>
-
-
     );
-
-
   }
 
 
@@ -49,43 +76,7 @@ export default class Sidebar extends Component {
     return (
       <aside>
         <div className="sidebar_box">
-          <ul className="sidebar_main_list">
-            <SidebarItem
-              dName="home"
-              icon="fa-home"
-              link="/"
-            />
-            <SidebarItem
-              dName="设置"
-              showChildren={setting}
-              icon="fa-home"
-              onClick={this.expandSidebar}
-            >
-              <SidebarItem
-                dName="home1"
-                link="/setting"
-              />
-              <SidebarItem
-                dName="home2"
-                link="/setting"
-              />
-            </SidebarItem>
-            <SidebarItem
-              dName="test"
-              icon="fa-home"
-              showChildren={test}
-              onClick={this.expandSidebar}
-            >
-              <SidebarItem
-                dName="asda"
-                link="/test"
-              />
-              <SidebarItem
-                dName="asda"
-                link="/test"
-              />
-            </SidebarItem>
-          </ul>
+          {this.renderItems()}
         </div>
         <div className="sidebar_hover_elem"></div>
       </aside>
@@ -94,3 +85,7 @@ export default class Sidebar extends Component {
 
 
 };
+
+function getSelectedClass(href, path) {
+  return href.indexOf(path) == 0 ? 'selected' : '';
+}
