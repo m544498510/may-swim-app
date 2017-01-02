@@ -20,7 +20,22 @@ class App extends Component {
 
   static propTypes = {
     children: PropTypes.object.isRequired,
+    changeSidebarState:  PropTypes.func.isRequired,
+    sidebarState: PropTypes.bool.isRequired
   };
+
+  constructor(props,context){
+    super(props, context);
+
+    window.addEventListener('resize', () => {
+      if(window.innerWidth<1280){
+        props.changeSidebarState(false);
+      }else{
+        props.changeSidebarState(true);
+      }
+    });
+
+  }
 
   render() {
     const sideCollapsedClass = this.props.sidebarState?'':'menu-collapsed';
@@ -35,11 +50,15 @@ class App extends Component {
   }
 }
 
-const mapPropsToState = createSelector(
+const mapPropsToProps = createSelector(
   frame.selectors.getSidebarState,
   (sidebarState) => ({
     sidebarState
   })
 );
 
-export default connect(mapPropsToState,null)(App);
+const mapDispatchToProps = {
+  changeSidebarState: frame.actions.changeSidebarState
+};
+
+export default connect(mapPropsToProps,mapDispatchToProps)(App);
