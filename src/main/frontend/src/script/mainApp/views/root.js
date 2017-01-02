@@ -14,7 +14,9 @@ import { getRoutes } from './routes';
 export default function Root({history, store}) {
   return (
     <Provider store={store}>
-      <Router history={history} routes={getRoutes(store.getState)} />
+      <Router history={history}  >
+        {getRoutes()}
+      </Router>
     </Provider>
   );
 }
