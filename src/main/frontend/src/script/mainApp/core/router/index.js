@@ -5,6 +5,6 @@
  */
 'use strict';
 
-import * as selector from './selector/index';
+import * as selector from './selector';
 
 export {selector};
