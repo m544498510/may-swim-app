@@ -1,0 +1,40 @@
+
+
+.main-frame{
+  padding: 8px 32px 8px 40px;
+}
+
+@media screen and (max-width: $resXS) {
+  .main-frame {
+    padding: 8px 20px;
+  }
+}
+
+
+.main-header{
+  padding-top: 13px;
+  padding-bottom: 27px;
+
+  h4{
+    font-weight: $font-bold;
+    color: $default-text;
+    float: left;
+    text-transform: uppercase;
+    opacity: 0.9;
+    width: auto;
+  }
+
+  .breadcrumb{
+    background: none;
+    color: $default-text;
+    margin: 0;
+    float: right;
+    padding: 11px 0 0;
+    li {
+      font-size: 18px;
+      font-weight: $font-normal;
+    }
+
+  }
+}
+

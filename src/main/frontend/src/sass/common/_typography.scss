@@ -1,0 +1,38 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family;
+  width: 100%;
+  margin-top: 0;
+}
+
+h1.color, h2.color, h3.color, h4.color, h5.color, h6.color {
+  color: $danger;
+}
+
+body a {
+  color: $activelink;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+  &:hover {
+    color: $hoverlink;
+  }
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 15px;
+}
