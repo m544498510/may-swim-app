@@ -108,6 +108,7 @@ CREATE TABLE `t_user` (
   `user_psd` varchar(255) NOT NULL,
   `user_create_time` date NOT NULL,
   `user_nick_name` varchar(255) DEFAULT NULL,
+  `user_face` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -94,6 +94,8 @@ create table t_user
    user_psd             varchar(255) not null,
    user_create_time     date not null,
    user_nick_name       varchar(255),
+   user_face       		varchar(1024),
+
    primary key (user_id)
 );
 
