@@ -3,6 +3,7 @@ may-swim-app.iml
 maySwimApp.iml
 .idea
 target
+rebel.xml
 
 # git config files
 .git
@@ -14,3 +15,5 @@ dist
 node_modules
 npm-debug.log
 
+
+src2
