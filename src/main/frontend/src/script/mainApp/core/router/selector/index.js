@@ -9,9 +9,9 @@
 
 const routerInitState = {
   pathname: window.location.hash.substring(1),
-  search: "",
-  hash: "",
-  action: "",
+  search: '',
+  hash: '',
+  action: '',
   key: null,
   query: {}
 };
