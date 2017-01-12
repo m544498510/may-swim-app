@@ -17,18 +17,20 @@ describe('frame reduce', () => {
   });
 
   describe('type CHANGE_SIDEBAR_STATE', ()=>{
-    let state = reduce(undefined,{
-      type: types.CHANGE_SIDEBAR_STATE,
-      payload: false
-    });
-    expect(state.get('sidebarState')).to.be.false;
+    it('should set sidebarState to specified value',()=>{
+      let state = reduce(undefined,{
+        type: types.CHANGE_SIDEBAR_STATE,
+        payload: false
+      });
+      expect(state.get('sidebarState')).to.be.false;
 
-    state = reduce(undefined,{
-      type: types.CHANGE_SIDEBAR_STATE,
-      payload: true
-    });
-    expect(state.get('sidebarState')).to.be.true;
+      state = reduce(undefined,{
+        type: types.CHANGE_SIDEBAR_STATE,
+        payload: true
+      });
+      expect(state.get('sidebarState')).to.be.true;
 
+    });
   });
 
 

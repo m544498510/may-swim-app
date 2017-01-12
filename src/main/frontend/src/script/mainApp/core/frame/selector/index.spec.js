@@ -18,7 +18,7 @@ describe('frame selector', () => {
   describe('function getFrame', () => {
     it('should return frame state', () => {
       const frameState = selector.getFrame(state);
-      expect(frameState).to.be.equal(state.frame);
+      expect(frameState).to.deep.equal(state.frame);
     });
   });
 

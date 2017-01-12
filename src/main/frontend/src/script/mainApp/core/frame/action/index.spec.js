@@ -12,15 +12,19 @@ import types from './types';
 
 const mockStore = configureStore([]);
 
-describe('frame action: ',()=>{
+describe('frame action: ', () => {
   let _store;
-  before(()=>{
+  before(() => {
     _store = mockStore({});
   });
 
+  afterEach(()=>{
+    _store.clearActions();
+  });
 
-  describe('changeSidebarState',()=>{
-    it('能正常传递参数isCollapsed',()=>{
+
+  describe('changeSidebarState', () => {
+    it('能正常传递参数isCollapsed', () => {
       _store.dispatch(actions.changeSidebarState(true));
       _store.dispatch(actions.changeSidebarState(false));
 
@@ -34,9 +38,4 @@ describe('frame action: ',()=>{
       expect(actionArr[1].payload).to.be.false;
     })
   });
-
-
-
-
-
 });
