@@ -10,5 +10,5 @@ export function getUser(state){
 }
 
 export function getLoginOutState(state){
-  return getUser(state).loginOutState;
+  return getUser(state).get('loginOutState');
 }

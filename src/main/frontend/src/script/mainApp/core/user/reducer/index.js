@@ -24,7 +24,7 @@ export default function (state = new userRecord(), {type, payload}) {
         id, userName, pic
       });
       break;
-    case actionTypes.LOGIN_OUT:
+    case actionTypes.LOGIN_OUT_FULFILLED:
       return state.merge({
         loginOutState: payload
       });
