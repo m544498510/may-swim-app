@@ -79,6 +79,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.8.0",
     "mocha": "^3.1.2",
+    "nock": "^9.0.2",
     "react-addons-test-utils": "^15.3.2",
     "redux-mock-store": "^1.2.1",
     "require-dir": "^0.3.0",

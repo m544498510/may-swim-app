@@ -142,6 +142,10 @@ function getConfig(NODE_ENV) {
     };
 
     config.module.loaders.push(loaders.json);
+
+    config.node = {
+      fs: "empty"
+    }
   }
 
 

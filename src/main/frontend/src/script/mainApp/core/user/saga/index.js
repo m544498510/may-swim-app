@@ -22,14 +22,6 @@ function* getUserWorker() {
     yield put(actions.setUserInfo(user));
   } catch (e) {
     console.log(e);
-    //todo:
-    const user1 = {
-      id: 1,
-      userName: 'may',
-      pic: 'http://beijing678.oss-cn-beijing.aliyuncs.com/jeemaa/documents/user/19251/face/1b06449747124c069887320865f4d480.jpg'
-    };
-    yield put(actions.setUserInfo(user1));
-
   }
 }
 
@@ -43,15 +35,14 @@ function* loginOutWorker() {
       url: '/session'
     });
     yield put(actions.loginOut(true));
-  }catch (e){
+  } catch (e) {
     console.log(e);
   }
 }
 
-function* loginOutWatcher(){
-  yield* takeEvery(actionTypes.LOGIN_OUT,loginOutWorker);
+function* loginOutWatcher() {
+  yield* takeEvery(actionTypes.LOGIN_OUT, loginOutWorker);
 }
-
 
 export default [
   fork(getUserWatcher),
