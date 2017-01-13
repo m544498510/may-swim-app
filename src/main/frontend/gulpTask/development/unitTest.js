@@ -17,7 +17,7 @@ const gutils = gutilsModule(['env']);
  * Run test once and exit
  */
 gulp.task('test', function (done) {
-  var flag = gutils.env.watch?false:true;
+  const flag = !gutils.env.watch;
 
   new Server({
     configFile: path.resolve(process.cwd(), 'test/karma.conf.js'),
