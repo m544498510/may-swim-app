@@ -14,7 +14,7 @@ import * as actions from '../action';
 import actionTypes from '../action/types';
 
 
-function* getUserWorker() {
+export function* getUserWorker() {
   try {
     const user = yield call(mFetch.get, {
       url: '/session'
@@ -29,7 +29,7 @@ function* getUserWatcher() {
   yield* takeEvery(actionTypes.FETCH_USER_INFO, getUserWorker);
 }
 
-function* loginOutWorker() {
+export function* loginOutWorker() {
   try {
     yield call(mFetch.del, {
       url: '/session'
