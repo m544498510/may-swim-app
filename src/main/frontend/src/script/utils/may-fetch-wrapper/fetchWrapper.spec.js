@@ -8,7 +8,7 @@
 import fetchMock from 'fetch-mock';
 
 import fetchWrapper from './fetchWrapper';
-import {GET, POST, PATCH, PUT, DELETE, HEAD, OPTIONS} from "./fetch_types";
+import {GET, POST} from "./fetch_types";
 
 
 describe('may fetch wrapper', () => {
@@ -91,7 +91,7 @@ describe('may fetch wrapper', () => {
       fetchMock.post(_postSuccess, 201);
     });
     it('should pass parameters', () => {
-      const promise = fetchWrapper({
+      fetchWrapper({
         url: '/postSuccess',
         data: {
           param: 'param'
