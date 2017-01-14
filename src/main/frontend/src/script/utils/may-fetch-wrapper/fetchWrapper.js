@@ -56,8 +56,8 @@ function fetchPromise(url, options) {
       .then(data => {
         resolve(data);
       })
-      .catch(err => {
-        reject(err);
+      .catch(response => {
+        reject(formatResponseBody(response, options.dataType));
       })
   });
 }
@@ -113,7 +113,7 @@ function formatPostData(data = {}) {
 
 function objToFormData(obj = {}) {
   const formData = new FormData();
-  for (var key in obj) {
+  for (let key in obj) {
     formData.append(key, obj[key]);
   }
   return formData;
@@ -121,7 +121,7 @@ function objToFormData(obj = {}) {
 
 function objToQueryString(obj = {}) {
   return Object.keys(obj).map(function (key) {
-    var val = obj[key];
+    const val = obj[key];
     if (Array.isArray(val)) {
       return arrayToQueryString(key, val);
     }

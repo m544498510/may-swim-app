@@ -11,100 +11,153 @@ import fetchWrapper from './fetchWrapper';
 import {GET, POST, PATCH, PUT, DELETE, HEAD, OPTIONS} from "./fetch_types";
 
 
-describe('may fetch wrapper', ()=> {
-  const _fetchOptions = {
-    url: '/resource',
-    method: GET,
-    data: {
-      params: 'somethings'
-    }
-  };
-  const _responseData = {
-    fetch: true
-  };
-  const _resourceReg = /\/resource/i;
-  const _reg = /\/test/i;
-
-  before(()=> {
-    fetchMock.mock(_resourceReg, {
-      status: 200,
-      body: _responseData
-    });
-  });
+describe('may fetch wrapper', () => {
   afterEach(fetchMock.reset);
 
-  describe('init ',()=>{
-    it('should return a promise object,and fetch success', ()=> {
-      const promise = fetchWrapper(_fetchOptions);
-      expect(promise).to.be.a('promise');
-      promise.then(data=>{
-        console.log(data);
-      })
-        .catch(e=>{
-          console.log(e);
-        });
-      const flag = fetchMock.called(_resourceReg);
-      expect(flag).to.true;
-    });
-  });
-
-  describe('GET request',()=>{
-    before(()=>{
-      fetchMock.get(_reg,{
+  describe('init ', () => {
+    it('should return a promise object and get success response', () => {
+      fetchMock.mock(/\/resource/i, {
         status: 200,
-        body: _responseData
+        body: 'fetch success'
       });
-      fetchMock.get(/\/getFailure/i,400);
+
+      const promise = fetchWrapper({
+        url: '/resource'
+      });
+      expect(promise).to.be.a('promise');
+
+      return promise.then(data => {
+        expect(data).to.equal('fetch success');
+      });
+    });
+  });
+
+  describe('GET request', () => {
+    const _getSuccessReg = /\/getSuccess/i;
+    const _getFailureReg = /\/getFailure/i;
+    before(() => {
+      fetchMock.get(_getSuccessReg, {
+        status: 200,
+        headers: {
+          'content-type': 'json'
+        },
+        body: {
+          fetch: true
+        }
+      });
+      fetchMock.get(_getFailureReg, 400);
     });
 
-    it('should pass parameters',()=>{
-/*
-      const fetchOptions = Object.assign({},_fetchOptions);
-      fetchOptions.url = '/getSuccess';
-      const promise = fetchWrapper(fetchOptions);
-      const params = fetchMock.lastOptions(/\/getSuccess/i).data;
-*/
-      //expect(params).to.deep.equal(fetchOptions.data);
+    it('should set the Request Method to GET ', () => {
+      fetchWrapper({
+        url: '/getSuccess',
+        method: GET
+      });
+      const isCalled = fetchMock.called(_getSuccessReg);
+      expect(isCalled).to.be.true;
+    });
 
+    it('should pass parameters', () => {
+      fetchWrapper({
+        url: '/getSuccess',
+        method: GET,
+        data: {
+          param: 'param'
+        }
+      });
+      const url = fetchMock.lastUrl(_getSuccessReg);
+      expect(url).to.include('param=param');
+    });
+
+    it('should judge failure get request', () => {
+      const promise = fetchWrapper({
+        url: '/getFailure'
+      });
+      return promise
+        .then(() => {
+          expect(true).to.be.false;
+        })
+        .catch(() => {
+          expect(true).to.be.true;
+        })
     });
 
   });
 
 
-  describe('POST request',()=>{
-    before(()=>{
-      fetchMock.post(/\/postSuccess/i,200);
-      fetchMock.post(/\/postFailure/i,400);
+  describe('POST request', () => {
+    const _postSuccess = /\/postSuccess/i;
+    before(() => {
+      fetchMock.post(_postSuccess, 201);
     });
-    it('should pass parameters',()=>{
-      const fetchOptions = Object.assign({},_fetchOptions);
-      fetchOptions.url = '/postSuccess';
-      fetchOptions.method = POST;
-      const promise = fetchWrapper(fetchOptions);
-      const params = fetchMock.lastOptions(/\/postSuccess/i);
-      //expect(params).to.deep.equal(fetchOptions.data);
-
+    it('should pass parameters', () => {
+      const promise = fetchWrapper({
+        url: '/postSuccess',
+        data: {
+          param: 'param'
+        },
+        method: POST
+      });
+      const params = fetchMock.lastOptions(_postSuccess).data;
+      expect(params).to.deep.equal({
+        param: 'param'
+      });
     });
 
   });
 
-
-  it('能用指定方式解析response body', ()=>{
-    const options = Object.assign({},_fetchOptions);
-
-    options.dataType = 'json';
-    let promise = fetchWrapper(options);
-    promise.then(result=>{
-      expect(result).to.deep.equal(_responseData);
+  describe('response', () => {
+    before(() => {
+      fetchMock.mock(/\/jsonData/i, {
+        status: 200,
+        headers: {
+          'content-type': 'json'
+        },
+        body: {
+          fetch: true
+        }
+      });
+      fetchMock.mock(/\/textData/i, {
+        status: 200,
+        headers: {
+          'content-type': 'text'
+        },
+        body: {
+          fetch: true
+        }
+      });
     });
 
-    options.dataType = 'text';
-    promise = fetchWrapper(options);
-    const expectObj = JSON.stringify(_responseData);
-    promise.then(result=>{
-      expect(result).to.deep.equal(expectObj);
+    it('should parse body to json when content-type is json', () => {
+      return fetchWrapper({
+        url: '/jsonData'
+      })
+        .then(data => {
+          expect(data).to.deep.equal({
+            fetch: true
+          })
+        })
     });
 
+    it('should parse body to text when content-type is text', () => {
+      return fetchWrapper({
+        url: '/textData'
+      })
+        .then(data => {
+          expect(data).to.equal('{"fetch":true}');
+        });
+    });
+
+    it('should parse body to json when specify the parse method', () => {
+      return fetchWrapper({
+        url: '/textData',
+        dataType: 'json'
+      })
+        .then(data => {
+          expect(data).to.deep.equal({fetch: true});
+        });
+
+    });
   });
 
 
