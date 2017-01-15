@@ -47,7 +47,7 @@ class Checkbox extends Component {
         onClick={this.onChange}
       >
         <icon className={iconClass} />
-        <div>{this.props.children}</div>
+        <div className="checkbox_box">{this.props.children}</div>
         {formInput}
       </div>
     );
