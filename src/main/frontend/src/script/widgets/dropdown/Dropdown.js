@@ -106,7 +106,7 @@ class Dropdown extends Component {
    */
   toggle(e) {
     if (this.props.disabled) {
-      return e && e.preventDefault();
+      e && e.preventDefault();
     }
     this.setState({isOpen: !this.state.isOpen});
   }

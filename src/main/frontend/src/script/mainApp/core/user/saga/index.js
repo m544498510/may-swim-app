@@ -19,7 +19,6 @@ export function* getUserWorker() {
     const user = yield call(mFetch.get, {
       url: '/session'
     });
-    console.log(user);
     yield put(actions.setUserInfo(user));
   } catch (e) {
     console.log(e);
