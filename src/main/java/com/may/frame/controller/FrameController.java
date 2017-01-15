@@ -10,8 +10,7 @@ import javax.servlet.http.HttpSession;
 
 
 @Controller
-@RequestMapping("")
-
+@RequestMapping("/frame")
 public class FrameController {
     private String loginPage = "../dist/html/userApp.html";
     private String mainAppPage = "../dist/html/mainApp.html";
