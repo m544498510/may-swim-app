@@ -4,14 +4,13 @@
  * @version :   1.0
  */
 'use strict';
-
 import React, {Component, PropTypes} from "react";
 import ReactDOM from "react-dom";
 import classNames from "classnames";
 import {DropdownMenu, DropdownToggle} from "reactstrap";
 
 const propTypes = {
-  disabled: PropTypes.bool,
+  disabled: PropTypes.bool,     //下拉菜单是否可用
   dropup: PropTypes.bool,
   isOpen: PropTypes.bool,
   tag: PropTypes.string,
@@ -49,6 +48,7 @@ class Dropdown extends Component {
   componentDidMount() {
     this.handleProps();
   }
+
   componentDidUpdate(prevProps,prevState) {
     if (this.state.isOpen !== prevState.isOpen) {
       this.handleProps();
@@ -75,6 +75,10 @@ class Dropdown extends Component {
     document.removeEventListener('click', this.handleDocumentClick, true);
   }
 
+  /***
+   * 当点击到页面其他位置时，收起下拉菜单
+   * @param {event} e
+   */
   handleDocumentClick(e) {
     const container = ReactDOM.findDOMNode(this);
 
@@ -85,6 +89,9 @@ class Dropdown extends Component {
     this.setState({isOpen:false});
   }
 
+  /***
+   * 根据当前下拉菜单是否显示状态，绑定或解绑dom事件
+   */
   handleProps() {
     if (this.state.isOpen) {
       this.addEvents();
@@ -93,6 +100,10 @@ class Dropdown extends Component {
     }
   }
 
+  /***
+   * 用于dropdown_menu
+   * @param {event} e
+   */
   toggle(e) {
     if (this.props.disabled) {
       return e && e.preventDefault();
