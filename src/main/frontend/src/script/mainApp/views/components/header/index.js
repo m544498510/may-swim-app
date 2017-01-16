@@ -5,9 +5,10 @@
  */
 'use strict';
 import React, {Component, PropTypes} from 'react';
-import {DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
-import {Dropdown} from "widgets/dropdown";
-import {Link} from "react-router";
+import {DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
+import {Dropdown} from 'widgets/dropdown';
+import {Link} from 'react-router';
+import IconBtn from 'widgets/iconBtn';
 
 export default class Header extends Component {
   static propTypes = {
@@ -33,9 +34,11 @@ export default class Header extends Component {
         <Link className="header_logo" to="/">
           <span>May</span>'s sit
         </Link>
-        <a className="header_menuCollapse_btn" href="javascript:;" onClick={this.changeSidebarState}>
-          <icon className="fa fa-bars"/>
-        </a>
+        <IconBtn
+          className="header_menuCollapse_btn"
+          iconClassName="fa-bars"
+          onClick={this.changeSidebarState}
+        />
         <div className="header_userProfile_box">
           <Dropdown id="userProfileDropdown">
             <DropdownToggle tag="a">
