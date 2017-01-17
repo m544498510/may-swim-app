@@ -14,18 +14,11 @@ export default class Header extends Component {
   static propTypes = {
     userPic: PropTypes.string.isRequired,
     loginOut: PropTypes.func.isRequired,
-    sidebarState: PropTypes.bool.isRequired,
-    changeSidebarState: PropTypes.func.isRequired
+    reverseSidebarState: PropTypes.func.isRequired
   };
 
   constructor(props,context){
     super(props, context);
-
-    this.changeSidebarState = ::this.changeSidebarState;
-  }
-
-  changeSidebarState(){
-    this.props.changeSidebarState(!this.props.sidebarState);
   }
 
   render() {
@@ -37,7 +30,7 @@ export default class Header extends Component {
         <IconBtn
           className="header_menuCollapse_btn"
           iconClassName="fa-bars"
-          onClick={this.changeSidebarState}
+          onClick={this.props.reverseSidebarState}
         />
         <div className="header_userProfile_box">
           <Dropdown id="userProfileDropdown">
