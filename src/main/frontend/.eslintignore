@@ -1,0 +1,6 @@
+**/dist/**
+**/node_modules/**
+**/server/**
+**/config/**
+**/gulpTask/**
+**/src2/**
