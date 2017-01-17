@@ -7,7 +7,7 @@
   "scripts": {
     "start": "babel-node server/server.js",
     "test": "karma start ./test/karma.conf.js",
-    "lint:src": "eslint src "
+    "lint:src": "eslint src --format=node_modules/eslint-formatter-pretty "
   },
   "dependencies": {
     "babel-polyfill": "6.7.4",
@@ -54,6 +54,7 @@
     "eslint": "^3.13.1",
     "eslint-config-react-app": "^0.5.0",
     "eslint-formatter-markdown": "^1.0.2",
+    "eslint-formatter-pretty": "^1.1.0",
     "eslint-plugin-flowtype": "^2.30.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
