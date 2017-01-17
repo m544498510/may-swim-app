@@ -5,11 +5,11 @@
  */
 'use strict';
 
-import React, {PropTypes, Component} from "react";
-import {connect} from "react-redux";
-import {createSelector} from "reselect";
-import Header from "../../components/header";
-import * as user  from "../../../core/user";
+import React, {PropTypes, Component} from 'react';
+import {connect} from 'react-redux';
+import {createSelector} from 'reselect';
+import Header from '../../components/header';
+import * as user  from '../../../core/user';
 import * as frame from '../../../core/frame';
 
 class HeaderContainer extends Component {
@@ -17,6 +17,7 @@ class HeaderContainer extends Component {
     user: PropTypes.object.isRequired,
     loginOut: PropTypes.func.isRequired,
     loginOutState: PropTypes.bool.isRequired,
+    reverseSidebarState: PropTypes.func.isRequired
   };
 
   render() {
@@ -27,9 +28,7 @@ class HeaderContainer extends Component {
     return <Header
       userPic={this.props.user.pic}
       loginOut={this.props.loginOut}
-      fetchUser={this.props.fetchUser}
-      sidebarState={this.props.sidebarState}
-      changeSidebarState={this.props.changeSidebarState}
+      reverseSidebarState={this.props.reverseSidebarState}
     />
   }
 }
@@ -37,16 +36,14 @@ class HeaderContainer extends Component {
 const mapStateToProps = createSelector(
   user.selectors.getUser,
   user.selectors.getLoginOutState,
-  frame.selectors.getSidebarState,
-  (user, loginOutState,sidebarState)=> ({
-    user, loginOutState,sidebarState
+  (user, loginOutState)=> ({
+    user, loginOutState
   })
 );
 
 const mapDispatchToProps = {
   loginOut: user.actions.loginOut,
-  fetchUser: user.actions.fetchUser,
-  changeSidebarState: frame.actions.changeSidebarState
+  reverseSidebarState: frame.actions.reverseSidebarState
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
