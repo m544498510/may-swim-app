@@ -30,6 +30,10 @@ export default class SidebarItem extends Component {
     this.itemClickEvt = ::this.itemClickEvt;
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({expand: nextProps.showChildren})
+  }
+
 
   renderItem() {
     const {link, dName, icon, children, className} = this.props;
@@ -81,11 +85,6 @@ export default class SidebarItem extends Component {
     } else {
       return '';
     }
-  }
-
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({expand: nextProps.showChildren})
   }
 
   render() {
