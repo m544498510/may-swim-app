@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 
 import {Record} from 'immutable';
 
@@ -23,12 +22,10 @@ export default function (state = new userRecord(), {type, payload}) {
       return state.merge({
         id, userName, pic
       });
-      break;
     case actionTypes.LOGIN_OUT_FULFILLED:
       return state.merge({
         loginOutState: payload
       });
-      break;
     default:
       return state;
   }

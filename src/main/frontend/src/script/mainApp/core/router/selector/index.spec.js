@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 
 //用于检测selector初始化location hash的值
 if(!global.window){

@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 
 import actionTypes from '../action-types';
 import {validateEmail, validatePsd} from './utils';

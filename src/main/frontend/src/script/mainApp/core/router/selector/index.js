@@ -5,7 +5,6 @@
  * @module routerSelector
  * @alias routerSelector
  */
-'use strict';
 
 const routerInitState = {
   pathname: window.location.hash.substring(1),

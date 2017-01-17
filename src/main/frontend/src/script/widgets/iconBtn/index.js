@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 
 import React, {Component, PropTypes} from 'react';
 
@@ -16,7 +15,7 @@ export default class IconBtn extends Component {
 
   render() {
     return (
-      <a className={this.props.className} href="javascript:;" onClick={this.props.onClick}>
+      <a className={this.props.className} onClick={this.props.onClick}>
         <icon className={`fa ${this.props.iconClassName}`}/>
       </a>
     );

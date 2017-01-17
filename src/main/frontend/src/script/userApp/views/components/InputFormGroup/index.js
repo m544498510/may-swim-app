@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 import React, {Component, PropTypes} from "react";
 import {FormGroup, InputGroup, InputGroupAddon, Input} from "reactstrap";
 
@@ -35,7 +34,7 @@ export default class InputFormGroup extends Component {
   }
   onBlur(e){
     const value = e.target.value;
-    if(value != this.state.lastValue){
+    if(value !== this.state.lastValue){
       this.props.onChangeHandle(value);
     }
     this.setState({'lastValue': value});

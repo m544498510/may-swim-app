@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 
 import reducer from './index';
 import actionTypes from '../action/types';

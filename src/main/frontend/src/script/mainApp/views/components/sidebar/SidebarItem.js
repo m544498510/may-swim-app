@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 
 import React, {Component, PropTypes} from "react";
 import {Link} from "react-router";
@@ -69,7 +68,7 @@ export default class SidebarItem extends Component {
       expand: !this.state.expand
     });
     const {onClick} = this.props;
-    if(typeof onClick == 'function'){
+    if(typeof onClick === 'function'){
       onClick();
     }
   }

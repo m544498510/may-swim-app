@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 import React, {Component, PropTypes} from 'react';
 import {DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
 import {Dropdown} from 'widgets/dropdown';
@@ -16,10 +15,6 @@ export default class Header extends Component {
     loginOut: PropTypes.func.isRequired,
     reverseSidebarState: PropTypes.func.isRequired
   };
-
-  constructor(props,context){
-    super(props, context);
-  }
 
   render() {
     return (

@@ -2,7 +2,6 @@
  * @author May
  * @version 1.0.0
  */
-'use strict';
 
 import { applyMiddleware, compose, createStore } from 'redux';
 import createSagaMiddleware  from 'redux-saga';

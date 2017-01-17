@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 
 import React, {Component, PropTypes} from 'react';
 
@@ -37,7 +36,7 @@ export default class Sidebar extends Component {
           const {path, children} = item,
             hasChild = (children && children.length > 0),
             link = !hasChild ? path : null,
-            showChildren = hasChild && href.indexOf(path) == 0,
+            showChildren = hasChild && href.indexOf(path) === 0,
             onClick = hasChild ? this.expandSidebar : null,
             selectedClass = !hasChild ? getSelectedClass(href,path):'';
 
@@ -87,5 +86,5 @@ export default class Sidebar extends Component {
 };
 
 function getSelectedClass(href, path) {
-  return href.indexOf(path) == 0 ? 'selected' : '';
+  return href.indexOf(path) === 0 ? 'selected' : '';
 }

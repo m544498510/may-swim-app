@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 
 import {GET, POST, PUT, PATCH, DELETE} from "./fetch_types";
 import fetchWrapper from "./fetchWrapper";

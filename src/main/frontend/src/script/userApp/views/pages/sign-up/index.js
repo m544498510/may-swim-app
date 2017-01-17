@@ -2,7 +2,6 @@
  * @author May
  * @version 1.0.0
  */
-'use strict';
 import React, {Component,PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';

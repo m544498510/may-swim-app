@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 import React, {Component, PropTypes} from "react";
 import {Button,Form, FormGroup, InputGroup,InputGroupAddon} from "reactstrap";
 import MCheckbox from "widgets/checkbox";
@@ -46,9 +45,9 @@ export default class SignInForm extends Component {
     const userName = this.state.userName.trim();
     const password = this.state.password.trim();
     const autoSignIn = this.state.autoSignIn;
-    if(userName == ''){
+    if(userName === ''){
       this.refs.userNameInput.focus();
-    }else if(password == ''){
+    }else if(password === ''){
       this.refs.psdInput.focus();
     }else{
       this.props.signIn(userName, password, autoSignIn);
@@ -61,7 +60,7 @@ export default class SignInForm extends Component {
     if (this.props.signInRejected) {
       signInFailInfo =
         (<span className="warning_info">
-          <icon className="fa fa-exclamation-triangle" aria-hidden="true"></icon>
+          <icon className="fa fa-exclamation-triangle" aria-hidden="true" />
           你输入的密码和账户名不匹配
         </span>)
     }

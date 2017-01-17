@@ -3,10 +3,9 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 
 import React, {Component, PropTypes} from 'react';
-import {Button, FormGroup, InputGroup, Input} from 'reactstrap';
+import {Button, FormGroup} from 'reactstrap';
 
 import InputFormGroup from '../InputFormGroup';
 

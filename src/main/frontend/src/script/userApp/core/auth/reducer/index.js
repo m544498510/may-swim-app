@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 
 import {Record} from 'immutable';
 
@@ -21,7 +20,6 @@ export default function (state = new AuthState(), {type}) {
         signInFulfilled: true,
         signInRejected: false
       });
-      break;
     case authActions.SIGN_IN_REJECTED:
       return state.merge({
         signInFulfilled: false,

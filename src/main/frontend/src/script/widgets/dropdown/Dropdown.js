@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 import React, {Component, PropTypes} from "react";
 import ReactDOM from "react-dom";
 import classNames from "classnames";
@@ -112,7 +111,7 @@ class Dropdown extends Component {
   }
 
   renderChildren() {
-    const {children, ...attrs} = this.props;
+    const {children} = this.props;
 
     return React.Children.map(children, child => {
       if (child.type === DropdownToggle) {

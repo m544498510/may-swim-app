@@ -2,7 +2,6 @@
  * @author May
  * @version 1.0.0
  */
-'use strict';
 
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
@@ -25,7 +24,7 @@ export function SignIn({signIn, signInRejected, signInFulfilled}) {
         signInRejected={signInRejected}
       />
       <div className="form-link-box">
-        <a className="form-link getPsd-link" href="javascript:viod(0)">忘记密码?</a>
+        <a className="form-link getPsd-link">忘记密码?</a>
         <span className="form-separator">·</span>
         <Link to="/sign-up" className="form-link register-link">注册帐户</Link>
       </div>
@@ -34,9 +33,9 @@ export function SignIn({signIn, signInRejected, signInFulfilled}) {
       </div>
       <div className="al-share-auth">
         <ul className="al-share">
-          <li><i className="logoIconFont icon-qq"></i></li>
-          <li><i className="logoIconFont icon-weixin"></i></li>
-          <li><i className="logoIconFont icon-sina"></i></li>
+          <li><i className="logoIconFont icon-qq"/></li>
+          <li><i className="logoIconFont icon-weixin"/></li>
+          <li><i className="logoIconFont icon-sina"/></li>
         </ul>
       </div>
     </div>)

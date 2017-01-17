@@ -4,3 +4,4 @@
 **/config/**
 **/gulpTask/**
 **/src2/**
+**/*.spec.js

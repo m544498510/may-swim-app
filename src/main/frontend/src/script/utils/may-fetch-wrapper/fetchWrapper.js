@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 import 'isomorphic-fetch';
 import {GET, POST, PATCH, PUT, DELETE, HEAD, OPTIONS} from "./fetch_types";
 
@@ -31,6 +30,8 @@ export default function fetchWrapper(setting = {}) {
     case PUT:
     case OPTIONS:
       options.body = formatPostData(setting.data);
+      break;
+    default:
       break;
   }
 
@@ -66,20 +67,20 @@ function checkFetchSuccess(response, options) {
   const method = options.method;
   const status = response.status;
 
-  if (status == 202) {
+  if (status === 202) {
     return true;
   } else if (status < 200 && status > 299) {
     return false;
   } else {
     switch (method) {
       case GET:
-        return status == 200;
+        return status === 200;
       case PUT:
       case POST:
       case PATCH:
-        return status == 201;
+        return status === 201;
       case DELETE:
-        return status == 204;
+        return status === 204;
       default:
         return false;
     }
@@ -103,7 +104,7 @@ function formatResponseBody(response, contentType) {
 
 
 function formatPostData(data = {}) {
-  if ((typeof data == 'object')
+  if ((typeof data === 'object')
     && (data instanceof HTMLElement)) {
     return new FormData(data);
   } else {
@@ -114,7 +115,9 @@ function formatPostData(data = {}) {
 function objToFormData(obj = {}) {
   const formData = new FormData();
   for (let key in obj) {
-    formData.append(key, obj[key]);
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      formData.append(key, obj[key]);
+    }
   }
   return formData;
 }

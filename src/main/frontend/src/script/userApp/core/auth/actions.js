@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 
 const actions =  {
   SIGN_IN: 'SIGN_IN',

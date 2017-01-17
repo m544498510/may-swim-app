@@ -14,6 +14,6 @@ build
 dist
 node_modules
 npm-debug.log
-
+eslint_result.md
 
 src2

@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-'use strict';
 
 import {takeEvery} from 'redux-saga';
 import {call, put, fork} from 'redux-saga/effects';

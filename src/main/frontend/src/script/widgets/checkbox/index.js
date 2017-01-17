@@ -2,7 +2,6 @@
  * @author May
  * @version 1.0.0
  */
-'use strict';
 
 import React, {Component, PropTypes} from 'react';
 import classNames from 'classnames';
