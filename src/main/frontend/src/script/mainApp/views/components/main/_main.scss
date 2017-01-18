@@ -14,8 +14,7 @@
 .main-header{
   padding-top: 13px;
   padding-bottom: 27px;
-
-  h4{
+  h2{
     font-weight: $font-bold;
     color: $default-text;
     float: left;
@@ -36,5 +35,9 @@
     }
 
   }
+}
+
+.main-content{
+
 }
 
