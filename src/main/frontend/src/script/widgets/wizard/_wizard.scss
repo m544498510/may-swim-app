@@ -1,8 +1,32 @@
-.wizard{}
+.wizard{
+  .progress{
+    margin-top: 10px;
+    height: 10px;
+  }
+  .progress-bar{
+    background-color: $primary;
+
+  }
+
+}
 
 .wizard-nav{
   display: table;
   table-layout: fixed;
   width: 100%;
   padding: 15px 0;
+}
+
+.wizard-nav-item{
+  cursor: pointer;
+  display: table-cell;
+  line-height: 1;
+  text-align: center;
+  font-weight: $font-light;
+  font-size: 18px;
+  opacity: 0.6;
+  &.active {
+    opacity: 1;
+  }
+
 }
