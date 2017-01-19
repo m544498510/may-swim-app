@@ -13,7 +13,7 @@
   "dependencies": {
     "babel-polyfill": "6.7.4",
     "babel-runtime": "^6.6.1",
-    "bootstrap": "^4.0.0-alpha.5",
+    "bootstrap": "^4.0.0-alpha.6",
     "classnames": "^2.2.5",
     "font-awesome": "^4.6.3",
     "immutable": "^3.8.1",
