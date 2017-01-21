@@ -3,7 +3,6 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-import 'isomorphic-fetch';
 import {GET, POST, PATCH, PUT, DELETE, HEAD, OPTIONS} from "./fetch_types";
 
 const defaultData = {
