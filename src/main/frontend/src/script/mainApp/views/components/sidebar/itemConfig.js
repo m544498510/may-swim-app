@@ -8,13 +8,18 @@ export default [
   {
     dName: 'home',
     icon: 'fa-home',
-    path: '/home'
+    path: 'home'
+  },
+  {
+    dName: '游泳信息录入',
+    icon: 'fa-pencil',
+    path: 'swimmingInput'
   },
   {
     dName: '设置',
     icon: 'fa-cog',
     path: '/setting',
-    children :[
+    children: [
       {
         dName: 'setting1',
         path: '/setting1'
@@ -29,7 +34,7 @@ export default [
     dName: 'test',
     icon: 'fa-flask',
     path: '/test',
-    children :[
+    children: [
       {
         dName: 'test1',
         path: '/test1'

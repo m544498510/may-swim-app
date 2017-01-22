@@ -42,12 +42,9 @@ class App extends Component {
       <app className={sideCollapsedClass}>
         <HeaderContainer />
         <SidebarContainer />
-        <main >
-          <div className="main-frame">
-            {this.props.children}
-          </div>
-        </main>
-        <footer></footer>
+        //main container
+        {this.props.children}
+        <footer />
       </app>
     );
   }

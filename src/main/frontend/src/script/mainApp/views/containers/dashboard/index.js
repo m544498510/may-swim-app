@@ -4,17 +4,20 @@
  * @version :   1.0
  */
 
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 
-export default class DashboardContainer extends Component{
+import Main from '../../components/main';
 
-  render(){
+export default class DashboardContainer extends Component {
+
+  render() {
+    const breadcrumbs = [{name: 'home'}];
     return (
-      <div>dashboard
-        <div>
-          {this.props.children?this.props.children:''}
-        </div>
-      </div>
+      <Main
+        title="Dashboard"
+        breadcrumb={breadcrumbs}>
+        {this.props.children ? this.props.children : ''}
+      </Main>
     )
   }
 
