@@ -9,7 +9,6 @@ import React, {Component, PropTypes} from 'react';
 import SidebarItem from './SidebarItem';
 import itemConfig from './itemConfig';
 
-
 export default class Sidebar extends Component {
   static propTypes = {
     path: PropTypes.string.isRequired,
@@ -70,7 +69,6 @@ export default class Sidebar extends Component {
     );
   }
 
-
   render() {
     return (
       <aside>
@@ -81,8 +79,6 @@ export default class Sidebar extends Component {
       </aside>
     )
   }
-
-
 };
 
 function getSelectedClass(href, path) {

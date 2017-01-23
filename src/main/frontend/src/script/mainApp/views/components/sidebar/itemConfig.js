@@ -8,12 +8,12 @@ export default [
   {
     dName: 'home',
     icon: 'fa-home',
-    path: 'home'
+    path: '/home'
   },
   {
     dName: '游泳信息录入',
     icon: 'fa-pencil',
-    path: 'swimmingInput'
+    path: '/swimmingInput'
   },
   {
     dName: '设置',
