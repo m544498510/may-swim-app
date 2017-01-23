@@ -21,11 +21,9 @@ export default class Panel extends Component {
         </div>
       );
     }
-    const bgStyle = calculateBgStyle();
-
     return (
-      <div className="panel panel-blur" style={bgStyle}>
-        {panelTitle}b
+      <div className="panel panel-blur" style={calculateBgStyle()}>
+        {panelTitle}
         <div className="panel-body">
           {this.props.children}
         </div>
@@ -36,10 +34,10 @@ export default class Panel extends Component {
 
 function calculateBgStyle() {
   const bgInfo = getBgImgInfo();
-  let bgStyle = '';
+  let bgStyle = {};
   if(bgInfo){
-    bgStyle += 'background-size:'+ Math.round(bgInfo.width) + 'px ' + Math.round(bgInfo.height) + 'px';
-    bgStyle += 'background-position:'+ Math.floor(bgInfo.positionX) + 'px ' + Math.floor(bgInfo.positionY) + 'px'
+    bgStyle['background-size'] = Math.round(bgInfo.width) + 'px ' + Math.round(bgInfo.height) + 'px';
+    bgStyle['background-position'] = Math.floor(bgInfo.positionX) + 'px ' + Math.floor(bgInfo.positionY) + 'px';
   }
   return bgStyle;
 }

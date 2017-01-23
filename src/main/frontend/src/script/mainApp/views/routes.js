@@ -8,7 +8,7 @@ import {Route, IndexRedirect} from 'react-router';
 
 import App from './app';
 import DashboardContainer from './containers/dashboard';
-import SwimWizard from './components/swim/wizard';
+import SwimWizard from './components/swimInput/wizard';
 
 export const paths = {
   HOME: 'home',
