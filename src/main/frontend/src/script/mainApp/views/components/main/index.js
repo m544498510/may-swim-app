@@ -38,12 +38,12 @@ function renderBreadcrumb(list) {
     const item = list[i];
     let linkTag;
     if (item.link) {
-      linkTag = <Link to={item.link}>{item.name}</Link>;
+      linkTag = <Link className="link" to={item.link}>{item.name}</Link>;
     } else {
       linkTag = item.name;
     }
     itemArr.push(
-      <li className="breadcrumb-item">
+      <li className="breadcrumb-item" key={i}>
         {linkTag}
       </li>
     );

@@ -51,8 +51,12 @@ a {
   font-size:100%;
   vertical-align:baseline;
   background:transparent;
-  &:hover, &:visited, &:link, &:active {
+  &:hover, &:focus {
     text-decoration: none;
+    color: #ffffff;
+  }
+  &:focus{
+    outline: none;
   }
 }
 
