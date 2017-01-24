@@ -4,24 +4,29 @@
  * @version :   1.0
  */
 
-import {getBodyClientSize} from '../../utils/htmlTool';
+import {getHtmlSize} from '../../utils/htmlTool';
 
-const bgImg = new Image();
-let bgImgInfo;
-
-const computedStyle = getComputedStyle(document.body, ':before');
-bgImg.onerror = (e) => {console.log(e);};
-bgImg.onload = () => {
-  bgImgInfo = calculateBgInfo();
-};
-bgImg.src = computedStyle.backgroundImage.replace(/url\((['"])?(.*?)\1\)/gi, '$2');
-
+let bgImg;
 export function getBgImgInfo() {
-  return bgImgInfo;
+  return calculateBgInfo(bgImg);
 }
 
-function calculateBgInfo(){
-  const clientSize = getBodyClientSize();
+export function getImgPromise(){
+  return new Promise((resolve,reject)=>{
+    bgImg = new Image();
+    bgImg.onerror = (e) => {
+      reject(e);
+    };
+    bgImg.onload = ()=>{
+      resolve(calculateBgInfo(bgImg))
+    };
+    const computedStyle = getComputedStyle(document.body, ':before');
+    bgImg.src = computedStyle.backgroundImage.replace(/url\((['"])?(.*?)\1\)/gi, '$2');
+  })
+}
+
+function calculateBgInfo(bgImg){
+  const clientSize = getHtmlSize();
   const elemW = clientSize.width;
   const elemH = clientSize.height;
   if (elemW <= 640) return null;

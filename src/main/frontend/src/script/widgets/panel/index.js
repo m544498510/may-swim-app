@@ -6,11 +6,23 @@
 
 import React, {Component, PropTypes} from 'react';
 
-import {getBgImgInfo} from './bgTool';
+import {getBgImgInfo,getImgPromise} from './bgTool';
+
 export default class Panel extends Component {
   static propTypes = {
     title: PropTypes.string
   };
+  constructor(props,context){
+    super(props,context);
+    this.state = {
+      bgInfo: {}
+    };
+
+    getImgPromise().then(bgInfo=>{
+      this.setState({bgInfo});
+    });
+  }
+
 
   render() {
     let panelTitle;
@@ -32,12 +44,11 @@ export default class Panel extends Component {
   }
 }
 
-function calculateBgStyle() {
-  const bgInfo = getBgImgInfo();
+function calculateBgStyle(bgInfo) {
   let bgStyle = {};
   if(bgInfo){
-    bgStyle['background-size'] = Math.round(bgInfo.width) + 'px ' + Math.round(bgInfo.height) + 'px';
-    bgStyle['background-position'] = Math.floor(bgInfo.positionX) + 'px ' + Math.floor(bgInfo.positionY) + 'px';
+    bgStyle['backgroundSize'] = Math.round(bgInfo.width) + 'px ' + Math.round(bgInfo.height) + 'px';
+    bgStyle['backgroundPosition'] = Math.floor(bgInfo.positionX) + 'px ' + Math.floor(bgInfo.positionY) + 'px';
   }
   return bgStyle;
 }

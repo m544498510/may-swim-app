@@ -4,9 +4,21 @@
  * @version :   1.0
  */
 
+export function getHtmlSize(){
+  let size;
+  try {
+    size = {
+      width: document.documentElement.clientWidth,
+      height: document.documentElement.clientHeight
+    }
+  }catch (e){
+    console.log(e);
+  }
+  return size;
+}
 
 /***
- * 获取页面可见区域宽高
+ * 获取body宽高
  * @returns {Object} - e.x. {width:100,height:100}
  */
 export function getBodyClientSize(){
