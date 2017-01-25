@@ -7,7 +7,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {createSelector} from 'reselect';
-import HeaderContainer from './containers/header';
+import HeaderContainer from './header/headerContainer';
 import SidebarContainer from './containers/sidebar';
 
 import * as frame from '../core/frame';

@@ -7,11 +7,15 @@
 import React, {PropTypes, Component} from 'react';
 import {connect} from 'react-redux';
 import {createSelector} from 'reselect';
-import Header from '../../components/header';
+
+import {Link} from 'react-router';
+import IconBtn from 'widgets/iconBtn';
+import UserProfile from '../userProfile';
+
 import * as user  from '../../../core/user';
 import * as frame from '../../../core/frame';
 
-class HeaderContainer extends Component {
+export class HeaderContainer extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
     loginOut: PropTypes.func.isRequired,
@@ -24,18 +28,34 @@ class HeaderContainer extends Component {
       location.href = '/userApp'
     }
 
-    return <Header
-      userPic={this.props.user.pic}
-      loginOut={this.props.loginOut}
-      reverseSidebarState={this.props.reverseSidebarState}
-    />
+    let userPic = '/dist/assets/img/userPic.png';
+    if(this.props.user.get('userPic')){
+      userPic = this.props.user.userPic;
+    }
+
+    return (
+      <header>
+        <Link className="header_logo" to="/">
+          <span>May</span>'s sit
+        </Link>
+        <IconBtn
+          className="header_menuCollapse_btn"
+          iconClassName="fa-bars"
+          onClick={this.props.reverseSidebarState}
+        />
+        <UserProfile
+          userPic={userPic}
+          loginOut={this.props.loginOut}
+        />
+      </header>
+    );
   }
 }
 
 const mapStateToProps = createSelector(
   user.selectors.getUser,
   user.selectors.getLoginOutState,
-  (user, loginOutState)=> ({
+  (user, loginOutState) => ({
     user, loginOutState
   })
 );
