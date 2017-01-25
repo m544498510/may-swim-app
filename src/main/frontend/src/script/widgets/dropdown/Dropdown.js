@@ -135,7 +135,8 @@ class Dropdown extends Component {
     const classes = classNames(
       className,'dropdown',
       {
-        open: isOpen,
+        //bootstrap change the key word
+        show: isOpen,
         dropup: dropup
       }
     );
