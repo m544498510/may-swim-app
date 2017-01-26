@@ -8,7 +8,7 @@ import {Link} from 'react-router';
 import {createSelector} from 'reselect';
 
 import SignUpForm from '../../components/signUpForm';
-import {userActions, getEmailErrorInfo,getSecondPsdErrorInfo} from  '../../../../userApp/core/user';
+import {userActions, getEmailErrorInfo,getSecondPsdErrorInfo} from  'userApp/core/user';
 
 class SignUp extends Component{
   static propTypes = {

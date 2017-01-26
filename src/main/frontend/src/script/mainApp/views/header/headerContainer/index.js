@@ -12,8 +12,8 @@ import {Link} from 'react-router';
 import IconBtn from 'widgets/iconBtn';
 import UserProfile from '../userProfile';
 
-import * as user  from '../../../core/user';
-import * as frame from '../../../core/frame';
+import * as user  from 'mainApp/core/user';
+import * as frame from 'mainApp/core/frame';
 
 export class HeaderContainer extends Component {
   static propTypes = {
@@ -29,7 +29,7 @@ export class HeaderContainer extends Component {
     }
 
     let userPic = '/dist/assets/img/userPic.png';
-    if(this.props.user.get('userPic')){
+    if (this.props.user.get('userPic')) {
       userPic = this.props.user.userPic;
     }
 

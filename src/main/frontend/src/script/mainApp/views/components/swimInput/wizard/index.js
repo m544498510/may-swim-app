@@ -7,7 +7,7 @@
 import React, {Component, PropTypes} from 'react';
 
 import Main from '../../main';
-import Panel from '../../../../../widgets/panel';
+import Panel from 'widgets/panel';
 
 import {paths} from '../../../routes';
 

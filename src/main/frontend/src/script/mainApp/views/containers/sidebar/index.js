@@ -9,8 +9,8 @@ import {createSelector} from 'reselect';
 import {connect} from 'react-redux';
 
 import Sidebar from '../../components/sidebar';
-import * as frame from '../../../core/frame';
-import * as router from '../../../core/router';
+import * as frame from 'mainApp/core/frame';
+import * as router from 'mainApp/core/router';
 
 class SidebarContainer extends Component {
   static contextTypes = {

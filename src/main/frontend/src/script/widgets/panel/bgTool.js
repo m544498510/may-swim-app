@@ -4,7 +4,7 @@
  * @version :   1.0
  */
 
-import {getHtmlSize} from '../../utils/htmlTool';
+import {getHtmlSize} from 'utils/htmlTool';
 
 let bgImg;
 export function getBgImgInfo() {
