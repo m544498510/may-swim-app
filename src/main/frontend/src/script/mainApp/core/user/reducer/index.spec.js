@@ -16,7 +16,7 @@ describe('user reducer', () => {
       expect(state.toObject()).to.deep.equal({
         id: '',
         userName: '',
-        pic: '',
+        pic: '/dist/assets/img/userPic.png',
         loginOutState: false
       });
     });

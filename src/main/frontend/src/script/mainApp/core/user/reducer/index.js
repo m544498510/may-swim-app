@@ -11,7 +11,7 @@ import actionTypes from '../action/types';
 const userRecord = Record({
   id: '',
   userName: '',
-  pic: '',
+  pic: '/dist/assets/img/userPic.png',
   loginOutState: false
 });
 
