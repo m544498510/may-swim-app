@@ -6,7 +6,7 @@
 
 import React, {Component} from 'react';
 
-import Main from '../../components/main';
+import Main from '../../common/Main';
 
 export default class DashboardContainer extends Component {
 

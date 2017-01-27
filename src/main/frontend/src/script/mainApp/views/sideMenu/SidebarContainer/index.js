@@ -8,7 +8,7 @@ import React, {Component, PropTypes} from 'react';
 import {createSelector} from 'reselect';
 import {connect} from 'react-redux';
 
-import Sidebar from '../../components/sidebar';
+import Sidebar from '../Sidebar';
 import * as frame from 'mainApp/core/frame';
 import * as router from 'mainApp/core/router';
 

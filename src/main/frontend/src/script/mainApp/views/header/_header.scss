@@ -65,6 +65,7 @@ header {
         margin-right: 10px;
       }
       a{
+        display: block;
         color: $dropdown-text;
         &:hover {
           color: #2b2d2f;

@@ -8,7 +8,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {Link} from 'react-router';
 
-import SidebarItem from './SidebarItem';
+import SidebarItem from './index';
 
 describe('component SidebarItem', () => {
   it('should render a li', () => {

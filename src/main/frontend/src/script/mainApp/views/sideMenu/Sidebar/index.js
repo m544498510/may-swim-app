@@ -6,7 +6,7 @@
 
 import React, {Component, PropTypes} from 'react';
 
-import SidebarItem from './SidebarItem';
+import SidebarItem from '../SidebarItem';
 import itemConfig from './itemConfig';
 
 export default class Sidebar extends Component {

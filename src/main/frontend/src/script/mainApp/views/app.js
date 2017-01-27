@@ -8,7 +8,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {createSelector} from 'reselect';
 import HeaderContainer from './header/HeaderContainer';
-import SidebarContainer from './containers/sidebar';
+import SidebarContainer from './sideMenu/SidebarContainer';
 
 import * as frame from '../core/frame';
 

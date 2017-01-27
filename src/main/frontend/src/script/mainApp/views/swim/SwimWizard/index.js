@@ -6,10 +6,10 @@
 
 import React, {Component, PropTypes} from 'react';
 
-import Main from '../../main';
+import Main from '../../common/Main';
 import Panel from 'widgets/panel';
 
-import {paths} from '../../../routes';
+import {paths} from '../../routes';
 
 export default class SwimWizard extends Component {
   render() {

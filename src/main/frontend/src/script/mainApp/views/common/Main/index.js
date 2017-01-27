@@ -5,8 +5,7 @@
  */
 
 import React, {Component, PropTypes} from 'react';
-import {Link} from 'react-router';
-import Breadcrump from 'widgets/Breadcrumb';
+import Breadcrumb from 'widgets/Breadcrumb';
 
 export default class Main extends Component {
   static propTypes = {
