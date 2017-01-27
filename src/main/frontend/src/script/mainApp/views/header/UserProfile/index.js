@@ -6,7 +6,7 @@
 
 import React, {Component, PropTypes} from 'react';
 import {DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
-import {Dropdown} from 'widgets/dropdown';
+import Dropdown from 'widgets/Dropdown';
 import {Link} from 'react-router';
 
 export default class UserProfile extends Component {

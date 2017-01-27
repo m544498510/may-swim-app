@@ -7,7 +7,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import Dropdown from './Dropdown';
+import Dropdown from './index';
 
 
 describe('widget dropdown', () => {
@@ -24,7 +24,7 @@ describe('widget dropdown', () => {
 
     it('should has "open" when props.isOpen is true',()=>{
       const wrapper = shallow(<Dropdown isOpen={true}/>);
-      expect(wrapper.hasClass('open')).to.be.true;
+      expect(wrapper.hasClass('show')).to.be.true;
     });
 
     it('should has "dropup" when props.dropup is true', () => {

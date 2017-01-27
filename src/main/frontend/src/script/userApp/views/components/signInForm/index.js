@@ -5,7 +5,7 @@
  */
 import React, {Component, PropTypes} from "react";
 import {Button,Form, FormGroup, InputGroup,InputGroupAddon} from "reactstrap";
-import MCheckbox from "widgets/checkbox";
+import MCheckbox from "widgets/Checkbox";
 
 export default class SignInForm extends Component {
   static propTypes = {

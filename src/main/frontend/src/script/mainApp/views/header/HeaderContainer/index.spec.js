@@ -9,12 +9,12 @@ import {shallow} from 'enzyme';
 import {Map} from 'immutable';
 import {Link} from 'react-router';
 
-import IconBtn from 'widgets/iconBtn';
-import UserProfile from '../userProfile';
+import IconBtn from 'widgets/IconBtn';
+import UserProfile from '../UserProfile';
 
 import {HeaderContainer} from './index';
 
-describe('component header', () => {
+describe('component HeaderContainer', () => {
 
   let _wrapper, _handleLoginOut, _handleSidebarClick;
   before(() => {

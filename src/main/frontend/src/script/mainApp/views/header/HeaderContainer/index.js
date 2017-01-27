@@ -9,8 +9,8 @@ import {connect} from 'react-redux';
 import {createSelector} from 'reselect';
 
 import {Link} from 'react-router';
-import IconBtn from 'widgets/iconBtn';
-import UserProfile from '../userProfile';
+import IconBtn from 'widgets/IconBtn';
+import UserProfile from '../UserProfile';
 
 import * as user  from 'mainApp/core/user';
 import * as frame from 'mainApp/core/frame';
