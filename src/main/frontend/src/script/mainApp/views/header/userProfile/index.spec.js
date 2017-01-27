@@ -10,7 +10,7 @@ import {shallow} from 'enzyme';
 import Header from './index';
 
 describe('component header',()=>{
-  let _wrapper,_handleLoginOut,_handleSidebarClick;
+  let _wrapper,_handleLoginOut;
   before(()=>{
     _handleLoginOut = sinon.spy();
     _wrapper = shallow(
@@ -24,7 +24,7 @@ describe('component header',()=>{
   describe('(render)',()=>{
     it('should render a div with default className', () => {
       expect(_wrapper).to.lengthOf(1);
-      expect(_wrapper.hasClass('.header_userProfile_box')).to.true;
+      expect(_wrapper.hasClass('header_userProfile_box')).to.true;
     });
 
     it('should set img with provided #props.userPic',()=>{
@@ -36,7 +36,7 @@ describe('component header',()=>{
   describe('(event)',()=>{
     it('should set onClick to the login out button with provided #props.loginOut',()=>{
       _wrapper.find('.sign_out').simulate('click');
-      expect(_handleLoginOut.calledOnce).to.be.true;
+      expect(_handleLoginOut).to.have.calledOnce
     });
   });
 });

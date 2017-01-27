@@ -28,10 +28,7 @@ export class HeaderContainer extends Component {
       location.href = '/userApp'
     }
 
-    let userPic = '/dist/assets/img/userPic.png';
-    if (this.props.user.get('userPic')) {
-      userPic = this.props.user.userPic;
-    }
+    const userPic = this.props.user.get('pic');
 
     return (
       <header>

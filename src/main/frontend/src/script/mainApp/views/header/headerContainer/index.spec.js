@@ -6,42 +6,45 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
+import {Map} from 'immutable';
+import {Link} from 'react-router';
+
+import IconBtn from 'widgets/iconBtn';
+import UserProfile from '../userProfile';
 
 import {HeaderContainer} from './index';
 
-describe('component header',()=>{
-  let _wrapper,_handleLoginOut,_handleSidebarClick;
-  before(()=>{
+describe('component header', () => {
+
+  let _wrapper, _handleLoginOut, _handleSidebarClick;
+  before(() => {
     _handleLoginOut = sinon.spy();
     _handleSidebarClick = sinon.spy();
     _wrapper = shallow(
       <HeaderContainer
-        user="test"
+        user={Map({pic:'test'})}
         loginOut={_handleLoginOut}
+        loginOutState={false}
         reverseSidebarState={_handleSidebarClick}
       />
     );
   });
 
-  describe('(render)',()=>{
-    it('should render a header and contains IconBtn', () => {
-      expect(_wrapper).to.lengthOf(1);
-      expect(_wrapper.find('IconBtn')).to.lengthOf(1);
+  describe('(render)', () => {
+    it('should render a header ', () => {
+      expect(_wrapper.type()).to.equals('header');
     });
 
-    it('should set img with provided #props.userPic',()=>{
-      const img = _wrapper.find('.user_profile_pic');
-      expect(img.prop('src')).to.equal('test');
+    it('should has three children which is a Link , a IconBtn and a Header', () => {
+      const children = _wrapper.children();
+      expect(children.at(0).type()).to.equals(Link);
+      expect(children.at(1).type()).to.equals(IconBtn);
+      expect(children.at(2).type()).to.equals(UserProfile);
     });
   });
 
-  describe('(event)',()=>{
-    it('should set onClick to the login out button with provided #props.loginOut',()=>{
-      _wrapper.find('.sign_out').simulate('click');
-      expect(_handleLoginOut.calledOnce).to.be.true;
-    });
-
-    it('should set onClick to the sidebar button with provided #props.reverseSidebarState',()=>{
+  describe('(event)', () => {
+    it('should set onClick to the sidebar button with provided #props.reverseSidebarState', () => {
       _wrapper.find('IconBtn').simulate('click');
       expect(_handleSidebarClick.calledOnce).to.be.true;
     });

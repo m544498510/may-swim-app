@@ -18,7 +18,11 @@ export function* getUserWorker() {
     const user = yield call(mFetch.get, {
       url: '/session'
     });
-    yield put(actions.setUserInfo(user));
+    if(user){
+      yield put(actions.setUserInfo(user));
+    }else{
+      // location.href='/userApp';
+    }
   } catch (e) {
     console.log(e);
   }
