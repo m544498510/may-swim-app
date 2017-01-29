@@ -5,24 +5,17 @@
  */
 
 import React, {Component, PropTypes} from 'react';
+import {createSelector} from 'reselect';
+import {connect} from 'react-redux';
 
-import {getBgImgInfo,getImgPromise} from './bgTool';
+import * as frame from 'mainApp/core/frame';
+import {getBgImgInfo, getImgPromise} from './bgTool';
 
-export default class Panel extends Component {
+export class PanelContainer extends Component {
   static propTypes = {
-    title: PropTypes.string
+    title: PropTypes.string,
+    htmlSize: PropTypes.object.isRequired
   };
-  constructor(props,context){
-    super(props,context);
-    this.state = {
-      bgInfo: {}
-    };
-
-    getImgPromise().then(bgInfo=>{
-      this.setState({bgInfo});
-    });
-  }
-
 
   render() {
     let panelTitle;
@@ -34,7 +27,7 @@ export default class Panel extends Component {
       );
     }
     return (
-      <div className="panel panel-blur" style={calculateBgStyle()}>
+      <div className="panel panel-blur" style={calculateBgStyle(this.props.htmlSize)}>
         {panelTitle}
         <div className="panel-body">
           {this.props.children}
@@ -44,11 +37,23 @@ export default class Panel extends Component {
   }
 }
 
-function calculateBgStyle(bgInfo) {
+function calculateBgStyle(htmlSize) {
+  const bgInfo = getBgImgInfo(htmlSize);
   let bgStyle = {};
-  if(bgInfo){
+
+  if (bgInfo) {
     bgStyle['backgroundSize'] = Math.round(bgInfo.width) + 'px ' + Math.round(bgInfo.height) + 'px';
     bgStyle['backgroundPosition'] = Math.floor(bgInfo.positionX) + 'px ' + Math.floor(bgInfo.positionY) + 'px';
   }
   return bgStyle;
 }
+
+const mapStateToProps = createSelector(
+  frame.selectors.getHtmlSize,
+  htmlSize => ({
+    htmlSize
+  })
+);
+
+export default connect(mapStateToProps, null)(PanelContainer);
+

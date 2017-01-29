@@ -7,7 +7,7 @@
 import React, {Component, PropTypes} from 'react';
 
 import Main from '../../common/Main';
-import Panel from 'widgets/panel';
+import PanelContainer from '../../common/PanelContainer';
 
 import {paths} from '../../routes';
 
@@ -30,7 +30,7 @@ export default class SwimWizard extends Component {
         title="游泳信息录入"
         breadcrumb={breadcrumb}
       >
-        <Panel title="信息录入向导">
+        <PanelContainer title="信息录入向导">
           <div className="wizard">
             <nav className="wizard-nav">
               <div className="wizard-nav-item active">基本信息</div>
@@ -48,7 +48,7 @@ export default class SwimWizard extends Component {
 
             </div>
           </div>
-        </Panel>
+        </PanelContainer>
       </Main>
     );
   }
