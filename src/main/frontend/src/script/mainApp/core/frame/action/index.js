@@ -24,3 +24,17 @@ export function reverseSidebarState(){
     });
   }
 }
+
+/***
+ *
+ * @param {object} size
+ * @param {int|number} size.width
+ * @param {int|number} size.height
+ * @returns {{type: string, payload: object}}
+ */
+export function changeHtmlSize(size){
+  return {
+    type: types.CHANGE_HTML_SIZE,
+    payload: size
+  }
+}

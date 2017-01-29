@@ -28,7 +28,19 @@ describe('frame reduce', () => {
         payload: true
       });
       expect(state.get('sidebarState')).to.be.true;
-
+    });
+  });
+  describe('type CHANGE_HTML_SIZE',()=>{
+    it('should set html size width specified value',()=>{
+      const state = reduce(undefined,{
+        type: types.CHANGE_HTML_SIZE,
+        payload:{
+          width: 1,
+          height: 1
+        }
+      });
+      expect(state.get('htmlWidth')).to.equals(1);
+      expect(state.get('htmlHeight')).to.equals(1);
     });
   });
 

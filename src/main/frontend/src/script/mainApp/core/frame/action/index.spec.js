@@ -56,4 +56,19 @@ describe('frame action: ', () => {
       });
     });
   });
+
+  describe('changeHtmlSize',()=>{
+    it('should change html size',()=>{
+      _store.dispatch(actions.changeHtmlSize({width:1, height:1}));
+      const actionArr = _store.getActions();
+      expect(actionArr[0]).to.deep.equal({
+        type: types.CHANGE_HTML_SIZE,
+        payload:{
+          width: 1,
+          height: 1
+        }
+      })
+    })
+
+  })
 });

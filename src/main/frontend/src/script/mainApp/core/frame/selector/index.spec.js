@@ -10,7 +10,9 @@ import {Map} from 'immutable';
 describe('frame selector', () => {
   const state = {
     frame: Map({
-      sidebarState: false
+      sidebarState: false,
+      htmlWidth: 1,
+      htmlHeight: 1
     })
   };
 
@@ -28,4 +30,11 @@ describe('frame selector', () => {
     });
   });
 
+  describe('function getHtmlSize', () => {
+    it('should return html size', () => {
+      const size = selector.getHtmlSize(state);
+      expect(size.width).to.equals(state.frame.get('htmlWidth'));
+      expect(size.height).to.equals(state.frame.get('htmlHeight'));
+    })
+  })
 });
