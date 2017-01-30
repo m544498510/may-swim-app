@@ -29,16 +29,10 @@ class App extends Component {
     super(props, context);
 
     //初始化html size
-    props.changeHtmlSize(getHtmlSize());
+    htmlSizeChange(props);
     window.addEventListener('resize', () => {
-      if (window.innerWidth < 1280) {
-        props.changeSidebarState(false);
-      } else {
-        props.changeSidebarState(true);
-      }
-      props.changeHtmlSize(getHtmlSize());
+      htmlSizeChange(props);
     });
-
   }
 
   render() {
@@ -53,6 +47,16 @@ class App extends Component {
       </app>
     );
   }
+}
+
+function htmlSizeChange(props){
+  if (window.innerWidth < 1280) {
+    props.changeSidebarState(false);
+  } else {
+    props.changeSidebarState(true);
+  }
+  props.changeHtmlSize(getHtmlSize());
+
 }
 
 const mapPropsToProps = createSelector(
