@@ -1,5 +1,5 @@
 /**
- *
+ * widget Wizard step container(用于规定wizard step的props)
  * @author :    Mei XinLin
  * @version :   1.0
  */
