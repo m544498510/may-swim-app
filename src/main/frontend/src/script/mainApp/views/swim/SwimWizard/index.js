@@ -4,7 +4,7 @@
  * @version :   1.0
  */
 
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 
 import Main from '../../common/Main';
 import PanelContainer from '../../common/PanelContainer';
@@ -34,21 +34,20 @@ export default class SwimWizard extends Component {
         <PanelContainer title="信息录入向导">
           <Wizard>
             <WizardStep
-              isActive={true}
               title="基本信息"
-              validateFunc={()=>{}}
+              validateFunc={()=>true}
             >
               <div style={{height: '500px'}}>1</div>
             </WizardStep>
             <WizardStep
               title="训练信息"
-              validateFunc={()=>{}}
+              validateFunc={()=>true}
             >
               <div style={{height: '1500px'}}>2</div>
             </WizardStep>
             <WizardStep
               title="完成"
-              validateFunc={()=>{}}
+              validateFunc={()=>true}
             >
               <div style={{height: '500px'}}>3</div>
             </WizardStep>

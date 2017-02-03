@@ -9,7 +9,7 @@ import {createSelector} from 'reselect';
 import {connect} from 'react-redux';
 
 import * as frame from 'mainApp/core/frame';
-import {getBgImgInfo, getImgPromise} from './bgTool';
+import {getBgImgInfo} from './bgTool';
 
 export class PanelContainer extends Component {
   static propTypes = {
