@@ -25,7 +25,7 @@ describe('widget Wizard', () => {
           />
           <WizardStep
             title="step3"
-            validateFunc={()=>true}
+            validateFunc={()=>false}
           />
         </Wizard>
       );
@@ -40,24 +40,72 @@ describe('widget Wizard', () => {
       const nav = _wrapper.find('.wizard-nav');
       expect(nav).to.be.lengthOf(1);
     });
-    it('should render nav item with children prop',()=>{
+    it('should render nav item with children prop', () => {
       const navItems = _wrapper.find('.wizard-nav-item');
       expect(navItems).to.be.lengthOf(3);
       expect(navItems.at(0).text()).to.equals('step1');
       expect(navItems.at(1).text()).to.equals('step2');
       expect(navItems.at(2).text()).to.equals('step3');
     });
+    it('should render first nav item with the active class by default', () => {
+      const firstNavItem = _wrapper.find('.wizard-nav-item').first();
+      expect(firstNavItem.hasClass('active')).to.be.true;
+    });
     it('should render a progress', () => {
       expect(_wrapper.find('.progress')).to.be.lengthOf(1);
     });
-    it('should render a progress with 33% width by default', () => {
-      expect(_wrapper.find('.progress-bar')).to.be.not.null;
-      console.log(_wrapper.find('.progress-bar').prop('style'));
+    it('should render a progress bar with 33% width by 3 children', () => {
+      const progressBar = _wrapper.find('.progress-bar');
+      expect(progressBar.prop('style').width).to.equals('33%');
     });
     it('should render WizardStep children', () => {
       const children = _wrapper.find('.wizard-steps').children();
       expect(children).to.be.lengthOf(3);
     });
-
+    it('should set isActive to true in the first step and false in other step by default', () => {
+      const steps = _wrapper.find('WizardStep');
+      const firstStep = steps.first();
+      const secondStep = steps.at(1);
+      const thirdStep = steps.at(2);
+      expect(firstStep.prop('isActive')).to.be.true;
+      expect(secondStep.prop('isActive')).to.be.false;
+      expect(thirdStep.prop('isActive')).to.be.false;
+    });
   });
+
+  describe('(nav item click evt)', () => {
+    let _wrapper;
+    beforeEach(() => {
+      _wrapper = shallow(
+        <Wizard>
+          <WizardStep
+            title="step1"
+            validateFunc={()=>true}
+          />
+          <WizardStep
+            title="step2"
+            validateFunc={()=>true}
+          />
+          <WizardStep
+            title="step3"
+            validateFunc={()=>false}
+          />
+        </Wizard>
+      );
+    });
+    it('should change nav item active class', () => {
+      const targetNavItem = _wrapper.find('.wizard-nav-item').at(1);
+      expect(targetNavItem.hasClass('active')).to.be.false;
+      targetNavItem.simulate('click');
+      const newTargetNavItem = _wrapper.find('.wizard-nav-item').at(1);
+      expect(newTargetNavItem.hasClass('active')).to.be.true;
+    });
+    it('should change progress bar width',()=>{
+      const targetNavItem = _wrapper.find('.wizard-nav-item').at(1);
+      targetNavItem.simulate('click');
+      const progress = _wrapper.find('.progress-bar');
+      expect(progress.prop('style').width).to.equals('66%');
+    });
+  });
+
 });

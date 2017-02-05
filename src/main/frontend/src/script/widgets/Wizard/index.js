@@ -100,7 +100,7 @@ function calculateSteps(steps) {
   const stepsInfo = [];
   for (let i = 0; i < steps.length; i++) {
     const step = steps[i];
-    if (step.type.displayName === 'WizardStep') {
+    if (step.type.name === 'WizardStep') {
       stepsInfo.push({
         title: step.props.title,
         validateFunc: step.props.validateFunc
