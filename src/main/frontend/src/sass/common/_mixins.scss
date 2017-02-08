@@ -79,3 +79,11 @@
 @mixin changeTranslation($prop){
   transition: $prop 0.5s ease;
 }
+
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}

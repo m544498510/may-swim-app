@@ -1,7 +1,7 @@
-//theme code start
+//theme code
 @import "theme/dark";
-//theme code end
 
+//common style
 @import "common/reset";
 @import "common/mixins";
 @import "common/variables";
@@ -14,6 +14,7 @@
 
 
 //widgets
+@import "component/button";
 @import "../script/widgets/Checkbox/checkbox";
 @import "../script/widgets/Wizard/wizard";
 

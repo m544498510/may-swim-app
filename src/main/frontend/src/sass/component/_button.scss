@@ -1,0 +1,18 @@
+.btn{
+  cursor: pointer;
+
+
+  &.btn-green{
+    background: $primary;
+    border-color: $primary;
+    transition: all 0.1s ease;
+    color: $color-white;
+  }
+
+  &:hover{
+    transform: scale(1.1);
+  }
+  &:focus{
+    box-shadow: none;
+  }
+}

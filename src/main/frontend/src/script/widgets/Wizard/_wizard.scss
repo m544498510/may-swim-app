@@ -37,3 +37,17 @@
     display: block;
   }
 }
+
+
+.wizard-btn-box{
+  @include clearfix();
+  .btn{
+    width: 120px;
+  }
+  .prev-btn{
+    float:left;
+  }
+  .next-btn,.complete-btn{
+    float:right;
+  }
+}
