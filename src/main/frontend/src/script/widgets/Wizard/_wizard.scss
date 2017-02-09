@@ -41,6 +41,7 @@
 
 .wizard-btn-box{
   @include clearfix();
+  padding: 0 20px 20px;
   .btn{
     width: 120px;
   }

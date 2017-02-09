@@ -1,0 +1,36 @@
+.form-group {
+  label {
+    margin-bottom: 5px;
+    color: $default-text;
+    font-weight: $font-normal;
+    font-size: 13px;
+  }
+}
+
+.form-control {
+  color: $default-text;
+  @include placeholderStyle($default-text, 0.7);
+  border: 1px solid $input-border;
+  border-radius: 5px;
+  background-color: $input-background;
+  box-shadow: none;
+  &:focus {
+    color: $default-text;
+    box-shadow: none;
+    border-color: $primary-bg;
+    background: $input-background;
+  }
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 15px;
+  & > span {
+    border-radius: 0;
+  }
+}
+.input-group-addon {
+  background: none;
+  border-color: $border-light;
+  color: $default-text;
+}

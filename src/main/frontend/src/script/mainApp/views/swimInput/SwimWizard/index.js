@@ -32,7 +32,7 @@ export default class SwimWizard extends Component {
         breadcrumb={breadcrumb}
       >
         <PanelContainer title="信息录入向导">
-          <Wizard>
+          <Wizard completeFunc={()=>{console.log('complete')}}>
             <WizardStep
               title="基本信息"
               validateFunc={()=>true}
