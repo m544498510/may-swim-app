@@ -4,45 +4,26 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <link rel="stylesheet" type="text/css" href="../dist/lib/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/style/mainApp.css">
 
 </head>
 <body>
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
+<div class="swim-step swim-main-step container">
+  <div class="form-group row">
+    <label for="SwimDatePicker" class="col-sm-2 col-form-label col-form-label-lg">日期：</label>
+    <div class="col-sm-10 input-group">
+      <input type="text" class="form-control" id="SwimDatePicker" placeholder="">
+      <span class="input-group-addon addon-right">
+                                <icon class="fa fa-calendar"></icon>
+                              </span>
+    </div>
   </div>
-</div>
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
-</div>
-<br>
-<div class="input-group">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-addon" id="basic-addon2">@example.com</span>
-</div>
-<br>
-<label for="basic-url">Your vanity URL</label>
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
-  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-</div>
-<br>
-<div class="input-group">
-  <span class="input-group-addon">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <span class="input-group-addon">.00</span>
-</div>
-<br>
-<div class="input-group">
-  <span class="input-group-addon">$</span>
-  <span class="input-group-addon">0.00</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Email asdasdasd</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
 </div>
 </body>
 </html>

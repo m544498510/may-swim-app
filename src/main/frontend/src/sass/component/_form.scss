@@ -1,16 +1,15 @@
 .form-group {
   label {
-    margin-bottom: 5px;
     color: $default-text;
     font-weight: $font-normal;
-    font-size: 13px;
+    white-space:nowrap;
   }
 }
 
 .form-control {
   color: $default-text;
   @include placeholderStyle($default-text, 0.7);
-  border: 1px solid $input-border;
+  border: none;
   border-radius: 5px;
   background-color: $input-background;
   box-shadow: none;
@@ -25,12 +24,9 @@
 .input-group {
   width: 100%;
   margin-bottom: 15px;
-  & > span {
-    border-radius: 0;
-  }
 }
 .input-group-addon {
-  background: none;
-  border-color: $border-light;
+  border: none;
   color: $default-text;
+  background-color: $input-background;
 }
