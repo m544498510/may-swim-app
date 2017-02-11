@@ -30,6 +30,13 @@ export default {
       libFolder + 'font-awesome/**/FontAwesome.otf'
 
     ]
+  },
+
+  'react-datetime': {
+    retainStruct: false,
+    path: [
+      libFolder + 'react-datetime/css/react-datetime.css'
+    ]
   }
 
 
