@@ -10,6 +10,7 @@ import Main from '../../common/Main';
 import PanelContainer from '../../common/PanelContainer';
 import Wizard from 'widgets/Wizard';
 import WizardStep from 'widgets/Wizard/WizardStep';
+import BaseInfoContainer from '../BaseInfoContainer';
 
 import {paths} from '../../routes';
 
@@ -37,7 +38,7 @@ export default class SwimWizard extends Component {
               title="基本信息"
               validateFunc={()=>true}
             >
-              <div style={{height: '500px'}}>1</div>
+              <BaseInfoContainer />
             </WizardStep>
             <WizardStep
               title="训练信息"
