@@ -13,9 +13,8 @@ export default class Wizard extends Component {
   constructor(props, context) {
     super(props, context);
 
-    const steps = calculateSteps(props.children);
     this.state = {
-      steps,
+      stepsNum: props.children.length,
       activeIndex: 0
     };
     this.activateStepByIndex = ::this.activateStepByIndex;
@@ -24,14 +23,15 @@ export default class Wizard extends Component {
   }
 
   activateStepByIndex(index) {
-    const step = this.state.steps[index];
     const activeIndex = this.state.activeIndex;
-    if ( index === activeIndex + 1
-      && step && step.validateFunc()) {
+    const validateFunc = this.refs.activeStep.validateFunc;
+    if (index === activeIndex + 1
+      && !(typeof validateFunc === 'function' && !validateFunc())) {
+
       this.setState({
         activeIndex: index
       });
-    }else if(index < activeIndex){
+    } else if (index < activeIndex) {
       this.setState({
         activeIndex: index
       });
@@ -47,17 +47,17 @@ export default class Wizard extends Component {
 
   gotoNextStep() {
     const index = this.state.activeIndex + 1;
-    if (index < this.state.steps.length) {
+    if (index < this.state.stepsNum) {
       this.activateStepByIndex(index);
     }
   }
 
   render() {
-    const {steps, activeIndex}= this.state;
-    const navViews = this.renderNav(steps, activeIndex);
-    const progressWidth = calculateProgressWidth(steps.length, activeIndex);
-    const stepViews = this.renderSteps(this.props.children, activeIndex);
-    const buttons = this.renderButtons(steps.length, activeIndex);
+    const {stepsNum, activeIndex}= this.state;
+    const navViews = this.renderNav(this.props.children, activeIndex);
+    const progressWidth = calculateProgressWidth(stepsNum, activeIndex);
+    const stepView = this.renderStep(this.props.children, activeIndex);
+    const buttons = this.renderButtons(stepsNum, activeIndex);
     return (
       <div className="wizard">
         <nav className="wizard-nav">
@@ -68,8 +68,8 @@ export default class Wizard extends Component {
                style={{width: progressWidth}}>
           </div>
         </div>
-        <div className="wizard-steps">
-          {stepViews}
+        <div className="wizard-step-box">
+          {stepView}
         </div>
         <div className="wizard-btn-box">
           {buttons.prevBtn}
@@ -101,19 +101,18 @@ export default class Wizard extends Component {
     return buttons;
   }
 
-  renderSteps(steps, activeIndex) {
-    const newStepView = [];
-    for (let i = 0; i < steps.length; i++) {
-      const step = steps[i];
-      let newStep;
-      if (i !== activeIndex) {
-        newStep = React.cloneElement(step, {isActive: false, key: i});
-      } else {
-        newStep = React.cloneElement(step, {isActive: true, key: i});
-      }
-      newStepView.push(newStep);
+  renderStep(steps, activeIndex) {
+    let newStep;
+    const step = steps[activeIndex];
+    if (step) {
+      newStep = React.cloneElement(step, {ref: 'activeStep'});
     }
-    return newStepView;
+
+    return (
+      <div className="wizard-step">
+        {newStep}
+      </div>
+    );
   }
 
   renderNav(steps, activeIndex) {
@@ -127,7 +126,7 @@ export default class Wizard extends Component {
           key={i}
           onClick={() => this.activateStepByIndex(i)}
         >
-          {step.title}
+          {step.type.title|| `step ${i+1}`}
         </div>
       );
     }
@@ -143,18 +142,4 @@ function calculateProgressWidth(totalNum, activeIndex) {
   } else {
     return parseInt(tmp / totalNum * 100, 10) + '%';
   }
-}
-
-function calculateSteps(steps) {
-  const stepsInfo = [];
-  for (let i = 0; i < steps.length; i++) {
-    const step = steps[i];
-    if (step.type.name === 'WizardStep') {
-      stepsInfo.push({
-        title: step.props.title,
-        validateFunc: step.props.validateFunc
-      });
-    }
-  }
-  return stepsInfo;
 }

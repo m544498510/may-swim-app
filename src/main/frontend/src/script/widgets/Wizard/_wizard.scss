@@ -30,15 +30,6 @@
 
 }
 
-
-.wizard-step{
-  display: none;
-  &.active{
-    display: block;
-  }
-}
-
-
 .wizard-btn-box{
   @include clearfix();
   padding: 0 20px 20px;
