@@ -34,12 +34,7 @@ export default class SwimWizard extends Component {
       >
         <PanelContainer title="信息录入向导">
           <Wizard completeFunc={()=>{console.log('complete')}}>
-            <WizardStep
-              title="基本信息"
-              validateFunc={()=>true}
-            >
-              <BaseInfoContainer />
-            </WizardStep>
+            <BaseInfoContainer/>
             <WizardStep
               title="训练信息"
               validateFunc={()=>true}
