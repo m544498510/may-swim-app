@@ -5,6 +5,8 @@
  */
 
 import React from 'react';
+import {shallow} from 'enzyme';
+
 import Breadcrumb from './index';
 import {Link} from 'react-router';
 

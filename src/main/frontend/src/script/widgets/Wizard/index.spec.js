@@ -5,9 +5,9 @@
  */
 
 import React from 'react';
+import {shallow,mount} from 'enzyme';
 
 import Wizard from './index';
-import WizardStep from './WizardStep';
 
 describe('widget Wizard', () => {
   describe('(render)', () => {
@@ -60,7 +60,7 @@ describe('widget Wizard', () => {
   describe('(nav item click evt)', () => {
     let _wrapper;
     beforeEach(() => {
-      _wrapper = render(
+      _wrapper = mount(
         <Wizard>
           <TestTag />
           <TestTag />
@@ -68,7 +68,6 @@ describe('widget Wizard', () => {
         </Wizard>
       );
     });
-/*
     it('should change nav item active class', () => {
       const targetNavItem = _wrapper.find('.wizard-nav-item').at(1);
       expect(targetNavItem.hasClass('active')).to.be.false;
@@ -82,7 +81,6 @@ describe('widget Wizard', () => {
       const progress = _wrapper.find('.progress-bar');
       expect(progress.prop('style').width).to.equals('66%');
     });
-*/
   });
 
 });
@@ -91,9 +89,6 @@ class TestTag extends React.Component{
 
   constructor(props){
     super(props);
-
-    this.title = props.title;
-
   }
   validateFunc(){
     return true;
