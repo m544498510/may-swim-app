@@ -126,7 +126,7 @@ export default class Wizard extends Component {
           key={i}
           onClick={() => this.activateStepByIndex(i)}
         >
-          {step.type.title|| `step ${i+1}`}
+          {step.props.title|| `step ${i+1}`}
         </div>
       );
     }

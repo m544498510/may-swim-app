@@ -15,9 +15,13 @@ describe('widget Wizard', () => {
     before(() => {
       _wrapper = shallow(
         <Wizard>
-          <div/>
-          <div/>
-          <div/>
+          <TestTag
+            title="title1"
+          />
+          <TestTag/>
+          <TestTag
+            title="title3"
+          />
         </Wizard>
       );
     });
@@ -34,9 +38,9 @@ describe('widget Wizard', () => {
     it('should render nav item with children prop', () => {
       const navItems = _wrapper.find('.wizard-nav-item');
       expect(navItems).to.be.lengthOf(3);
-      expect(navItems.at(0).text()).to.equals('step 1');
+      expect(navItems.at(0).text()).to.equals('title1');
       expect(navItems.at(1).text()).to.equals('step 2');
-      expect(navItems.at(2).text()).to.equals('step 3');
+      expect(navItems.at(2).text()).to.equals('title3');
     });
     it('should render first nav item with the active class by default', () => {
       const firstNavItem = _wrapper.find('.wizard-nav-item').first();
@@ -49,12 +53,14 @@ describe('widget Wizard', () => {
       const progressBar = _wrapper.find('.progress-bar');
       expect(progressBar.prop('style').width).to.equals('33%');
     });
-/*
-    it('should render WizardStep children', () => {
-      const children = _wrapper.find('.wizard-steps').children();
-      expect(children).to.be.lengthOf(3);
+    it('should render a step box', () => {
+      const stepBox = _wrapper.find('.wizard-step');
+      expect(stepBox).to.be.lengthOf(1);
     });
-*/
+    it('should render the first child in the step box', ()=>{
+      const stepBox = _wrapper.find('.wizard-step');
+      expect(stepBox.find('TestTag')).to.be.lengthOf(1);
+    })
   });
 
   describe('(nav item click evt)', () => {
@@ -62,8 +68,12 @@ describe('widget Wizard', () => {
     beforeEach(() => {
       _wrapper = mount(
         <Wizard>
-          <TestTag />
-          <TestTag />
+          <TestTag
+            title="title1"
+          />
+          <TestTag
+            title="title2"
+          />
           <TestTag />
         </Wizard>
       );
@@ -80,6 +90,14 @@ describe('widget Wizard', () => {
       targetNavItem.simulate('click');
       const progress = _wrapper.find('.progress-bar');
       expect(progress.prop('style').width).to.equals('66%');
+    });
+    it('should change step child when click nav item', () => {
+      const targetNavItem = _wrapper.find('.wizard-nav-item').at(1);
+      let step = _wrapper.find('TestTag').node;
+      expect(step.props.title).to.equals('title1');
+      targetNavItem.simulate('click');
+      step = _wrapper.find('TestTag').node;
+      expect(step.props.title).to.equals('title2');
     });
   });
 
