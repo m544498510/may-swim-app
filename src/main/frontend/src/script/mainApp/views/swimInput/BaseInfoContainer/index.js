@@ -3,12 +3,10 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-import React, {Component, PropTypes} from "react";
+import React, {Component} from "react";
 import Datetime from "react-datetime";
 
 export default class BaseInfoContainer extends Component {
-  static propTypes = {};
-  static title = "基本信息";
 
   constructor(props, content) {
     super(props, content);
@@ -80,16 +78,16 @@ export default class BaseInfoContainer extends Component {
         </div>
         <div className="form-group row">
           <label htmlFor="swimPoolLength" className="col-sm-2 col-form-label col-form-label-lg">泳池长度：</label>
-          <div className="col-sm-10 input-group">
+          <div className="col-sm-10">
             <input id="swimPoolLength" ref="swimPoolLength"
                    defaultValue={50}
                    type="number" className="form-control" placeholder=""/>
+            {poolLengthErrorMsg}
           </div>
-          {poolLengthErrorMsg}
         </div>
         <div className="form-group row">
           <label htmlFor="swimRemark" className="col-sm-2 col-form-label col-form-label-lg">备注：</label>
-          <div className="col-sm-10 input-group">
+          <div className="col-sm-10">
             <textarea id="swimRemark" ref="swimRemark" className="form-control swim-remark">
             </textarea>
           </div>

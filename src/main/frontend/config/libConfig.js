@@ -37,6 +37,13 @@ export default {
     path: [
       libFolder + 'react-datetime/css/react-datetime.css'
     ]
+  },
+
+  'react-bootstrap-table': {
+    retainStruct: false,
+    path: [
+      libFolder + 'react-bootstrap-table/dist/react-bootstrap-table.min.css'
+    ]
   }
 
 

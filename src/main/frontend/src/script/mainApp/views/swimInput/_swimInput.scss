@@ -19,10 +19,10 @@
       vertical-align: middle;
     }
   }
+  .help-info{
+    color: $color-red;
+    margin: 3px 0 10px;
+    font-size: 12px;
+  }
 }
 
-.help-info{
-  color: $color-red;
-  margin: 3px 0 10px 45px;
-  font-size: 12px;
-}

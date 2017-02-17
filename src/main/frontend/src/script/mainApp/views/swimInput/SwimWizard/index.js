@@ -11,6 +11,7 @@ import PanelContainer from '../../common/PanelContainer';
 import Wizard from 'widgets/Wizard';
 import WizardStep from 'widgets/Wizard/WizardStep';
 import BaseInfoContainer from '../BaseInfoContainer';
+import MainInfoContainer from '../MainInfoContainer';
 
 import {paths} from '../../routes';
 
@@ -33,20 +34,18 @@ export default class SwimWizard extends Component {
         breadcrumb={breadcrumb}
       >
         <PanelContainer title="信息录入向导">
-          <Wizard completeFunc={()=>{console.log('complete')}}>
-            <BaseInfoContainer/>
-            <WizardStep
+          <Wizard completeFunc={() => {
+            console.log('complete')
+          }}>
+            <BaseInfoContainer
+              title="基本信息"
+            />
+            <MainInfoContainer
               title="训练信息"
-              validateFunc={()=>true}
-            >
-              <div style={{height: '1500px'}}>2</div>
-            </WizardStep>
-            <WizardStep
+            />
+            <MainInfoContainer
               title="完成"
-              validateFunc={()=>true}
-            >
-              <div style={{height: '500px'}}>3</div>
-            </WizardStep>
+            />
           </Wizard>
         </PanelContainer>
       </Main>
