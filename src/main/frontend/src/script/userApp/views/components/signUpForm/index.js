@@ -5,7 +5,6 @@
  */
 
 import React, {Component, PropTypes} from 'react';
-import {Button, FormGroup} from 'reactstrap';
 
 import InputFormGroup from '../InputFormGroup';
 
@@ -53,13 +52,13 @@ export default class SignUpForm extends Component {
           info={this.props.secondPsdErrorInfo}
           status={this.props.secondPsdErrorInfo?'warning':''}
         />
-        <FormGroup className="form-row form-btn-row">
-          <Button
+        <div className="form-group form-row form-btn-row">
+          <button
             id="submit"
             className="btn primary-btn submit-btn"
             onClick={this.props.signUp}
-          >注册</Button>
-        </FormGroup>
+          >注册</button>
+        </div>
       </form>
     );
 

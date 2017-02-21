@@ -3,11 +3,9 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-
-import React, {Component, PropTypes} from 'react';
-import {DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap';
-import Dropdown from 'widgets/Dropdown';
-import {Link} from 'react-router';
+import React, {Component, PropTypes} from "react";
+import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "widgets/Dropdown";
+import {Link} from "react-router";
 
 export default class UserProfile extends Component {
   static propTypes = {

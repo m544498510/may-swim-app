@@ -5,7 +5,6 @@ import 'isomorphic-fetch';
 // React Redux
 import 'react';
 import 'react-dom';
-import 'reactstrap';
 import 'react-hot-loader';
 import 'react-redux';
 import 'react-router';

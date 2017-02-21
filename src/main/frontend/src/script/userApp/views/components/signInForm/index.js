@@ -4,7 +4,6 @@
  * @version :   1.0
  */
 import React, {Component, PropTypes} from "react";
-import {Button,Form, FormGroup, InputGroup,InputGroupAddon} from "reactstrap";
 import MCheckbox from "widgets/Checkbox";
 
 export default class SignInForm extends Component {
@@ -66,12 +65,12 @@ export default class SignInForm extends Component {
     }
 
     return (
-      <Form className="auth-form">
-        <FormGroup>
-          <InputGroup>
-            <InputGroupAddon>
+      <div className="form auth-form">
+        <div className="form-group">
+          <div className="input-group">
+            <div className="input-group-addon">
               <icon className="fa fa-user fa-lg"/>
-            </InputGroupAddon>
+            </div>
             <input
               type="text"
               className="user-input form-control"
@@ -81,13 +80,13 @@ export default class SignInForm extends Component {
               ref="userNameInput"
               onChange={this.userNameChange}
             />
-          </InputGroup>
-        </FormGroup>
-        <FormGroup>
-          <InputGroup >
-            <InputGroupAddon>
+          </div>
+        </div>
+        <div className="form-group">
+          <div className="input-group" >
+            <div className="input-group-addon">
               <icon className="fa fa-lock fa-lg"/>
-            </InputGroupAddon>
+            </div>
             <input
               type="password"
               className="psd-input form-control"
@@ -97,23 +96,23 @@ export default class SignInForm extends Component {
               ref="psdInput"
               onChange={this.psdChange}
             />
-          </InputGroup>
-        </FormGroup>
-        <FormGroup >
+          </div>
+        </div>
+        <div className="form-group" >
           {signInFailInfo}
           <MCheckbox
             onChange={this.checkboxChange}
             selected="true"
           >自动登录</MCheckbox>
-        </FormGroup>
-        <FormGroup className="form-row form-btn-row">
-          <Button
+        </div>
+        <dic className="form-group form-row form-btn-row">
+          <button
             id="submit"
-            className="submit-btn"
+            className="btn submit-btn"
             onClick={this.signInEvent}
-          >登录</Button>
-        </FormGroup>
-      </Form>
+          >登录</button>
+        </dic>
+      </div>
     );
   }
 }

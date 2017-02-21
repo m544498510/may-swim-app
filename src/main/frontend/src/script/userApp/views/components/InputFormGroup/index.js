@@ -4,8 +4,6 @@
  * @version :   1.0
  */
 import React, {Component, PropTypes} from "react";
-import {FormGroup, InputGroup, InputGroupAddon, Input} from "reactstrap";
-
 
 export default class InputFormGroup extends Component {
   static propTypes = {
@@ -51,13 +49,12 @@ export default class InputFormGroup extends Component {
         </div>
       )
     }
-
     return (
-      <FormGroup className={this.props.status}>
-        <InputGroup>
-          <InputGroupAddon>
+      <div className={`form-group ${this.props.status}`}>
+        <div className="input-group">
+          <div className="input-group-addon">
             <icon className={this.state.iconClassName}/>
-          </InputGroupAddon>
+          </div>
           <Input
             className="form-input"
             type={this.state.type}
@@ -65,9 +62,9 @@ export default class InputFormGroup extends Component {
             onChange={this.props.isBlurChange?null:this.onChange}
             onBlur={this.props.isBlurChange?this.onBlur:null}
           />
-        </InputGroup>
+        </div>
         {helpInfo}
-      </FormGroup>
+      </div>
     );
   }
 

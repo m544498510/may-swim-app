@@ -20,21 +20,22 @@ export default class BaseInfoContainer extends Component {
   validateFunc() {
     const errorMsg = this._validateInfo();
 
-    if(errorMsg){
+    if (errorMsg) {
       this.setState({
         poolLengthError: errorMsg
       });
       return false;
-    }else{
+    } else {
       return true;
     }
   }
-  _validateInfo(){
+
+  _validateInfo() {
     const baseInfo = this._getBaseInfo();
     let errorMsg;
     if (!baseInfo.poolLength) {
       errorMsg = '请填写泳池长度';
-    }else if(baseInfo.poolLength < 0){
+    } else if (baseInfo.poolLength < 0) {
       errorMsg = '请填写正确的泳池长度';
     }
     return errorMsg;
@@ -63,17 +64,19 @@ export default class BaseInfoContainer extends Component {
       <div className="swim-step swim-main-step">
         <div className="form-group row">
           <label htmlFor="swimDatePicker" className="col-sm-2 col-form-label col-form-label-lg">日期：</label>
-          <div className="col-sm-10 input-group">
-            <Datetime
-              id="swimDatePicker"
-              ref="swimDatePicker"
-              defaultValue={new Date()}
-              dateFormat="YYYY-MM-DD"
-              inputProps={{id: "swimDatePicker"}}
-            />
-            <span className="input-group-addon addon-right">
-              <icon className="fa fa-calendar"/>
-            </span>
+          <div className="col-sm-10">
+            <div className="input-group">
+              <Datetime
+                id="swimDatePicker"
+                ref="swimDatePicker"
+                defaultValue={new Date()}
+                dateFormat="YYYY-MM-DD"
+                inputProps={{id: "swimDatePicker"}}
+              />
+              <span className="input-group-addon addon-right">
+                <icon className="fa fa-calendar"/>
+              </span>
+            </div>
           </div>
         </div>
         <div className="form-group row">
