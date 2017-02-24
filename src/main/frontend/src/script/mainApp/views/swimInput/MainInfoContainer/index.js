@@ -21,15 +21,23 @@ export default class MainInfoContainer extends Component {
 
     return (
       <div className="swim-step">
-        <BootstrapTable data={products} striped={true} hover={true}>
-          <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>Product ID</TableHeaderColumn>
-          <TableHeaderColumn dataField="name" dataSort={true}>Product Name</TableHeaderColumn>
-          <TableHeaderColumn dataField="price" dataFormat={priceFormatter}>Product Price</TableHeaderColumn>
+        <BootstrapTable data={products} hover={true} cellEdit={ cellEditProp }>
+          <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>序号</TableHeaderColumn>
+          <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
+          <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
         </BootstrapTable>
       </div>
     );
   }
 }
-function priceFormatter(cell, row){
-  return '<i class="glyphicon glyphicon-usd"></i> ' + cell;
-}
+
+const cellEditProp = {
+  mode: 'click',
+  blurToSave: true,
+  beforeSaveCell: (a,b)=>{
+    console.log(a);
+  },
+  afterSaveCell: (a)=>{
+    console.log(a)
+  }
+};
