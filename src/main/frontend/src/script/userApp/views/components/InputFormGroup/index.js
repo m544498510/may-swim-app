@@ -55,8 +55,8 @@ export default class InputFormGroup extends Component {
           <div className="input-group-addon">
             <icon className={this.state.iconClassName}/>
           </div>
-          <Input
-            className="form-input"
+          <input
+            className="form-input user-input form-control"
             type={this.state.type}
             placeholder={this.props.placeholder}
             onChange={this.props.isBlurChange?null:this.onChange}

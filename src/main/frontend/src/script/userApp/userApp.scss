@@ -42,6 +42,7 @@
   }
   .form-link-box {
     text-align: center;
+    margin-top: 20px;
   }
 
   .form-link {
@@ -150,6 +151,15 @@
   }
 
 
+  .form-control,.input-group-addon{
+    border:{
+      width: 1px;
+      style: solid;
+    }
+  }
+  .input-group-addon:first-child{
+    border-right: 0;
+  }
 }
 
 

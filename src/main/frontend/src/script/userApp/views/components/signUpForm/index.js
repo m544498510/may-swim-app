@@ -42,6 +42,7 @@ export default class SignUpForm extends Component {
         <InputFormGroup
           onChangeHandle={this.props.passwordChange}
           isBlurChange={true}
+          type="password"
           iconName="fa-unlock-alt"
           placeholder="请输入密码"
         />
@@ -49,6 +50,7 @@ export default class SignUpForm extends Component {
           onChangeHandle={this.props.secondPsdChange}
           iconName="fa-lock"
           placeholder="请再次输入密码"
+          type="password"
           info={this.props.secondPsdErrorInfo}
           status={this.props.secondPsdErrorInfo?'warning':''}
         />
