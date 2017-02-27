@@ -14,7 +14,9 @@ import {syncHistoryWithStore} from 'react-router-redux';
 
 import configureStore from './core/store';
 import Root from './views/root';
-import {actions as userAction} from './core/user';
+
+import * as user from './core/user';
+import * as stroke from './core/swim/stroke';
 
 const store = configureStore();
 const syncedHistory = syncHistoryWithStore(hashHistory, store);
@@ -31,8 +33,8 @@ const renderRoot = function (Root) {
 
 renderRoot(Root);
 
-store.dispatch(userAction.fetchUser());
-
+store.dispatch(user.actions.fetchUser());
+store.dispatch(stroke.actions.fetchStrokeList());
 
 if (module.hot) {
   module.hot.accept('./views/root', () => {

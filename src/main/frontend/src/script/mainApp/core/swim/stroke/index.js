@@ -4,15 +4,17 @@
  * @version :   1.0
  */
 
-import * as actins from './action';
+import * as actions from './action';
 import actionTypes from './action/types';
 import reducers from './reducer';
 import sagas from './saga';
-import * as selector from './selector';
+import * as selectors from './selector';
 
 
 export {
-  actins,
+  actions,
   actionTypes,
-  reducers
+  reducers,
+  sagas,
+  selectors
 }
