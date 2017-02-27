@@ -27,7 +27,7 @@ public class strokeController {
     public ArrayList<Stroke> getStroke(HttpServletRequest request,HttpServletResponse response){
         ArrayList<Stroke> strokes = iSwimService.getAllStroke();
         
-        if(strokes.size()>0){
+        if(strokes != null && strokes.size()>0){
             ResponseUtil.success(request,response);
             return strokes;
         }else{
