@@ -4,7 +4,7 @@
  * @version :   1.0
  */
 
-import actionTypes from 'types';
+import actionTypes from './types';
 
 export function setStroke(list) {
   return {

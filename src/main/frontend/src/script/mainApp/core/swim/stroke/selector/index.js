@@ -5,5 +5,5 @@
  */
 
 export function getStrokeList(state){
-  return state.stroke.toJS();
+  return state.stroke;
 }

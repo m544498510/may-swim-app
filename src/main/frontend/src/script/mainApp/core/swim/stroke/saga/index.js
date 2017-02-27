@@ -14,11 +14,11 @@ import actionTypes from '../action/types';
 
 export function* getStrokeWorker() {
   try {
-    const strokeList = yield call(mFetch, {
+    const strokeList = yield call(mFetch.get, {
       url: '/stroke'
     });
     if (strokeList && strokeList.length > 0) {
-      yield put(setStroke, strokeList);
+      yield put(setStroke(strokeList));
     }
   } catch (e) {
     console.error(e);
