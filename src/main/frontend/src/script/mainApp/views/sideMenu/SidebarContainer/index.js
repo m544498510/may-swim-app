@@ -5,7 +5,6 @@
  */
 
 import React, {Component, PropTypes} from 'react';
-import {createSelector} from 'reselect';
 import {connect} from 'react-redux';
 
 import Sidebar from '../Sidebar';
@@ -28,12 +27,9 @@ class SidebarContainer extends Component {
   }
 }
 
-const mapStateToProps = createSelector(
-  router.selector.getPathName,
-  (path)=>({
-    path
-  })
-);
+const mapStateToProps = (state) => ({
+  path: router.selector.getPathName(state)
+});
 
 const mapDispatchToProps = {
   expandSidebar: frame.actions.changeSidebarState

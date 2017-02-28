@@ -5,7 +5,6 @@
 import React, {Component,PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import {createSelector} from 'reselect';
 
 import SignUpForm from '../../components/signUpForm';
 import {userActions, getEmailErrorInfo,getSecondPsdErrorInfo} from  'userApp/core/user';
@@ -56,13 +55,10 @@ class SignUp extends Component{
   }
 }
 
-const mapStateToProp = createSelector(
-  getEmailErrorInfo,
-  getSecondPsdErrorInfo,
-  (emailErrorInfo,secondPsdErrorInfo) => ({
-    emailErrorInfo,
-    secondPsdErrorInfo
-  })
-);
+const mapStateToProp = (state) => ({
+  emailErrorInfo: getEmailErrorInfo(state),
+  secondPsdErrorInfo: getSecondPsdErrorInfo(state)
+});
+
 
 export default connect(mapStateToProp, userActions)(SignUp);

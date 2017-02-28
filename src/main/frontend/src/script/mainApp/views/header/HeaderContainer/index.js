@@ -3,17 +3,13 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-
-import React, {PropTypes, Component} from 'react';
-import {connect} from 'react-redux';
-import {createSelector} from 'reselect';
-
-import {Link} from 'react-router';
-import IconBtn from 'widgets/IconBtn';
-import UserProfile from '../UserProfile';
-
-import * as user  from 'mainApp/core/user';
-import * as frame from 'mainApp/core/frame';
+import React, {PropTypes, Component} from "react";
+import {connect} from "react-redux";
+import {Link} from "react-router";
+import IconBtn from "widgets/IconBtn";
+import UserProfile from "../UserProfile";
+import * as user from "mainApp/core/user";
+import * as frame from "mainApp/core/frame";
 
 export class HeaderContainer extends Component {
   static propTypes = {
@@ -49,13 +45,10 @@ export class HeaderContainer extends Component {
   }
 }
 
-const mapStateToProps = createSelector(
-  user.selectors.getUser,
-  user.selectors.getLoginOutState,
-  (user, loginOutState) => ({
-    user, loginOutState
-  })
-);
+const mapStateToProps = (state) => ({
+  user: user.selectors.getUser(state),
+  loginOutState: user.selectors.getLoginOutState(state)
+});
 
 const mapDispatchToProps = {
   loginOut: user.actions.loginOut,

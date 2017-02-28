@@ -3,15 +3,12 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {createSelector} from 'reselect';
-import HeaderContainer from './header/HeaderContainer';
-import SidebarContainer from './sideMenu/SidebarContainer';
-
-import * as frame from '../core/frame';
-import {getHtmlSize} from 'utils/htmlTool';
+import React, {Component, PropTypes} from "react";
+import {connect} from "react-redux";
+import HeaderContainer from "./header/HeaderContainer";
+import SidebarContainer from "./sideMenu/SidebarContainer";
+import * as frame from "../core/frame";
+import {getHtmlSize} from "utils/htmlTool";
 
 class App extends Component {
   static contextTypes = {
@@ -49,7 +46,7 @@ class App extends Component {
   }
 }
 
-function htmlSizeChange(props){
+function htmlSizeChange(props) {
   if (window.innerWidth < 1280) {
     props.changeSidebarState(false);
   } else {
@@ -59,12 +56,9 @@ function htmlSizeChange(props){
 
 }
 
-const mapPropsToProps = createSelector(
-  frame.selectors.getSidebarState,
-  (sidebarState) => ({
-    sidebarState
-  })
-);
+const mapPropsToProps = (state) => ({
+  sidebarState: frame.selectors.getSidebarState(state)
+});
 
 const mapDispatchToProps = {
   changeSidebarState: frame.actions.changeSidebarState,

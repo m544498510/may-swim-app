@@ -2,13 +2,11 @@
  * @author May
  * @version 1.0.0
  */
-
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router';
-import {createSelector} from 'reselect';
-import SignInForm from '../../components/signInForm';
-import {authActions, isSignInRejected, isSignInFulfilled} from 'userApp/core/auth';
+import React, {PropTypes} from "react";
+import {connect} from "react-redux";
+import {Link} from "react-router";
+import SignInForm from "../../components/signInForm";
+import {authActions, isSignInRejected, isSignInFulfilled} from "userApp/core/auth";
 
 export function SignIn({signIn, signInRejected, signInFulfilled}) {
   if (signInFulfilled) {
@@ -45,14 +43,11 @@ SignIn.propTypes = {
   signIn: PropTypes.func.isRequired
 };
 
-const mapStateToProps = createSelector(
-  isSignInRejected,
-  isSignInFulfilled,
-  (signInRejected, signInFulfilled) => ({
-    signInRejected,
-    signInFulfilled
-  })
-);
+const mapStateToProps = (state) => ({
+  signInRejected: isSignInRejected(state),
+  signInFulfilled: isSignInFulfilled(state)
+});
+
 const mapDispatchToProps = {
   signIn: authActions.signIn
 };

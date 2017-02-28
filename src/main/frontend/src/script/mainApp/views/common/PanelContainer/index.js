@@ -3,13 +3,10 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-
-import React, {Component, PropTypes} from 'react';
-import {createSelector} from 'reselect';
-import {connect} from 'react-redux';
-
-import * as frame from 'mainApp/core/frame';
-import {getBgImgInfo} from './bgTool';
+import React, {Component, PropTypes} from "react";
+import {connect} from "react-redux";
+import * as frame from "mainApp/core/frame";
+import {getBgImgInfo} from "./bgTool";
 
 export class PanelContainer extends Component {
   static propTypes = {
@@ -48,12 +45,10 @@ function calculateBgStyle(htmlSize) {
   return bgStyle;
 }
 
-const mapStateToProps = createSelector(
-  frame.selectors.getHtmlSize,
-  htmlSize => ({
-    htmlSize
-  })
-);
+const mapStateToProps = (state) => ({
+  htmlSize: frame.selectors.getHtmlSize(state)
+});
+
 
 export default connect(mapStateToProps, null)(PanelContainer);
 
