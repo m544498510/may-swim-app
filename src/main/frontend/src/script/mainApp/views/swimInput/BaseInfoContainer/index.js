@@ -44,7 +44,7 @@ export default class BaseInfoContainer extends Component {
   _getBaseInfo() {
     return {
       date: this.refs.swimDatePicker.state.inputValue,
-      poolLength: parseInt(this.refs.swimPoolLength.value),
+      poolLength: parseInt(this.refs.swimPoolLength.value,10),
       remark: this.refs.swimRemark.value
     }
   }

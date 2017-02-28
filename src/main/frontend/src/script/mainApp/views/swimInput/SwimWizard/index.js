@@ -9,7 +9,6 @@ import React, {Component} from 'react';
 import Main from '../../common/Main';
 import PanelContainer from '../../common/PanelContainer';
 import Wizard from 'widgets/Wizard';
-import WizardStep from 'widgets/Wizard/WizardStep';
 import BaseInfoContainer from '../BaseInfoContainer';
 import MainInfoContainer from '../MainInfoContainer';
 

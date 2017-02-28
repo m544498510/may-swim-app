@@ -6,6 +6,7 @@ import com.may.util.http.ResponseUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -18,12 +19,13 @@ import java.util.ArrayList;
  */
 
 @Controller
-@RequestMapping("/stroke")
+@RequestMapping(value = "/stroke")
 public class strokeController {
     @Resource(name = "swimService")
     private ISwimService iSwimService;
     
-    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public ArrayList<Stroke> getStroke(HttpServletRequest request,HttpServletResponse response){
         ArrayList<Stroke> strokes = iSwimService.getAllStroke();
         

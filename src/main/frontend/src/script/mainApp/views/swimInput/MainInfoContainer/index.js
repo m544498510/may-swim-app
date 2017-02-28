@@ -7,6 +7,18 @@
 import React, {Component} from 'react';
 import {BootstrapTable,TableHeaderColumn} from 'react-bootstrap-table';
 
+const cellEditProp = {
+  mode: 'click',
+  blurToSave: true,
+  beforeSaveCell: (a,b)=>{
+    console.log(a);
+  },
+  afterSaveCell: (a)=>{
+    console.log(a)
+  }
+};
+
+
 export default class MainInfoContainer extends Component {
   render() {
     const products = [{
@@ -31,13 +43,3 @@ export default class MainInfoContainer extends Component {
   }
 }
 
-const cellEditProp = {
-  mode: 'click',
-  blurToSave: true,
-  beforeSaveCell: (a,b)=>{
-    console.log(a);
-  },
-  afterSaveCell: (a)=>{
-    console.log(a)
-  }
-};

@@ -18,7 +18,8 @@ const userRecord = Record({
 export default function (state = new userRecord(), {type, payload}) {
   switch (type) {
     case actionTypes.SET_USER_INFO:
-      const {id, userName, pic} = payload;
+      const {id, userName, picTmp} = payload;
+      const pic = picTmp ? picTmp : state.get('pic');
       return state.merge({
         id, userName, pic
       });
