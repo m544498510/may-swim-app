@@ -1,0 +1,19 @@
+.dropdown-item{
+  color: $dropdown-text;
+  padding: 4px 16px 4px 20px;
+  cursor: pointer;
+  &:hover {
+    background: #f4fcff;
+    color: #2b2d2f;
+  }
+  icon {
+    margin-right: 10px;
+  }
+  a{
+    display: block;
+    color: $dropdown-text;
+    &:hover {
+      color: #2b2d2f;
+    }
+  }
+}

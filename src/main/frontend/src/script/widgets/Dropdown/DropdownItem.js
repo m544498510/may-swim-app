@@ -2,17 +2,6 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import { mapToCssModules } from './utils';
 
-const propTypes = {
-  children: PropTypes.node,
-  disabled: PropTypes.bool,
-  divider: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  header: PropTypes.bool,
-  onClick: PropTypes.func,
-  className: PropTypes.string,
-  cssModule: PropTypes.object,
-};
-
 const contextTypes = {
   toggle: PropTypes.func
 };
@@ -22,6 +11,17 @@ const defaultProps = {
 };
 
 class DropdownItem extends React.Component {
+  static propTypes = {
+    children: PropTypes.node,
+    disabled: PropTypes.bool,
+    divider: PropTypes.bool,
+    tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+    header: PropTypes.bool,
+    onClick: PropTypes.func,
+    className: PropTypes.string,
+    cssModule: PropTypes.object,
+    value: PropTypes.object
+  };
   constructor(props) {
     super(props);
 
@@ -36,7 +36,7 @@ class DropdownItem extends React.Component {
     }
 
     if (this.props.onClick) {
-      this.props.onClick(e);
+      this.props.onClick(this.props.value,e);
     }
 
     this.context.toggle();
@@ -89,7 +89,6 @@ class DropdownItem extends React.Component {
   }
 }
 
-DropdownItem.propTypes = propTypes;
 DropdownItem.defaultProps = defaultProps;
 DropdownItem.contextTypes = contextTypes;
 

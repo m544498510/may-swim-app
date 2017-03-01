@@ -16,3 +16,8 @@
     box-shadow: none;
   }
 }
+.btn.btn-sp{
+  &:hover{
+    transform: none;
+  }
+}

@@ -6,7 +6,7 @@
 import React, {PropTypes, Component} from "react";
 import {connect} from "react-redux";
 import * as stroke from "mainApp/core/swim/stroke";
-import {Dropdown,DropdownMenu,DropdownToggle,DropdownItem} from "widgets/Dropdown";
+import {Dropdown, DropdownMenu, DropdownToggle, DropdownItem} from "widgets/Dropdown";
 
 export class StrokeSelectContainer extends Component {
   static propTypes = {
@@ -16,13 +16,15 @@ export class StrokeSelectContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: props.strokeList[0]
     };
     this.clickItem = ::this.clickItem;
   }
 
-  clickItem(evt) {
-
+  clickItem(itemValue) {
+    this.setState({
+      value: itemValue
+    });
   }
 
   renderItems() {
@@ -32,8 +34,9 @@ export class StrokeSelectContainer extends Component {
           key={stroke.strokeId}
           onClick={this.clickItem}
           tag="div"
+          value={stroke}
         >
-          stroke.strokeDes
+          {stroke.strokeDes}
         </DropdownItem>
       );
     });
@@ -41,9 +44,14 @@ export class StrokeSelectContainer extends Component {
 
 
   render() {
+    const value = this.state.value ? this.state.value : this.props.strokeList[0];
+    const name = value ? value.strokeDes : '';
     return (
       <Dropdown>
-        <DropdownToggle>{this.state.value}</DropdownToggle>
+        <DropdownToggle
+          caret={true}
+          className="btn-default btn-sp"
+        >{name}</DropdownToggle>
         <DropdownMenu >
           {this.renderItems()}
         </DropdownMenu>
