@@ -18,10 +18,12 @@ public class Set implements Serializable {
     private Integer setDistance;      //距离
     private Integer setCalorie;       //消耗卡路里
     private Integer setEfficiency;    //效率
+    private Integer setSpeed;         //速度
+
     private Float setTrainingTime;    //训练时间（单位为秒）
+    //统计数据
     private Float setRestTime;        //休息时间（单位为秒）
     private Float setTime;            //总时间（单位为秒）
-    private Integer setSpeed;         //速度
 
     public Set() {
     }

@@ -10,7 +10,8 @@ import {Dropdown, DropdownMenu, DropdownToggle, DropdownItem} from "widgets/Drop
 
 export class StrokeSelectContainer extends Component {
   static propTypes = {
-    strokeList: PropTypes.array.isRequired
+    strokeList: PropTypes.array.isRequired,
+    onUpdate: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -19,13 +20,20 @@ export class StrokeSelectContainer extends Component {
       value: props.strokeList[0]
     };
     this.clickItem = ::this.clickItem;
+    this.focus =::this.focus;
+  }
+  focus() {
+    console.log('focus');
   }
 
   clickItem(itemValue) {
     this.setState({
       value: itemValue
     });
+    this.props.onUpdate(itemValue)
   }
+
+
 
   renderItems() {
     return this.props.strokeList.map((stroke) => {
@@ -50,7 +58,7 @@ export class StrokeSelectContainer extends Component {
       <Dropdown>
         <DropdownToggle
           caret={true}
-          className="btn-default btn-sp"
+          className="btn-default btn-sp bootstrap-select"
         >{name}</DropdownToggle>
         <DropdownMenu >
           {this.renderItems()}
@@ -65,4 +73,4 @@ const mapStateToProps = (state) => ({
   strokeList: stroke.selectors.getStrokeList(state)
 });
 
-export default connect(mapStateToProps, null)(StrokeSelectContainer);
+export default connect(mapStateToProps, null,null,{withRef :true})(StrokeSelectContainer);
