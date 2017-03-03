@@ -20,10 +20,6 @@ export class StrokeSelectContainer extends Component {
       value: props.strokeList[0]
     };
     this.clickItem = ::this.clickItem;
-    this.focus =::this.focus;
-  }
-  focus() {
-    console.log('focus');
   }
 
   clickItem(itemValue) {
@@ -32,8 +28,6 @@ export class StrokeSelectContainer extends Component {
     });
     this.props.onUpdate(itemValue)
   }
-
-
 
   renderItems() {
     return this.props.strokeList.map((stroke) => {
@@ -73,4 +67,16 @@ const mapStateToProps = (state) => ({
   strokeList: stroke.selectors.getStrokeList(state)
 });
 
-export default connect(mapStateToProps, null,null,{withRef :true})(StrokeSelectContainer);
+const WrapperTmp = connect(mapStateToProps, null, null, {withRef: true})(StrokeSelectContainer);
+
+//用于解决react-redux处理后无法贡献focus api 的问题
+export default class extends Component {
+  focus() {
+  }
+
+  render() {
+    return (
+      <WrapperTmp {...this.props} />
+    );
+  }
+}

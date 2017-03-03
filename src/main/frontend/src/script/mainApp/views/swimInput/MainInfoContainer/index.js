@@ -98,11 +98,6 @@ const products = [{
 
 const createNameEditor = (onUpdate, props) => (
   <StrokeSelectContainer
-    strokeList={[{
-      "strokeDes": "蛙泳",
-      "strokeId": 1,
-      "strokeName": "breaststroke"
-    }]}
     onUpdate={ onUpdate } {...props}/>
 );
 
