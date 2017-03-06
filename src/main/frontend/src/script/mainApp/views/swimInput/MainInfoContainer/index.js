@@ -112,9 +112,8 @@ export default class MainInfoContainer extends Component {
             dataField="setIndex"
             isKey={true}
             dataAlign="center"
-            dataSort={true}
           >
-            序号
+
           </TableHeaderColumn>
           <TableHeaderColumn
             dataField="strokeName"

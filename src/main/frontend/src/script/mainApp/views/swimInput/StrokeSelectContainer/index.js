@@ -49,10 +49,10 @@ export class StrokeSelectContainer extends Component {
     const value = this.state.value ? this.state.value : this.props.strokeList[0];
     const name = value ? value.strokeDes : '';
     return (
-      <Dropdown>
+      <Dropdown className="selector">
         <DropdownToggle
           caret={true}
-          className="btn-default btn-sp bootstrap-select"
+          className="btn-default btn-sp"
         >{name}</DropdownToggle>
         <DropdownMenu >
           {this.renderItems()}
