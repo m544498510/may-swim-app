@@ -1,0 +1,24 @@
+.selector{
+  button.btn.btn-default.dropdown-toggle {
+    color: $default-text;
+    border: 1px solid $border;
+    background-color: transparent;
+    &:focus, &:active {
+      background-color: $default;
+    }
+  }
+  &.open {
+    .dropdown-menu {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+    .dropdown-item{
+      line-height: 22px;
+      padding: 0;
+      text-align: center;
+    }
+  }
+}
