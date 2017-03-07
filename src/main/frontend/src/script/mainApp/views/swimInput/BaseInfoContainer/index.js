@@ -69,9 +69,9 @@ export default class BaseInfoContainer extends Component {
               <Datetime
                 id="swimDatePicker"
                 ref="swimDatePicker"
-                defaultValue={new Date()}
-                dateFormat="YYYY-MM-DD"
+                defaultValue="2017-03-07 04:09 am"
                 inputProps={{id: "swimDatePicker"}}
+                onBlur={(moment)=>{console.log(moment)}}
               />
               <span className="input-group-addon addon-right">
                 <icon className="fa fa-calendar"/>

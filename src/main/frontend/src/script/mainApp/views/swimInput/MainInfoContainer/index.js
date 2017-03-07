@@ -9,7 +9,7 @@ import StrokeSelectContainer from "../StrokeSelectContainer";
 
 const cellEditProps = {
   mode: 'click',
-  blurToSave: true,
+  //blurToSave: true,
   beforeSaveCell: (a, b) => {
     console.log(a);
   },
@@ -22,7 +22,7 @@ const products = [{
   setId: -1,                 //id
   sessionId: -1,            //一套训练id
   strokeId: 1,              //泳姿id
-  strokeName: '蛙泳',
+  strokeDes: '蛙泳',
   setIndex: 1,             //分组序号（为0时，是当次一套训练统计总数据；大于0，是分组数据）
   setLap: 0,                //往返数
   setStrokeNum: 0,         //挥臂次数
@@ -38,7 +38,7 @@ const products = [{
     setId: -1,                 //id
     sessionId: -1,            //一套训练id
     strokeId: 2,              //泳姿id
-    strokeName: '自由泳',
+    strokeDes: '自由泳',
     setIndex: 2,             //分组序号（为0时，是当次一套训练统计总数据；大于0，是分组数据）
     setLap: 0,                //往返数
     setStrokeNum: 0,         //挥臂次数
@@ -53,7 +53,7 @@ const products = [{
     setId: -1,                 //id
     sessionId: -1,            //一套训练id
     strokeId: 2,              //泳姿id
-    strokeName: '自由泳',
+    strokeDes: '自由泳',
     setIndex: 2,             //分组序号（为0时，是当次一套训练统计总数据；大于0，是分组数据）
     setLap: 0,                //往返数
     setStrokeNum: 0,         //挥臂次数
@@ -68,7 +68,7 @@ const products = [{
     setId: -1,                 //id
     sessionId: -1,            //一套训练id
     strokeId: 2,              //泳姿id
-    strokeName: '自由泳',
+    strokeDes: '自由泳',
     setIndex: 2,             //分组序号（为0时，是当次一套训练统计总数据；大于0，是分组数据）
     setLap: 0,                //往返数
     setStrokeNum: 0,         //挥臂次数
@@ -83,7 +83,7 @@ const products = [{
     setId: -1,                 //id
     sessionId: -1,            //一套训练id
     strokeId: 2,              //泳姿id
-    strokeName: '自由泳',
+    strokeDes: '自由泳',
     setIndex: 2,             //分组序号（为0时，是当次一套训练统计总数据；大于0，是分组数据）
     setLap: 0,                //往返数
     setStrokeNum: 0,         //挥臂次数
@@ -106,18 +106,16 @@ export default class MainInfoContainer extends Component {
   render() {
 
     return (
-      <div className="swim-step">
+      <div className="swim-table-step">
         <BootstrapTable data={products} hover={true} cellEdit={ cellEditProps }>
           <TableHeaderColumn
             dataField="setIndex"
             isKey={true}
             dataAlign="center"
-          >
-
-          </TableHeaderColumn>
+          />
           <TableHeaderColumn
-            dataField="strokeName"
-            dataFormat={(value)=>{return value.strokeDes}}
+            dataField="strokeDes"
+            //dataFormat={(value)=>{return value.strokeDes}}
             customEditor={ {getElement: createNameEditor} }
             >
             泳姿

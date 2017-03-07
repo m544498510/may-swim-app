@@ -23,6 +23,7 @@
         padding: 0px 8px;
         line-height: 35px;
         border-top: 1px solid $border-light;
+        vertical-align: middle;
         &:first-child {
           text-align: center;
         }
@@ -39,13 +40,13 @@
   .btn {
     &.dropdown-toggle {
       padding: 3px 20px;
-      margin-top: 3px;
     }
     padding: 3px 8px;
   }
   input {
     line-height: 1px;
-    height: 30px;
+    height: 28px;
+    border: 1px solid transparent;
   }
 }
 

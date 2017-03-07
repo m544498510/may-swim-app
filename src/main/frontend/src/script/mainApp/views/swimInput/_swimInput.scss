@@ -2,6 +2,16 @@
   width: 55%;
   margin: 50px auto;
 }
+.swim-table-step{
+  width: 75%;
+  margin: 50px auto;
+  overflow: auto;
+}
+@media (max-width: 980px) {
+  .swim-table-step{
+    width: 100%;
+  }
+}
 
 .swim-remark{
   &.form-control{
@@ -29,5 +39,8 @@
   .rdtPicker{
     top: 34px;
   }
+}
+.react-bs-table{
+  min-width: 600px;
 }
 
