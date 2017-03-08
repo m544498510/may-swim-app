@@ -1,0 +1,14 @@
+/**
+ *
+ * @author :    Mei XinLin
+ * @version :   1.0
+ */
+
+export default {
+  UPDATE_SWIM_SESSION: 'UPDATE_SWIM_SESSION',
+  CREATE_SWIM_SET: 'CREATE_SWIM_SET',
+  UPDATE_SWIM_SET:'UPDATE_SWIM_SET',
+  DELETE_SWIM_SET: 'DELETE_SWIM_SET',
+
+  FETCH_CREATE_SESSION: 'FETCH_CREATE_SESSION'
+}
