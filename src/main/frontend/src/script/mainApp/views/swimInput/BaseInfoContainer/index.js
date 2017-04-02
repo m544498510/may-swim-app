@@ -3,16 +3,17 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-import React, {Component} from "react";
-import Datetime from "react-datetime";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import Datetime from 'react-datetime';
 
-export default class BaseInfoContainer extends Component {
+export class BaseInfoContainer extends Component {
 
   constructor(props, content) {
     super(props, content);
 
     this.state = {
-      poolLengthError: ''
+      poolLengthError: '',
     };
     this.validateFunc = ::this.validateFunc;
   }
@@ -22,7 +23,7 @@ export default class BaseInfoContainer extends Component {
 
     if (errorMsg) {
       this.setState({
-        poolLengthError: errorMsg
+        poolLengthError: errorMsg,
       });
       return false;
     } else {
@@ -44,9 +45,9 @@ export default class BaseInfoContainer extends Component {
   _getBaseInfo() {
     return {
       date: this.refs.swimDatePicker.state.inputValue,
-      poolLength: parseInt(this.refs.swimPoolLength.value,10),
-      remark: this.refs.swimRemark.value
-    }
+      poolLength: parseInt(this.refs.swimPoolLength.value, 10),
+      remark: this.refs.swimRemark.value,
+    };
   }
 
   render() {
@@ -58,20 +59,21 @@ export default class BaseInfoContainer extends Component {
           <icon className="fa fa-info-circle fa-1"/>
           {errorMsg}
         </div>
-      )
+      );
     }
     return (
       <div className="swim-step swim-main-step">
         <div className="form-group row">
-          <label htmlFor="swimDatePicker" className="col-sm-2 col-form-label col-form-label-lg">日期：</label>
+          <label htmlFor="swimDatePicker"
+                 className="col-sm-2 col-form-label col-form-label-lg">日期：</label>
           <div className="col-sm-10">
             <div className="input-group">
               <Datetime
                 id="swimDatePicker"
                 ref="swimDatePicker"
                 defaultValue="2017-03-07 04:09 am"
-                inputProps={{id: "swimDatePicker"}}
-                onBlur={(moment)=>{console.log(moment)}}
+                inputProps={{id: 'swimDatePicker'}}
+                onBlur={(moment) => {console.log(moment);}}
               />
               <span className="input-group-addon addon-right">
                 <icon className="fa fa-calendar"/>
@@ -80,7 +82,8 @@ export default class BaseInfoContainer extends Component {
           </div>
         </div>
         <div className="form-group row">
-          <label htmlFor="swimPoolLength" className="col-sm-2 col-form-label col-form-label-lg">泳池长度：</label>
+          <label htmlFor="swimPoolLength"
+                 className="col-sm-2 col-form-label col-form-label-lg">泳池长度：</label>
           <div className="col-sm-10">
             <input id="swimPoolLength" ref="swimPoolLength"
                    defaultValue={50}
@@ -89,9 +92,11 @@ export default class BaseInfoContainer extends Component {
           </div>
         </div>
         <div className="form-group row">
-          <label htmlFor="swimRemark" className="col-sm-2 col-form-label col-form-label-lg">备注：</label>
+          <label htmlFor="swimRemark"
+                 className="col-sm-2 col-form-label col-form-label-lg">备注：</label>
           <div className="col-sm-10">
-            <textarea id="swimRemark" ref="swimRemark" className="form-control swim-remark">
+            <textarea id="swimRemark" ref="swimRemark"
+                      className="form-control swim-remark">
             </textarea>
           </div>
         </div>
@@ -100,5 +105,6 @@ export default class BaseInfoContainer extends Component {
     );
   }
 
-
 }
+
+export default connect()

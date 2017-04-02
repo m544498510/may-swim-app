@@ -3,111 +3,42 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-import React, {Component} from "react";
-import {BootstrapTable, TableHeaderColumn} from "react-bootstrap-table";
-import StrokeSelectContainer from "../StrokeSelectContainer";
+import React, {Component, PropTypes} from 'react';
+import ImmutablePropTypes  from 'react-immutable-proptypes';
+import {connect} from 'react-redux';
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import StrokeSelectContainer from '../StrokeSelectContainer';
+
+import * as newSession from 'mainApp/core/swim/newSession';
+
 
 const cellEditProps = {
   mode: 'click',
-  //blurToSave: true,
-  beforeSaveCell: (a, b) => {
+  blurToSave: true,
+  afterSaveCell: (a) => {
     console.log(a);
   },
-  afterSaveCell: (a) => {
-    console.log(a)
-  }
 };
-
-const products = [{
-  setId: -1,                 //id
-  sessionId: -1,            //一套训练id
-  strokeId: 1,              //泳姿id
-  strokeDes: '蛙泳',
-  setIndex: 1,             //分组序号（为0时，是当次一套训练统计总数据；大于0，是分组数据）
-  setLap: 0,                //往返数
-  setStrokeNum: 0,         //挥臂次数
-  setDistance: 0,         //距离
-  setCalorie: 0,          //消耗卡路里
-  setEfficiency: 0,       //效率
-  setTrainingTime: 0,     //训练时间（单位为秒）
-  setRestTime: 0,         //休息时间（单位为秒）
-  setTime: 0,             //总时间（单位为秒）
-  setSpeed: 0             //速度
-},
-  {
-    setId: -1,                 //id
-    sessionId: -1,            //一套训练id
-    strokeId: 2,              //泳姿id
-    strokeDes: '自由泳',
-    setIndex: 2,             //分组序号（为0时，是当次一套训练统计总数据；大于0，是分组数据）
-    setLap: 0,                //往返数
-    setStrokeNum: 0,         //挥臂次数
-    setDistance: 0,         //距离
-    setCalorie: 0,          //消耗卡路里
-    setEfficiency: 0,       //效率
-    setTrainingTime: 0,     //训练时间（单位为秒）
-    setRestTime: 0,         //休息时间（单位为秒）
-    setTime: 0,             //总时间（单位为秒）
-    setSpeed: 0             //速度
-  },{
-    setId: -1,                 //id
-    sessionId: -1,            //一套训练id
-    strokeId: 2,              //泳姿id
-    strokeDes: '自由泳',
-    setIndex: 2,             //分组序号（为0时，是当次一套训练统计总数据；大于0，是分组数据）
-    setLap: 0,                //往返数
-    setStrokeNum: 0,         //挥臂次数
-    setDistance: 0,         //距离
-    setCalorie: 0,          //消耗卡路里
-    setEfficiency: 0,       //效率
-    setTrainingTime: 0,     //训练时间（单位为秒）
-    setRestTime: 0,         //休息时间（单位为秒）
-    setTime: 0,             //总时间（单位为秒）
-    setSpeed: 0             //速度
-  },{
-    setId: -1,                 //id
-    sessionId: -1,            //一套训练id
-    strokeId: 2,              //泳姿id
-    strokeDes: '自由泳',
-    setIndex: 2,             //分组序号（为0时，是当次一套训练统计总数据；大于0，是分组数据）
-    setLap: 0,                //往返数
-    setStrokeNum: 0,         //挥臂次数
-    setDistance: 0,         //距离
-    setCalorie: 0,          //消耗卡路里
-    setEfficiency: 0,       //效率
-    setTrainingTime: 0,     //训练时间（单位为秒）
-    setRestTime: 0,         //休息时间（单位为秒）
-    setTime: 0,             //总时间（单位为秒）
-    setSpeed: 0             //速度
-  },{
-    setId: -1,                 //id
-    sessionId: -1,            //一套训练id
-    strokeId: 2,              //泳姿id
-    strokeDes: '自由泳',
-    setIndex: 2,             //分组序号（为0时，是当次一套训练统计总数据；大于0，是分组数据）
-    setLap: 0,                //往返数
-    setStrokeNum: 0,         //挥臂次数
-    setDistance: 0,         //距离
-    setCalorie: 0,          //消耗卡路里
-    setEfficiency: 0,       //效率
-    setTrainingTime: 0,     //训练时间（单位为秒）
-    setRestTime: 0,         //休息时间（单位为秒）
-    setTime: 0,             //总时间（单位为秒）
-    setSpeed: 0             //速度
-  }];
 
 const createNameEditor = (onUpdate, props) => (
   <StrokeSelectContainer
     onUpdate={ onUpdate } {...props}/>
 );
 
+export class MainInfoContainer extends Component {
+  static  propTypes = {
+    sets: ImmutablePropTypes.listOf(
+      PropTypes.instanceOf(newSession.Set)
+    ).isRequired
+  };
 
-export default class MainInfoContainer extends Component {
   render() {
+    const sets = this.props.sets.toArray();
 
     return (
       <div className="swim-table-step">
-        <BootstrapTable data={products} hover={true} cellEdit={ cellEditProps }>
+        <BootstrapTable data={sets} hover={true}
+                        cellEdit={ cellEditProps }>
           <TableHeaderColumn
             dataField="setIndex"
             isKey={true}
@@ -117,7 +48,7 @@ export default class MainInfoContainer extends Component {
             dataField="strokeDes"
             //dataFormat={(value)=>{return value.strokeDes}}
             customEditor={ {getElement: createNameEditor} }
-            >
+          >
             泳姿
           </TableHeaderColumn>
           <TableHeaderColumn dataField="setLap">往返数</TableHeaderColumn>
@@ -130,6 +61,12 @@ export default class MainInfoContainer extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  sets: newSession.selectors.getSwimSets(state),
+});
+
+export default connect(mapStateToProps, null)(MainInfoContainer);
 
 
 
