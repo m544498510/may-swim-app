@@ -3,8 +3,10 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-import React, {Component, PropTypes} from "react";
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
+console.log(PropTypes);
 export default class Wizard extends Component {
   static propTypes = {
     completeFunc: PropTypes.func
@@ -15,7 +17,7 @@ export default class Wizard extends Component {
 
     this.state = {
       stepsNum: props.children.length,
-      activeIndex: 0
+      activeIndex: 0,
     };
     this.activateStepByIndex = ::this.activateStepByIndex;
     this.gotoPrevStep = ::this.gotoPrevStep;
@@ -29,11 +31,11 @@ export default class Wizard extends Component {
       && !(typeof validateFunc === 'function' && !validateFunc())) {
 
       this.setState({
-        activeIndex: index
+        activeIndex: index,
       });
     } else if (index < activeIndex) {
       this.setState({
-        activeIndex: index
+        activeIndex: index,
       });
     }
   }
@@ -53,7 +55,7 @@ export default class Wizard extends Component {
   }
 
   render() {
-    const {stepsNum, activeIndex}= this.state;
+    const {stepsNum, activeIndex} = this.state;
     const navViews = this.renderNav(this.props.children, activeIndex);
     const progressWidth = calculateProgressWidth(stepsNum, activeIndex);
     const stepView = this.renderStep(this.props.children, activeIndex);
@@ -84,18 +86,21 @@ export default class Wizard extends Component {
     const buttons = {};
     if (activeIndex > 0) {
       buttons.prevBtn = (
-        <button className="btn btn-green prev-btn" onClick={this.gotoPrevStep}>上一步</button>
+        <button className="btn btn-green prev-btn" onClick={this.gotoPrevStep}>
+          上一步</button>
       );
     }
     if (activeIndex < stepLen - 1) {
       buttons.nextBtn = (
-        <button className="btn btn-green next-btn" onClick={this.gotoNextStep}>下一步</button>
+        <button className="btn btn-green next-btn" onClick={this.gotoNextStep}>
+          下一步</button>
       );
     }
     const func = this.props.completeFunc;
     if (activeIndex === stepLen - 1 && typeof func === 'function') {
       buttons.completeBtn = (
-        <button className="btn btn-green complete-btn" onClick={func}>完成</button>
+        <button className="btn btn-green complete-btn" onClick={func}>
+          完成</button>
       );
     }
     return buttons;
@@ -126,8 +131,8 @@ export default class Wizard extends Component {
           key={i}
           onClick={() => this.activateStepByIndex(i)}
         >
-          {step.props.title|| `step ${i+1}`}
-        </div>
+          {step.props.title || `step ${i + 1}`}
+        </div>,
       );
     }
     return navs;

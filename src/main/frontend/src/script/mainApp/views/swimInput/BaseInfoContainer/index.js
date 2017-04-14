@@ -7,7 +7,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Datetime from 'react-datetime';
 
-export class BaseInfoContainer extends Component {
+export default class BaseInfoContainer extends Component {
 
   constructor(props, content) {
     super(props, content);
@@ -106,5 +106,3 @@ export class BaseInfoContainer extends Component {
   }
 
 }
-
-export default connect()
