@@ -3,7 +3,9 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-import React, {Component, PropTypes} from "react";
+import React, { Component } from "react";
+import PropTypes from 'prop-types';
+
 import {connect} from "react-redux";
 import * as frame from "mainApp/core/frame";
 import {getBgImgInfo} from "./bgTool";

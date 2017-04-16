@@ -6,7 +6,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-console.log(PropTypes);
 export default class Wizard extends Component {
   static propTypes = {
     completeFunc: PropTypes.func
@@ -148,3 +147,4 @@ function calculateProgressWidth(totalNum, activeIndex) {
     return parseInt(tmp / totalNum * 100, 10) + '%';
   }
 }
+

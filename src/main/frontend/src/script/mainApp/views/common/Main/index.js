@@ -4,7 +4,9 @@
  * @version :   1.0
  */
 
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Breadcrumb from 'widgets/Breadcrumb';
 
 export default class Main extends Component {

@@ -4,7 +4,8 @@
  * @version :   1.0
  */
 
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import SidebarItem from '../SidebarItem';
 import itemConfig from './itemConfig';
@@ -79,7 +80,7 @@ export default class Sidebar extends Component {
       </aside>
     )
   }
-};
+}
 
 function getSelectedClass(href, path) {
   return href.indexOf(path) === 0 ? 'selected' : '';

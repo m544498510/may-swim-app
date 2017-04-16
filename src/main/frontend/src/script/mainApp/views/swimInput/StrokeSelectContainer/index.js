@@ -3,7 +3,9 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-import React, {PropTypes, Component} from "react";
+import React, { Component } from "react";
+import PropTypes from 'prop-types';
+
 import {connect} from "react-redux";
 import * as stroke from "mainApp/core/swim/stroke";
 import {Dropdown, DropdownMenu, DropdownToggle, DropdownItem} from "widgets/Dropdown";

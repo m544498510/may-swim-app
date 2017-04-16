@@ -3,14 +3,15 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+
 import ImmutablePropTypes  from 'react-immutable-proptypes';
 import {connect} from 'react-redux';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import StrokeSelectContainer from '../StrokeSelectContainer';
 
 import * as newSession from 'mainApp/core/swim/newSession';
-
 
 const cellEditProps = {
   mode: 'click',
@@ -28,8 +29,8 @@ const createNameEditor = (onUpdate, props) => (
 export class MainInfoContainer extends Component {
   static  propTypes = {
     sets: ImmutablePropTypes.listOf(
-      PropTypes.instanceOf(newSession.Set)
-    ).isRequired
+      PropTypes.instanceOf(newSession.Set),
+    ).isRequired,
   };
 
   render() {

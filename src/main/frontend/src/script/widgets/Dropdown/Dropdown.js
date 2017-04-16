@@ -3,7 +3,9 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-import React, {Component, PropTypes} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import DropdownMenu from './DropdownMenu';

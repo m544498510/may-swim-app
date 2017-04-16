@@ -3,7 +3,9 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-import React, {Component, PropTypes} from "react";
+import React, { Component } from "react";
+import PropTypes from 'prop-types';
+
 import {connect} from "react-redux";
 import HeaderContainer from "./header/HeaderContainer";
 import SidebarContainer from "./sideMenu/SidebarContainer";
@@ -12,7 +14,7 @@ import {getHtmlSize} from "utils/htmlTool";
 
 class App extends Component {
   static contextTypes = {
-    router: React.PropTypes.object.isRequired
+    router: PropTypes.object.isRequired
   };
 
   static propTypes = {

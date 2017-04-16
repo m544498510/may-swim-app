@@ -3,7 +3,8 @@
  * @author :    Mei XinLin
  * @version :   1.0
  */
-import React, {Component, PropTypes} from "react";
+import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 export default class InputFormGroup extends Component {
   static propTypes = {
